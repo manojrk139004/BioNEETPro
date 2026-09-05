@@ -11,9 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy ALL backend source modules (the tutor/retrieval/learner/MCQ engines,
-# services and utilities are imported by app.py at runtime — copying only
-# app.py produces a broken container).
+# Backend source modules
 COPY app.py ./
 COPY adaptive_tutor.py ./
 COPY concept_graph.py ./
@@ -37,17 +35,18 @@ COPY score_predictor.py ./
 COPY syllabus.py ./
 COPY tutor_engine.py ./
 COPY update_kb.py ./
-# Runtime data + config required by the engines (no secrets, no PDFs).
+
+# Runtime data
 COPY data ./data
 COPY scripts ./scripts
 COPY datasets ./datasets
 
-# Expose backend port
-EXPOSE 5000
+# NCERT textbook PDFs required by /api/textbook/pdf/*
+COPY Textbook ./Textbook
 
-# Set environment variables
+# Cloud platforms provide PORT dynamically.
 ENV FLASK_DEBUG=false
 ENV PORT=5000
 
-# Production WSGI server (multi-worker). Tune workers for the host.
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "app:app"]
+# Production WSGI server
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 2 --timeout 120 app:app"]
