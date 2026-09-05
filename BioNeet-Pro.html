@@ -1503,7 +1503,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-// Backend URL resolution (order matters):
+window.BIONEET_AI_BACKEND_URL = "https://bioneetpro.onrender.com";`r`n// Backend URL resolution (order matters):
 // 1. window.BIONEET_AI_BACKEND_URL override (production split-hosting).
 // 2. Local dev (localhost/127.0.0.1, any port, or file://): backend is the
 //    Flask app on port 5000 — same-origin would wrongly hit the frontend
@@ -5071,3 +5071,4 @@ window.doAdminLogin = doAdminLogin;
 </script>
 </body>
 </html>
+
