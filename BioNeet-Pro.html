@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#F5C518">
 <meta name="description" content="Context Sensitive AI Tutor for NEET Biology with chapter-aware doubt solving, MCQ practice, analytics, lessons, videos, score prediction, and admin controls.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>
 // BioNEET Pro: Guard against Live Server auto-reloading when backend writes to data/ logs/files.
@@ -19,6 +20,22 @@
   if (typeof window === 'undefined') return;
   window.__bioneetSending = false;
   window.__bioneetLastApiTime = 0;
+  window.go = window.go || function(page) {
+    var p = document.getElementById('page-' + page);
+    if (p) {
+      document.querySelectorAll('.page').forEach(function(el) { el.classList.remove('active'); });
+      p.classList.add('active');
+      window.currentPage = page;
+    }
+  };
+  window.openModal = window.openModal || function(id) {
+    var m = document.getElementById(id);
+    if (m) m.classList.remove('hidden');
+  };
+  window.closeModal = window.closeModal || function(id) {
+    var m = document.getElementById(id);
+    if (m) m.classList.add('hidden');
+  };
   var OriginalWebSocket = window.WebSocket;
   if (!OriginalWebSocket) return;
   window.WebSocket = function(url, protocols) {
@@ -1503,7 +1520,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-window.BIONEET_AI_BACKEND_URL = "https://bioneetpro.onrender.com";`r`n// Backend URL resolution (order matters):
+window.BIONEET_AI_BACKEND_URL = "https://bioneetpro.onrender.com";// Backend URL resolution (order matters):
 // 1. window.BIONEET_AI_BACKEND_URL override (production split-hosting).
 // 2. Local dev (localhost/127.0.0.1, any port, or file://): backend is the
 //    Flask app on port 5000 — same-origin would wrongly hit the frontend
@@ -1815,6 +1832,8 @@ var currentMode = 'chapter';
 var selectedChapter = null;
 
 function go(page) {
+  window.go = go;
+  window.currentPage = page;
   // Role Guard: Block non-admins from admin pages
   if (page.startsWith('admin') && page !== 'admin-login' && !DB.isAdmin) {
     toast('Access denied. Admins only! 🔒', 'e');
@@ -2071,6 +2090,9 @@ function toast(msg, type) {
 // ═══════════════════════════════════════════════════
 function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
 function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.toast = toast;
 
 // ═══════════════════════════════════════════════════
 //  SATURDAY COHORT RANKINGS
@@ -2124,74 +2146,77 @@ function renderHome() {
   var canvas = document.getElementById('hero3d');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var W = canvas.width, H = canvas.height;
+  if (!ctx) return;
+
+  function resizeCanvas() {
+    var rect = canvas.getBoundingClientRect();
+    var w = Math.round(rect.width || canvas.offsetWidth || 440);
+    var h = Math.round(rect.height || canvas.offsetHeight || 480);
+    if (w > 0 && h > 0 && (canvas.width !== w || canvas.height !== h)) {
+      canvas.width = w;
+      canvas.height = h;
+    }
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
   var particles = [];
-  var dnaPoints = [];
+  for (var p = 0; p < 35; p++) {
+    particles.push({
+      x: Math.random() * (canvas.width || 440),
+      y: Math.random() * (canvas.height || 480),
+      r: 1.5 + Math.random() * 3.5,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      color: Math.random() > 0.45 ? '#F5C518' : '#0A0A0A',
+      opacity: 0.15 + Math.random() * 0.45
+    });
+  }
+
+  var labels = ['DNA', 'ATP', 'mRNA', 'NCERT', 'NEET', 'tRNA', 'PCR', 'rRNA', 'Mitosis', 'Genetics', 'Base Pair'];
+  var floatingLabels = labels.map(function(l) {
+    return {
+      text: l,
+      x: 30 + Math.random() * ((canvas.width || 440) - 80),
+      y: 30 + Math.random() * ((canvas.height || 480) - 80),
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      size: 11 + Math.random() * 5,
+      alpha: 0.12 + Math.random() * 0.18
+    };
+  });
+
   var t = 0;
 
-  // Generate DNA helix points
-  for (var i = 0; i < 60; i++) {
-    dnaPoints.push({ phase: i });
-  }
-
-  // Floating particles
-  for (var i = 0; i < 30; i++) {
-    particles.push({
-      x: Math.random() * W, y: Math.random() * H,
-      r: 2 + Math.random() * 4, vx: (Math.random()-.5)*.4, vy: (Math.random()-.5)*.4,
-      color: Math.random() > .5 ? '#F5C518' : '#0A0A0A', opacity: .2 + Math.random() * .5
-    });
-  }
-
-  // DNA labels
-  var labels = ['DNA', 'ATP', 'mRNA', 'NCERT', 'NEET', 'tRNA', 'PCR', 'rRNA', 'Mitosis', 'Genetics'];
-  var floatingLabels = labels.map((l, i) => ({
-    text: l, x: 40 + Math.random()*(W-80), y: 40 + Math.random()*(H-80),
-    vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
-    size: 11 + Math.random()*6, alpha: .15 + Math.random()*.2
-  }));
-
   function getHeroCanvasStats() {
-    var u = DB.currentUser;
-    var results = DB.results || [];
-    
-    var saturdayResults = results.filter(function(r) {
-      var d = new Date(r.timestamp);
-      return !isNaN(d.getTime()) && d.getDay() === 6;
-    });
-    var targetResults = saturdayResults.length ? saturdayResults : results;
+    try {
+      var u = (typeof DB !== 'undefined' && DB.currentUser) || null;
+      var results = (typeof DB !== 'undefined' && DB.results) || [];
+      var targetResults = results.length ? results : [];
 
-    if (u) {
-      var userResults = targetResults.filter(function(r) { return r.email === u.email; });
-      if (userResults.length > 0) {
-        var correct = userResults.reduce(function(sum, r) { return sum + r.correct; }, 0);
-        var total = userResults.reduce(function(sum, r) { return sum + r.total; }, 0);
-        var userAvg = Math.round((correct / total) * 100);
+      if (u) {
+        var userResults = targetResults.filter(function(r) { return r && (r.email === u.email || r.userId === u.id); });
+        if (userResults.length > 0) {
+          var correct = userResults.reduce(function(sum, r) { return sum + (+r.correct || 0); }, 0);
+          var total = userResults.reduce(function(sum, r) { return sum + (+r.total || 0); }, 0);
+          var userAvg = total > 0 ? Math.round((correct / total) * 100) : 0;
+          var cohort = typeof getSaturdayCohort === 'function' ? getSaturdayCohort() : [];
+          var userRankIdx = cohort.findIndex(function(s) { return s && s.email === u.email; });
+          var rank = userRankIdx !== -1 ? (userRankIdx + 1) : 1;
 
-        var cohort = getSaturdayCohort();
-        var userRankIdx = cohort.findIndex(function(s) { return s.email === u.email; });
-        var rank = userRankIdx !== -1 ? (userRankIdx + 1) : 12;
-
-        return {
-          scoreLabel: 'YOUR SCORE',
-          scoreText: userAvg + '%',
-          rankText: '🏆 RANK #' + rank + ' THIS WEEK',
-          subText: rank <= 10 ? 'Top 10 achieved! 🥳' : 'Top 10 awaits!'
-        };
-      } else {
-        return {
-          scoreLabel: 'YOUR SCORE',
-          scoreText: '--%',
-          rankText: '🏆 RANK #-- THIS WEEK',
-          subText: 'Take a test to rank!'
-        };
+          return {
+            scoreLabel: 'YOUR SCORE',
+            scoreText: userAvg + '%',
+            rankText: '🏆 RANK #' + rank + ' THIS WEEK',
+            subText: rank <= 10 ? 'Top 10 achieved! 🥳' : 'Keep practicing!'
+          };
+        }
       }
-    } else {
       var baseScore = 87;
       if (targetResults.length > 0) {
-        var correct = targetResults.reduce(function(sum, r) { return sum + r.correct; }, 0);
-        var total = targetResults.reduce(function(sum, r) { return sum + r.total; }, 0);
-        baseScore = Math.round((correct / total) * 100);
+        var c = targetResults.reduce(function(sum, r) { return sum + (+r.correct || 0); }, 0);
+        var tot = targetResults.reduce(function(sum, r) { return sum + (+r.total || 0); }, 0);
+        if (tot > 0) baseScore = Math.round((c / tot) * 100);
       }
       return {
         scoreLabel: 'AVG SCORE',
@@ -2199,145 +2224,217 @@ function renderHome() {
         rankText: '🏆 JOIN BIONEET PRO',
         subText: 'Track your rank live!'
       };
+    } catch (e) {
+      return { scoreLabel: 'AVG SCORE', scoreText: '87%', rankText: '🏆 JOIN BIONEET PRO', subText: 'Track your rank live!' };
     }
   }
+
+  function drawRoundRect(c, x, y, w, h, r) {
+    c.beginPath();
+    c.moveTo(x + r, y);
+    c.lineTo(x + w - r, y);
+    c.quadraticCurveTo(x + w, y, x + w, y + r);
+    c.lineTo(x + w, y + h - r);
+    c.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    c.lineTo(x + r, y + h);
+    c.quadraticCurveTo(x, y + h, x, y + h - r);
+    c.lineTo(x, y + r);
+    c.quadraticCurveTo(x, y, x + r, y);
+    c.closePath();
+  }
+
+  var baseColors = [
+    { c1: '#EF4444', c2: '#3B82F6' }, // Adenine - Thymine
+    { c1: '#10B981', c2: '#F59E0B' }, // Guanine - Cytosine
+    { c1: '#3B82F6', c2: '#EF4444' }, // Thymine - Adenine
+    { c1: '#F59E0B', c2: '#10B981' }  // Cytosine - Guanine
+  ];
 
   function draw() {
-    ctx.clearRect(0, 0, W, H);
-    // Background
-    ctx.fillStyle = '#FFFEF8';
-    ctx.fillRect(0, 0, W, H);
-
-    // Grid dots
-    ctx.fillStyle = 'rgba(10,10,10,.04)';
-    for (var gx = 20; gx < W; gx += 28) {
-      for (var gy = 20; gy < H; gy += 28) {
-        ctx.beginPath(); ctx.arc(gx, gy, 1.5, 0, Math.PI*2); ctx.fill();
-      }
-    }
-
-    // Floating labels
-    floatingLabels.forEach(lb => {
-      ctx.font = 'bold ' + lb.size + 'px Syne, sans-serif';
-      ctx.fillStyle = 'rgba(10,10,10,' + lb.alpha + ')';
-      ctx.fillText(lb.text, lb.x, lb.y);
-      lb.x += lb.vx; lb.y += lb.vy;
-      if (lb.x < -60 || lb.x > W+20) lb.vx *= -1;
-      if (lb.y < 10 || lb.y > H+20) lb.vy *= -1;
-    });
-
-    // DNA double helix
-    var cx = W/2, cy = H/2;
-    var dnaH = H * .72, dnaW = 38;
-    var startY = cy - dnaH/2;
-
-    for (var i = 0; i < 56; i++) {
-      var progress = i / 55;
-      var y = startY + progress * dnaH;
-      var angle1 = progress * Math.PI * 5 + t;
-      var angle2 = angle1 + Math.PI;
-      var x1 = cx + Math.cos(angle1) * dnaW;
-      var x2 = cx + Math.cos(angle2) * dnaW;
-      var d = Math.abs(x1-x2);
-
-      // Cross-links (base pairs)
-      if (i % 5 === 0) {
-        ctx.beginPath();
-        ctx.moveTo(x1, y); ctx.lineTo(x2, y);
-        ctx.strokeStyle = 'rgba(245,197,24,0.7)';
-        ctx.lineWidth = 2.5;
-        ctx.setLineDash([]);
-        ctx.stroke();
-        // End balls
-        ctx.fillStyle = '#F5C518';
-        ctx.beginPath(); ctx.arc(x1, y, 5, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(x2, y, 5, 0, Math.PI*2); ctx.fill();
-        ctx.strokeStyle = '#0A0A0A'; ctx.lineWidth=1.5;
-        ctx.beginPath(); ctx.arc(x1, y, 5, 0, Math.PI*2); ctx.stroke();
-        ctx.beginPath(); ctx.arc(x2, y, 5, 0, Math.PI*2); ctx.stroke();
-      }
-
-      // Strand 1
-      if (i < 55) {
-        var nextProgress = (i+1)/55;
-        var ny = startY + nextProgress * dnaH;
-        var na1 = nextProgress * Math.PI*5 + t;
-        var nx1 = cx + Math.cos(na1) * dnaW;
-        ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(nx1, ny);
-        ctx.strokeStyle = '#0A0A0A'; ctx.lineWidth = 2.5; ctx.stroke();
-        // Strand 2
-        var na2 = na1 + Math.PI;
-        var nx2 = cx + Math.cos(na2) * dnaW;
-        ctx.beginPath(); ctx.moveTo(x2, y); ctx.lineTo(nx2, ny);
-        ctx.strokeStyle = '#0A0A0A'; ctx.lineWidth = 2.5; ctx.stroke();
-      }
-    }
-
-    // Floating particles
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = p.color; ctx.globalAlpha = p.opacity;
-      ctx.fill(); ctx.globalAlpha = 1;
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > W) p.vx *= -1;
-      if (p.y < 0 || p.y > H) p.vy *= -1;
-    });
-
-    // Corner accent
-    ctx.fillStyle = 'rgba(245,197,24,.08)';
-    ctx.beginPath();
-    ctx.arc(W, 0, 120, 0, Math.PI*2);
-    ctx.fill();
-    ctx.fillStyle = 'rgba(10,10,10,.04)';
-    ctx.beginPath();
-    ctx.arc(0, H, 80, 0, Math.PI*2);
-    ctx.fill();
-
-    // Get dynamic stats
-    var stats = getHeroCanvasStats();
-
-    // Score badge overlay
-    ctx.fillStyle = '#0A0A0A';
-    ctx.beginPath();
-    roundRect(ctx, W-110, 18, 94, 52, 10);
-    ctx.fill();
-    ctx.fillStyle = '#F5C518';
-    ctx.font = 'bold 10px Syne, sans-serif';
-    ctx.fillText(stats.scoreLabel, W-101, 34);
-    ctx.font = 'bold 22px Instrument Serif, serif';
-    ctx.fillText(stats.scoreText, W-101, 60);
-
-    // Cell badge
-    ctx.fillStyle = '#F5C518';
-    ctx.beginPath();
-    roundRect(ctx, 14, H-68, 145, 52, 10);
-    ctx.fill();
-    ctx.strokeStyle = '#0A0A0A'; ctx.lineWidth = 2;
-    ctx.stroke();
-    ctx.fillStyle = '#0A0A0A';
-    ctx.font = 'bold 9px Syne, sans-serif';
-    ctx.fillText(stats.rankText, 22, H-46);
-    ctx.font = 'bold 11px Syne, sans-serif';
-    ctx.fillText(stats.subText, 22, H-28);
-
-    t += 0.008;
     requestAnimationFrame(draw);
-  }
 
+    try {
+      var W = canvas.width || 440;
+      var H = canvas.height || 480;
 
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x+r, y);
-    ctx.lineTo(x+w-r, y);
-    ctx.quadraticCurveTo(x+w, y, x+w, y+r);
-    ctx.lineTo(x+w, y+h-r);
-    ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
-    ctx.lineTo(x+r, y+h);
-    ctx.quadraticCurveTo(x, y+h, x, y+h-r);
-    ctx.lineTo(x, y+r);
-    ctx.quadraticCurveTo(x, y, x+r, y);
-    ctx.closePath();
+      ctx.clearRect(0, 0, W, H);
+
+      // Warm background
+      ctx.fillStyle = '#FFFEF8';
+      ctx.fillRect(0, 0, W, H);
+
+      // Grid dots
+      ctx.fillStyle = 'rgba(10,10,10,0.04)';
+      for (var gx = 18; gx < W; gx += 26) {
+        for (var gy = 18; gy < H; gy += 26) {
+          ctx.beginPath();
+          ctx.arc(gx, gy, 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Floating bio tags
+      floatingLabels.forEach(function(lb) {
+        ctx.font = 'bold ' + lb.size + 'px Syne, sans-serif';
+        ctx.fillStyle = 'rgba(10,10,10,' + lb.alpha + ')';
+        ctx.fillText(lb.text, lb.x, lb.y);
+        lb.x += lb.vx;
+        lb.y += lb.vy;
+        if (lb.x < -40 || lb.x > W + 20) lb.vx *= -1;
+        if (lb.y < 20 || lb.y > H + 20) lb.vy *= -1;
+      });
+
+      // DNA Double Helix Geometry
+      var cx = W / 2;
+      var cy = H / 2;
+      var dnaH = H * 0.76;
+      var dnaW = Math.min(55, W * 0.14);
+      var startY = cy - dnaH / 2;
+      var steps = 44;
+
+      // 1. Draw connecting base pairs (ladder rungs) with 3D depth
+      for (var i = 0; i < steps; i++) {
+        var progress = i / (steps - 1);
+        var y = startY + progress * dnaH;
+        var angle1 = progress * Math.PI * 4.2 + t;
+        var angle2 = angle1 + Math.PI;
+
+        var cos1 = Math.cos(angle1);
+        var x1 = cx + cos1 * dnaW;
+        var x2 = cx + Math.cos(angle2) * dnaW;
+
+        // Draw rungs every 2nd step
+        if (i % 2 === 0) {
+          var pair = baseColors[(i / 2) % baseColors.length];
+          var midX = (x1 + x2) / 2;
+
+          // Half-rung 1
+          ctx.beginPath();
+          ctx.moveTo(x1, y);
+          ctx.lineTo(midX, y);
+          ctx.strokeStyle = pair.c1;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          // Half-rung 2
+          ctx.beginPath();
+          ctx.moveTo(midX, y);
+          ctx.lineTo(x2, y);
+          ctx.strokeStyle = pair.c2;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          // Hydrogen bond center junction
+          ctx.fillStyle = '#0A0A0A';
+          ctx.beginPath();
+          ctx.arc(midX, y, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 2. Draw continuous helical backbone strands
+      for (var strand = 0; strand < 2; strand++) {
+        var phaseOffset = strand * Math.PI;
+        ctx.beginPath();
+        for (var j = 0; j < steps; j++) {
+          var prog = j / (steps - 1);
+          var sy = startY + prog * dnaH;
+          var a = prog * Math.PI * 4.2 + t + phaseOffset;
+          var sx = cx + Math.cos(a) * dnaW;
+          if (j === 0) ctx.moveTo(sx, sy);
+          else ctx.lineTo(sx, sy);
+        }
+        ctx.strokeStyle = strand === 0 ? '#0A0A0A' : '#D4A017';
+        ctx.lineWidth = 3.5;
+        ctx.stroke();
+      }
+
+      // 3. Draw backbone phosphate-sugar nodes with 3D perspective
+      for (var k = 0; k < steps; k++) {
+        var p = k / (steps - 1);
+        var ny = startY + p * dnaH;
+        var ang1 = p * Math.PI * 4.2 + t;
+        var ang2 = ang1 + Math.PI;
+
+        // Strand 1 node
+        var z1 = Math.sin(ang1);
+        var r1 = 3.5 + z1 * 2;
+        var nx1 = cx + Math.cos(ang1) * dnaW;
+        ctx.beginPath();
+        ctx.arc(nx1, ny, Math.max(1.8, r1), 0, Math.PI * 2);
+        ctx.fillStyle = z1 > 0 ? '#F5C518' : '#D4A017';
+        ctx.fill();
+        ctx.strokeStyle = '#0A0A0A';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Strand 2 node
+        var z2 = Math.sin(ang2);
+        var r2 = 3.5 + z2 * 2;
+        var nx2 = cx + Math.cos(ang2) * dnaW;
+        ctx.beginPath();
+        ctx.arc(nx2, ny, Math.max(1.8, r2), 0, Math.PI * 2);
+        ctx.fillStyle = z2 > 0 ? '#0A0A0A' : '#4B5563';
+        ctx.fill();
+        ctx.strokeStyle = '#F5C518';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
+
+      // Floating ambient particles
+      particles.forEach(function(pt) {
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fillStyle = pt.color;
+        ctx.globalAlpha = pt.opacity;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if (pt.x < 0 || pt.x > W) pt.vx *= -1;
+        if (pt.y < 0 || pt.y > H) pt.vy *= -1;
+      });
+
+      // Accent arcs in corners
+      ctx.fillStyle = 'rgba(245,197,24,0.12)';
+      ctx.beginPath();
+      ctx.arc(W, 0, 110, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(10,10,10,0.04)';
+      ctx.beginPath();
+      ctx.arc(0, H, 75, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Badges
+      var stats = getHeroCanvasStats();
+
+      // Top-Right Score Badge
+      ctx.fillStyle = '#0A0A0A';
+      drawRoundRect(ctx, W - 118, 16, 102, 54, 10);
+      ctx.fill();
+      ctx.fillStyle = '#F5C518';
+      ctx.font = 'bold 9px Syne, sans-serif';
+      ctx.fillText(stats.scoreLabel, W - 108, 32);
+      ctx.font = 'bold 22px Instrument Serif, serif';
+      ctx.fillText(stats.scoreText, W - 108, 58);
+
+      // Bottom-Left Cohort Badge
+      ctx.fillStyle = '#F5C518';
+      drawRoundRect(ctx, 14, H - 66, 155, 52, 10);
+      ctx.fill();
+      ctx.strokeStyle = '#0A0A0A';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.fillStyle = '#0A0A0A';
+      ctx.font = 'bold 9px Syne, sans-serif';
+      ctx.fillText(stats.rankText, 22, H - 45);
+      ctx.font = 'bold 11px Syne, sans-serif';
+      ctx.fillText(stats.subText, 22, H - 27);
+
+      t += 0.012;
+    } catch (err) {
+      console.warn('Hero 3D draw error:', err);
+    }
   }
 
   draw();

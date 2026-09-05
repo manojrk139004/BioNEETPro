@@ -68,17 +68,67 @@ def is_strict_auth():
 
 REQUIRE_FIREBASE_AUTH = is_strict_auth()
 
-ALLOWED_ORIGINS = [
-    origin.strip()
-    for origin in os.environ.get(
-        "ALLOWED_ORIGINS",
-        "http://localhost:5000,http://127.0.0.1:5000,http://localhost:5173,http://127.0.0.1:5173,http://localhost:5500,http://127.0.0.1:5500,http://localhost:8000,http://127.0.0.1:8000",
-    ).split(",")
-    if origin.strip() and origin.strip() != "file://"
+DEFAULT_ALLOWED = [
+    "http://localhost:5000",
+    "http://127.0.0.1:5000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://bio-neet-pro.vercel.app",
+    "https://bioneetpro.onrender.com",
+    "null",
 ]
-if "null" not in ALLOWED_ORIGINS and "*" not in ALLOWED_ORIGINS:
-    ALLOWED_ORIGINS.append("null")
-CORS(app, resources={r"/*": {"origins": ALLOWED_ORIGINS if "*" not in ALLOWED_ORIGINS else "*"}})
+
+env_origins = os.environ.get("ALLOWED_ORIGINS", "").strip()
+if env_origins:
+    ALLOWED_ORIGINS = [
+        origin.strip()
+        for origin in env_origins.split(",")
+        if origin.strip() and origin.strip() != "file://"
+    ]
+else:
+    ALLOWED_ORIGINS = list(DEFAULT_ALLOWED)
+
+for essential in ("https://bio-neet-pro.vercel.app", "null"):
+    if essential not in ALLOWED_ORIGINS and "*" not in ALLOWED_ORIGINS:
+        ALLOWED_ORIGINS.append(essential)
+
+VERCEL_ORIGIN_REGEX = re.compile(r"^https:\/\/.*\.vercel\.app$")
+
+CORS(
+    app,
+    resources={
+        r"/*": {
+            "origins": (
+                ALLOWED_ORIGINS + [VERCEL_ORIGIN_REGEX]
+                if "*" not in ALLOWED_ORIGINS
+                else "*"
+            ),
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+            "allow_headers": ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
+            "expose_headers": ["Content-Type", "Authorization"],
+        }
+    },
+)
+
+
+@app.after_request
+def add_cors_headers(response):
+    origin = request.headers.get("Origin")
+    if origin:
+        if (
+            origin in ALLOWED_ORIGINS
+            or "*" in ALLOWED_ORIGINS
+            or origin.endswith(".vercel.app")
+            or origin.endswith(".onrender.com")
+        ):
+            response.headers["Access-Control-Allow-Origin"] = origin
+            response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+            response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Requested-With, Accept"
+    return response
 
 OPENROUTER_KEY = os.environ.get("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = os.environ.get("OPENROUTER_BASE_URL") or os.environ.get("AI_API_BASE_URL")
@@ -282,9 +332,10 @@ except Exception as e:
 @app.get("/")
 def serve_index():
     """Serve the BioNEET Pro web frontend directly on root URL."""
-    index_file = BASE_DIR / "BioNeet-Pro.html"
-    if index_file.exists():
-        return send_file(index_file)
+    for name in ("index.html", "BioNeet-Pro.html"):
+        index_file = BASE_DIR / name
+        if index_file.exists():
+            return send_file(index_file)
     return health()
 
 
