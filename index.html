@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#F5C518">
 <meta name="description" content="Context Sensitive AI Tutor for NEET Biology with chapter-aware doubt solving, MCQ practice, analytics, lessons, videos, score prediction, and admin controls.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>
 // BioNEET Pro: Guard against Live Server auto-reloading when backend writes to data/ logs/files.
@@ -1503,7 +1504,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-window.BIONEET_AI_BACKEND_URL = "https://bioneetpro.onrender.com";`r`n// Backend URL resolution (order matters):
+window.BIONEET_AI_BACKEND_URL = "https://bioneetpro.onrender.com";// Backend URL resolution (order matters):
 // 1. window.BIONEET_AI_BACKEND_URL override (production split-hosting).
 // 2. Local dev (localhost/127.0.0.1, any port, or file://): backend is the
 //    Flask app on port 5000 — same-origin would wrongly hit the frontend
