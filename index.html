@@ -129,6 +129,10 @@ input,select,textarea { font-family: inherit; outline: none; }
 @keyframes drawLine { from { stroke-dashoffset:1000; } to { stroke-dashoffset:0; } }
 @keyframes countUp { from { opacity:0; transform:scale(0.5); } to { opacity:1; transform:scale(1); } }
 @keyframes shimmer { 0% { background-position:-200px 0; } 100% { background-position:calc(200px + 100%) 0; } }
+@keyframes pulseDot { 0%,100% { transform:scale(1); opacity:1; } 50% { transform:scale(1.35); opacity:0.45; } }
+
+.realtime-badge { display:inline-flex; align-items:center; gap:6px; font-size:.72rem; font-weight:700; color:#22C55E; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.3); border-radius:999px; padding:4px 10px; }
+.realtime-dot { width:7px; height:7px; border-radius:50%; background:#22C55E; display:inline-block; animation:pulseDot 1.5s infinite; }
 
 .page { display:none; }
 .page.active { display:block; animation:fadeIn .35s ease; }
@@ -1342,7 +1346,11 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
     <main class="dash-main">
       <div class="sh-row" style="margin-bottom:26px">
         <div class="sh"><h2>Admin Overview</h2><p>BioNEET Pro — Real-time Platform Statistics</p></div>
-        <div class="badge by" id="adminDate"></div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <span class="realtime-badge"><span class="realtime-dot"></span> Live Sync Active</span>
+          <button class="btn btn-outline btn-sm" onclick="refreshStudentData()">🔄 Sync Now</button>
+          <div class="badge by" id="adminDate"></div>
+        </div>
       </div>
       <div class="grid g4" style="margin-bottom:26px">
         <div class="admin-stat"><h3 id="aTotalS">0</h3><p>Total Students</p></div>
@@ -1377,7 +1385,8 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
   <div style="padding:30px">
     <div class="sh-row" style="margin-bottom:24px">
       <div><h2 style="font-weight:800;font-size:1.5rem;font-family:'Instrument Serif',serif">👥 Student Management</h2><p style="color:var(--muted)">All registered students and their performance</p></div>
-      <div style="display:flex;gap:10px;align-items:center">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <span class="realtime-badge"><span class="realtime-dot"></span> Real-time Live</span>
         <select class="fs" style="width:auto" id="sSort" onchange="setStudentSort(this.value)">
           <option value="recent">Recently joined</option>
           <option value="top">Top performance</option>
@@ -1386,6 +1395,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
           <option value="active">Recently active</option>
         </select>
         <div class="sbar"><span class="si-icon">🔍</span><input placeholder="Search students..." id="sSrch" oninput="filterStudents(this.value)"></div>
+        <button class="btn btn-outline btn-sm" id="btnRefreshStudents" onclick="refreshStudentData()">🔄 Refresh</button>
         <button class="btn btn-primary btn-sm" onclick="exportStudentsCSV()">📥 Export</button>
       </div>
     </div>
@@ -1503,8 +1513,8 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
 <script type="module">
   
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, where, doc, setDoc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs, query, where, doc, setDoc, getDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 
 
 const firebaseConfig = {
@@ -1581,26 +1591,27 @@ async function flushFirestoreSync() {
   }
 }
 async function syncCollectionToFirestore(key) {
-  // Per-document upsert keyed by stable id so reload-from-Firestore reflects edits.
+  // Parallel upsert keyed by stable id so Firestore and cache stay in sync fast.
   const rows = DB[key] || [];
-  const { doc: fsDoc, setDoc: fsSet } = await import('https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js').catch(() => ({}));
-  for (const row of rows.slice(-50)) { // cap burst writes; full seed via import script
-    if (!row || row.id === undefined || !fsDoc || !fsSet) break;
-    try { await fsSet(fsDoc(db, key, String(row.id)), row, { merge: true }); } catch (e) { break; }
-  }
+  const slice = rows.slice(-50);
+  await Promise.allSettled(slice.map(row => {
+    if (!row || row.id === undefined) return Promise.resolve();
+    return setDoc(doc(db, key, String(row.id)), row, { merge: true });
+  }));
 }
-// Fresh-load from Firestore (acceptance: re-fetch, not same in-memory DB).
+// Fresh parallel load from Firestore.
 async function reloadFromFirestore() {
-  const { collection: fsCol, getDocs: fsGet } = await import('https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js').catch(() => ({}));
-  if (!fsCol || !fsGet || typeof db === 'undefined' || !db) return false;
-  for (const key of ['users', 'results', 'updates', 'videos', 'mcqs']) {
+  if (typeof db === 'undefined' || !db) return false;
+  const keys = ['users', 'results', 'updates', 'videos', 'mcqs'];
+  await Promise.allSettled(keys.map(async (key) => {
+    if (key === 'users' && !DB.isAdmin && !auth.currentUser) return;
     try {
-      const snap = await fsGet(fsCol(db, key));
+      const snap = await getDocs(collection(db, key));
       const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       DB[key] = rows;
       try { localStorage.setItem(key, JSON.stringify(rows)); } catch (e) {}
-    } catch (e) { console.warn('[Firestore reload] ' + key + ' failed:', e && e.message); }
-  }
+    } catch (e) { console.warn('[Firestore reload] ' + key + ' failed:', e && e.code); }
+  }));
   return true;
 }
 
@@ -1888,6 +1899,9 @@ function go(page) {
     'admin-updates': renderAdminUpdates
   };
   if (renders[page]) renders[page]();
+  if (DB.isAdmin && (page === 'admin' || page === 'admin-students')) {
+    setupRealtimeListeners();
+  }
 }
 
 function updateNav() {
@@ -1940,6 +1954,8 @@ async function doLogin() {
     }
     localStorage.setItem('currentUser', JSON.stringify(DB.currentUser));
     localStorage.setItem('isAdmin', JSON.stringify(DB.isAdmin));
+    setupRealtimeListeners();
+    if (DB.isAdmin) refreshStudentData();
     toast('Welcome back, ' + userFound.name.split(' ')[0] + '! 👋', 's');
     go(DB.isAdmin ? 'admin' : 'dashboard');
   } catch (e) {
@@ -1984,6 +2000,7 @@ async function doRegister() {
     DB.isAdmin = false;
     localStorage.setItem('currentUser', JSON.stringify(DB.currentUser));
     localStorage.setItem('isAdmin', 'false');
+    setupRealtimeListeners();
     toast('Registered in Cloud! ☁️', 's');
     go('dashboard');
   } catch (e) {
@@ -2018,6 +2035,8 @@ async function doAdminLogin() {
     // Recent Student Logins must reflect students only.
     localStorage.setItem('isAdmin', JSON.stringify(true));
     localStorage.setItem('currentUser', JSON.stringify(adminUser));
+    setupRealtimeListeners();
+    refreshStudentData();
     toast('Admin login successful! ✅', 's');
     go('admin');
   } catch (error) {
@@ -2026,6 +2045,7 @@ async function doAdminLogin() {
   }
 }
 async function logout() {
+  teardownRealtimeListeners();
   try { await signOut(auth); } catch (e) { console.warn('Sign out skipped:', e); }
   DB.currentUser = null; DB.isAdmin = false;
   localStorage.removeItem('currentUser');
@@ -2064,6 +2084,141 @@ function readableAuthError(error) {
   if (code.includes('invalid-credential') || code.includes('wrong-password')) return 'Invalid email or password.';
   if (code.includes('user-not-found')) return 'No account found. Register first.';
   return 'Authentication failed. Please try again.';
+}
+
+// ═══════════════════════════════════════════════════
+//  REAL-TIME SYNC & FIRESTORE LISTENERS
+// ═══════════════════════════════════════════════════
+let unsubUsers = null;
+let unsubResults = null;
+let unsubUpdates = null;
+let unsubVideos = null;
+
+function setupRealtimeListeners() {
+  if (typeof db === 'undefined' || !db) return;
+
+  // 1. UPDATES Listener (Public read)
+  if (!unsubUpdates) {
+    try {
+      unsubUpdates = onSnapshot(collection(db, "updates"), (snap) => {
+        if (!snap.empty) {
+          DB.updates = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          save('updates');
+          if (currentPage === 'updates') renderUpdates();
+          if (currentPage === 'admin-updates') renderAdminUpdates();
+          if (currentPage === 'dashboard') renderDashboard();
+        }
+      }, (err) => {
+        console.warn("Realtime updates listener:", err && err.code);
+      });
+    } catch (e) { console.warn("Updates listener init error:", e); }
+  }
+
+  // 2. VIDEOS Listener (Public read)
+  if (!unsubVideos) {
+    try {
+      unsubVideos = onSnapshot(collection(db, "videos"), (snap) => {
+        if (!snap.empty) {
+          DB.videos = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          save('videos');
+          if (currentPage === 'videos') renderVideos();
+          if (currentPage === 'admin-videos') renderAdminVideos();
+        }
+      }, (err) => {
+        console.warn("Realtime videos listener:", err && err.code);
+      });
+    } catch (e) { console.warn("Videos listener init error:", e); }
+  }
+
+  // 3. RESULTS Listener (Signed-in students & admins)
+  const isAuthOrAdmin = !!(auth.currentUser || DB.currentUser || DB.isAdmin);
+  if (isAuthOrAdmin && !unsubResults) {
+    try {
+      unsubResults = onSnapshot(collection(db, "results"), (snap) => {
+        DB.results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        save('results');
+        console.log(`⚡ Real-time results update: ${DB.results.length} records`);
+        if (currentPage === 'admin') renderAdmin();
+        if (currentPage === 'admin-students') renderStudentTable();
+        if (currentPage === 'leaderboard') renderLeaderboard();
+        if (currentPage === 'dashboard') renderDashboard();
+      }, (err) => {
+        console.warn("Realtime results listener:", err && err.code);
+      });
+    } catch (e) { console.warn("Results listener init error:", e); }
+  }
+
+  // 4. USERS Listener (Admins only)
+  const isAdminUser = !!(DB.isAdmin || (DB.currentUser && DB.currentUser.role === 'admin'));
+  if (isAdminUser && !unsubUsers) {
+    try {
+      unsubUsers = onSnapshot(collection(db, "users"), (snap) => {
+        DB.users = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        save('users');
+        console.log(`⚡ Real-time users update: ${DB.users.length} registered students`);
+        if (currentPage === 'admin-students') renderStudentTable();
+        if (currentPage === 'admin') renderAdmin();
+      }, (err) => {
+        console.warn("Realtime users listener:", err && err.code);
+      });
+    } catch (e) { console.warn("Users listener init error:", e); }
+  }
+}
+
+function teardownRealtimeListeners() {
+  if (unsubUsers) { try { unsubUsers(); } catch(e) {} unsubUsers = null; }
+  if (unsubResults) { try { unsubResults(); } catch(e) {} unsubResults = null; }
+  if (unsubUpdates) { try { unsubUpdates(); } catch(e) {} unsubUpdates = null; }
+  if (unsubVideos) { try { unsubVideos(); } catch(e) {} unsubVideos = null; }
+}
+
+async function refreshStudentData() {
+  const btn = document.getElementById('btnRefreshStudents');
+  if (btn) btn.textContent = '🔄 Syncing...';
+  try {
+    const userPromise = (DB.isAdmin || auth.currentUser) ? getDocs(collection(db, "users")) : Promise.resolve({ docs: [] });
+    const [userSnap, resSnap] = await Promise.all([
+      userPromise,
+      getDocs(collection(db, "results"))
+    ]);
+    if (userSnap && userSnap.docs && userSnap.docs.length) {
+      DB.users = userSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      save('users');
+    }
+    if (resSnap && resSnap.docs) {
+      DB.results = resSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      save('results');
+    }
+    if (currentPage === 'admin-students') renderStudentTable();
+    if (currentPage === 'admin') renderAdmin();
+    if (currentPage === 'leaderboard') renderLeaderboard();
+    toast(`Synced ${DB.users.length} students & ${DB.results.length} test scores! ☁️`, 's');
+  } catch (err) {
+    console.warn("Manual refresh notice:", err);
+  } finally {
+    if (btn) btn.textContent = '🔄 Refresh';
+  }
+}
+
+// Restore session and activate listeners
+try {
+  onAuthStateChanged(auth, async (firebaseUser) => {
+    if (firebaseUser) {
+      try {
+        const profile = await loadUserProfile(firebaseUser);
+        DB.currentUser = profile;
+        DB.isAdmin = (profile.role === 'admin');
+        localStorage.setItem('currentUser', JSON.stringify(profile));
+        localStorage.setItem('isAdmin', JSON.stringify(DB.isAdmin));
+        updateNav();
+      } catch (err) {
+        console.warn("Auth state restore error:", err);
+      }
+    }
+    setupRealtimeListeners();
+  });
+} catch (e) {
+  console.warn("onAuthStateChanged setup:", e);
 }
 
 // ═══════════════════════════════════════════════════
@@ -4455,7 +4610,7 @@ async function openStudentDetail(id) {
 function renderRecentRegistrations() {
   var el = document.getElementById('sRecentReg');
   if (!el) return;
-  var recent = [...DB.users].filter(u => u.role !== 'admin').reverse().slice(0, 5);
+  var recent = [...DB.users].filter(u => u.role !== 'admin').sort((a, b) => new Date(b.joined || 0) - new Date(a.joined || 0)).slice(0, 5);
   if (!recent.length) { el.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:16px">No students yet</td></tr>'; return; }
   el.innerHTML = recent.map(u => '<tr><td><strong>' + u.name + '</strong></td><td>' + u.email + '</td><td><span class="badge by">' + (u.target || 'NEET') + '</span></td><td>' + new Date(u.joined || Date.now()).toLocaleDateString('en-IN') + '</td></tr>').join('');
 }
@@ -4889,187 +5044,98 @@ async function uploadLocalMCQsToCloud() {
   }
 }
 
+let isSyncing = false;
 async function syncData() {
+  if (isSyncing) return;
+  isSyncing = true;
   try {
-    console.log("🔄 Starting Cloud Sync...");
+    console.log("🔄 Starting Fast Parallel Cloud Sync...");
     
-    // ============================================
-    // 1. Sync USERS from Firebase (admin-only list; students keep local —
-    //    a denial here must NOT abort the public collections below)
-    // ============================================
-    try {
-      const userSnap = await getDocs(collection(db, "users"));
-      DB.users = userSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-      console.log(`✅ Synced ${DB.users.length} users from Firebase`);
-    } catch (e) {
-      console.warn("Users list not permitted for this account (admin-only). Using local users.", e && e.code);
+    // Connect real-time listeners so cloud updates stream live without page reloads
+    setupRealtimeListeners();
+
+    const tasks = [];
+
+    // 1. Users (Admins only — avoids 403 latency for students)
+    if (DB.isAdmin || (auth.currentUser && DB.currentUser?.role === 'admin')) {
+      tasks.push(
+        getDocs(collection(db, "users"))
+          .then(userSnap => {
+            DB.users = userSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+            save('users');
+            console.log(`✅ Synced ${DB.users.length} users from Firebase`);
+            if (currentPage === 'admin-students') renderStudentTable();
+            if (currentPage === 'admin') renderAdmin();
+          })
+          .catch(e => console.warn("Users sync skipped:", e && e.code))
+      );
     }
 
-    // ============================================
-    // 2. CHECK & CREATE ADMIN if not exists
-    // ============================================
-    try {
-      const adminQuery = query(collection(db, "users"), where("role", "==", "admin"));
-      const adminSnap = await getDocs(adminQuery);
+    // 2. Results
+    tasks.push(
+      getDocs(collection(db, "results"))
+        .then(resultsSnap => {
+          DB.results = resultsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+          save('results');
+          console.log(`✅ Synced ${DB.results.length} test results from Firebase`);
+          if (currentPage === 'admin') renderAdmin();
+          if (currentPage === 'admin-students') renderStudentTable();
+          if (currentPage === 'leaderboard') renderLeaderboard();
+        })
+        .catch(err => console.log("Results collection skipped:", err && err.message))
+    );
 
-      if (adminSnap.empty) {
-        console.log("No admin profile found. Create a Firebase Auth user and set its Firestore users/{uid}.role to admin.");
-      } else {
-        console.log("✅ Admin user(s) already exist in Firebase");
-      }
-    } catch (e) {
-      console.warn("Admin check not permitted for this account.", e && e.code);
-    }
-    
-    // ============================================
-    // 3. Sync MCQs from Firebase (IMPROVED)
-    // ============================================
-    console.log("📡 Fetching MCQs from cloud...");
-    const mcqSnap = await getDocs(collection(db, "mcqs"));
-    
-    if (!mcqSnap.empty) {
-      // Cloud HAS MCQs - load them
-      var cloudSyncedMCQs = mcqSnap.docs.map(doc => ({ 
-        id: doc.id, 
-        ...doc.data() 
-      }));
-      DB.mcqs = mergeSeedMCQs(mergeSeedMCQs(DB.mcqs, cloudSyncedMCQs), EXTRA_SEED_MCQS);
-      save('mcqs');
-      console.log(`✅ Synced ${DB.mcqs.length} MCQs from Firebase to local`);
-      toast(`📚 ${DB.mcqs.length} MCQs loaded from cloud`, "s");
-
-      // Auto-seed "The Living World" questions if they are not in the cloud database
-      var hasLivingWorld = DB.mcqs.some(m => normalizeChapterName(m.chapter) === 'the living world');
-      if (!hasLivingWorld) {
-        console.log("🌱 Seeding 'The Living World' MCQs to cloud database...");
-        var livingWorldSeeds = [
-          { q: 'What is the biological name of Mango?', opts: ['Mangifera indica', 'Solanum tuberosum', 'Triticum aestivum', 'Homo sapiens'], correct: 0, chapter: 'The Living World', diff: 'Easy', expl: 'Mangifera indica is the biological name of Mango, where Mangifera is the genus and indica is the specific epithet.' },
-          { q: 'Which of the following is the correct hierarchical order of taxonomic categories?', opts: ['Kingdom -> Phylum -> Class -> Order -> Family -> Genus -> Species', 'Kingdom -> Order -> Class -> Phylum -> Family -> Genus -> Species', 'Species -> Genus -> Family -> Order -> Class -> Phylum -> Kingdom', 'Phylum -> Kingdom -> Class -> Order -> Family -> Genus -> Species'], correct: 0, chapter: 'The Living World', diff: 'Easy', expl: 'The correct taxonomic hierarchy in descending order is Kingdom, Phylum (for animals) or Division (for plants), Class, Order, Family, Genus, and Species.' },
-          { q: 'ICBN stands for:', opts: ['International Code for Botanical Nomenclature', 'International Code for Biological Nomenclature', 'Indian Congress of Botanical Names', 'International Council of Botanical Nomenclature'], correct: 0, chapter: 'The Living World', diff: 'Easy', expl: 'ICBN stands for International Code for Botanical Nomenclature, which provides rules for naming plants.' },
-          { q: 'The defining properties of living organisms are:', opts: ['Growth and Reproduction', 'Metabolism and Consciousness', 'Self-replication and Evolution', 'Consciousness and Growth'], correct: 1, chapter: 'The Living World', diff: 'Medium', expl: 'Metabolism, cellular organization, and consciousness are defining properties of living organisms, whereas growth and reproduction show exceptions.' },
-          { q: 'Which of the following is a taxonomic aid that contains actual account of habitat and distribution of plants of a given area?', opts: ['Manual', 'Flora', 'Monograph', 'Catalog'], correct: 1, chapter: 'The Living World', diff: 'Medium', expl: 'Flora contains the actual account of habitat and distribution of plants of a given area.' }
-        ];
-        for (let mcq of livingWorldSeeds) {
-          try {
-            const docRef = await addDoc(collection(db, "mcqs"), {
-              ...mcq,
-              createdAt: new Date().toISOString(),
-              updatedAt: new Date().toISOString()
-            });
-            DB.mcqs.push({ id: docRef.id, ...mcq });
-          } catch (err) {
-            console.error("Failed to seed Living World MCQ:", err);
+    // 3. Videos
+    tasks.push(
+      getDocs(collection(db, "videos"))
+        .then(videoSnap => {
+          if (!videoSnap.empty) {
+            DB.videos = videoSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            save('videos');
+            console.log(`✅ Synced ${DB.videos.length} videos from Firebase`);
+            if (currentPage === 'videos') renderVideos();
+            if (currentPage === 'admin-videos') renderAdminVideos();
           }
-        }
-        save('mcqs');
-        console.log("✅ Seeded 'The Living World' MCQs successfully!");
-        toast("Seeded 'The Living World' MCQs!", "s");
-      }
+        })
+        .catch(err => console.log("Videos collection skipped:", err && err.message))
+    );
 
-      
-    } else {
-      
-      console.log("⚠️ No MCQs found in cloud. Seeding from local...");
-      
-      
-      let localMCQs = load('mcqs');
-      if (!localMCQs || localMCQs.length === 0) {
-        
-        localMCQs = SEED_MCQS;
-        console.log("📦 Using seed MCQs as source");
-      }
-      
-      
-      let uploadedCount = 0;
-      for (let mcq of localMCQs) {
-        try {
-          const { id, ...mcqData } = mcq; 
-          await addDoc(collection(db, "mcqs"), {
-            ...mcqData,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-          });
-          uploadedCount++;
-        } catch (err) {
-          console.error("Failed to upload MCQ:", mcq.q, err);
-        }
-      }
-      
-      console.log(`✅ Seeded ${uploadedCount} MCQs to Firebase`);
-      
-      
-      const newMcqSnap = await getDocs(collection(db, "mcqs"));
-      var uploadedCloudMCQs = newMcqSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      DB.mcqs = mergeSeedMCQs(uploadedCloudMCQs, EXTRA_SEED_MCQS);
-      save('mcqs');
-      
-      toast(`☁️ ${uploadedCount} MCQs uploaded to cloud!`, "s");
-    }
-    
-    // ============================================
-    // 4. Sync VIDEOS from Firebase 
-    // ============================================
-    try {
-      const videoSnap = await getDocs(collection(db, "videos"));
-      if (!videoSnap.empty) {
-        DB.videos = videoSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        save('videos');
-        console.log(`✅ Synced ${DB.videos.length} videos from Firebase`);
-      } else {
-        // Seed videos if needed
-        const localVideos = load('videos');
-        if (localVideos && localVideos.length > 0) {
-          for (let vid of localVideos) {
-            const { id, ...vidData } = vid;
-            await addDoc(collection(db, "videos"), vidData);
+    // 4. Updates
+    tasks.push(
+      getDocs(collection(db, "updates"))
+        .then(updateSnap => {
+          if (!updateSnap.empty) {
+            DB.updates = updateSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            save('updates');
+            console.log(`✅ Synced ${DB.updates.length} updates from Firebase`);
+            if (currentPage === 'updates') renderUpdates();
+            if (currentPage === 'admin-updates') renderAdminUpdates();
+            if (currentPage === 'dashboard') renderDashboard();
           }
-          console.log(`📹 Seeded ${localVideos.length} videos to cloud`);
-        }
-      }
-    } catch (err) {
-      console.log("Videos collection not ready yet:", err.message);
-    }
-    
-    // ============================================
-    // 5. Sync UPDATES from Firebase 
-    // ============================================
-    try {
-      const updateSnap = await getDocs(collection(db, "updates"));
-      if (!updateSnap.empty) {
-        DB.updates = updateSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        save('updates');
-        console.log(`✅ Synced ${DB.updates.length} updates from Firebase`);
-      } else {
-        // Seed updates if needed
-        const localUpdates = load('updates');
-        if (localUpdates && localUpdates.length > 0) {
-          for (let upd of localUpdates) {
-            const { id, ...updData } = upd;
-            await addDoc(collection(db, "updates"), updData);
+        })
+        .catch(err => console.log("Updates collection skipped:", err && err.message))
+    );
+
+    // 5. MCQs
+    tasks.push(
+      getDocs(collection(db, "mcqs"))
+        .then(async (mcqSnap) => {
+          if (!mcqSnap.empty) {
+            var cloudSyncedMCQs = mcqSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            DB.mcqs = mergeSeedMCQs(mergeSeedMCQs(DB.mcqs, cloudSyncedMCQs), EXTRA_SEED_MCQS);
+            save('mcqs');
+            console.log(`✅ Synced ${DB.mcqs.length} MCQs from Firebase`);
+          } else {
+            console.log("⚠️ No MCQs in cloud; maintaining local bank.");
           }
-          console.log(`📢 Seeded ${localUpdates.length} updates to cloud`);
-        }
-      }
-    } catch (err) {
-      console.log("Updates collection not ready yet:", err.message);
-    }
-    
-    // ============================================
-    // 6. Sync RESULTS from Firebase
-    // ============================================
-    try {
-      const resultsSnap = await getDocs(collection(db, "results"));
-      DB.results = resultsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      save('results');
-      console.log(`✅ Synced ${DB.results.length} test results from Firebase`);
-    } catch (err) {
-      console.log("Results collection not ready yet:", err.message);
-    }
-    
-    
-    console.log("🎨 Updating UI...");
-    
-    
+        })
+        .catch(err => console.log("MCQ sync notice:", err && err.message))
+    );
+
+    // Execute all collections concurrently
+    await Promise.allSettled(tasks);
+
+    console.log("🎨 Updating active view post-sync...");
     const pageRefreshMap = {
       'leaderboard': renderLeaderboard,
       'admin-students': renderStudentTable,
@@ -5084,32 +5150,19 @@ async function syncData() {
       'updates': renderUpdates,
       'dashboard': () => { if (DB.currentUser) renderDashboard(); }
     };
-    
     if (pageRefreshMap[currentPage]) {
       pageRefreshMap[currentPage]();
     }
-    
-    
     updateNav();
-    renderHome();
-    
-    if (currentPage === 'dashboard' && DB.currentUser) {
-      document.getElementById('navAv').textContent = (DB.currentUser.name || 'S')[0].toUpperCase();
-      document.getElementById('navName').textContent = (DB.currentUser.name || 'Student').split(' ')[0];
-    }
-    
-    console.log("🎉 Cloud Sync Complete! All data loaded from Firebase");
-    
+    console.log("🎉 Cloud Sync Complete in Parallel!");
   } catch (error) {
     console.error("❌ Sync Error:", error);
-    toast("Sync error: " + error.message + ". Using local data.", "e");
-    
-    
     const localMCQs = load('mcqs');
     if (localMCQs && localMCQs.length) {
       DB.mcqs = localMCQs;
-      console.log(`📀 Using ${DB.mcqs.length} MCQs from local backup`);
     }
+  } finally {
+    isSyncing = false;
   }
 }
 
@@ -5163,6 +5216,9 @@ window.setStudentSort = setStudentSort;
 window.coachPracticeWeakest = coachPracticeWeakest;
 window.refreshCoachTip = refreshCoachTip;
 window.backToTestSelect = backToTestSelect;
+window.syncData = syncData;
+window.refreshStudentData = refreshStudentData;
+window.setupRealtimeListeners = setupRealtimeListeners;
 
 window.doAdminLogin = doAdminLogin;
 </script>
