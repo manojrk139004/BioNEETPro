@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_4428f41cbb",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P063-16",
+    "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P063-16": {
+      "next_review": "2026-09-08T08:28:12.704743+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower"
+    }
+  },
+  "updated_at": "2026-09-05T08:28:12.704757+00:00"
+}

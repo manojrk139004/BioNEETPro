@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_331fea93cb",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH06-P076-11",
+    "title": "Anatomy of Flowering Plants \u2014 6.4 b). Vascular bundles are conjoint  and"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P134-10": {
+      "next_review": "2026-09-08T08:57:11.182234+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.2 IMMUNITY"
+    },
+    "NCERT-ClassXI-CH06-P076-11": {
+      "next_review": "2026-09-08T08:57:14.285075+00:00",
+      "mastery": 0.5,
+      "title": "Anatomy of Flowering Plants \u2014 6.4 b). Vascular bundles are conjoint  and"
+    }
+  },
+  "updated_at": "2026-09-05T08:57:14.285088+00:00"
+}

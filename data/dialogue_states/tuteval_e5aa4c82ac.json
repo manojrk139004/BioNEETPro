@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_e5aa4c82ac",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P144-24",
+    "title": "Photosynthesis in Higher Plants \u2014 11.7.2 The Calvin Cycle"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P134-10": {
+      "next_review": "2026-09-08T06:51:04.474957+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.2 IMMUNITY"
+    },
+    "NCERT-ClassXI-CH11-P144-24": {
+      "next_review": "2026-09-08T06:51:07.649758+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.7.2 The Calvin Cycle"
+    }
+  },
+  "updated_at": "2026-09-05T06:51:07.649773+00:00"
+}

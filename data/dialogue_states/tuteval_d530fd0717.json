@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d530fd0717",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH09-P108-08",
+    "title": "Biomolecules \u2014 9.3 BIOMACROMOLECULES"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH09-P108-08": {
+      "next_review": "2026-09-08T08:17:49.677782+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.3 BIOMACROMOLECULES"
+    }
+  },
+  "updated_at": "2026-09-05T08:17:49.677795+00:00"
+}

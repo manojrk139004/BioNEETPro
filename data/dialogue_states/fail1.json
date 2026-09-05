@@ -1,0 +1,17 @@
+{
+ "student_id": "fail1",
+ "turns": 2,
+ "focal": {
+  "concept_id": "NCERT-ClassXI-CH08-P096-22",
+  "title": "Cell : The Unit of Life \u2014 8.5.4 Mitochondria"
+ },
+ "last_strategy": "standard_ncert",
+ "reviews": {
+  "NCERT-ClassXI-CH08-P096-22": {
+   "next_review": "2026-09-07T04:42:06.007713+00:00",
+   "mastery": 0.5,
+   "title": "Cell : The Unit of Life \u2014 8.5.4 Mitochondria"
+  }
+ },
+ "updated_at": "2026-09-04T04:42:06.007976+00:00"
+}

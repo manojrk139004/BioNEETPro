@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_1eeee8d45c",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH18-P234-08",
+    "title": "Neural Control and Coordination \u2014 18.3.2 Transmission of Impulses"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH18-P234-08": {
+      "next_review": "2026-09-08T07:41:41.346403+00:00",
+      "mastery": 0.5,
+      "title": "Neural Control and Coordination \u2014 18.3.2 Transmission of Impulses"
+    }
+  },
+  "updated_at": "2026-09-05T07:41:41.346419+00:00"
+}

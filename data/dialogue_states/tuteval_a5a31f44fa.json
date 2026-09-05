@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_a5a31f44fa",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH16-P214-18",
+    "title": "Excretory Products and their Elimination \u2014 16.8 DISORDERS OF THE EXCRETORY SYSTEM"
+  },
+  "last_strategy": "guided_lesson",
+  "reviews": {
+    "BIO-C19-02": {
+      "next_review": "2026-09-08T08:34:40.265878+00:00",
+      "mastery": 0.5,
+      "title": "Why Human Excretion (Urine) Is Yellow: Urochrome Pigment, Bilirubin Metabolism & Urea"
+    },
+    "NCERT-ClassXI-CH16-P214-18": {
+      "next_review": "2026-09-08T08:34:40.332536+00:00",
+      "mastery": 0.5,
+      "title": "Excretory Products and their Elimination \u2014 16.8 DISORDERS OF THE EXCRETORY SYSTEM"
+    }
+  },
+  "updated_at": "2026-09-05T08:34:40.332550+00:00"
+}

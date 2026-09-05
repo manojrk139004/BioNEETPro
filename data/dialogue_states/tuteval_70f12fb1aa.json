@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_70f12fb1aa",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH12-P210-09",
+    "title": "Ecosystem \u2014 12.4 ENERGY FLOW"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH05-P091-20": {
+      "next_review": "2026-09-08T06:52:21.927042+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.5 TRANSCRIPTION"
+    },
+    "NCERT-ClassXII-CH12-P210-09": {
+      "next_review": "2026-09-08T06:52:25.427107+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.4 ENERGY FLOW"
+    }
+  },
+  "updated_at": "2026-09-05T06:52:25.427122+00:00"
+}

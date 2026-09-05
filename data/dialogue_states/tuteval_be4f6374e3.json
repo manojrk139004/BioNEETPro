@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_be4f6374e3",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C05-01",
+    "title": "Storage & Support Roots"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C05-01": {
+      "next_review": "2026-09-08T09:11:19.165410+00:00",
+      "mastery": 0.5,
+      "title": "Storage & Support Roots"
+    }
+  },
+  "updated_at": "2026-09-05T09:11:19.165433+00:00"
+}

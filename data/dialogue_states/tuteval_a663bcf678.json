@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_a663bcf678",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C14-02",
+    "title": "Krebs Citric Acid Cycle, Mitochondrial Electron Transport System & Chemiosmosis"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C14-02": {
+      "next_review": "2026-09-08T09:01:54.278038+00:00",
+      "mastery": 0.5,
+      "title": "Krebs Citric Acid Cycle, Mitochondrial Electron Transport System & Chemiosmosis"
+    }
+  },
+  "updated_at": "2026-09-05T09:01:54.278053+00:00"
+}

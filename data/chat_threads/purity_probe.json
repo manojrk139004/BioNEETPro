@@ -1,0 +1,24 @@
+{
+  "turns": [
+    {
+      "user": "give me the PDF for Human Reproduction",
+      "assistant": "Here is the NCERT PDF for **Human Reproduction** \u2014 [Download PDF](/api/textbook/pdf/c24)."
+    },
+    {
+      "user": "give me the PDF for Human Reproduction",
+      "assistant": "Here is the NCERT PDF for **Human Reproduction** \u2014 [Download PDF](/api/textbook/pdf/c24)."
+    },
+    {
+      "user": "give me the PDF for Human Reproduction",
+      "assistant": "Here is the NCERT PDF for **Human Reproduction** \u2014 [Download PDF](/api/textbook/pdf/c24)."
+    },
+    {
+      "user": "give me the PDF for Human Reproduction",
+      "assistant": "Here is the NCERT PDF for **Human Reproduction** \u2014 [Download PDF](/api/textbook/pdf/c24)."
+    },
+    {
+      "user": "give me the PDF for Human Reproduction",
+      "assistant": "Here is the NCERT PDF for **Human Reproduction** \u2014 [Download PDF](/api/textbook/pdf/c24)."
+    }
+  ]
+}

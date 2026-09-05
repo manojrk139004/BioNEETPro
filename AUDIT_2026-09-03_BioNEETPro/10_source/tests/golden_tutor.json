@@ -1,0 +1,684 @@
+[
+  {
+    "q": "Why is brain white?",
+    "expect": "success",
+    "must_contain": [
+      "myelin"
+    ]
+  },
+  {
+    "q": "Explain Calvin cycle steps in photosynthesis",
+    "expect": "success",
+    "must_contain": [
+      "Calvin"
+    ]
+  },
+  {
+    "q": "What is semi-conservative DNA replication?",
+    "expect": "success",
+    "must_contain": [
+      "semi"
+    ]
+  },
+  {
+    "q": "difference between mitosis and meiosis",
+    "expect": "success",
+    "must_contain": [
+      "Compare at a glance"
+    ]
+  },
+  {
+    "q": "compare C3 and C4 pathway",
+    "expect": "success",
+    "must_contain": [
+      "Compare at a glance"
+    ]
+  },
+  {
+    "q": "aerobic vs anaerobic respiration",
+    "expect": "success",
+    "must_contain": [
+      "Compare at a glance"
+    ]
+  },
+  {
+    "q": "Why does heart have 4 chambers?",
+    "expect": "success",
+    "must_contain": [
+      "Cardiac"
+    ]
+  },
+  {
+    "q": "powerhouse of cell",
+    "expect": "success",
+    "must_contain": [
+      "Mitochondria"
+    ]
+  },
+  {
+    "q": "suicide bags",
+    "expect": "success",
+    "must_contain": [
+      "Lysosome"
+    ]
+  },
+  {
+    "q": "food factory of the cell",
+    "expect": "success",
+    "must_contain": [
+      "Chloroplast"
+    ]
+  },
+  {
+    "q": "graveyard of RBC",
+    "expect": "success",
+    "must_contain": [
+      "Spleen"
+    ]
+  },
+  {
+    "q": "Nephron countercurrent mechanism",
+    "expect": "success",
+    "must_contain": [
+      "Henle"
+    ]
+  },
+  {
+    "q": "How does lac operon repressor work?",
+    "expect": "success",
+    "must_contain": [
+      "lac"
+    ]
+  },
+  {
+    "q": "Crossing over in pachytene meiosis",
+    "expect": "success",
+    "must_contain": [
+      "pachytene"
+    ]
+  },
+  {
+    "q": "Bt cotton and cry protein activation",
+    "expect": "success",
+    "must_contain": [
+      "cry"
+    ]
+  },
+  {
+    "q": "teach me about a earthworm",
+    "expect": "success",
+    "must_contain": [
+      "Annelida"
+    ]
+  },
+  {
+    "q": "tell me about frog",
+    "expect": "success",
+    "must_contain": [
+      "Rana"
+    ]
+  },
+  {
+    "q": "What is binomial nomenclature?",
+    "expect": "success",
+    "must_contain": [
+      "Mangifera"
+    ]
+  },
+  {
+    "q": "What are taxonomic categories in order?",
+    "expect": "success",
+    "must_contain": [
+      "genus"
+    ]
+  },
+  {
+    "q": "What is five kingdom classification?",
+    "expect": "success",
+    "must_contain": [
+      "Whittaker"
+    ]
+  },
+  {
+    "q": "What are viroids?",
+    "expect": "success",
+    "must_contain": [
+      "viroid"
+    ]
+  },
+  {
+    "q": "Why are bryophytes called amphibians of plant kingdom?",
+    "expect": "success",
+    "must_contain": [
+      "Bryoph"
+    ]
+  },
+  {
+    "q": "What is alternation of generations?",
+    "expect": "success",
+    "must_contain": [
+      "generation"
+    ]
+  },
+  {
+    "q": "What is metamerism in annelida?",
+    "expect": "success",
+    "must_contain": [
+      "segments"
+    ]
+  },
+  {
+    "q": "Why are sponges called porifera?",
+    "expect": "success",
+    "must_contain": [
+      "Porifera"
+    ]
+  },
+  {
+    "q": "What is aestivation in flowers?",
+    "expect": "success",
+    "must_contain": [
+      "flower"
+    ]
+  },
+  {
+    "q": "What is placentation?",
+    "expect": "success",
+    "must_contain": [
+      "ovary"
+    ]
+  },
+  {
+    "q": "What are vascular bundles?",
+    "expect": "success",
+    "must_contain": [
+      "xylem"
+    ]
+  },
+  {
+    "q": "What is secondary growth in plants?",
+    "expect": "success",
+    "must_contain": [
+      "cambium"
+    ]
+  },
+  {
+    "q": "What are malpighian tubules?",
+    "expect": "success",
+    "must_contain": [
+      "cockroach"
+    ]
+  },
+  {
+    "q": "What is mosaic vision in cockroach?",
+    "expect": "success",
+    "must_contain": [
+      "cockroach"
+    ]
+  },
+  {
+    "q": "What is fluid mosaic model?",
+    "expect": "success",
+    "must_contain": [
+      "phospholipid"
+    ]
+  },
+  {
+    "q": "Why are mitochondria called powerhouse of the cell?",
+    "expect": "success",
+    "must_contain": [
+      "ATP"
+    ]
+  },
+  {
+    "q": "What is the primary structure of proteins?",
+    "expect": "success",
+    "must_contain": [
+      "amino"
+    ]
+  },
+  {
+    "q": "What is competitive inhibition of enzymes?",
+    "expect": "success",
+    "must_contain": [
+      "active site"
+    ]
+  },
+  {
+    "q": "What happens in prophase of mitosis?",
+    "expect": "success",
+    "must_contain": [
+      "chromosome"
+    ]
+  },
+  {
+    "q": "What is crossing over?",
+    "expect": "success",
+    "must_contain": [
+      "homologous"
+    ]
+  },
+  {
+    "q": "What is the Z scheme in photosynthesis?",
+    "expect": "success",
+    "must_contain": [
+      "photosystem"
+    ]
+  },
+  {
+    "q": "Where does Calvin cycle occur?",
+    "expect": "success",
+    "must_contain": [
+      "Calvin"
+    ]
+  },
+  {
+    "q": "What is glycolysis?",
+    "expect": "success",
+    "must_contain": [
+      "pyruvate"
+    ]
+  },
+  {
+    "q": "What is oxidative phosphorylation?",
+    "expect": "success",
+    "must_contain": [
+      "ATP synthase"
+    ]
+  },
+  {
+    "q": "What is apical dominance?",
+    "expect": "success",
+    "must_contain": [
+      "auxin"
+    ]
+  },
+  {
+    "q": "What is vernalization?",
+    "expect": "success",
+    "must_contain": [
+      "plant"
+    ]
+  },
+  {
+    "q": "What are teeth types in humans?",
+    "expect": "success",
+    "must_contain": [
+      "digest"
+    ]
+  },
+  {
+    "q": "What is emulsification of fats?",
+    "expect": "success",
+    "must_contain": [
+      "bile"
+    ]
+  },
+  {
+    "q": "What is the oxygen haemoglobin dissociation curve?",
+    "expect": "success",
+    "must_contain": [
+      "haemoglobin"
+    ]
+  },
+  {
+    "q": "What is tidal volume?",
+    "expect": "success",
+    "must_contain": [
+      "air"
+    ]
+  },
+  {
+    "q": "What is cardiac cycle?",
+    "expect": "success",
+    "must_contain": [
+      "diastole"
+    ]
+  },
+  {
+    "q": "What is the SA node?",
+    "expect": "success",
+    "must_contain": [
+      "pacemaker"
+    ]
+  },
+  {
+    "q": "What is GFR?",
+    "expect": "success",
+    "must_contain": [
+      "glomerular"
+    ]
+  },
+  {
+    "q": "What is the countercurrent mechanism?",
+    "expect": "success",
+    "must_contain": [
+      "vasa recta"
+    ]
+  },
+  {
+    "q": "What is sliding filament theory?",
+    "expect": "success",
+    "must_contain": [
+      "myosin"
+    ]
+  },
+  {
+    "q": "How many bones in human skeleton?",
+    "expect": "success",
+    "must_contain": [
+      "bones"
+    ]
+  },
+  {
+    "q": "What is an action potential?",
+    "expect": "success",
+    "must_contain": [
+      "neuron"
+    ]
+  },
+  {
+    "q": "What is the function of cerebellum?",
+    "expect": "success",
+    "must_contain": [
+      "brain"
+    ]
+  },
+  {
+    "q": "Which gland is called master gland?",
+    "expect": "success",
+    "must_contain": [
+      "Pituitary"
+    ]
+  },
+  {
+    "q": "What is diabetes mellitus?",
+    "expect": "success",
+    "must_contain": [
+      "insulin"
+    ]
+  },
+  {
+    "q": "What is double fertilization?",
+    "expect": "success",
+    "must_contain": [
+      "endosperm"
+    ]
+  },
+  {
+    "q": "What is pollination?",
+    "expect": "success",
+    "must_contain": [
+      "stigma"
+    ]
+  },
+  {
+    "q": "What is spermatogenesis?",
+    "expect": "success",
+    "must_contain": [
+      "sperm"
+    ]
+  },
+  {
+    "q": "What is ovulation in menstrual cycle?",
+    "expect": "success",
+    "must_contain": [
+      "menstrual"
+    ]
+  },
+  {
+    "q": "What is IVF?",
+    "expect": "success",
+    "must_contain": [
+      "embryo"
+    ]
+  },
+  {
+    "q": "What are IUDs?",
+    "expect": "success",
+    "must_contain": [
+      "uterus"
+    ]
+  },
+  {
+    "q": "State Mendel's law of segregation",
+    "expect": "success",
+    "must_contain": [
+      "allele"
+    ]
+  },
+  {
+    "q": "What is linkage?",
+    "expect": "success",
+    "must_contain": [
+      "linkage"
+    ]
+  },
+  {
+    "q": "What did Meselson and Stahl prove?",
+    "expect": "success",
+    "must_contain": [
+      "semi-conservative"
+    ]
+  },
+  {
+    "q": "What is lac operon?",
+    "expect": "success",
+    "must_contain": [
+      "lactose"
+    ]
+  },
+  {
+    "q": "What is Hardy-Weinberg principle?",
+    "expect": "success",
+    "must_contain": [
+      "equilibrium"
+    ]
+  },
+  {
+    "q": "What is adaptive radiation?",
+    "expect": "success",
+    "must_contain": [
+      "Darwin"
+    ]
+  },
+  {
+    "q": "What is active immunity?",
+    "expect": "success",
+    "must_contain": [
+      "antibod"
+    ]
+  },
+  {
+    "q": "What causes malaria?",
+    "expect": "success",
+    "must_contain": [
+      "Plasmodium"
+    ]
+  },
+  {
+    "q": "What is BOD?",
+    "expect": "success",
+    "must_contain": [
+      "sewage"
+    ]
+  },
+  {
+    "q": "How is biogas produced?",
+    "expect": "success",
+    "must_contain": [
+      "biogas"
+    ]
+  },
+  {
+    "q": "What are restriction enzymes?",
+    "expect": "success",
+    "must_contain": [
+      "restriction"
+    ]
+  },
+  {
+    "q": "What is PCR?",
+    "expect": "success",
+    "must_contain": [
+      "Polymerase"
+    ]
+  },
+  {
+    "q": "What is Bt cotton?",
+    "expect": "success",
+    "must_contain": [
+      "cry"
+    ]
+  },
+  {
+    "q": "What is gene therapy for ADA deficiency?",
+    "expect": "success",
+    "must_contain": [
+      "ADA"
+    ]
+  },
+  {
+    "q": "What is logistic growth?",
+    "expect": "success",
+    "must_contain": [
+      "carrying capacity"
+    ]
+  },
+  {
+    "q": "What is commensalism?",
+    "expect": "success",
+    "must_contain": [
+      "benefit"
+    ]
+  },
+  {
+    "q": "What is the 10 percent law?",
+    "expect": "success",
+    "must_contain": [
+      "energy"
+    ]
+  },
+  {
+    "q": "What is ecological succession?",
+    "expect": "success",
+    "must_contain": [
+      "pioneer"
+    ]
+  },
+  {
+    "q": "What is the evil quartet?",
+    "expect": "success",
+    "must_contain": [
+      "habitat"
+    ]
+  },
+  {
+    "q": "What are biodiversity hotspots?",
+    "expect": "success",
+    "must_contain": [
+      "biodiversity"
+    ]
+  },
+  {
+    "q": "What is DNA fingerprinting?",
+    "expect": "success",
+    "must_contain": [
+      "fingerprint"
+    ]
+  },
+  {
+    "q": "What is transcription?",
+    "expect": "success",
+    "must_contain": [
+      "transcription"
+    ]
+  },
+  {
+    "q": "What is translation?",
+    "expect": "success",
+    "must_contain": [
+      "ribosome"
+    ]
+  },
+  {
+    "q": "What is apomixis?",
+    "expect": "success",
+    "must_contain": [
+      "apomixis"
+    ]
+  },
+  {
+    "q": "What is parturition?",
+    "expect": "success",
+    "must_contain": [
+      "parturition"
+    ]
+  },
+  {
+    "q": "What is spermiogenesis?",
+    "expect": "success",
+    "must_contain": [
+      "spermatid"
+    ]
+  },
+  {
+    "q": "What is myasthenia gravis?",
+    "expect": "success",
+    "must_contain": [
+      "acetylcholine"
+    ]
+  },
+  {
+    "q": "What is gout?",
+    "expect": "success",
+    "must_contain": [
+      "uric acid"
+    ]
+  },
+  {
+    "q": "Explain Newton's laws of motion",
+    "expect": "out_of_syllabus",
+    "must_contain": [
+      "Biology Syllabus"
+    ]
+  },
+  {
+    "q": "Write python code to sort a list",
+    "expect": "out_of_syllabus",
+    "must_contain": [
+      "Biology Syllabus"
+    ]
+  },
+  {
+    "q": "Explain thermodynamics enthalpy",
+    "expect": "out_of_syllabus",
+    "must_contain": [
+      "Biology Syllabus"
+    ]
+  },
+  {
+    "q": "Who won the cricket world cup",
+    "expect": "out_of_syllabus",
+    "must_contain": [
+      "Biology Syllabus"
+    ]
+  },
+  {
+    "q": "Solve x squared plus 5x plus 6",
+    "expect": "out_of_syllabus",
+    "must_contain": [
+      "Biology Syllabus"
+    ]
+  },
+  {
+    "q": "asdkfjhasd kjh",
+    "expect": "no_match_or_reject",
+    "must_contain": []
+  },
+  {
+    "q": "zzz qqq xxx",
+    "expect": "no_match_or_reject",
+    "must_contain": []
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d048387ca7",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P151-36",
+    "title": "Photosynthesis in Higher Plants \u2014 11.10.4 Water"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P151-36": {
+      "next_review": "2026-09-08T09:03:43.178972+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.10.4 Water"
+    }
+  },
+  "updated_at": "2026-09-05T09:03:43.178986+00:00"
+}

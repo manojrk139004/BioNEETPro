@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_2659a1fa16",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH19-P246-13",
+    "title": "Chemical Coordination and Integration \u2014 19.2.8 Pancreas"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH19-P246-13": {
+      "next_review": "2026-09-08T08:38:52.594885+00:00",
+      "mastery": 0.5,
+      "title": "Chemical Coordination and Integration \u2014 19.2.8 Pancreas"
+    }
+  },
+  "updated_at": "2026-09-05T08:38:52.594906+00:00"
+}

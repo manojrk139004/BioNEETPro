@@ -1,0 +1,22 @@
+{
+  "student_id": "M5R5TZunKMaxAZ27Zvqc3sCcfIh2",
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P136-09": {
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?",
+      "mastery": 0.5,
+      "next_review": "2026-09-08T05:03:00.101014+00:00"
+    },
+    "NCERT-ClassXI-CH08-P003-04": {
+      "next_review": "2026-09-08T12:52:25.703917+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.1 WHAT IS A CELL?"
+    }
+  },
+  "updated_at": "2026-09-05T12:52:25.703932+00:00",
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P003-04",
+    "title": "Cell : The Unit of Life \u2014 8.1 WHAT IS A CELL?"
+  },
+  "turns": 2
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_9e27eb2390",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH08-P153-09",
+    "title": "Microbes in Human Welfare \u2014 8.3 MICROBES IN SEWAGE TREATMENT"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH08-P153-09": {
+      "next_review": "2026-09-08T06:27:09.446582+00:00",
+      "mastery": 0.5,
+      "title": "Microbes in Human Welfare \u2014 8.3 MICROBES IN SEWAGE TREATMENT"
+    }
+  },
+  "updated_at": "2026-09-05T06:27:09.446599+00:00"
+}

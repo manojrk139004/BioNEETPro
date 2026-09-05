@@ -1,0 +1,37 @@
+{
+  "student_id": "tuteval_4745d88697",
+  "turns": 5,
+  "focal": {
+    "concept_id": "BIO-C05-02",
+    "title": "Central Dogma of Molecular Biology: Genetic Code Properties & Wobble Hypothesis"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P120-15": {
+      "next_review": "2026-09-08T06:28:21.117035+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.7 HARDY-WEINBERG PRINCIPLE"
+    },
+    "NCERT-ClassXII-CH01-P008-12": {
+      "next_review": "2026-09-08T06:28:28.204389+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.2.2 The Pistil, Megasporangium (ovule) and Embryo sac"
+    },
+    "NCERT-ClassXI-CH11-P135-07": {
+      "next_review": "2026-09-08T06:28:33.920427+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.2 EARLY EXPERIMENTS"
+    },
+    "NCERT-ClassXII-CH05-P088-15": {
+      "next_review": "2026-09-08T06:28:39.198781+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.4 REPLICATION"
+    },
+    "BIO-C05-02": {
+      "next_review": "2026-09-08T06:28:45.117513+00:00",
+      "mastery": 0.5,
+      "title": "Central Dogma of Molecular Biology: Genetic Code Properties & Wobble Hypothesis"
+    }
+  },
+  "updated_at": "2026-09-05T06:28:45.117554+00:00"
+}

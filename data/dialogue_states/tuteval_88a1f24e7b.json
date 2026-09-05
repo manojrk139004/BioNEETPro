@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_88a1f24e7b",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P065-19",
+    "title": "Morphology of Flowering Plants \u2014 5.5.1.4 Gynoecium"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P065-19": {
+      "next_review": "2026-09-08T08:28:20.232121+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5.1.4 Gynoecium"
+    }
+  },
+  "updated_at": "2026-09-05T08:28:20.232134+00:00"
+}

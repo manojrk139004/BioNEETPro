@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_00c1609592",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P061-13",
+    "title": "Morphology of Flowering Plants \u2014 5.4 THE INFLORESCENCE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P136-09": {
+      "next_review": "2026-09-08T08:07:25.573615+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?"
+    },
+    "NCERT-ClassXI-CH05-P061-13": {
+      "next_review": "2026-09-08T08:07:32.293327+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.4 THE INFLORESCENCE"
+    }
+  },
+  "updated_at": "2026-09-05T08:07:32.293344+00:00"
+}

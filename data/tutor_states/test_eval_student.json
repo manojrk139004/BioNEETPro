@@ -1,0 +1,10 @@
+{
+  "active_lesson": null,
+  "lesson_concept": null,
+  "current_step_index": 0,
+  "pending_check_question": null,
+  "lesson_stage": 0,
+  "last_action": null,
+  "misconceptions": {},
+  "lesson_steps": []
+}

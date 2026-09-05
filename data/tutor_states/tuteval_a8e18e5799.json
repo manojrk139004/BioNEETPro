@@ -1,0 +1,23 @@
+{
+  "active_lesson": true,
+  "lesson_stage": 1,
+  "lesson_concept": "NCERT-ClassXI-CH08-P091-13",
+  "pending_check_question": "What is the key function of Cell?",
+  "lesson_steps": [
+    [
+      "definition",
+      "The eukaryotes include all the protists, plants, animals and fungi. In eukaryotic cells there is an extensive compartmentalisation of cytoplasm through the presence of membrane bound organelles. Eukaryotic cells possess an organised nucleus with a nuclear envelope. In addition, eukaryotic cells have a variety of complex locomotory and cytoskeletal structures. Their genetic material is organised in"
+    ],
+    [
+      "definition",
+      "Ribosomes are the granular structures first observed under the electron microscope as dense particles by George Palade (1953). They are composed of ribonucleic acid (RNA) and proteins and are not surrounded by any membrane. The eukaryotic ribosomes are 80S while the prokaryotic ribosomes are 70S. Each ribosome has two subunits, larger and smaller subunits (Fig 8.9). The two subunits of 80S ribosom"
+    ],
+    [
+      "definition",
+      "In prokaryotes, ribosomes are associated with the plasma membrane of the cell. They are about 15 nm by 20 nm in size and are made of two subunits - 50S and 30S units which when present together form 70S prokaryotic ribosomes. Ribosomes are the site of protein synthesis. Several ribosomes may attach to a single mRNA and form a chain called polyribosomes or polysome. The ribosomes of a polysome tran"
+    ]
+  ],
+  "current_step_index": 0,
+  "misconceptions": {},
+  "last_action": null
+}

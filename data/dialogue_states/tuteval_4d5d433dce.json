@@ -1,0 +1,37 @@
+{
+  "student_id": "tuteval_4d5d433dce",
+  "turns": 5,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH13-P173-12",
+    "title": "Plant Growth and Development \u2014 13.8 . It is also applicable to tissues/organs."
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH05-P099-33": {
+      "next_review": "2026-09-08T06:45:44.300837+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.7 TRANSLATION"
+    },
+    "NCERT-ClassXI-CH05-P065-20": {
+      "next_review": "2026-09-08T06:45:47.428773+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.6 THE FRUIT"
+    },
+    "NCERT-ClassXII-CH04-P054-05": {
+      "next_review": "2026-09-08T06:45:54.389652+00:00",
+      "mastery": 0.5,
+      "title": "Principles of Inheritance and Variation \u2014 4.1 MENDEL\u2019S LAWS OF INHERITANCE"
+    },
+    "NCERT-ClassXI-CH09-P111-12": {
+      "next_review": "2026-09-08T06:46:02.388977+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.6 NUCLEIC ACIDS"
+    },
+    "NCERT-ClassXI-CH13-P173-12": {
+      "next_review": "2026-09-08T06:46:10.392085+00:00",
+      "mastery": 0.5,
+      "title": "Plant Growth and Development \u2014 13.8 . It is also applicable to tissues/organs."
+    }
+  },
+  "updated_at": "2026-09-05T06:46:10.392103+00:00"
+}

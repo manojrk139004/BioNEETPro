@@ -1,0 +1,10 @@
+👩‍⚕️ **Dr. Priya (AI Biology Mentor) — Targeted MCQ Review:**
+
+Don't worry — clearing up mistakes on high-yield questions is how you hit 360/360 in NEET!
+
+❓ **Question 2:** Which of the following acts as the final electron acceptor in the mitochondrial electron transport chain?
+
+✅ **Correct Answer:** **(C) Oxygen**
+
+📖 **NCERT Rationale & Misconception Breakdown:**
+Molecular oxygen acts as the final electron acceptor in the aerobic electron transport system, combining with protons to form water.

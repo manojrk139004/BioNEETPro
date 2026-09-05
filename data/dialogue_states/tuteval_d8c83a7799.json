@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_d8c83a7799",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH07-P135-12",
+    "title": "Human Health and Disease \u2014 7.2.2 Acquired Immunity"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P134-10": {
+      "next_review": "2026-09-08T07:53:20.766730+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.2 IMMUNITY"
+    },
+    "NCERT-ClassXII-CH07-P135-12": {
+      "next_review": "2026-09-08T07:53:23.334495+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.2.2 Acquired Immunity"
+    }
+  },
+  "updated_at": "2026-09-05T07:53:23.334510+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_fa8af1b1e7",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH06-P071-04",
+    "title": "Anatomy of Flowering Plants \u2014 6.1 The Tissue"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH06-P071-04": {
+      "next_review": "2026-09-08T06:37:10.611978+00:00",
+      "mastery": 0.5,
+      "title": "Anatomy of Flowering Plants \u2014 6.1 The Tissue"
+    }
+  },
+  "updated_at": "2026-09-05T06:37:10.611992+00:00"
+}

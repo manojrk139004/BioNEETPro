@@ -1,0 +1,17 @@
+{
+  "student_id": "sync_probe_dialogue",
+  "turns": 6,
+  "focal": {
+    "concept_id": "BIO-C08-01",
+    "title": "Cell"
+  },
+  "last_strategy": "socratic",
+  "reviews": {
+    "BIO-C08-01": {
+      "next_review": "2026-09-08T05:48:49.060254+00:00",
+      "mastery": 0.6,
+      "title": "Cell"
+    }
+  },
+  "updated_at": "2026-09-05T05:48:49.060272+00:00"
+}

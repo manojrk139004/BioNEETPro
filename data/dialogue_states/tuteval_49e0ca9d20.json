@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_49e0ca9d20",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH02-P035-11",
+    "title": "Human Reproduction \u2014 2.4 MENSTRUAL CYCLE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH10-P120-02": {
+      "next_review": "2026-09-08T09:24:36.934365+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.1 CELL CYCLE"
+    },
+    "NCERT-ClassXII-CH02-P035-11": {
+      "next_review": "2026-09-08T09:24:41.410982+00:00",
+      "mastery": 0.5,
+      "title": "Human Reproduction \u2014 2.4 MENSTRUAL CYCLE"
+    }
+  },
+  "updated_at": "2026-09-05T09:24:41.410997+00:00"
+}

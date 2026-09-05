@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_2610759f5a",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH07-P140-23",
+    "title": "Human Health and Disease \u2014 7.4 CANCER"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P141-25": {
+      "next_review": "2026-09-08T09:26:54.651816+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.4 CANCER"
+    },
+    "NCERT-ClassXII-CH07-P140-23": {
+      "next_review": "2026-09-08T09:27:02.221715+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.4 CANCER"
+    }
+  },
+  "updated_at": "2026-09-05T09:27:02.221730+00:00"
+}

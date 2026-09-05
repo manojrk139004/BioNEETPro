@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_fa3a314dea",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH12-P158-09",
+    "title": "Respiration in Plants \u2014 12.3 FERMENTATION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH12-P158-09": {
+      "next_review": "2026-09-08T06:26:35.270650+00:00",
+      "mastery": 0.5,
+      "title": "Respiration in Plants \u2014 12.3 FERMENTATION"
+    }
+  },
+  "updated_at": "2026-09-05T06:26:35.270667+00:00"
+}

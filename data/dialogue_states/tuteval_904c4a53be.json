@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_904c4a53be",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH12-P214-14",
+    "title": "Ecosystem \u2014 12.5 ECOLOGICAL PYRAMIDS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH12-P214-14": {
+      "next_review": "2026-09-08T08:21:55.443071+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.5 ECOLOGICAL PYRAMIDS"
+    }
+  },
+  "updated_at": "2026-09-05T08:21:55.443086+00:00"
+}

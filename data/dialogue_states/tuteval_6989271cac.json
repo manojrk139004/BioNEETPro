@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_6989271cac",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH05-P107-46",
+    "title": "Molecular Basis of Inheritance \u2014 5.10 DNA FINGERPRINTING"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH12-P001-02": {
+      "next_review": "2026-09-08T06:52:09.282611+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.1 Ecosystem\u2013Structure"
+    },
+    "NCERT-ClassXII-CH05-P107-46": {
+      "next_review": "2026-09-08T06:52:12.958529+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.10 DNA FINGERPRINTING"
+    }
+  },
+  "updated_at": "2026-09-05T06:52:12.958550+00:00"
+}

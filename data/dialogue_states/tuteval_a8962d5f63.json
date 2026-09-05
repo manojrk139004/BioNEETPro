@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_a8962d5f63",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C26-02",
+    "title": "Darwin's Finches & Marsupials"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C26-02": {
+      "next_review": "2026-09-08T06:58:40.465901+00:00",
+      "mastery": 0.5,
+      "title": "Darwin's Finches & Marsupials"
+    }
+  },
+  "updated_at": "2026-09-05T06:58:40.465918+00:00"
+}

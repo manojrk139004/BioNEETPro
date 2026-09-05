@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_3466334bd6",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C03-04",
+    "title": "Naked Seed Plants"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C03-04": {
+      "next_review": "2026-09-08T08:19:21.346971+00:00",
+      "mastery": 0.5,
+      "title": "Naked Seed Plants"
+    }
+  },
+  "updated_at": "2026-09-05T08:19:21.346985+00:00"
+}

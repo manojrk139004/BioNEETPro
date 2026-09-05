@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_9061509167",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH07-P148-34",
+    "title": "Human Health and Disease \u2014 7.5.4 Prevention and Control"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P148-34": {
+      "next_review": "2026-09-08T08:18:14.532540+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.5.4 Prevention and Control"
+    }
+  },
+  "updated_at": "2026-09-05T08:18:14.532554+00:00"
+}

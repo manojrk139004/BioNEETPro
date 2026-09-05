@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_291cff31bd",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P088-07",
+    "title": "Cell : The Unit of Life \u2014 8.3 AN OVERVIEW OF CELL"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P088-07": {
+      "next_review": "2026-09-08T07:58:45.253511+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.3 AN OVERVIEW OF CELL"
+    }
+  },
+  "updated_at": "2026-09-05T07:58:45.253525+00:00"
+}

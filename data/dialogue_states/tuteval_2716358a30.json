@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_2716358a30",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH12-P154-03",
+    "title": "Respiration in Plants \u2014 12.7 Respiratory"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C13-04": {
+      "next_review": "2026-09-08T08:58:17.929069+00:00",
+      "mastery": 0.5,
+      "title": "Why Leaves Are Green: Chlorophyll a, Chlorophyll b, Chloroplasts & Light Absorption"
+    },
+    "NCERT-ClassXI-CH12-P154-03": {
+      "next_review": "2026-09-08T08:58:21.764181+00:00",
+      "mastery": 0.5,
+      "title": "Respiration in Plants \u2014 12.7 Respiratory"
+    }
+  },
+  "updated_at": "2026-09-05T08:58:21.764204+00:00"
+}

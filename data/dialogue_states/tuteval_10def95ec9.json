@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_10def95ec9",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C07-01",
+    "title": "Types of Epithelium"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C07-01": {
+      "next_review": "2026-09-08T07:00:04.860091+00:00",
+      "mastery": 0.5,
+      "title": "Types of Epithelium"
+    }
+  },
+  "updated_at": "2026-09-05T07:00:04.860106+00:00"
+}

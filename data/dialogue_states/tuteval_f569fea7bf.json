@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_f569fea7bf",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH05-P108-48",
+    "title": "Molecular Basis of Inheritance \u2014 5.10 DNA FINGERPRINTING"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH05-P108-48": {
+      "next_review": "2026-09-08T08:39:01.192803+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.10 DNA FINGERPRINTING"
+    }
+  },
+  "updated_at": "2026-09-05T08:39:01.192831+00:00"
+}

@@ -1,0 +1,37 @@
+{
+  "student_id": "tuteval_0b795c24f0",
+  "turns": 5,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH02-P021-27",
+    "title": "Biological Classification \u2014 2.6 VIRUSES, VIROIDS, PRIONS AND LICHENS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C19-03": {
+      "next_review": "2026-09-08T06:33:38.200609+00:00",
+      "mastery": 0.5,
+      "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+    },
+    "NCERT-ClassXI-CH09-P111-12": {
+      "next_review": "2026-09-08T06:33:43.055906+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.6 NUCLEIC ACIDS"
+    },
+    "NCERT-ClassXI-CH12-P158-09": {
+      "next_review": "2026-09-08T06:33:49.276429+00:00",
+      "mastery": 0.5,
+      "title": "Respiration in Plants \u2014 12.3 FERMENTATION"
+    },
+    "NCERT-ClassXI-CH08-P095-19": {
+      "next_review": "2026-09-08T06:33:55.516269+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.3.2 Golgi apparatus"
+    },
+    "NCERT-ClassXI-CH02-P021-27": {
+      "next_review": "2026-09-08T06:34:01.111444+00:00",
+      "mastery": 0.5,
+      "title": "Biological Classification \u2014 2.6 VIRUSES, VIROIDS, PRIONS AND LICHENS"
+    }
+  },
+  "updated_at": "2026-09-05T06:34:01.111461+00:00"
+}

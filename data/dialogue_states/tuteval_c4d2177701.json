@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_c4d2177701",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C06-02",
+    "title": "Xylem & Phloem Elements"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C06-02": {
+      "next_review": "2026-09-08T09:11:31.971603+00:00",
+      "mastery": 0.5,
+      "title": "Xylem & Phloem Elements"
+    }
+  },
+  "updated_at": "2026-09-05T09:11:31.971616+00:00"
+}

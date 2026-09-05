@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_021e386fda",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH10-P182-09",
+    "title": "Biotechnology and its Applications \u2014 10.2.2 Gene Therapy"
+  },
+  "last_strategy": "simplified_steps",
+  "reviews": {
+    "NCERT-ClassXII-CH10-P182-09": {
+      "next_review": "2026-09-08T07:44:56.936005+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology and its Applications \u2014 10.2.2 Gene Therapy"
+    }
+  },
+  "updated_at": "2026-09-05T07:44:56.936020+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_12829613f5",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P116-11",
+    "title": "Evolution \u2014 6.4 WHAT IS ADAPTIVE RADIATION?"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P116-11": {
+      "next_review": "2026-09-08T06:25:00.320796+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.4 WHAT IS ADAPTIVE RADIATION?"
+    }
+  },
+  "updated_at": "2026-09-05T06:25:00.320817+00:00"
+}

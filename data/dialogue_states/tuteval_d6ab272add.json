@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d6ab272add",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH07-P134-10",
+    "title": "Human Health and Disease \u2014 7.2 IMMUNITY"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P134-10": {
+      "next_review": "2026-09-08T06:56:56.307271+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.2 IMMUNITY"
+    }
+  },
+  "updated_at": "2026-09-05T06:56:56.307286+00:00"
+}

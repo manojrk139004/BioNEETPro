@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_b4443f3108",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C01-02",
+    "title": "Hierarchy & Species Concept"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C01-02": {
+      "next_review": "2026-09-08T08:32:45.402306+00:00",
+      "mastery": 0.5,
+      "title": "Hierarchy & Species Concept"
+    }
+  },
+  "updated_at": "2026-09-05T08:32:45.402320+00:00"
+}

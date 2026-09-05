@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_1fc3cc07c5",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH18-P230-01",
+    "title": "Neural Control and Coordination \u2014 18.0 Overview"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P118-13": {
+      "next_review": "2026-09-08T06:51:12.949675+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.5 BIOLOGICAL EVOLUTION"
+    },
+    "NCERT-ClassXI-CH18-P230-01": {
+      "next_review": "2026-09-08T06:51:18.026784+00:00",
+      "mastery": 0.5,
+      "title": "Neural Control and Coordination \u2014 18.0 Overview"
+    }
+  },
+  "updated_at": "2026-09-05T06:51:18.026799+00:00"
+}

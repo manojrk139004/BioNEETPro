@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_aa93214c9c",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH10-P182-08",
+    "title": "Biotechnology and its Applications \u2014 10.2.1 Genetically Engineered Insulin"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH10-P182-08": {
+      "next_review": "2026-09-08T07:26:09.455781+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology and its Applications \u2014 10.2.1 Genetically Engineered Insulin"
+    }
+  },
+  "updated_at": "2026-09-05T07:26:09.455797+00:00"
+}

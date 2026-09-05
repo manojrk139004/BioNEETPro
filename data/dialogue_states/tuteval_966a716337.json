@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_966a716337",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH04-P078-44",
+    "title": "Principles of Inheritance and Variation \u2014 4.8.3 Chromosomal Disorders"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH04-P078-44": {
+      "next_review": "2026-09-08T07:26:39.961405+00:00",
+      "mastery": 0.5,
+      "title": "Principles of Inheritance and Variation \u2014 4.8.3 Chromosomal Disorders"
+    }
+  },
+  "updated_at": "2026-09-05T07:26:39.961424+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_ab1d4f10b7",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH12-P210-09",
+    "title": "Ecosystem \u2014 12.4 ENERGY FLOW"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH12-P210-09": {
+      "next_review": "2026-09-08T08:21:52.930471+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.4 ENERGY FLOW"
+    }
+  },
+  "updated_at": "2026-09-05T08:21:52.930486+00:00"
+}

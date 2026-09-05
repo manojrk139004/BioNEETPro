@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_ca3a826d1e",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH10-P125-13",
+    "title": "Cell Cycle and Cell Division \u2014 10.4 MEIOSIS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH02-P013-08": {
+      "next_review": "2026-09-08T06:51:20.787990+00:00",
+      "mastery": 0.5,
+      "title": "Biological Classification \u2014 2.1.2 Eubacteria"
+    },
+    "NCERT-ClassXI-CH10-P125-13": {
+      "next_review": "2026-09-08T06:51:23.429590+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.4 MEIOSIS"
+    }
+  },
+  "updated_at": "2026-09-05T06:51:23.429606+00:00"
+}

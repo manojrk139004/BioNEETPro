@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_b2cab9a0da",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C15-10",
+    "title": "Gas Exchange 0"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C15-10": {
+      "next_review": "2026-09-08T06:21:19.611270+00:00",
+      "mastery": 0.5,
+      "title": "Gas Exchange 0"
+    }
+  },
+  "updated_at": "2026-09-05T06:21:19.611290+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_315f7e54ff",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P065-20",
+    "title": "Morphology of Flowering Plants \u2014 5.6 THE FRUIT"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P065-20": {
+      "next_review": "2026-09-08T06:55:51.349521+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.6 THE FRUIT"
+    }
+  },
+  "updated_at": "2026-09-05T06:55:51.349538+00:00"
+}

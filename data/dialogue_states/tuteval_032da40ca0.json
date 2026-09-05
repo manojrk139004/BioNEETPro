@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_032da40ca0",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P091-13",
+    "title": "Cell"
+  },
+  "last_strategy": "guided_lesson",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P091-13": {
+      "next_review": "2026-09-08T08:26:42.029174+00:00",
+      "mastery": 0.5,
+      "title": "Cell"
+    }
+  },
+  "updated_at": "2026-09-05T08:26:42.029186+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_3c307f0e18",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH07-P079-03",
+    "title": "Structural Organisation in Animals \u2014 7.1 Organ and Organ"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH07-P079-03": {
+      "next_review": "2026-09-08T07:29:37.031922+00:00",
+      "mastery": 0.5,
+      "title": "Structural Organisation in Animals \u2014 7.1 Organ and Organ"
+    }
+  },
+  "updated_at": "2026-09-05T07:29:37.031935+00:00"
+}

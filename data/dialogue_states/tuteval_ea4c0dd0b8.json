@@ -1,0 +1,42 @@
+{
+  "student_id": "tuteval_ea4c0dd0b8",
+  "turns": 11,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P063-16",
+    "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P200-16": {
+      "next_review": "2026-09-08T07:54:23.813984+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "BIO-C18-05": {
+      "next_review": "2026-09-08T07:54:28.001285+00:00",
+      "mastery": 0.5,
+      "title": "Why Arteries Have Thick Elastic Walls & Why Veins Have Valves"
+    },
+    "NCERT-ClassXI-CH15-P202-21": {
+      "next_review": "2026-09-08T07:54:31.493626+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.5 REGULATION OF CARDIAC ACTIVITY"
+    },
+    "NCERT-ClassXI-CH15-P199-15": {
+      "next_review": "2026-09-08T07:54:35.029897+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "GEN-C32": {
+      "next_review": "2026-09-08T07:54:35.061788+00:00",
+      "mastery": 0.5,
+      "title": "Cardiac Cycle"
+    },
+    "NCERT-ClassXI-CH05-P063-16": {
+      "next_review": "2026-09-08T07:54:38.584724+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower"
+    }
+  },
+  "updated_at": "2026-09-05T07:54:38.584738+00:00"
+}

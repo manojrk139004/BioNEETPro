@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_7421571e26",
+  "turns": 2,
+  "focal": {
+    "concept_id": "BIO-C19-03",
+    "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P136-09": {
+      "next_review": "2026-09-08T07:52:15.789557+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?"
+    },
+    "BIO-C19-03": {
+      "next_review": "2026-09-08T07:52:19.715973+00:00",
+      "mastery": 0.5,
+      "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+    }
+  },
+  "updated_at": "2026-09-05T07:52:19.715988+00:00"
+}

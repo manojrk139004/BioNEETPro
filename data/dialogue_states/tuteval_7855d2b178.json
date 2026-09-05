@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_7855d2b178",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C01-01",
+    "title": "Binomial Nomenclature"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C01-01": {
+      "next_review": "2026-09-08T07:45:38.630383+00:00",
+      "mastery": 0.5,
+      "title": "Binomial Nomenclature"
+    }
+  },
+  "updated_at": "2026-09-05T07:45:38.630399+00:00"
+}

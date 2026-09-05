@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_747d082536",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C36-02",
+    "title": "Ecological Succession: Hydrarch, Xerarch and Sere"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C36-02": {
+      "next_review": "2026-09-08T06:59:04.145779+00:00",
+      "mastery": 0.5,
+      "title": "Ecological Succession: Hydrarch, Xerarch and Sere"
+    }
+  },
+  "updated_at": "2026-09-05T06:59:04.145795+00:00"
+}

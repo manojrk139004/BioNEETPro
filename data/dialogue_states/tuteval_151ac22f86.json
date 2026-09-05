@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_151ac22f86",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P064-18",
+    "title": "Morphology of Flowering Plants \u2014 5.5.1.2 Corolla"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P064-18": {
+      "next_review": "2026-09-08T06:19:10.957186+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5.1.2 Corolla"
+    }
+  },
+  "updated_at": "2026-09-05T06:19:10.957203+00:00"
+}

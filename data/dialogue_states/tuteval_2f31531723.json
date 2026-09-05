@@ -1,0 +1,37 @@
+{
+  "student_id": "tuteval_2f31531723",
+  "turns": 5,
+  "focal": {
+    "concept_id": "BIO-C07-01",
+    "title": "Types of Epithelium"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH12-P210-09": {
+      "next_review": "2026-09-08T06:31:27.196186+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.4 ENERGY FLOW"
+    },
+    "NCERT-ClassXI-CH05-P063-16": {
+      "next_review": "2026-09-08T06:31:33.114780+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower"
+    },
+    "BIO-C07-06": {
+      "next_review": "2026-09-08T06:31:38.716182+00:00",
+      "mastery": 0.5,
+      "title": "Morphology, Exoskeleton & Mosaic Vision of Cockroach"
+    },
+    "NCERT-ClassXII-CH11-P194-08": {
+      "next_review": "2026-09-08T06:31:44.382515+00:00",
+      "mastery": 0.5,
+      "title": "Organisms and Populations \u2014 11.1.2 Population Growth"
+    },
+    "BIO-C07-01": {
+      "next_review": "2026-09-08T06:31:50.234974+00:00",
+      "mastery": 0.5,
+      "title": "Types of Epithelium"
+    }
+  },
+  "updated_at": "2026-09-05T06:31:50.234990+00:00"
+}

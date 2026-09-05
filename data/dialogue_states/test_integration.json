@@ -1,0 +1,22 @@
+{
+  "student_id": "test_integration",
+  "turns": 14,
+  "focal": {
+    "concept_id": "BIO-C03-01",
+    "title": "Human Reproduction: Spermatogenesis, Oogenesis, Menstrual Cycle & Fertilization"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P096-22": {
+      "next_review": "2026-09-08T05:50:00.168606+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.4 Mitochondria"
+    },
+    "BIO-C03-01": {
+      "next_review": "2026-09-08T05:50:09.057299+00:00",
+      "mastery": 0.5,
+      "title": "Human Reproduction: Spermatogenesis, Oogenesis, Menstrual Cycle & Fertilization"
+    }
+  },
+  "updated_at": "2026-09-05T05:50:09.057316+00:00"
+}

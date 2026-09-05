@@ -1,0 +1,17 @@
+{
+ "student_id": "test_student2",
+ "turns": 1,
+ "focal": {
+  "concept_id": "BIO-C28-01",
+  "title": "Genetics"
+ },
+ "last_strategy": "mcq_practice",
+ "reviews": {
+  "BIO-C28-01": {
+   "next_review": "2026-09-07T07:53:34.727405+00:00",
+   "mastery": 0.5,
+   "title": "Genetics"
+  }
+ },
+ "updated_at": "2026-09-04T07:53:34.727544+00:00"
+}

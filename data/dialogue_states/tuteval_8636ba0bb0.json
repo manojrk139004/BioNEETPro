@@ -1,0 +1,32 @@
+{
+  "student_id": "tuteval_8636ba0bb0",
+  "turns": 4,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P019-29",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.4.2 Embryo"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH09-P003-05": {
+      "next_review": "2026-09-08T06:46:13.912732+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology : Principles and Processes \u2014 9.2 Tools of Recombinant DNA"
+    },
+    "NCERT-ClassXII-CH12-P214-14": {
+      "next_review": "2026-09-08T06:46:17.160342+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.5 ECOLOGICAL PYRAMIDS"
+    },
+    "NCERT-ClassXI-CH08-P095-18": {
+      "next_review": "2026-09-08T06:46:22.229771+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.3.1 The Endoplasmic Reticulum (ER)"
+    },
+    "NCERT-ClassXII-CH01-P019-29": {
+      "next_review": "2026-09-08T06:46:25.586369+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.4.2 Embryo"
+    }
+  },
+  "updated_at": "2026-09-05T06:46:25.586385+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_39dad7ffcd",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C19-02",
+    "title": "Why Human Excretion (Urine) Is Yellow: Urochrome Pigment, Bilirubin Metabolism & Urea"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C19-02": {
+      "next_review": "2026-09-08T08:39:45.732087+00:00",
+      "mastery": 0.5,
+      "title": "Why Human Excretion (Urine) Is Yellow: Urochrome Pigment, Bilirubin Metabolism & Urea"
+    }
+  },
+  "updated_at": "2026-09-05T08:39:45.732110+00:00"
+}

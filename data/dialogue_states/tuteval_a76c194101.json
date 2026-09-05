@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_a76c194101",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH04-P054-05",
+    "title": "Principles of Inheritance and Variation \u2014 4.1 MENDEL\u2019S LAWS OF INHERITANCE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH04-P054-05": {
+      "next_review": "2026-09-08T07:26:31.838648+00:00",
+      "mastery": 0.5,
+      "title": "Principles of Inheritance and Variation \u2014 4.1 MENDEL\u2019S LAWS OF INHERITANCE"
+    }
+  },
+  "updated_at": "2026-09-05T07:26:31.838666+00:00"
+}

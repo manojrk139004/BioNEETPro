@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_2aef9678bf",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P059-07",
+    "title": "Morphology of Flowering Plants \u2014 5.1.1 Regions of the Root"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P200-16": {
+      "next_review": "2026-09-08T08:35:56.854728+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "NCERT-ClassXI-CH05-P059-07": {
+      "next_review": "2026-09-08T08:36:00.448651+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.1.1 Regions of the Root"
+    }
+  },
+  "updated_at": "2026-09-05T08:36:00.448665+00:00"
+}

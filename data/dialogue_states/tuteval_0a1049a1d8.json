@@ -1,0 +1,37 @@
+{
+  "student_id": "tuteval_0a1049a1d8",
+  "turns": 5,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH16-P209-08",
+    "title": "Excretory Products and their Elimination \u2014 16.2 URINE FORMATION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C05-02": {
+      "next_review": "2026-09-08T06:47:48.468893+00:00",
+      "mastery": 0.5,
+      "title": "Central Dogma of Molecular Biology: Genetic Code Properties & Wobble Hypothesis"
+    },
+    "NCERT-ClassXI-CH08-P095-18": {
+      "next_review": "2026-09-08T06:47:55.508194+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.3.1 The Endoplasmic Reticulum (ER)"
+    },
+    "NCERT-ClassXI-CH09-P108-08": {
+      "next_review": "2026-09-08T06:47:58.439514+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.3 BIOMACROMOLECULES"
+    },
+    "NCERT-ClassXII-CH10-P182-09": {
+      "next_review": "2026-09-08T06:48:01.910616+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology and its Applications \u2014 10.2.2 Gene Therapy"
+    },
+    "NCERT-ClassXI-CH16-P209-08": {
+      "next_review": "2026-09-08T06:48:06.070782+00:00",
+      "mastery": 0.5,
+      "title": "Excretory Products and their Elimination \u2014 16.2 URINE FORMATION"
+    }
+  },
+  "updated_at": "2026-09-05T06:48:06.070798+00:00"
+}

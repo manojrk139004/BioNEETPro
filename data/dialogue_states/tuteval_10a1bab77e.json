@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_10a1bab77e",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH05-P088-15",
+    "title": "Molecular Basis of Inheritance \u2014 5.4 REPLICATION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH05-P088-15": {
+      "next_review": "2026-09-08T07:07:49.590239+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.4 REPLICATION"
+    }
+  },
+  "updated_at": "2026-09-05T07:07:49.590254+00:00"
+}

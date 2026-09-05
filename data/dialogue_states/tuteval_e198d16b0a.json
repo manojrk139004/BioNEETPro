@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_e198d16b0a",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P062-14",
+    "title": "Morphology of Flowering Plants \u2014 5.5 THE FLOWER"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P062-14": {
+      "next_review": "2026-09-08T09:40:42.499786+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5 THE FLOWER"
+    }
+  },
+  "updated_at": "2026-09-05T09:40:42.499802+00:00"
+}

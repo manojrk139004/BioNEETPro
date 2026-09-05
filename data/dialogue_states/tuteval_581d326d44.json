@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_581d326d44",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH07-P140-23",
+    "title": "Human Health and Disease \u2014 7.4 CANCER"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P148-35": {
+      "next_review": "2026-09-08T09:27:05.533334+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.5.4 Prevention and Control"
+    },
+    "NCERT-ClassXII-CH07-P140-23": {
+      "next_review": "2026-09-08T09:27:15.710637+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.4 CANCER"
+    }
+  },
+  "updated_at": "2026-09-05T09:27:15.710656+00:00"
+}

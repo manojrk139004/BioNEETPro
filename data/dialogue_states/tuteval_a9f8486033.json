@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_a9f8486033",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P121-16",
+    "title": "Evolution \u2014 6.7 HARDY-WEINBERG PRINCIPLE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P121-16": {
+      "next_review": "2026-09-08T08:30:41.671088+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.7 HARDY-WEINBERG PRINCIPLE"
+    }
+  },
+  "updated_at": "2026-09-05T08:30:41.671105+00:00"
+}

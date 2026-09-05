@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d5b55095e3",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH17-P226-13",
+    "title": "Locomotion and Movement \u2014 17.4 JOINTS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH17-P226-13": {
+      "next_review": "2026-09-08T08:20:33.779984+00:00",
+      "mastery": 0.5,
+      "title": "Locomotion and Movement \u2014 17.4 JOINTS"
+    }
+  },
+  "updated_at": "2026-09-05T08:20:33.780002+00:00"
+}

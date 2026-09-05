@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_44c82d7334",
+  "turns": 2,
+  "focal": {
+    "concept_id": "BIO-C18-03",
+    "title": "Blood Composition, Formed Elements, ABO Groups & Coagulation"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P004-06": {
+      "next_review": "2026-09-08T06:50:40.468879+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.2 PRE-FERTILISATION: STRUCTURES AND EVENTS"
+    },
+    "BIO-C18-03": {
+      "next_review": "2026-09-08T06:50:49.411930+00:00",
+      "mastery": 0.5,
+      "title": "Blood Composition, Formed Elements, ABO Groups & Coagulation"
+    }
+  },
+  "updated_at": "2026-09-05T06:50:49.411943+00:00"
+}

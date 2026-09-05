@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_4057c1f3c2",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P119-14",
+    "title": "Evolution \u2014 6.6 MECHANISM OF EVOLUTION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P119-14": {
+      "next_review": "2026-09-08T08:21:34.843190+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.6 MECHANISM OF EVOLUTION"
+    }
+  },
+  "updated_at": "2026-09-05T08:21:34.843209+00:00"
+}

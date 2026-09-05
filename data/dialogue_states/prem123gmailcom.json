@@ -1,0 +1,17 @@
+{
+  "student_id": "prem123@gmail.com",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C18-03",
+    "title": "Blood Composition, Formed Elements, ABO Groups & Coagulation"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C18-03": {
+      "next_review": "2026-09-08T02:58:51.653561+00:00",
+      "mastery": 0.5,
+      "title": "Blood Composition, Formed Elements, ABO Groups & Coagulation"
+    }
+  },
+  "updated_at": "2026-09-05T02:58:51.653579+00:00"
+}

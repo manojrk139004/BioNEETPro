@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_2c5403add6",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH07-P080-04",
+    "title": "Structural Organisation in Animals \u2014 7.2 FROGS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH07-P080-04": {
+      "next_review": "2026-09-08T06:45:22.460048+00:00",
+      "mastery": 0.5,
+      "title": "Structural Organisation in Animals \u2014 7.2 FROGS"
+    }
+  },
+  "updated_at": "2026-09-05T06:45:22.460062+00:00"
+}

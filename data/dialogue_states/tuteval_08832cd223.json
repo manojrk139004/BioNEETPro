@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_08832cd223",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH02-P013-08",
+    "title": "Biological Classification \u2014 2.1.2 Eubacteria"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH02-P013-08": {
+      "next_review": "2026-09-08T08:31:42.616251+00:00",
+      "mastery": 0.5,
+      "title": "Biological Classification \u2014 2.1.2 Eubacteria"
+    }
+  },
+  "updated_at": "2026-09-05T08:31:42.616269+00:00"
+}

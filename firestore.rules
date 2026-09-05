@@ -1,0 +1,100 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.admin == true;
+    }
+
+    function ownsUid(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    // App admin = custom claim (set via backend) OR the app's own
+    // users/{uid} doc with role == "admin" (managed from the admin panel).
+    // BOOTSTRAP (one time, Firebase console): create the guide's Auth user,
+    // let them register in-app (role "student"), then edit their users/{uid}
+    // doc role to "admin". All admin panel writes work after that.
+    function isAppAdmin() {
+      return isAdmin() || (signedIn() && get(
+        /databases/$(database)/documents/users/$(request.auth.uid)
+      ).data.role == "admin");
+    }
+
+    match /users/{userId} {
+      allow create: if ownsUid(userId) && request.resource.data.role == "student";
+      allow read, update: if ownsUid(userId) || isAppAdmin();
+      allow delete: if isAppAdmin();
+    }
+
+    match /profiles/{userId} {
+      allow create, read, update: if ownsUid(userId);
+      allow delete: if isAppAdmin();
+    }
+
+    match /results/{resultId} {
+      // Frontend writes {uid, email, chapter, correct, total, timestamp, ...}
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow get: if signedIn() && (resource.data.uid == request.auth.uid || isAppAdmin());
+      // Leaderboard + dashboard read recent results across students.
+      allow list: if signedIn();
+      allow update, delete: if signedIn() && (resource.data.uid == request.auth.uid || isAppAdmin());
+    }
+
+    match /mcqs/{mcqId} {
+      allow read: if true;
+      allow create, update, delete: if isAppAdmin();
+    }
+
+    match /videos/{videoId} {
+      allow read: if true;
+      allow create, update, delete: if isAppAdmin();
+    }
+
+    match /updates/{updateId} {
+      allow read: if true;
+      allow create, update, delete: if isAppAdmin();
+    }
+
+    match /admin/{document=**} {
+      allow read, write: if isAppAdmin();
+    }
+
+    // Backend per-student stores (Firestore-first via Admin SDK, file fallback).
+    // Owner-only: a student reads/writes only their own doc (id = sanitized
+    // student id/email); admins can read all for support.
+    match /flashcards/{studentId} {
+      allow create, read, update: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
+      allow delete: if isAppAdmin();
+    }
+
+    match /learner_profiles/{studentId} {
+      allow create, read, update: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
+      allow delete: if isAppAdmin();
+    }
+
+    match /dialogue_states/{studentId} {
+      allow create, read, update: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
+      allow delete: if isAppAdmin();
+    }
+
+    match /score_predictions/{studentId} {
+      allow create, read, update: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
+      allow delete: if isAppAdmin();
+    }
+
+    match /tutor_states/{studentId} {
+      allow create, read, update: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
+      allow delete: if isAppAdmin();
+    }
+
+    match /chat_threads/{studentId} {
+      allow create, read, update: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
+      allow delete: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
+    }
+  }
+}

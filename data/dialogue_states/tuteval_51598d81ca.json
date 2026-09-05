@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_51598d81ca",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C03-01",
+    "title": "Human Reproduction: Spermatogenesis, Oogenesis, Menstrual Cycle & Fertilization"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C03-01": {
+      "next_review": "2026-09-08T09:31:14.329294+00:00",
+      "mastery": 0.5,
+      "title": "Human Reproduction: Spermatogenesis, Oogenesis, Menstrual Cycle & Fertilization"
+    }
+  },
+  "updated_at": "2026-09-05T09:31:14.329307+00:00"
+}

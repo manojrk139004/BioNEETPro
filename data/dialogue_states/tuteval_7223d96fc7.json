@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_7223d96fc7",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH04-P072-34",
+    "title": "Principles of Inheritance and Variation \u2014 4.7 MUTATION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH04-P072-34": {
+      "next_review": "2026-09-08T07:42:45.437017+00:00",
+      "mastery": 0.5,
+      "title": "Principles of Inheritance and Variation \u2014 4.7 MUTATION"
+    }
+  },
+  "updated_at": "2026-09-05T07:42:45.437031+00:00"
+}

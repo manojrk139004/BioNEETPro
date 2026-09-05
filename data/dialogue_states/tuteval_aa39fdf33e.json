@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_aa39fdf33e",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH10-P125-12",
+    "title": "Cell Cycle and Cell Division \u2014 10.3 Significance of Mitosis"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH10-P125-12": {
+      "next_review": "2026-09-08T09:06:04.481138+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.3 Significance of Mitosis"
+    }
+  },
+  "updated_at": "2026-09-05T09:06:04.481155+00:00"
+}

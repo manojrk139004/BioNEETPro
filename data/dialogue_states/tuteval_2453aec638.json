@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_2453aec638",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH08-P152-06",
+    "title": "Microbes in Human Welfare \u2014 8.2.2 Antibiotics"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH08-P152-06": {
+      "next_review": "2026-09-08T08:32:12.864073+00:00",
+      "mastery": 0.5,
+      "title": "Microbes in Human Welfare \u2014 8.2.2 Antibiotics"
+    }
+  },
+  "updated_at": "2026-09-05T08:32:12.864088+00:00"
+}

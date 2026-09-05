@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_507fc97d16",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH05-P091-20",
+    "title": "Molecular Basis of Inheritance \u2014 5.5 TRANSCRIPTION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH05-P091-20": {
+      "next_review": "2026-09-08T07:26:46.948022+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.5 TRANSCRIPTION"
+    }
+  },
+  "updated_at": "2026-09-05T07:26:46.948040+00:00"
+}

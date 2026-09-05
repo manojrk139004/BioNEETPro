@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_a588a40c19",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C01-02",
+    "title": "Mixed Ncert Biology"
+  },
+  "last_strategy": "mcq_practice",
+  "reviews": {
+    "BIO-C01-02": {
+      "next_review": "2026-09-08T08:06:15.101892+00:00",
+      "mastery": 0.5,
+      "title": "Mixed Ncert Biology"
+    }
+  },
+  "updated_at": "2026-09-05T08:06:15.101910+00:00"
+}

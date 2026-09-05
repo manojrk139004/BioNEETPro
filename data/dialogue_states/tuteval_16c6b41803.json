@@ -1,0 +1,42 @@
+{
+  "student_id": "tuteval_16c6b41803",
+  "turns": 11,
+  "focal": {
+    "concept_id": "BIO-C19-03",
+    "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P200-16": {
+      "next_review": "2026-09-08T09:41:45.083887+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "BIO-C18-05": {
+      "next_review": "2026-09-08T09:41:48.097120+00:00",
+      "mastery": 0.5,
+      "title": "Why Arteries Have Thick Elastic Walls & Why Veins Have Valves"
+    },
+    "NCERT-ClassXI-CH15-P202-21": {
+      "next_review": "2026-09-08T09:41:50.870677+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.5 REGULATION OF CARDIAC ACTIVITY"
+    },
+    "NCERT-ClassXI-CH15-P199-15": {
+      "next_review": "2026-09-08T09:41:57.985867+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "GEN-C10": {
+      "next_review": "2026-09-08T09:41:58.017633+00:00",
+      "mastery": 0.5,
+      "title": "Cardiac Cycle"
+    },
+    "BIO-C19-03": {
+      "next_review": "2026-09-08T09:42:00.753551+00:00",
+      "mastery": 0.5,
+      "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+    }
+  },
+  "updated_at": "2026-09-05T09:42:00.753567+00:00"
+}

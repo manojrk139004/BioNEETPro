@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_72e48b74c6",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH13-P173-12",
+    "title": "Plant Growth and Development \u2014 13.8 . It is also applicable to tissues/organs."
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH13-P173-12": {
+      "next_review": "2026-09-08T09:05:43.640434+00:00",
+      "mastery": 0.5,
+      "title": "Plant Growth and Development \u2014 13.8 . It is also applicable to tissues/organs."
+    }
+  },
+  "updated_at": "2026-09-05T09:05:43.640453+00:00"
+}

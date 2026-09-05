@@ -1,0 +1,201 @@
+[
+ {
+  "path": "datasets\\blooms_taxonomy_dataset.csv",
+  "bytes": 824915,
+  "rows": 8767,
+  "columns": [
+   "Questions",
+   "Category"
+  ],
+  "sample": {
+   "Questions": "About what proportion of the population of the US is living on farms?",
+   "Category": "BT1"
+  }
+ },
+ {
+  "path": "datasets\\blooms_taxonomy_questions1.csv",
+  "bytes": 5048,
+  "rows": 6,
+  "columns": [
+   "levels",
+   "description",
+   "key_words",
+   "questions"
+  ],
+  "sample": {
+   "levels": "LEVEL 1 - REMEMBERING",
+   "description": "Exhibit memory of previously learned material by recalling facts, terms, basic c",
+   "key_words": "Choose, Define, Find, How, Label, List, Match, Name, Omit, Recall, Relate, Selec",
+   "questions": "What is...? Where is.\u201d How did ___happen? Why did.? When did.? How would you sho"
+  }
+ },
+ {
+  "path": "datasets\\subjects-questions.csv",
+  "bytes": 29900009,
+  "rows": 122519,
+  "columns": [
+   "eng",
+   "Subject"
+  ],
+  "sample": {
+   "eng": "An anti-forest measure is\nA. Afforestation\nB. Selective grazing\nC . Clearing for",
+   "Subject": "Biology"
+  }
+ },
+ {
+  "path": "datasets\\test.csv",
+  "bytes": 547913,
+  "rows": 1000,
+  "columns": [
+   "question",
+   "distractor3",
+   "distractor1",
+   "distractor2",
+   "correct_answer",
+   "support"
+  ],
+  "sample": {
+   "question": "Compounds that are capable of accepting electrons, such as o 2 or f2, are called",
+   "distractor3": "residues",
+   "distractor1": "antioxidants",
+   "distractor2": "Oxygen",
+   "correct_answer": "oxidants",
+   "support": "Oxidants and Reductants Compounds that are capable of accepting electrons, such "
+  }
+ },
+ {
+  "path": "datasets\\test1.csv",
+  "bytes": 1185232,
+  "rows": 6150,
+  "columns": [
+   "id",
+   "question",
+   "opa",
+   "opb",
+   "opc",
+   "opd",
+   "cop",
+   "choice_type",
+   "exp",
+   "subject_name",
+   "topic_name"
+  ],
+  "sample": {
+   "id": "84f328d3-fca4-422d-8fb2-19d55eb31503",
+   "question": "Which of the following is derived from fibroblast cells ?",
+   "opa": "TGF-13",
+   "opb": "MMP2",
+   "opc": "Collagen",
+   "opd": "Angiopoietin",
+   "cop": "-1",
+   "choice_type": "single",
+   "exp": "",
+   "subject_name": "Pathology",
+   "topic_name": ""
+  }
+ },
+ {
+  "path": "datasets\\train.csv",
+  "bytes": 6358390,
+  "rows": 11679,
+  "columns": [
+   "question",
+   "distractor3",
+   "distractor1",
+   "distractor2",
+   "correct_answer",
+   "support"
+  ],
+  "sample": {
+   "question": "What type of organism is commonly used in preparation of foods such as cheese an",
+   "distractor3": "viruses",
+   "distractor1": "protozoa",
+   "distractor2": "gymnosperms",
+   "correct_answer": "mesophilic organisms",
+   "support": "Mesophiles grow best in moderate temperature, typically between 25\u00b0C and 40\u00b0C (7"
+  }
+ },
+ {
+  "path": "datasets\\train1.csv",
+  "bytes": 125636283,
+  "rows": 182822,
+  "columns": [
+   "id",
+   "question",
+   "opa",
+   "opb",
+   "opc",
+   "opd",
+   "cop",
+   "choice_type",
+   "exp",
+   "subject_name",
+   "topic_name"
+  ],
+  "sample": {
+   "id": "e9ad821a-c438-4965-9f77-760819dfa155",
+   "question": "Chronic urethral obstruction due to benign prismatic hyperplasia can lead to the",
+   "opa": "Hyperplasia",
+   "opb": "Hyperophy",
+   "opc": "Atrophy",
+   "opd": "Dyplasia",
+   "cop": "2",
+   "choice_type": "single",
+   "exp": "Chronic urethral obstruction because of urinary calculi, prostatic hyperophy, tu",
+   "subject_name": "Anatomy",
+   "topic_name": "Urinary tract"
+  }
+ },
+ {
+  "path": "datasets\\validation.csv",
+  "bytes": 538065,
+  "rows": 1000,
+  "columns": [
+   "question",
+   "distractor3",
+   "distractor1",
+   "distractor2",
+   "correct_answer",
+   "support"
+  ],
+  "sample": {
+   "question": "Who proposed the theory of evolution by natural selection?",
+   "distractor3": "Scopes",
+   "distractor1": "Linnaeus",
+   "distractor2": "shaw",
+   "correct_answer": "darwin",
+   "support": ""
+  }
+ },
+ {
+  "path": "datasets\\validation1.csv",
+  "bytes": 2076293,
+  "rows": 4183,
+  "columns": [
+   "id",
+   "question",
+   "opa",
+   "opb",
+   "opc",
+   "opd",
+   "cop",
+   "choice_type",
+   "exp",
+   "subject_name",
+   "topic_name"
+  ],
+  "sample": {
+   "id": "45258d3d-b974-44dd-a161-c3fccbdadd88",
+   "question": "Which of the following is not true for myelinated nerve fibers:",
+   "opa": "Impulse through myelinated fibers is slower than non-myelinated fibers",
+   "opb": "Membrane currents are generated at nodes of Ranvier",
+   "opc": "Saltatory conduction of impulses is seen",
+   "opd": "Local anesthesia is effective only when the nerve is not covered by myelin sheat",
+   "cop": "0",
+   "choice_type": "multi",
+   "exp": "",
+   "subject_name": "Physiology",
+   "topic_name": ""
+  }
+ }
+]

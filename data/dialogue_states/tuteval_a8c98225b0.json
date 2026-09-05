@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_a8c98225b0",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH13-P001-02",
+    "title": "Biodiversity and Conservation \u2014 13.1 BIODIVERSITY"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH13-P001-02": {
+      "next_review": "2026-09-08T06:58:59.984595+00:00",
+      "mastery": 0.5,
+      "title": "Biodiversity and Conservation \u2014 13.1 BIODIVERSITY"
+    }
+  },
+  "updated_at": "2026-09-05T06:58:59.984609+00:00"
+}

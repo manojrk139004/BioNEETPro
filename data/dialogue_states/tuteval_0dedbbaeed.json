@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_0dedbbaeed",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH09-P115-20",
+    "title": "Biomolecules \u2014 9.8.3 Nature of Enzyme Action"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH09-P115-20": {
+      "next_review": "2026-09-08T07:22:12.300996+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.8.3 Nature of Enzyme Action"
+    }
+  },
+  "updated_at": "2026-09-05T07:22:12.301012+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_9c703e3c1a",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C18-02",
+    "title": "Why Heart Has 4 Chambers and Double Circulation"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C18-02": {
+      "next_review": "2026-09-08T09:02:08.784390+00:00",
+      "mastery": 0.5,
+      "title": "Why Heart Has 4 Chambers and Double Circulation"
+    }
+  },
+  "updated_at": "2026-09-05T09:02:08.784404+00:00"
+}

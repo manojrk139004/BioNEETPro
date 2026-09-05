@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_0a983b5cc7",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH09-P111-13",
+    "title": "Biomolecules \u2014 9.7 STRUCTURE OF PROTEINS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH09-P111-13": {
+      "next_review": "2026-09-08T08:27:13.662571+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.7 STRUCTURE OF PROTEINS"
+    }
+  },
+  "updated_at": "2026-09-05T08:27:13.662585+00:00"
+}

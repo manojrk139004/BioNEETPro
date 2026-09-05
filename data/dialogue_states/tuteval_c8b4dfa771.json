@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_c8b4dfa771",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH12-P165-22",
+    "title": "Respiration in Plants \u2014 12.7 RESPIRATORY QUOTIENT"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH12-P165-22": {
+      "next_review": "2026-09-08T06:54:35.583393+00:00",
+      "mastery": 0.5,
+      "title": "Respiration in Plants \u2014 12.7 RESPIRATORY QUOTIENT"
+    }
+  },
+  "updated_at": "2026-09-05T06:54:35.583407+00:00"
+}

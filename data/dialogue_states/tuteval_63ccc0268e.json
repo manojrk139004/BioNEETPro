@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_63ccc0268e",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P003-04",
+    "title": "Morphology of Flowering Plants \u2014 5.1 THE ROOT"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P003-04": {
+      "next_review": "2026-09-08T08:22:58.914555+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.1 THE ROOT"
+    }
+  },
+  "updated_at": "2026-09-05T08:22:58.914571+00:00"
+}

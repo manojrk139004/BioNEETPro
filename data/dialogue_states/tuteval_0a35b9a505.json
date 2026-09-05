@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_0a35b9a505",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH15-P203-23",
+    "title": "Body Fluids and Circulation \u2014 15.6 DISORDERS OF CIRCULATORY SYSTEM"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P203-23": {
+      "next_review": "2026-09-08T08:38:35.008885+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.6 DISORDERS OF CIRCULATORY SYSTEM"
+    }
+  },
+  "updated_at": "2026-09-05T08:38:35.008909+00:00"
+}

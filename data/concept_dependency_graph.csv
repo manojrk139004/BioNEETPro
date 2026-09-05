@@ -1,0 +1,98 @@
+source_concept_id,source_title,target_concept_id,target_title,relationship,chapter_id,description
+BIO-C08-01,Mitochondria and ATP Synthesis,BIO-C14-01,EMP Pathway Reactions and ATP Yield,PREREQUISITE_OF,c14,Glycolytic end product pyruvate enters mitochondria for complete aerobic oxidation
+BIO-C08-01,Mitochondria and ATP Synthesis,BIO-C13-01,Non-cyclic Photophosphorylation,CONTRASTS_WITH,c13,Mitochondrial oxidative phosphorylation contrasts with chloroplast photophosphorylation
+BIO-C08-02,Golgi Apparatus and Protein Trafficking,BIO-C08-01,Mitochondria and ATP Synthesis,RELATED_TO,c8,Endomembrane system organelles collaborate in cell bioenergetics
+BIO-C10-01,Crossing Over in Pachytene,BIO-C26-01,Mendel Laws of Inheritance and Segregation,PREREQUISITE_OF,c26,Physical basis of independent assortment and recombination during meiosis
+BIO-C13-01,Non-cyclic Photophosphorylation,BIO-C13-02,Calvin Cycle (C3 Pathway),REQUIRED_FOR,c13,ATP and NADPH from light reaction are strictly required for CO2 reduction in stroma
+BIO-C13-02,Calvin Cycle (C3 Pathway),BIO-C13-03,Kranz Anatomy and Hatch-Slack Pathway,CONTRASTS_WITH,c13,C3 pathway undergoes photorespiration while C4 pathway eliminates photorespiratory loss
+BIO-C13-04,Why Leaves Are Green: Chlorophyll and Chloroplasts,BIO-C13-01,Non-cyclic Photophosphorylation,PART_OF,c13,Chlorophyll molecules in thylakoids form the antenna and reaction centers
+BIO-C14-01,EMP Pathway Reactions and ATP Yield,BIO-C14-02,Krebs TCA Cycle and Mitochondrial ETS,PRECEDES,c14,Glycolysis produces 2 pyruvate molecules which enter matrix for Krebs cycle
+BIO-C14-02,Krebs TCA Cycle and Mitochondrial ETS,BIO-C08-01,Mitochondria and ATP Synthesis,PART_OF,c08,Krebs enzymes operate in matrix while ETS complexes are on inner cristae membrane
+BIO-C15-01,Plant Growth Regulators (Auxin Gibberellin Cytokinin),BIO-C05-01,Root Stem and Leaf Morphology,CAUSES,c05,Auxin induces apical dominance and root initiation in plant tissues
+BIO-C18-01,Cardiac Cycle and Conducting System,BIO-C18-05,Why Arteries Have Thick Walls and Veins Have Valves,RESULTS_IN,c18,High ventricular pressure demands thick elastic arterial walls
+BIO-C18-04,Why Blood Is Red: Hemoglobin and Ferrous Iron,BIO-C17-01,Mechanism of Breathing and Gas Exchange,REQUIRED_FOR,c17,Hemoglobin in RBCs is essential for carrying 97% of blood oxygen
+BIO-C18-04,Why Blood Is Red: Hemoglobin and Ferrous Iron,BIO-C19-02,Why Human Excretion (Urine) Is Yellow: Urochrome Pigment,CAUSES,c19,Catabolism of heme from senescent RBCs produces bilirubin and urochrome
+BIO-C19-01,Nephron Function and Countercurrent Mechanism,BIO-C19-02,Why Human Excretion (Urine) Is Yellow: Urochrome Pigment,RESULTS_IN,c19,Concentration of glomerular filtrate by countercurrent system concentrates urochrome
+BIO-C19-03,Renin Angiotensin Aldosterone System (RAAS),BIO-C18-01,Cardiac Cycle and Conducting System,RELATED_TO,c18,RAAS regulates blood pressure and systemic vascular resistance
+BIO-C20-01,Sliding Filament Theory of Muscle Contraction,BIO-C20-02,Human Skeletal System: 206 Bones,REQUIRED_FOR,c20,Muscular contraction pulls on bones via tendons to produce locomotion
+BIO-C20-02,Human Skeletal System: 206 Bones,BIO-C20-03,Why Bones Are White: Hydroxyapatite and Mineralization,IS_A,c20,Compact cortical bone is characterized by calcified hydroxyapatite mineral matrix
+BIO-C21-01,Generation and Conduction of Nerve Impulse,BIO-C21-02,Why Brain Has White and Grey Matter: Myelin Sheaths,PART_OF,c21,Myelinated nerve axons constitute the white matter tracts of the central nervous system
+BIO-C22-01,Mechanism of Hormone Action: Insulin and Glucagon,BIO-C16-01,Digestion and Pancreatic Secretions,RELATED_TO,c16,Pancreatic islets of Langerhans regulate metabolic carbohydrate assimilation
+BIO-C22-01,Mechanism of Hormone Action: Insulin and Glucagon,BIO-C22-02,Insulin Mediated Glucose Uptake,CAUSES,c22,Insulin binding to tyrosine kinase receptor causes GLUT-4 translocation to membrane
+BIO-C22-02,Insulin Mediated Glucose Uptake,BIO-C22-03,Blood Glucose Reduction and Glycogenesis,RESULTS_IN,c22,Cellular glucose uptake results in lowering of blood sugar and hepatic glycogen storage
+BIO-C24-01,Human Gametogenesis and Menstrual Cycle,BIO-C24-02,Fertilization Implantation and Cleavage,PRECEDES,c24,Ovulation triggered by LH surge precedes ampullary-isthmic fertilization
+BIO-C26-01,Mendel Laws of Inheritance and Segregation,BIO-C27-01,Structure and Semi-Conservative DNA Replication,PREREQUISITE_OF,c27,Mendelian factors correspond to physical DNA genes on chromosomes
+BIO-C27-01,Structure and Semi-Conservative DNA Replication,BIO-C27-02,Central Dogma: Transcription and Translation,PRECEDES,c27,Replication duplicates genome before transcription and protein synthesis
+BIO-C27-02,Central Dogma: Transcription and Translation,BIO-C27-03,Lac Operon: Inducible Gene Regulation,EXAMPLE_OF,c27,Classic model of prokaryotic transcriptional regulation controlled by allolactose
+BIO-C27-01,Structure and Semi-Conservative DNA Replication,BIO-C31-01,Tools of Recombinant DNA: Restriction Enzymes and pBR322,PREREQUISITE_OF,c31,DNA structure understanding is essential for enzymatic cleavage and vector ligation
+BIO-C31-01,Tools of Recombinant DNA: Restriction Enzymes and pBR322,BIO-C32-01,Bt Cotton and Cry Proteins,REQUIRED_FOR,c31,Restriction digestion and gene cloning are required for creating Bt transgenic plants
+BIO-C32-01,Bt Cotton and Cry Proteins,BIO-C32-02,Genetically Engineered Human Insulin,EXAMPLE_OF,c32,Major commercial applications of recombinant biotechnology in agriculture and medicine
+BIO-C33-01,Population Attributes and Growth Models,BIO-C34-01,Ecosystem Productivity and Energy Flow,RELATED_TO,c34,Carrying capacity and population dynamics determine ecosystem trophic energy flow
+BIO-C34-01,Ecosystem Productivity and Energy Flow,BIO-C34-02,10 Percent Law of Energy Transfer (Lindeman),PART_OF,c34,Only 10 percent of energy is conserved and passed across successive trophic levels
+BIO-C35-01,Biodiversity Loss and The Evil Quartet,BIO-C35-02,In-Situ and Ex-Situ Conservation Strategies,CAUSES,c35,Accelerated species extinction necessitates national parks and cryopreservation reserves
+BIO-C03-01,Algae,BIO-C03-02,Bryophytes,PRECEDES,c03,Algae are evolutionary precursors to bryophytes
+BIO-C03-02,Bryophytes,BIO-C03-03,Pteridophytes,PRECEDES,c03,Bryophytes precede pteridophytes in plant evolution
+BIO-C03-03,Pteridophytes,BIO-C03-04,Gymnosperms,PRECEDES,c03,Pteridophytes precede gymnosperms
+BIO-C03-04,Gymnosperms,BIO-C03-05,Angiosperms,PRECEDES,c03,Gymnosperms precede angiosperms
+BIO-C03-01,Algae,BIO-C03-05,Angiosperms,CONTRASTS_WITH,c03,Simple thallus algae contrast with highly differentiated angiosperms
+BIO-C04-01,Porifera,BIO-C04-02,Cnidaria,PRECEDES,c04,Cellular level porifera precede tissue level cnidaria
+BIO-C04-02,Cnidaria,BIO-C04-03,Ctenophora,RELATED_TO,c04,Both exhibit radial symmetry and tissue level organization
+BIO-C04-04,Platyhelminthes,BIO-C04-05,Aschelminthes,PRECEDES,c04,Acoelomate flatworms precede pseudocoelomate roundworms
+BIO-C04-05,Aschelminthes,BIO-C04-06,Annelida,PRECEDES,c04,Pseudocoelomates precede true coelomate annelids
+BIO-C04-06,Annelida,BIO-C04-07,Arthropoda,RELATED_TO,c04,Both exhibit metameric segmentation
+BIO-C04-07,Arthropoda,BIO-C04-08,Mollusca,CONTRASTS_WITH,c04,Segmented arthropods contrast with unsegmented molluscs
+BIO-C04-09,Echinodermata,BIO-C04-10,Hemichordata,PRECEDES,c04,Echinoderms share deuterostome affinity with hemichordates
+BIO-C04-10,Hemichordata,BIO-C04-11,Chordata,PRECEDES,c04,Hemichordates are a connecting link to chordates
+BIO-C05-01,Root System,BIO-C05-02,Stem System,RELATED_TO,c05,Root absorbs water while stem conducts it
+BIO-C05-02,Stem System,BIO-C05-03,Leaf System,REQUIRED_FOR,c05,Stem provides support and vascular connection for leaves
+BIO-C05-03,Leaf System,BIO-C05-04,Inflorescence and Flower,PRECEDES,c05,Vegetative leaves precede reproductive floral shoots
+BIO-C05-04,Inflorescence and Flower,BIO-C05-05,Fruit and Seed,RESULTS_IN,c05,Floral fertilization results in fruit and seed formation
+BIO-C02-01,Microsporogenesis,BIO-C02-02,Pollen Grains,RESULTS_IN,c02,Microsporogenesis produces pollen grains
+BIO-C02-03,Megasporogenesis,BIO-C02-04,Embryo Sac,RESULTS_IN,c02,Megasporogenesis produces female gametophyte
+BIO-C02-02,Pollen Grains,BIO-C02-05,Pollination,REQUIRED_FOR,c02,Pollen grains are transferred during pollination
+BIO-C02-05,Pollination,BIO-C02-06,Double Fertilization,PRECEDES,c02,Pollination is prerequisite for fertilization in angiosperms
+BIO-C02-06,Double Fertilization,BIO-C02-07,Endosperm and Embryo,RESULTS_IN,c02,Double fertilization yields diploid embryo and triploid endosperm
+BIO-C24-01,Mendel's Laws,BIO-C25-01,DNA Structure,PREREQUISITE_OF,c24,Understanding inheritance patterns requires knowledge of DNA as hereditary material
+BIO-C24-01,Mendel's Laws,BIO-C24-03,Incomplete Dominance,CONTRASTS_WITH,c24,Incomplete dominance deviates from classical Mendelian dominance
+BIO-C24-04,Chromosomal Theory of Inheritance,BIO-C24-05,Linkage and Recombination,RELATED_TO,c24,Genes on same chromosome show linkage
+BIO-C25-01,DNA Structure,BIO-C25-02,DNA Replication,REQUIRED_FOR,c25,Double helical structure explains semi-conservative replication
+BIO-C25-02,DNA Replication,BIO-C25-03,Transcription,PRECEDES,c25,DNA must be accessible for transcription
+BIO-C25-03,Transcription,BIO-C25-04,Translation,PRECEDES,c25,mRNA synthesis precedes protein synthesis
+BIO-C25-04,Translation,BIO-C25-05,Gene Expression Regulation,RELATED_TO,c25,Translation is controlled by gene expression mechanisms
+BIO-C26-02,Origin of Life,BIO-C26-03,Biological Evolution,PRECEDES,c26,Chemical evolution precedes biological evolution
+BIO-C26-03,Biological Evolution,BIO-C26-01,Natural Selection,CAUSES,c26,Natural selection is a mechanism of evolution
+BIO-C26-01,Natural Selection,BIO-C26-04,Speciation,CAUSES,c26,Natural selection acting on populations leads to speciation
+BIO-C26-05,Hardy-Weinberg Principle,BIO-C26-01,Natural Selection,CONTRASTS_WITH,c26,Hardy-Weinberg assumes no selection while natural selection drives change
+BIO-C26-06,Adaptive Radiation,BIO-C26-07,Convergent Evolution,CONTRASTS_WITH,c26,Divergent adaptive radiation contrasts with convergent evolution
+BIO-C36-01,Organisms and Environment,BIO-C36-02,Populations,PART_OF,c36,Organisms constitute populations
+BIO-C36-02,Populations,BIO-C36-03,Ecological Communities,PART_OF,c36,Interacting populations form communities
+BIO-C36-03,Ecological Communities,BIO-C34-01,Ecosystem Structure,PART_OF,c34,Communities interact with abiotic factors to form ecosystems
+BIO-C34-01,Ecosystem Structure,BIO-C34-03,Food Chains and Webs,RELATED_TO,c34,Ecosystems feature trophic structure like food webs
+BIO-C34-03,Food Chains and Webs,BIO-C34-01,Ecosystem Productivity and Energy Flow,CAUSES,c34,Feeding relationships drive energy flow
+BIO-C34-04,Ecological Pyramids,BIO-C34-02,10 Percent Law of Energy Transfer (Lindeman),EXAMPLE_OF,c34,Pyramid of energy illustrates the 10 percent law
+BIO-C34-05,Ecological Succession,BIO-C34-06,Climax Community,RESULTS_IN,c34,Successional stages lead to a stable climax community
+BIO-C34-07,Biogeochemical Cycles,BIO-C34-01,Ecosystem Structure,REQUIRED_FOR,c34,Nutrient cycling is vital for ecosystem functioning
+BIO-C31-01,Tools of Recombinant DNA: Restriction Enzymes and pBR322,BIO-C31-02,Polymerase Chain Reaction (PCR),RELATED_TO,c31,Both are core techniques in genetic engineering
+BIO-C31-02,Polymerase Chain Reaction (PCR),BIO-C31-03,Gene Cloning,REQUIRED_FOR,c31,Gene amplification is often needed before cloning
+BIO-C31-03,Gene Cloning,BIO-C31-04,Downstream Processing,PRECEDES,c31,Cloning and expression precede product extraction
+BIO-C31-04,Downstream Processing,BIO-C32-02,Genetically Engineered Human Insulin,REQUIRED_FOR,c32,Purification is necessary for commercial insulin production
+BIO-C31-03,Gene Cloning,BIO-C32-03,Gene Therapy,REQUIRED_FOR,c32,Cloning vectors deliver genes in therapy
+BIO-C16-01,Digestion and Pancreatic Secretions,BIO-C16-02,Absorption of Nutrients,PRECEDES,c16,Digestion breaks down food before absorption
+BIO-C16-02,Absorption of Nutrients,BIO-C18-02,Blood Transport,REQUIRED_FOR,c16,Absorbed nutrients enter blood for transport
+BIO-C18-02,Blood Transport,BIO-C14-03,Cellular Respiration,REQUIRED_FOR,c18,Blood delivers glucose and oxygen for respiration
+BIO-C17-01,Mechanism of Breathing and Gas Exchange,BIO-C18-02,Blood Transport,PRECEDES,c17,Gas exchange oxygenates blood for transport
+BIO-C18-02,Blood Transport,BIO-C19-01,Nephron Function and Countercurrent Mechanism,REQUIRED_FOR,c19,Blood circulation delivers waste to kidneys
+BIO-C11-01,Light Reaction,BIO-C11-02,Calvin Cycle,PRECEDES,c11,Light reactions produce ATP and NADPH used by Calvin cycle
+BIO-C11-02,Calvin Cycle,BIO-C11-03,Photorespiration,CONTRASTS_WITH,c11,Calvin cycle fixes CO2 while photorespiration wastes energy
+BIO-C11-04,C4 Pathway,BIO-C11-03,Photorespiration,CONTRASTS_WITH,c11,C4 plants avoid photorespiration
+BIO-C14-03,Cellular Respiration,BIO-C14-04,Fermentation,CONTRASTS_WITH,c14,Aerobic respiration contrasts with anaerobic fermentation
+BIO-C14-01,EMP Pathway Reactions and ATP Yield,BIO-C14-04,Fermentation,PRECEDES,c14,Glycolysis precedes fermentation in absence of oxygen
+BIO-C08-03,Cell Membrane Structure,BIO-C08-04,Active Transport,REQUIRED_FOR,c08,Fluid mosaic model enables transport proteins
+BIO-C08-04,Active Transport,BIO-C08-05,Passive Transport,CONTRASTS_WITH,c08,Active requires ATP while passive does not
+BIO-C10-02,Mitosis,BIO-C10-03,Meiosis,CONTRASTS_WITH,c10,Equational division contrasts with reductional division
+BIO-C10-02,Mitosis,BIO-C10-04,Cell Cycle Regulation,RELATED_TO,c10,Checkpoints regulate mitotic progression
+BIO-C08-06,Nucleus,BIO-C08-07,Ribosomes,REQUIRED_FOR,c08,Nucleolus synthesizes ribosomal RNA
+BIO-C01-01,Asexual Reproduction,BIO-C01-02,Sexual Reproduction,CONTRASTS_WITH,c01,Clonal reproduction contrasts with genetic recombination
+BIO-C01-02,Sexual Reproduction,BIO-C01-03,Gametogenesis,REQUIRED_FOR,c01,Gamete formation is essential for sexual reproduction
+BIO-C01-03,Gametogenesis,BIO-C01-04,Syngamy,PRECEDES,c01,Gametes must form before they can fuse
+BIO-C01-04,Syngamy,BIO-C01-05,Embryogenesis,PRECEDES,c01,Zygote formation precedes embryo development

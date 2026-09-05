@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_f9f64f3615",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P135-07",
+    "title": "Photosynthesis in Higher Plants \u2014 11.2 EARLY EXPERIMENTS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P135-07": {
+      "next_review": "2026-09-08T09:03:55.485856+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.2 EARLY EXPERIMENTS"
+    }
+  },
+  "updated_at": "2026-09-05T09:03:55.485871+00:00"
+}

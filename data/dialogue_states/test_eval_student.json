@@ -1,0 +1,22 @@
+{
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P136-09",
+    "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?"
+  },
+  "updated_at": "2026-09-05T10:12:31.698714+00:00",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P136-09": {
+      "next_review": "2026-09-08T10:12:31.698697+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?"
+    },
+    "NCERT-ClassXII-CH02-P039-18": {
+      "title": "Human Reproduction \u2014 2.7 PARTURITION AND LACTATION",
+      "next_review": "2026-09-08T10:12:17.196783+00:00",
+      "mastery": 0.5
+    }
+  },
+  "student_id": "test_eval_student",
+  "turns": 14,
+  "last_strategy": "standard_ncert"
+}

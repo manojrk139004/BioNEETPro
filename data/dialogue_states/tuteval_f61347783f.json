@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_f61347783f",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH09-P003-05",
+    "title": "Biotechnology : Principles and Processes \u2014 9.2 Tools of Recombinant DNA"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH09-P003-05": {
+      "next_review": "2026-09-08T07:44:46.891813+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology : Principles and Processes \u2014 9.2 Tools of Recombinant DNA"
+    }
+  },
+  "updated_at": "2026-09-05T07:44:46.891827+00:00"
+}

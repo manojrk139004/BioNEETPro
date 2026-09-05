@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_71c55234b6",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P015-22",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.11 a);  some of them eventually reach the female flowers and the stigma."
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P015-22": {
+      "next_review": "2026-09-08T08:37:05.569190+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.11 a);  some of them eventually reach the female flowers and the stigma."
+    }
+  },
+  "updated_at": "2026-09-05T08:37:05.597874+00:00"
+}

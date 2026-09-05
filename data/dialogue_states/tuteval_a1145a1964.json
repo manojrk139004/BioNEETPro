@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_a1145a1964",
+  "turns": 2,
+  "focal": {
+    "concept_id": "BIO-C21-01",
+    "title": "Brain Anatomy: White Matter vs Grey Matter"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH12-P164-21": {
+      "next_review": "2026-09-08T06:50:23.419895+00:00",
+      "mastery": 0.5,
+      "title": "Respiration in Plants \u2014 12.7 RESPIRATORY QUOTIENT"
+    },
+    "BIO-C21-01": {
+      "next_review": "2026-09-08T06:50:25.916839+00:00",
+      "mastery": 0.5,
+      "title": "Brain Anatomy: White Matter vs Grey Matter"
+    }
+  },
+  "updated_at": "2026-09-05T06:50:25.916857+00:00"
+}

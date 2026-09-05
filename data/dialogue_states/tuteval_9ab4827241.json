@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_9ab4827241",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P003-05",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.1 Flower \u2013 A Fascinating"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P003-05": {
+      "next_review": "2026-09-08T06:20:52.961883+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.1 Flower \u2013 A Fascinating"
+    }
+  },
+  "updated_at": "2026-09-05T06:20:52.961899+00:00"
+}

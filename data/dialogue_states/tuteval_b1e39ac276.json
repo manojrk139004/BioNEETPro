@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_b1e39ac276",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH11-P203-23",
+    "title": "Organisms and Populations \u2014 11.1.4 Population Interactions"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH11-P203-23": {
+      "next_review": "2026-09-08T08:22:16.586985+00:00",
+      "mastery": 0.5,
+      "title": "Organisms and Populations \u2014 11.1.4 Population Interactions"
+    }
+  },
+  "updated_at": "2026-09-05T08:22:16.586999+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_ae05986020",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH07-P137-18",
+    "title": "Human Health and Disease \u2014 7.2.7 Immune System in the Body"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P137-18": {
+      "next_review": "2026-09-08T08:39:21.848966+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.2.7 Immune System in the Body"
+    }
+  },
+  "updated_at": "2026-09-05T08:39:21.848998+00:00"
+}

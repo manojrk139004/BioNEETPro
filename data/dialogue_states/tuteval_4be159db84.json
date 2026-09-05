@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_4be159db84",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C10-01",
+    "title": "Crossing Over in Pachytene"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C10-01": {
+      "next_review": "2026-09-08T08:33:42.816103+00:00",
+      "mastery": 0.5,
+      "title": "Crossing Over in Pachytene"
+    }
+  },
+  "updated_at": "2026-09-05T08:33:42.816118+00:00"
+}

@@ -1,0 +1,184 @@
+[
+ {
+  "path": "data\\concept_dependency_graph.csv",
+  "bytes": 14355,
+  "columns": [
+   "source_concept_id",
+   "source_title",
+   "target_concept_id",
+   "target_title",
+   "relationship",
+   "chapter_id",
+   "description"
+  ],
+  "rows": 97,
+  "sample": {
+   "source_concept_id": "BIO-C08-01",
+   "source_title": "Mitochondria and ATP Synthesis",
+   "target_concept_id": "BIO-C14-01",
+   "target_title": "EMP Pathway Reactions and ATP Yield",
+   "relationship": "PREREQUISITE_OF",
+   "chapter_id": "c14",
+   "description": "Glycolytic end product pyruvate enters mitochondria for complete aerobic oxidation"
+  }
+ },
+ {
+  "path": "data\\indexed_mcqs_cache.json",
+  "bytes": 99758,
+  "json_type": "list",
+  "json_len": 157,
+  "sample_keys": [
+   "id",
+   "concept_id",
+   "chapter",
+   "topic",
+   "question",
+   "options",
+   "correct_index",
+   "correct_answer",
+   "explanation",
+   "difficulty",
+   "cognitive_level",
+   "source"
+  ]
+ },
+ {
+  "path": "data\\ncert_exercises_index.json",
+  "bytes": 34961,
+  "json_type": "list",
+  "json_len": 178,
+  "sample_keys": [
+   "chapter_number",
+   "question",
+   "source_file"
+  ]
+ },
+ {
+  "path": "data\\ncert_figures_index.json",
+  "bytes": 88948,
+  "json_type": "list",
+  "json_len": 573,
+  "sample_keys": [
+   "chapter_number",
+   "page_doc",
+   "file",
+   "caption",
+   "source_file"
+  ]
+ },
+ {
+  "path": "data\\ncert_tables_index.json",
+  "bytes": 52555,
+  "json_type": "list",
+  "json_len": 25,
+  "sample_keys": [
+   "chapter_number",
+   "class",
+   "page_doc",
+   "rows",
+   "source_file"
+  ]
+ },
+ {
+  "path": "data\\ncert_textbook_checksums.json",
+  "bytes": 125,
+  "json_type": "dict",
+  "json_len": 4,
+  "sample_keys": [
+   "hash",
+   "chunks_count",
+   "chapters_count",
+   "timestamp"
+  ]
+ },
+ {
+  "path": "data\\ncert_textbook_index.json",
+  "bytes": 1475480,
+  "json_type": "list",
+  "json_len": 774,
+  "sample_keys": [
+   "chunk_id",
+   "class",
+   "book",
+   "chapter_number",
+   "chapter_title",
+   "section",
+   "subsection",
+   "page_number",
+   "text",
+   "concepts",
+   "keywords",
+   "source_file"
+  ]
+ },
+ {
+  "path": "data\\neet_knowledge_base.csv",
+  "bytes": 171993,
+  "columns": [
+   "concept_id",
+   "chapter_id",
+   "chapter_name",
+   "topic",
+   "title",
+   "definition",
+   "mechanism_steps",
+   "neet_traps",
+   "sample_question",
+   "sample_options",
+   "correct_answer",
+   "explanation"
+  ],
+  "rows": 158,
+  "sample": {
+   "concept_id": "BIO-C01-01",
+   "chapter_id": "c01",
+   "chapter_name": "The Living World",
+   "topic": "Taxonomy",
+   "title": "Binomial Nomenclature",
+   "definition": "Binomial Nomenclature is a formal system of naming species by giving each a name composed of two parts: the genus name (capitalized) and the specific epithet (lowercase), both printed in italics or underlined separately when handwritten.",
+   "mechanism_steps": "Step 1: Identify specimen morphology -> Step 2: Assign genus based on shared generic characters -> Step 3: Assign unique specific epithet -> Step 4: Latinize and format according to ICBN (plants) or ICZN (animals).",
+   "neet_traps": "NEET Trap: Specific epithet never begins with a capital letter (e.g. Mangifera indica, NOT Mangifera Indica). Also, author's name appears at the end in Roman script without italics (e.g. Mangifera indica Linn.).",
+   "sample_question": "According to Binomial Nomenclature, which of the following is written correctly?",
+   "sample_options": "Mangifera Indica Linn.|mangifera indica|Mangifera indica Linn.|Mangifera indica linn.",
+   "correct_answer": 2,
+   "explanation": "Mangifera indica Linn. is correct because the genus starts with uppercase, specific epithet with lowercase, and author citation is in standard Roman font."
+  }
+ },
+ {
+  "path": "data\\student_learning_tracker.csv",
+  "bytes": 38628,
+  "columns": [
+   "session_id",
+   "timestamp",
+   "student_id",
+   "query_text",
+   "matched_concept_id",
+   "similarity_score",
+   "current_step",
+   "mastery_score",
+   "feedback_status"
+  ],
+  "rows": 270,
+  "sample": {
+   "session_id": "demo-init",
+   "timestamp": "2026-09-02T10:00:00Z",
+   "student_id": "student_demo",
+   "query_text": "Explain photosynthesis light reaction",
+   "matched_concept_id": "BIO-C13-01",
+   "similarity_score": 0.892,
+   "current_step": 4,
+   "mastery_score": 0.72,
+   "feedback_status": "understood"
+  }
+ },
+ {
+  "path": "data\\syllabus_registry.json",
+  "bytes": 28741,
+  "json_type": "dict",
+  "json_len": 2,
+  "sample_keys": [
+   "class_11",
+   "class_12"
+  ]
+ }
+]

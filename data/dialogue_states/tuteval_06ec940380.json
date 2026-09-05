@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_06ec940380",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P095-19",
+    "title": "Cell : The Unit of Life \u2014 8.5.3.2 Golgi apparatus"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P095-19": {
+      "next_review": "2026-09-08T08:26:52.638694+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.3.2 Golgi apparatus"
+    }
+  },
+  "updated_at": "2026-09-05T08:26:52.638712+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "student_id": "tuteval_a5da2d5323",
+  "turns": 4,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P120-15",
+    "title": "Evolution \u2014 6.7 HARDY-WEINBERG PRINCIPLE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P096-20": {
+      "next_review": "2026-09-08T06:47:00.989050+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.3.3 Lysosomes"
+    },
+    "NCERT-ClassXI-CH08-P088-07": {
+      "next_review": "2026-09-08T06:47:04.153060+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.3 AN OVERVIEW OF CELL"
+    },
+    "BIO-C06-02": {
+      "next_review": "2026-09-08T06:47:12.310387+00:00",
+      "mastery": 0.5,
+      "title": "Xylem & Phloem Elements"
+    },
+    "NCERT-ClassXII-CH06-P120-15": {
+      "next_review": "2026-09-08T06:47:14.926972+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.7 HARDY-WEINBERG PRINCIPLE"
+    }
+  },
+  "updated_at": "2026-09-05T06:47:14.926986+00:00"
+}

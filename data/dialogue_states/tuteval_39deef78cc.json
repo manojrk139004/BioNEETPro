@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_39deef78cc",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH07-P134-09",
+    "title": "Human Health and Disease \u2014 7.1 COMMON DISEASES IN HUMANS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P134-09": {
+      "next_review": "2026-09-08T09:11:51.331946+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.1 COMMON DISEASES IN HUMANS"
+    }
+  },
+  "updated_at": "2026-09-05T09:11:51.331960+00:00"
+}

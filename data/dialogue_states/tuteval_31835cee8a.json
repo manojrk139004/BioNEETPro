@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_31835cee8a",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH02-P011-05",
+    "title": "Biological Classification \u2014 2.1 Characteristics of the Five Kingdoms"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH02-P011-05": {
+      "next_review": "2026-09-08T08:23:06.878655+00:00",
+      "mastery": 0.5,
+      "title": "Biological Classification \u2014 2.1 Characteristics of the Five Kingdoms"
+    }
+  },
+  "updated_at": "2026-09-05T08:23:06.878722+00:00"
+}

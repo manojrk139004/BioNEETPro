@@ -1,0 +1,17 @@
+{
+  "student_id": "weakgen_9ddb9ea3",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C27-01",
+    "title": "Mendel's Laws of Segregation and Independent Assortment"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C27-01": {
+      "next_review": "2026-09-08T09:41:01.079263+00:00",
+      "mastery": 0.582,
+      "title": "Mendel's Laws of Segregation and Independent Assortment"
+    }
+  },
+  "updated_at": "2026-09-05T09:41:01.079281+00:00"
+}

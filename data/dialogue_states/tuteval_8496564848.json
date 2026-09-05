@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_8496564848",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH10-P121-04",
+    "title": "Cell Cycle and Cell Division \u2014 10.1.1 Phases of Cell Cycle"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH10-P120-02": {
+      "next_review": "2026-09-08T09:27:32.667218+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.1 CELL CYCLE"
+    },
+    "NCERT-ClassXI-CH10-P121-04": {
+      "next_review": "2026-09-08T09:27:41.089575+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.1.1 Phases of Cell Cycle"
+    }
+  },
+  "updated_at": "2026-09-05T09:27:41.089595+00:00"
+}

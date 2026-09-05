@@ -1,0 +1,17 @@
+{
+  "student_id": "tprobe_y2",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P136-09",
+    "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P136-09": {
+      "next_review": "2026-09-08T06:35:38.689759+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?"
+    }
+  },
+  "updated_at": "2026-09-05T06:35:38.689778+00:00"
+}

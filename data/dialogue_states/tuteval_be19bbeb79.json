@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_be19bbeb79",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P138-11",
+    "title": "Photosynthesis in Higher Plants \u2014 11.5 WHAT IS LIGHT REACTION?"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P138-11": {
+      "next_review": "2026-09-08T07:22:26.859390+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.5 WHAT IS LIGHT REACTION?"
+    }
+  },
+  "updated_at": "2026-09-05T07:22:26.859404+00:00"
+}

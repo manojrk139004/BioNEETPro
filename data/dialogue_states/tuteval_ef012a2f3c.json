@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_ef012a2f3c",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH10-P120-02",
+    "title": "Cell Cycle and Cell Division \u2014 10.1 CELL CYCLE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH10-P120-02": {
+      "next_review": "2026-09-08T09:12:10.533856+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.1 CELL CYCLE"
+    }
+  },
+  "updated_at": "2026-09-05T09:12:10.533872+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_1caa550e99",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P094-15",
+    "title": "Cell : The Unit of Life \u2014 8.5.1 Cell Membrane"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P094-15": {
+      "next_review": "2026-09-08T09:05:55.199091+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.1 Cell Membrane"
+    }
+  },
+  "updated_at": "2026-09-05T09:05:55.199108+00:00"
+}

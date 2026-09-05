@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_559fe03f7f",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH15-P193-01",
+    "title": "Body Fluids and Circulation \u2014 15.0 Overview"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH08-P153-07": {
+      "next_review": "2026-09-08T08:36:20.121799+00:00",
+      "mastery": 0.5,
+      "title": "Microbes in Human Welfare \u2014 8.2.2 Antibiotics"
+    },
+    "NCERT-ClassXI-CH15-P193-01": {
+      "next_review": "2026-09-08T08:36:23.772451+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.0 Overview"
+    }
+  },
+  "updated_at": "2026-09-05T08:36:23.772475+00:00"
+}

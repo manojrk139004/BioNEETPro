@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_73256eded9",
+  "turns": 2,
+  "focal": {
+    "concept_id": "BIO-C18-01",
+    "title": "Cardiac Cycle and Conducting System"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C16-01": {
+      "next_review": "2026-09-08T09:24:44.532211+00:00",
+      "mastery": 0.5,
+      "title": "Human Digestive System: Gastrointestinal Secretions, Enzymes & Absorption"
+    },
+    "BIO-C18-01": {
+      "next_review": "2026-09-08T09:24:47.666327+00:00",
+      "mastery": 0.5,
+      "title": "Cardiac Cycle and Conducting System"
+    }
+  },
+  "updated_at": "2026-09-05T09:24:47.666343+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_ca221b826d",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH12-P155-05",
+    "title": "Respiration in Plants \u2014 12.2 GLYCOLYSIS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH12-P155-05": {
+      "next_review": "2026-09-08T06:55:08.152713+00:00",
+      "mastery": 0.5,
+      "title": "Respiration in Plants \u2014 12.2 GLYCOLYSIS"
+    }
+  },
+  "updated_at": "2026-09-05T06:55:08.152729+00:00"
+}

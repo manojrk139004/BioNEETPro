@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_3339e3a06f",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH11-P195-11",
+    "title": "Organisms and Populations \u2014 11.3 ) and results in a J-shaped curve when we plot"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH11-P195-11": {
+      "next_review": "2026-09-08T08:31:23.494622+00:00",
+      "mastery": 0.5,
+      "title": "Organisms and Populations \u2014 11.3 ) and results in a J-shaped curve when we plot"
+    }
+  },
+  "updated_at": "2026-09-05T08:31:23.494636+00:00"
+}

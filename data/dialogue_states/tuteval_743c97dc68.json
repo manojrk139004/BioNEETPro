@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_743c97dc68",
+  "turns": 1,
+  "focal": {
+    "concept_id": "KAG-SAM-022",
+    "title": "During which phase of the human menstrual cycle does the LH surge occur tha..."
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "KAG-SAM-022": {
+      "next_review": "2026-09-08T07:56:07.899225+00:00",
+      "mastery": 0.5,
+      "title": "During which phase of the human menstrual cycle does the LH surge occur tha..."
+    }
+  },
+  "updated_at": "2026-09-05T07:56:07.899242+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_53a97560c6",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P144-24",
+    "title": "Photosynthesis in Higher Plants \u2014 11.7.2 The Calvin Cycle"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P144-24": {
+      "next_review": "2026-09-08T06:54:31.728396+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.7.2 The Calvin Cycle"
+    }
+  },
+  "updated_at": "2026-09-05T06:54:31.728410+00:00"
+}

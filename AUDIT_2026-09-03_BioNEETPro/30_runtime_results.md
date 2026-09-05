@@ -1,0 +1,38 @@
+# PART 11+13 - Runtime results (36 forensic probes, live app 2026-09-03)
+
+- `Explain mitochondria.` => intent=overview_explanation concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.582
+- `Why does it have folds?` => intent=why concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.524
+- `What does that increase?` => intent=general_doubt concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.425
+- `Give me 3 questions on it.` => intent=mcq_request concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.318
+- `I got question 2 wrong.` => intent=mcq_request concept=None mode=local_fallback conf=LOW title= cites=0 mcq=False faith=None
+- `Explain it again.` => intent=overview_explanation concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.432
+- `teach me about cell` => intent=overview_explanation concept=Cell mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.1 WHAT IS A CELL? cites=3 mcq=False faith=0.64
+- `teach me abt cell` => intent=overview_explanation concept=Cell mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.1 WHAT IS A CELL? cites=3 mcq=False faith=0.64
+- `what is a cell` => intent=definition concept=Cell mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.1 WHAT IS A CELL? cites=3 mcq=False faith=0.591
+- `explain mitochondria` => intent=overview_explanation concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.566
+- `why does mitochondria have folds?` => intent=why concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.527
+- `what does that increase?` => intent=general_doubt concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.558
+- `teach me about brain` => intent=overview_explanation concept=Brain mode=api_grounded conf=HIGH title=Neural Control and Coordination — 18.4.3 Hindbrain cites=3 mcq=False faith=0.651
+- `explain glycolysis EMP pathway and ATP yield` => intent=how_process concept=Glycolysis mode=api_grounded conf=HIGH title=Respiration in Plants — 12.2 GLYCOLYSIS cites=3 mcq=False faith=0.473
+- `teach me glycolysis from basics` => intent=overview_explanation concept=Glycolysis mode=api_grounded conf=HIGH title=Respiration in Plants — 12.2 GLYCOLYSIS cites=3 mcq=False faith=0.407
+- `why is ATP used in the first part of glycolysis?` => intent=why concept=Glycolysis mode=api_grounded conf=HIGH title=Respiration in Plants — 12.2 GLYCOLYSIS cites=3 mcq=False faith=0.429
+- `what happens after glucose becomes pyruvate?` => intent=general_doubt concept=Glycolysis mode=api_grounded conf=HIGH title=Respiration in Plants — 12.2 GLYCOLYSIS cites=3 mcq=False faith=0.372
+- `why?` => intent=why concept=None mode=syllabus_restricted conf=REJECTED title= cites=0 mcq=False faith=None
+- `explain it again` => intent=overview_explanation concept=Respiration in Plants mode=api_grounded conf=HIGH title=Respiration in Plants — 12.2 GLYCOLYSIS cites=3 mcq=False faith=0.31
+- `what is Newton's second law?` => intent=definition concept=None mode=syllabus_restricted conf=REJECTED title= cites=0 mcq=False faith=None
+- `mitocondria powrhouse of cell` => intent=general_doubt concept=Mitochondria mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.4 Mitochondria cites=3 mcq=False faith=0.578
+- `diff b/w mitosis meiosis` => intent=difference_comparison concept=Mitosis mode=api_grounded conf=HIGH title=Cell Cycle and Cell Division — 10.3 Significance o cites=3 mcq=False faith=0.466
+- `Krebs?` => intent=general_doubt concept=None mode=api_grounded conf=MEDIUM title=Krebs Citric Acid Cycle, Mitochondrial Electron Tr cites=2 mcq=True faith=0.568
+- `compare xylem vs phloem tissue including what each transports and where they are found in the plant body` => intent=difference_comparison concept=Electron Transport System mode=api_grounded conf=HIGH title=Respiration in Plants — 12.4.2 Electron Transport  cites=3 mcq=False faith=0.322
+- `function of ribosomes` => intent=function concept=Ribosome mode=api_grounded conf=HIGH title=Cell : The Unit of Life — 8.5.6 Ribosomes cites=3 mcq=False faith=0.583
+- ` explain   ATP!!! ` => intent=overview_explanation concept=ATP mode=api_grounded conf=HIGH title=Photosynthesis in Higher Plants — 11.7 WHERE ARE T cites=3 mcq=False faith=0.415
+- `` => intent=general_doubt concept=None mode=syllabus_restricted conf=REJECTED title= cites=0 mcq=False faith=None
+- `asdkfjh qwerty zzz` => intent=general_doubt concept=None mode=syllabus_restricted conf=REJECTED title= cites=0 mcq=False faith=None
+- `what is molarity?` => intent=definition concept=None mode=syllabus_restricted conf=REJECTED title= cites=0 mcq=False faith=None
+- `stock market tips` => intent=general_doubt concept=None mode=syllabus_restricted conf=REJECTED title= cites=0 mcq=False faith=None
+- `now teach me heart` => intent=overview_explanation concept=Cardiac Cycle mode=api_grounded conf=HIGH title=Body Fluids and Circulation — 15.3.2 Cardiac Cycle cites=3 mcq=False faith=0.537
+- MCQ `give me 2 mcq on cockroach` => count=2 diff=medium/adaptive_profile topic=Cockroach
+- MCQ `give me five hard questions on genetics` => count=5 diff=hard/user_override topic=Genetics
+- MCQ `give me questions from my weak topics` => count=5 diff=medium/adaptive_profile topic=Diagnostic Mixed Syllabus (No Weak Topics Yet)
+- MCQ `give me 3 questions on this` => count=1 diff=medium/adaptive_profile topic=Cardiac Cycle
+- SEPARATION => mode=api_grounded mastery=0.5

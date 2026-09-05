@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_0fc40cd96e",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P126-23",
+    "title": "Evolution \u2014 6.9 ORIGIN AND EVOLUTION OF MAN"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P126-23": {
+      "next_review": "2026-09-08T08:30:59.236277+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.9 ORIGIN AND EVOLUTION OF MAN"
+    }
+  },
+  "updated_at": "2026-09-05T08:30:59.236302+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_46a99d24e7",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P025-39",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.5 APOMIXIS AND POLYEMBRYONY"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P025-39": {
+      "next_review": "2026-09-08T08:50:44.177269+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.5 APOMIXIS AND POLYEMBRYONY"
+    }
+  },
+  "updated_at": "2026-09-05T08:50:44.177290+00:00"
+}

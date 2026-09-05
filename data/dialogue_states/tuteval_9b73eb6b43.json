@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_9b73eb6b43",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH10-P125-13",
+    "title": "Cell Cycle and Cell Division"
+  },
+  "last_strategy": "guided_lesson",
+  "reviews": {
+    "NCERT-ClassXI-CH10-P125-13": {
+      "next_review": "2026-09-08T08:27:06.589845+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division"
+    }
+  },
+  "updated_at": "2026-09-05T08:27:06.589864+00:00"
+}

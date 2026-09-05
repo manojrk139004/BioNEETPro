@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_1c7db23dbe",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C18-05",
+    "title": "Why Arteries Have Thick Elastic Walls & Why Veins Have Valves"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C18-05": {
+      "next_review": "2026-09-08T09:11:45.085641+00:00",
+      "mastery": 0.5,
+      "title": "Why Arteries Have Thick Elastic Walls & Why Veins Have Valves"
+    }
+  },
+  "updated_at": "2026-09-05T09:11:45.085663+00:00"
+}

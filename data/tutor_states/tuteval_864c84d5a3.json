@@ -1,0 +1,23 @@
+{
+  "active_lesson": true,
+  "lesson_stage": 1,
+  "lesson_concept": "NCERT-ClassXI-CH10-P125-13",
+  "pending_check_question": "What is the key function of Cell Cycle and Cell Division?",
+  "lesson_steps": [
+    [
+      "definition",
+      "The production of offspring by sexual reproduction includes the fusion of two gametes, each with a complete haploid set of chromosomes. Gametes are formed from specialised diploid cells. This specialised kind of cell division that reduces the chromosome number by half results in the production of haploid daughter cells. This kind of division is called meiosis. Meiosis ensures the production of hap"
+    ],
+    [
+      "definition",
+      "Mitosis thus, is the equational division in which the chromosome number of the parent is conserved in the daughter cell. In contrast to mitosis, meiosis occurs in the diploid cells, which are destined to form gametes. It is called the reduction division since it reduces the chromosome number by half while making the gametes. In sexual reproduction when the two gametes fuse the chromosome number is"
+    ],
+    [
+      "definition",
+      "Prophase II: Meiosis II is initiated immediately after cytokinesis, usually before the chromosomes have fully elongated.  In contrast to meiosis I, meiosis II resembles a normal mitosis. The nuclear membrane disappears by the end of prophase II (Figure 10.4). The chromosomes again become compact. Metaphase II: At this stage, the chromosomes align at the equator and the microtubules from opposite p"
+    ]
+  ],
+  "current_step_index": 0,
+  "misconceptions": {},
+  "last_action": null
+}

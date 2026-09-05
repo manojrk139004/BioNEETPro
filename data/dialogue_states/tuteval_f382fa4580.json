@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_f382fa4580",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C03-01",
+    "title": "Algae Classification & Pigments"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C03-01": {
+      "next_review": "2026-09-08T06:45:14.767628+00:00",
+      "mastery": 0.5,
+      "title": "Algae Classification & Pigments"
+    }
+  },
+  "updated_at": "2026-09-05T06:45:14.767643+00:00"
+}

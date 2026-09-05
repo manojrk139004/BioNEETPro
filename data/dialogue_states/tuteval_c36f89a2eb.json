@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_c36f89a2eb",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH15-P197-12",
+    "title": "Body Fluids and Circulation \u2014 15.3 CIRCULATORY PATHWAYS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P197-12": {
+      "next_review": "2026-09-08T06:38:33.755062+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3 CIRCULATORY PATHWAYS"
+    }
+  },
+  "updated_at": "2026-09-05T06:38:33.755076+00:00"
+}

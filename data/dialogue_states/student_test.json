@@ -1,0 +1,32 @@
+{
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH10-P125-13",
+    "title": "Cell Cycle and Cell Division \u2014 10.4 MEIOSIS"
+  },
+  "updated_at": "2026-09-05T09:33:55.597331+00:00",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P096-22": {
+      "title": "Cell : The Unit of Life \u2014 8.5.4 Mitochondria",
+      "next_review": "2026-09-08T09:33:42.478975+00:00",
+      "mastery": 0.5
+    },
+    "NCERT-ClassXI-CH05-P063-16": {
+      "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower",
+      "next_review": "2026-09-08T09:33:31.438614+00:00",
+      "mastery": 0.5
+    },
+    "NCERT-ClassXI-CH11-P136-09": {
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?",
+      "next_review": "2026-09-08T09:33:36.653079+00:00",
+      "mastery": 0.5
+    },
+    "NCERT-ClassXI-CH10-P125-13": {
+      "next_review": "2026-09-08T09:33:55.597313+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.4 MEIOSIS"
+    }
+  },
+  "student_id": "student_test",
+  "turns": 7,
+  "last_strategy": "standard_ncert"
+}

@@ -1,0 +1,132 @@
+{
+  "student_id": "sync_probe_fc",
+  "cards": {
+    "fc_6295eb2ff69a": {
+      "created_at": "2026-09-05T02:02:42.717336+00:00",
+      "tags": [],
+      "box": 1,
+      "front": "Q?",
+      "chapter_id": "c08",
+      "concept_id": "",
+      "next_review": "2026-09-08T02:02:43.614893+00:00",
+      "updated_at": "2026-09-05T02:02:43.614904+00:00",
+      "review_history": [
+        {
+          "timestamp": "2026-09-05T02:02:43.614905+00:00",
+          "is_correct": true,
+          "previous_box": 0,
+          "new_box": 1
+        }
+      ],
+      "back": "A.",
+      "card_id": "fc_6295eb2ff69a"
+    },
+    "fc_ec95dda09fbd": {
+      "card_id": "fc_ec95dda09fbd",
+      "front": "Q?",
+      "back": "A.",
+      "concept_id": "",
+      "chapter_id": "c08",
+      "tags": [],
+      "box": 1,
+      "next_review": "2026-09-08T03:03:27.210188+00:00",
+      "created_at": "2026-09-05T03:03:25.576222+00:00",
+      "updated_at": "2026-09-05T03:03:27.210203+00:00",
+      "review_history": [
+        {
+          "timestamp": "2026-09-05T03:03:27.210205+00:00",
+          "is_correct": true,
+          "previous_box": 0,
+          "new_box": 1
+        }
+      ]
+    },
+    "fc_ff422f2ef8b5": {
+      "card_id": "fc_ff422f2ef8b5",
+      "front": "Q?",
+      "back": "A.",
+      "concept_id": "",
+      "chapter_id": "c08",
+      "tags": [],
+      "box": 1,
+      "next_review": "2026-09-08T04:42:06.261483+00:00",
+      "created_at": "2026-09-05T04:42:04.731707+00:00",
+      "updated_at": "2026-09-05T04:42:06.261509+00:00",
+      "review_history": [
+        {
+          "timestamp": "2026-09-05T04:42:06.261511+00:00",
+          "is_correct": true,
+          "previous_box": 0,
+          "new_box": 1
+        }
+      ]
+    },
+    "fc_7dc544f98275": {
+      "card_id": "fc_7dc544f98275",
+      "front": "Q?",
+      "back": "A.",
+      "concept_id": "",
+      "chapter_id": "c08",
+      "tags": [],
+      "box": 1,
+      "next_review": "2026-09-08T05:14:11.718989+00:00",
+      "created_at": "2026-09-05T05:14:10.174179+00:00",
+      "updated_at": "2026-09-05T05:14:11.719004+00:00",
+      "review_history": [
+        {
+          "timestamp": "2026-09-05T05:14:11.719005+00:00",
+          "is_correct": true,
+          "previous_box": 0,
+          "new_box": 1
+        }
+      ]
+    },
+    "fc_3b1a3a5e4f4e": {
+      "card_id": "fc_3b1a3a5e4f4e",
+      "front": "Q?",
+      "back": "A.",
+      "concept_id": "",
+      "chapter_id": "c08",
+      "tags": [],
+      "box": 1,
+      "next_review": "2026-09-08T05:27:06.892275+00:00",
+      "created_at": "2026-09-05T05:27:05.313400+00:00",
+      "updated_at": "2026-09-05T05:27:06.892288+00:00",
+      "review_history": [
+        {
+          "timestamp": "2026-09-05T05:27:06.892290+00:00",
+          "is_correct": true,
+          "previous_box": 0,
+          "new_box": 1
+        }
+      ]
+    },
+    "fc_a05e2c97ded9": {
+      "card_id": "fc_a05e2c97ded9",
+      "front": "Q?",
+      "back": "A.",
+      "concept_id": "",
+      "chapter_id": "c08",
+      "tags": [],
+      "box": 1,
+      "next_review": "2026-09-08T05:48:53.289936+00:00",
+      "created_at": "2026-09-05T05:48:51.683459+00:00",
+      "updated_at": "2026-09-05T05:48:53.289948+00:00",
+      "review_history": [
+        {
+          "timestamp": "2026-09-05T05:48:53.289950+00:00",
+          "is_correct": true,
+          "previous_box": 0,
+          "new_box": 1
+        }
+      ]
+    }
+  },
+  "updated_at": "2026-09-05T05:48:53.289955+00:00",
+  "stats": {
+    "current_streak": 6,
+    "correct_reviews": 6,
+    "total_reviews": 6,
+    "longest_streak": 6
+  }
+}

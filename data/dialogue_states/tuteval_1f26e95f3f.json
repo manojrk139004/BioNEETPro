@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_1f26e95f3f",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C16-01",
+    "title": "Human Digestive System: Gastrointestinal Secretions, Enzymes & Absorption"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C16-01": {
+      "next_review": "2026-09-08T06:21:12.321313+00:00",
+      "mastery": 0.5,
+      "title": "Human Digestive System: Gastrointestinal Secretions, Enzymes & Absorption"
+    }
+  },
+  "updated_at": "2026-09-05T06:21:12.321331+00:00"
+}

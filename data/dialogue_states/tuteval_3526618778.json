@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_3526618778",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P096-20",
+    "title": "Cell : The Unit of Life \u2014 8.5.3.3 Lysosomes"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P096-20": {
+      "next_review": "2026-09-08T06:14:54.495117+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.3.3 Lysosomes"
+    }
+  },
+  "updated_at": "2026-09-05T06:14:54.495134+00:00"
+}

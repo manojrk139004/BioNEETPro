@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_eeaae12fc8",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH06-P072-05",
+    "title": "Anatomy of Flowering Plants \u2014 6.1.2 The Ground Tissue System"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH06-P076-11": {
+      "next_review": "2026-09-08T08:58:42.149176+00:00",
+      "mastery": 0.5,
+      "title": "Anatomy of Flowering Plants \u2014 6.4 b). Vascular bundles are conjoint  and"
+    },
+    "NCERT-ClassXI-CH06-P072-05": {
+      "next_review": "2026-09-08T08:58:46.068554+00:00",
+      "mastery": 0.5,
+      "title": "Anatomy of Flowering Plants \u2014 6.1.2 The Ground Tissue System"
+    }
+  },
+  "updated_at": "2026-09-05T08:58:46.068569+00:00"
+}

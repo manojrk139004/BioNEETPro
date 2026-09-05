@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_e695076b55",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH12-P208-06",
+    "title": "Ecosystem \u2014 12.3 DECOMPOSITION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH12-P208-06": {
+      "next_review": "2026-09-08T07:37:34.001288+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.3 DECOMPOSITION"
+    }
+  },
+  "updated_at": "2026-09-05T07:37:34.001301+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_ed674802e0",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P012-18",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.9 b). This is the only type of pollination which"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P012-18": {
+      "next_review": "2026-09-08T06:37:49.121889+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.9 b). This is the only type of pollination which"
+    }
+  },
+  "updated_at": "2026-09-05T06:37:49.121904+00:00"
+}

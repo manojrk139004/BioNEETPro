@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_32fc053339",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P100-28",
+    "title": "Cell : The Unit of Life \u2014 8.5.10 Nucleus"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P100-28": {
+      "next_review": "2026-09-08T08:17:15.829336+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.10 Nucleus"
+    }
+  },
+  "updated_at": "2026-09-05T08:17:15.829352+00:00"
+}

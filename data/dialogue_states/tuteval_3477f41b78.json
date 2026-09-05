@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_3477f41b78",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P059-08",
+    "title": "Morphology of Flowering Plants \u2014 5.2 THE STEM"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P059-08": {
+      "next_review": "2026-09-08T09:25:22.896680+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.2 THE STEM"
+    }
+  },
+  "updated_at": "2026-09-05T09:25:22.919417+00:00"
+}

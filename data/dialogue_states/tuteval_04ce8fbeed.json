@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_04ce8fbeed",
+  "turns": 2,
+  "focal": {
+    "concept_id": "KAG-SAM-021",
+    "title": "Which immunoglobulin class is the only antibody capable of crossing the hum..."
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH07-P134-09": {
+      "next_review": "2026-09-08T08:09:05.370442+00:00",
+      "mastery": 0.5,
+      "title": "Human Health and Disease \u2014 7.1 COMMON DISEASES IN HUMANS"
+    },
+    "KAG-SAM-021": {
+      "next_review": "2026-09-08T08:09:13.208077+00:00",
+      "mastery": 0.5,
+      "title": "Which immunoglobulin class is the only antibody capable of crossing the hum..."
+    }
+  },
+  "updated_at": "2026-09-05T08:09:13.208107+00:00"
+}

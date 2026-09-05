@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_47dc12d1b8",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C19-03",
+    "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C19-03": {
+      "next_review": "2026-09-08T09:40:45.753481+00:00",
+      "mastery": 0.5,
+      "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+    }
+  },
+  "updated_at": "2026-09-05T09:40:45.753496+00:00"
+}

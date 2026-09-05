@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_e5f004be10",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-EXT-FALLBACK",
+    "title": "Teach Me Biofertilizers."
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-EXT-FALLBACK": {
+      "next_review": "2026-09-08T12:32:18.785072+00:00",
+      "mastery": 0.5,
+      "title": "Teach Me Biofertilizers."
+    }
+  },
+  "updated_at": "2026-09-05T12:32:18.785096+00:00"
+}

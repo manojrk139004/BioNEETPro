@@ -1,0 +1,17 @@
+{
+ "student_id": "test_sensitive",
+ "turns": 1,
+ "focal": {
+  "concept_id": "NCERT-ClassXII-CH02-P035-11",
+  "title": "Human Reproduction \u2014 2.4 MENSTRUAL CYCLE"
+ },
+ "last_strategy": "standard_ncert",
+ "reviews": {
+  "NCERT-ClassXII-CH02-P035-11": {
+   "next_review": "2026-09-07T09:25:50.663002+00:00",
+   "mastery": 0.5,
+   "title": "Human Reproduction \u2014 2.4 MENSTRUAL CYCLE"
+  }
+ },
+ "updated_at": "2026-09-04T09:25:50.663254+00:00"
+}

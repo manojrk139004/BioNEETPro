@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_c2fa969225",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH19-P247-17",
+    "title": "Chemical Coordination and Integration \u2014 19.4 MECHANISM OF HORMONE ACTION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH19-P247-17": {
+      "next_review": "2026-09-08T08:07:37.414535+00:00",
+      "mastery": 0.5,
+      "title": "Chemical Coordination and Integration \u2014 19.4 MECHANISM OF HORMONE ACTION"
+    }
+  },
+  "updated_at": "2026-09-05T08:07:37.436864+00:00"
+}

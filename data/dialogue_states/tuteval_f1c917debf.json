@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_f1c917debf",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P112-06",
+    "title": "Evolution \u2014 6.2 EVOLUTION OF LIFE FORMS \u2013 A THEORY"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P112-06": {
+      "next_review": "2026-09-08T07:27:19.339968+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.2 EVOLUTION OF LIFE FORMS \u2013 A THEORY"
+    }
+  },
+  "updated_at": "2026-09-05T07:27:19.339982+00:00"
+}

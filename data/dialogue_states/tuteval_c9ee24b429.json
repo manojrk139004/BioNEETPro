@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_c9ee24b429",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C07-06",
+    "title": "Morphology, Exoskeleton & Mosaic Vision of Cockroach"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C07-06": {
+      "next_review": "2026-09-08T07:29:33.699430+00:00",
+      "mastery": 0.5,
+      "title": "Morphology, Exoskeleton & Mosaic Vision of Cockroach"
+    }
+  },
+  "updated_at": "2026-09-05T07:29:33.699447+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_0d81585f1e",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH03-P032-14",
+    "title": "Plant Kingdom \u2014 3.4 GYMNOSPERMS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH03-P032-14": {
+      "next_review": "2026-09-08T07:16:26.097918+00:00",
+      "mastery": 0.5,
+      "title": "Plant Kingdom \u2014 3.4 GYMNOSPERMS"
+    }
+  },
+  "updated_at": "2026-09-05T07:16:26.097933+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_b81695adb9",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH06-P076-11",
+    "title": "Anatomy of Flowering Plants \u2014 6.4 b). Vascular bundles are conjoint  and"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH14-P186-08": {
+      "next_review": "2026-09-08T08:06:33.024724+00:00",
+      "mastery": 0.5,
+      "title": "Breathing and Exchange of Gases \u2014 14.2 MECHANISM OF BREATHING"
+    },
+    "NCERT-ClassXI-CH06-P076-11": {
+      "next_review": "2026-09-08T08:06:36.646652+00:00",
+      "mastery": 0.5,
+      "title": "Anatomy of Flowering Plants \u2014 6.4 b). Vascular bundles are conjoint  and"
+    }
+  },
+  "updated_at": "2026-09-05T08:06:36.646667+00:00"
+}

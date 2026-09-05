@@ -1,0 +1,308 @@
+[
+ {
+  "file": "kebo101.pdf",
+  "pages": 9,
+  "chars": 19614,
+  "images": 23,
+  "class": "XI",
+  "chap_num": 1,
+  "readable": true
+ },
+ {
+  "file": "kebo102.pdf",
+  "pages": 13,
+  "chars": 29062,
+  "images": 43,
+  "class": "XI",
+  "chap_num": 2,
+  "readable": true
+ },
+ {
+  "file": "kebo103.pdf",
+  "pages": 14,
+  "chars": 25514,
+  "images": 38,
+  "class": "XI",
+  "chap_num": 3,
+  "readable": true
+ },
+ {
+  "file": "kebo104.pdf",
+  "pages": 18,
+  "chars": 31632,
+  "images": 292,
+  "class": "XI",
+  "chap_num": 4,
+  "readable": true
+ },
+ {
+  "file": "kebo105.pdf",
+  "pages": 16,
+  "chars": 27488,
+  "images": 107,
+  "class": "XI",
+  "chap_num": 5,
+  "readable": true
+ },
+ {
+  "file": "kebo106.pdf",
+  "pages": 8,
+  "chars": 13741,
+  "images": 101,
+  "class": "XI",
+  "chap_num": 6,
+  "readable": true
+ },
+ {
+  "file": "kebo107.pdf",
+  "pages": 6,
+  "chars": 14642,
+  "images": 17,
+  "class": "XI",
+  "chap_num": 7,
+  "readable": true
+ },
+ {
+  "file": "kebo108.pdf",
+  "pages": 19,
+  "chars": 38056,
+  "images": 173,
+  "class": "XI",
+  "chap_num": 8,
+  "readable": true
+ },
+ {
+  "file": "kebo109.pdf",
+  "pages": 16,
+  "chars": 34830,
+  "images": 37,
+  "class": "XI",
+  "chap_num": 9,
+  "readable": true
+ },
+ {
+  "file": "kebo110.pdf",
+  "pages": 11,
+  "chars": 23830,
+  "images": 25,
+  "class": "XI",
+  "chap_num": 10,
+  "readable": true
+ },
+ {
+  "file": "kebo111.pdf",
+  "pages": 22,
+  "chars": 44952,
+  "images": 61,
+  "class": "XI",
+  "chap_num": 11,
+  "readable": true
+ },
+ {
+  "file": "kebo112.pdf",
+  "pages": 13,
+  "chars": 28870,
+  "images": 32,
+  "class": "XI",
+  "chap_num": 12,
+  "readable": true
+ },
+ {
+  "file": "kebo113.pdf",
+  "pages": 15,
+  "chars": 29092,
+  "images": 60,
+  "class": "XI",
+  "chap_num": 13,
+  "readable": true
+ },
+ {
+  "file": "kebo114.pdf",
+  "pages": 12,
+  "chars": 22582,
+  "images": 30,
+  "class": "XI",
+  "chap_num": 14,
+  "readable": true
+ },
+ {
+  "file": "kebo115.pdf",
+  "pages": 12,
+  "chars": 28390,
+  "images": 183,
+  "class": "XI",
+  "chap_num": 15,
+  "readable": true
+ },
+ {
+  "file": "kebo116.pdf",
+  "pages": 12,
+  "chars": 23450,
+  "images": 26,
+  "class": "XI",
+  "chap_num": 16,
+  "readable": true
+ },
+ {
+  "file": "kebo117.pdf",
+  "pages": 13,
+  "chars": 23566,
+  "images": 300,
+  "class": "XI",
+  "chap_num": 17,
+  "readable": true
+ },
+ {
+  "file": "kebo118.pdf",
+  "pages": 9,
+  "chars": 17352,
+  "images": 22,
+  "class": "XI",
+  "chap_num": 18,
+  "readable": true
+ },
+ {
+  "file": "kebo119.pdf",
+  "pages": 14,
+  "chars": 25792,
+  "images": 43,
+  "class": "XI",
+  "chap_num": 19,
+  "readable": true
+ },
+ {
+  "file": "kebo1ps.pdf",
+  "pages": 12,
+  "chars": 20181,
+  "images": 4724,
+  "class": "XI",
+  "chap_num": 0,
+  "readable": true
+ },
+ {
+  "file": "lebo101.pdf",
+  "pages": 25,
+  "chars": 49533,
+  "images": 560,
+  "class": "XII",
+  "chap_num": 1,
+  "readable": true
+ },
+ {
+  "file": "lebo102.pdf",
+  "pages": 15,
+  "chars": 30189,
+  "images": 740,
+  "class": "XII",
+  "chap_num": 2,
+  "readable": true
+ },
+ {
+  "file": "lebo103.pdf",
+  "pages": 10,
+  "chars": 26465,
+  "images": 78,
+  "class": "XII",
+  "chap_num": 3,
+  "readable": true
+ },
+ {
+  "file": "lebo104.pdf",
+  "pages": 28,
+  "chars": 59748,
+  "images": 143,
+  "class": "XII",
+  "chap_num": 4,
+  "readable": true
+ },
+ {
+  "file": "lebo105.pdf",
+  "pages": 31,
+  "chars": 65963,
+  "images": 176,
+  "class": "XII",
+  "chap_num": 5,
+  "readable": true
+ },
+ {
+  "file": "lebo106.pdf",
+  "pages": 17,
+  "chars": 31500,
+  "images": 338,
+  "class": "XII",
+  "chap_num": 6,
+  "readable": true
+ },
+ {
+  "file": "lebo107.pdf",
+  "pages": 22,
+  "chars": 50764,
+  "images": 259,
+  "class": "XII",
+  "chap_num": 7,
+  "readable": true
+ },
+ {
+  "file": "lebo108.pdf",
+  "pages": 12,
+  "chars": 25343,
+  "images": 132,
+  "class": "XII",
+  "chap_num": 8,
+  "readable": true
+ },
+ {
+  "file": "lebo109.pdf",
+  "pages": 16,
+  "chars": 30865,
+  "images": 67,
+  "class": "XII",
+  "chap_num": 9,
+  "readable": true
+ },
+ {
+  "file": "lebo110.pdf",
+  "pages": 11,
+  "chars": 25001,
+  "images": 45,
+  "class": "XII",
+  "chap_num": 10,
+  "readable": true
+ },
+ {
+  "file": "lebo111.pdf",
+  "pages": 17,
+  "chars": 36791,
+  "images": 96,
+  "class": "XII",
+  "chap_num": 11,
+  "readable": true
+ },
+ {
+  "file": "lebo112.pdf",
+  "pages": 11,
+  "chars": 20561,
+  "images": 67,
+  "class": "XII",
+  "chap_num": 12,
+  "readable": true
+ },
+ {
+  "file": "lebo113.pdf",
+  "pages": 13,
+  "chars": 29255,
+  "images": 48,
+  "class": "XII",
+  "chap_num": 13,
+  "readable": true
+ },
+ {
+  "file": "lebo1ps.pdf",
+  "pages": 12,
+  "chars": 19083,
+  "images": 27,
+  "class": "XII",
+  "chap_num": 0,
+  "readable": true
+ }
+]

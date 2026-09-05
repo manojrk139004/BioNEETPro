@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_24a649c495",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P147-28",
+    "title": "Photosynthesis in Higher Plants \u2014 11.9 PHOTORESPIRATION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH10-P125-13": {
+      "next_review": "2026-09-08T07:53:14.221686+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.4 MEIOSIS"
+    },
+    "NCERT-ClassXI-CH11-P147-28": {
+      "next_review": "2026-09-08T07:53:17.743181+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.9 PHOTORESPIRATION"
+    }
+  },
+  "updated_at": "2026-09-05T07:53:17.743196+00:00"
+}

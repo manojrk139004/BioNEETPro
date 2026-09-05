@@ -1,0 +1,32 @@
+{
+  "student_id": "tuteval_368f59cbe1",
+  "turns": 4,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P120-15",
+    "title": "Evolution \u2014 6.7 HARDY-WEINBERG PRINCIPLE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH13-P001-02": {
+      "next_review": "2026-09-08T06:48:34.984116+00:00",
+      "mastery": 0.5,
+      "title": "Biodiversity and Conservation \u2014 13.1 BIODIVERSITY"
+    },
+    "BIO-C21-04": {
+      "next_review": "2026-09-08T06:48:41.908668+00:00",
+      "mastery": 0.5,
+      "title": "Syngamy & Triple Fusion"
+    },
+    "NCERT-ClassXII-CH10-P182-08": {
+      "next_review": "2026-09-08T06:48:47.028656+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology and its Applications \u2014 10.2.1 Genetically Engineered Insulin"
+    },
+    "NCERT-ClassXII-CH06-P120-15": {
+      "next_review": "2026-09-08T06:48:54.756205+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.7 HARDY-WEINBERG PRINCIPLE"
+    }
+  },
+  "updated_at": "2026-09-05T06:48:54.756223+00:00"
+}

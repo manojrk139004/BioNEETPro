@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_b27e39716c",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH09-P110-11",
+    "title": "Biomolecules \u2014 9.5 POLYSACCHARIDES"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH09-P110-11": {
+      "next_review": "2026-09-08T07:22:16.629641+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.5 POLYSACCHARIDES"
+    }
+  },
+  "updated_at": "2026-09-05T07:22:16.629655+00:00"
+}

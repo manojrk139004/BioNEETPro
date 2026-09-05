@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_2fbc95a3b5",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH10-P186-15",
+    "title": "Biotechnology and its Applications \u2014 10.4 ETHICAL ISSUES"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH10-P186-15": {
+      "next_review": "2026-09-08T09:06:00.024939+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology and its Applications \u2014 10.4 ETHICAL ISSUES"
+    }
+  },
+  "updated_at": "2026-09-05T09:06:00.024953+00:00"
+}

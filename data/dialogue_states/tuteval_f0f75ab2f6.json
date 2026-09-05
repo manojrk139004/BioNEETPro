@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_f0f75ab2f6",
+  "turns": 2,
+  "focal": {
+    "concept_id": "BIO-C28-01",
+    "title": "Semi-Conservative DNA Replication"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C28-01": {
+      "next_review": "2026-09-08T07:50:03.175936+00:00",
+      "mastery": 0.5,
+      "title": "Semi-Conservative DNA Replication"
+    }
+  },
+  "updated_at": "2026-09-05T07:50:03.175950+00:00"
+}

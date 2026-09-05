@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_a141e34b35",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH11-P194-08",
+    "title": "Organisms and Populations \u2014 11.1.2 Population Growth"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH11-P194-08": {
+      "next_review": "2026-09-08T06:58:56.437787+00:00",
+      "mastery": 0.5,
+      "title": "Organisms and Populations \u2014 11.1.2 Population Growth"
+    }
+  },
+  "updated_at": "2026-09-05T06:58:56.437802+00:00"
+}

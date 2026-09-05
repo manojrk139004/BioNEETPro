@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_ed92bb5153",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C34-01",
+    "title": "Bt Cotton and Cry Proteins"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C34-01": {
+      "next_review": "2026-09-08T07:45:01.574142+00:00",
+      "mastery": 0.5,
+      "title": "Bt Cotton and Cry Proteins"
+    }
+  },
+  "updated_at": "2026-09-05T07:45:01.574157+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_1a5f1723bb",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH05-P108-48",
+    "title": "Molecular Basis of Inheritance \u2014 5.10 DNA FINGERPRINTING"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P004-06": {
+      "next_review": "2026-09-08T07:49:23.965679+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.2 PRE-FERTILISATION: STRUCTURES AND EVENTS"
+    },
+    "NCERT-ClassXII-CH05-P108-48": {
+      "next_review": "2026-09-08T07:49:28.850287+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.10 DNA FINGERPRINTING"
+    }
+  },
+  "updated_at": "2026-09-05T07:49:28.850300+00:00"
+}

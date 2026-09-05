@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_73c21aaf32",
+  "turns": 2,
+  "focal": {
+    "concept_id": "BIO-C27-01",
+    "title": "Mendel's Laws of Segregation and Independent Assortment"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P200-16": {
+      "next_review": "2026-09-08T07:49:14.955184+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "BIO-C27-01": {
+      "next_review": "2026-09-08T07:49:18.535756+00:00",
+      "mastery": 0.5,
+      "title": "Mendel's Laws of Segregation and Independent Assortment"
+    }
+  },
+  "updated_at": "2026-09-05T07:49:18.535771+00:00"
+}

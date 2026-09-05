@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_1008960d7a",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH09-P112-15",
+    "title": "Biomolecules \u2014 9.8 ENZYMES"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH09-P112-15": {
+      "next_review": "2026-09-08T08:41:41.986956+00:00",
+      "mastery": 0.5,
+      "title": "Biomolecules \u2014 9.8 ENZYMES"
+    }
+  },
+  "updated_at": "2026-09-05T08:41:41.986981+00:00"
+}

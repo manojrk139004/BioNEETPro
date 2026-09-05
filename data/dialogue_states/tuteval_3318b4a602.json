@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_3318b4a602",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH19-P239-02",
+    "title": "Chemical Coordination and Integration \u2014 19.1 ENDOCRINE GLANDS AND HORMONES"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH19-P239-02": {
+      "next_review": "2026-09-08T06:22:32.964804+00:00",
+      "mastery": 0.5,
+      "title": "Chemical Coordination and Integration \u2014 19.1 ENDOCRINE GLANDS AND HORMONES"
+    }
+  },
+  "updated_at": "2026-09-05T06:22:32.964821+00:00"
+}

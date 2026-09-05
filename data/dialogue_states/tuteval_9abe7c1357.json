@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_9abe7c1357",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P059-07",
+    "title": "Morphology of Flowering Plants \u2014 5.1.1 Regions of the Root"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C18-05": {
+      "next_review": "2026-09-08T08:08:54.458693+00:00",
+      "mastery": 0.5,
+      "title": "Why Arteries Have Thick Elastic Walls & Why Veins Have Valves"
+    },
+    "NCERT-ClassXI-CH05-P059-07": {
+      "next_review": "2026-09-08T08:08:57.739056+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.1.1 Regions of the Root"
+    }
+  },
+  "updated_at": "2026-09-05T08:08:57.739075+00:00"
+}

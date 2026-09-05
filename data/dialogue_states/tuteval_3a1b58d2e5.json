@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_3a1b58d2e5",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P019-29",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.4.2 Embryo"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P019-29": {
+      "next_review": "2026-09-08T06:37:59.675909+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.4.2 Embryo"
+    }
+  },
+  "updated_at": "2026-09-05T06:37:59.675925+00:00"
+}

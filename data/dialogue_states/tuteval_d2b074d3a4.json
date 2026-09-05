@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d2b074d3a4",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C20-02",
+    "title": "Mechanism of Muscle Contraction: Sliding Filament Theory and Sarcomere Structure"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C20-02": {
+      "next_review": "2026-09-08T07:42:03.731796+00:00",
+      "mastery": 0.5,
+      "title": "Mechanism of Muscle Contraction: Sliding Filament Theory and Sarcomere Structure"
+    }
+  },
+  "updated_at": "2026-09-05T07:42:03.731819+00:00"
+}

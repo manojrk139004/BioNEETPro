@@ -1,0 +1,693 @@
+session_id,timestamp,student_id,query_text,matched_concept_id,similarity_score,current_step,mastery_score,feedback_status
+demo-init,2026-09-02T10:00:00Z,student_demo,Explain photosynthesis light reaction,BIO-C13-01,0.892,4,0.720,understood
+demo-init,2026-09-02T10:05:00Z,student_demo,What is DNA replication semi conservative,BIO-C28-01,0.915,4,0.810,understood
+demo-init,2026-09-02T10:10:00Z,student_demo,How does lac operon repressor work,BIO-C28-02,0.865,3,0.640,in_progress
+sess-9ef05dfe,2026-09-02T16:34:14.984651+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3603,1,0.270,initialized
+sess-9ef05dfe,2026-09-02T16:34:14.985199+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3603,1,0.270,viewed_step_1
+sess-9ef05dfe,2026-09-02T16:34:14.985446+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3603,2,0.270,viewed_step_2
+sess-9ef05dfe,2026-09-02T16:34:14.985609+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3603,3,0.270,viewed_step_3
+sess-9ef05dfe,2026-09-02T16:34:14.985780+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3603,4,0.270,viewed_step_4
+sess-9ef05dfe,2026-09-02T16:34:14.985952+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3603,4,0.635,quiz_correct
+sess-e532904b,2026-09-02T16:34:27.608657+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4125,1,0.309,initialized
+sess-e532904b,2026-09-02T16:34:27.608982+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4125,1,0.309,viewed_step_1
+sess-e532904b,2026-09-02T16:34:27.609225+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4125,2,0.309,viewed_step_2
+sess-e532904b,2026-09-02T16:34:27.609415+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4125,3,0.309,viewed_step_3
+sess-e532904b,2026-09-02T16:34:27.609594+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4125,4,0.309,viewed_step_4
+sess-e532904b,2026-09-02T16:34:27.609783+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4125,4,0.674,quiz_correct
+sess-9511499e,2026-09-02T16:35:18.364083+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,1,0.196,initialized
+sess-9511499e,2026-09-02T16:35:18.364564+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,1,0.196,viewed_step_1
+sess-9511499e,2026-09-02T16:35:18.365746+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,2,0.196,viewed_step_2
+sess-9511499e,2026-09-02T16:35:18.366766+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,3,0.196,viewed_step_3
+sess-9511499e,2026-09-02T16:35:18.367763+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,4,0.196,viewed_step_4
+sess-9511499e,2026-09-02T16:35:18.368949+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,4,0.547,quiz_correct
+sess-a6e00c54,2026-09-02T16:35:36.336813+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,1,0.196,initialized
+sess-a6e00c54,2026-09-02T16:35:36.337100+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,1,0.196,viewed_step_1
+sess-a6e00c54,2026-09-02T16:35:36.337973+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,2,0.196,viewed_step_2
+sess-a6e00c54,2026-09-02T16:35:36.338664+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,3,0.196,viewed_step_3
+sess-a6e00c54,2026-09-02T16:35:36.339261+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,4,0.196,viewed_step_4
+sess-a6e00c54,2026-09-02T16:35:36.339873+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2616,4,0.547,quiz_correct
+sess-2d3afa80,2026-09-02T16:39:15.410646+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4127,1,0.310,initialized
+sess-2d3afa80,2026-09-02T16:39:15.411550+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4127,1,0.310,viewed_step_1
+sess-2d3afa80,2026-09-02T16:39:15.412352+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4127,2,0.310,viewed_step_2
+sess-2d3afa80,2026-09-02T16:39:15.413183+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4127,3,0.310,viewed_step_3
+sess-2d3afa80,2026-09-02T16:39:15.413781+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4127,4,0.310,viewed_step_4
+sess-2d3afa80,2026-09-02T16:39:15.414333+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4127,4,0.675,quiz_correct
+sess-a4f287e8,2026-09-02T16:39:21.254429+00:00,student_local,why is brain white,BIO-C21-01,0.2260,1,0.170,initialized
+sess-a4f287e8,2026-09-02T16:39:21.254806+00:00,student_local,why is brain white,BIO-C21-01,0.2260,1,0.170,viewed_step_1
+sess-767faa23,2026-09-02T17:14:49.617334+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,initialized
+sess-767faa23,2026-09-02T17:14:49.617752+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,viewed_step_1
+sess-767faa23,2026-09-02T17:14:49.618964+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,2,0.198,viewed_step_2
+sess-767faa23,2026-09-02T17:14:49.620069+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,3,0.198,viewed_step_3
+sess-767faa23,2026-09-02T17:14:49.621403+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,4,0.198,viewed_step_4
+sess-767faa23,2026-09-02T17:14:49.622512+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,4,0.550,quiz_correct
+sess-ee66bc46,2026-09-02T17:14:49.781708+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,initialized
+sess-ee66bc46,2026-09-02T17:14:49.782196+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,viewed_step_1
+sess-ee66bc46,2026-09-02T17:14:49.782544+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,2,0.297,viewed_step_2
+sess-ee66bc46,2026-09-02T17:14:49.782764+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,3,0.297,viewed_step_3
+sess-ee66bc46,2026-09-02T17:14:49.783093+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,4,0.297,viewed_step_4
+sess-ee66bc46,2026-09-02T17:14:49.783481+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,4,0.663,quiz_correct
+sess-21713050,2026-09-02T17:22:42.583318+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,initialized
+sess-21713050,2026-09-02T17:22:42.583979+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,viewed_step_1
+sess-21713050,2026-09-02T17:22:42.586524+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,2,0.198,viewed_step_2
+sess-2e32a915,2026-09-02T17:22:42.713778+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,initialized
+sess-2e32a915,2026-09-02T17:22:42.714159+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,viewed_step_1
+sess-2e32a915,2026-09-02T17:22:42.717528+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,2,0.297,viewed_step_2
+sess-c4cfd699,2026-09-02T17:23:10.682345+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,initialized
+sess-c4cfd699,2026-09-02T17:23:10.682804+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,viewed_step_1
+sess-c4cfd699,2026-09-02T17:23:10.685645+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,2,0.198,viewed_step_2
+sess-c4cfd699,2026-09-02T17:23:10.689223+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,3,0.198,viewed_step_3
+sess-c4cfd699,2026-09-02T17:23:10.692162+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,4,0.198,viewed_step_4
+sess-c4cfd699,2026-09-02T17:23:10.695256+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,4,0.550,quiz_correct
+sess-68364f66,2026-09-02T17:23:10.852059+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,initialized
+sess-68364f66,2026-09-02T17:23:10.852558+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,viewed_step_1
+sess-68364f66,2026-09-02T17:23:10.854847+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,2,0.297,viewed_step_2
+sess-68364f66,2026-09-02T17:23:10.857006+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,3,0.297,viewed_step_3
+sess-91974007,2026-09-02T17:23:23.780394+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,initialized
+sess-91974007,2026-09-02T17:23:23.780808+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,1,0.198,viewed_step_1
+sess-91974007,2026-09-02T17:23:23.783125+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,2,0.198,viewed_step_2
+sess-91974007,2026-09-02T17:23:23.786217+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,3,0.198,viewed_step_3
+sess-91974007,2026-09-02T17:23:23.789062+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,4,0.198,viewed_step_4
+sess-91974007,2026-09-02T17:23:23.792218+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2636,4,0.550,quiz_correct
+sess-c1ae1da5,2026-09-02T17:23:23.920316+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,initialized
+sess-c1ae1da5,2026-09-02T17:23:23.920690+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,1,0.297,viewed_step_1
+sess-c1ae1da5,2026-09-02T17:23:23.923854+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,2,0.297,viewed_step_2
+sess-c1ae1da5,2026-09-02T17:23:23.925997+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,3,0.297,viewed_step_3
+sess-c1ae1da5,2026-09-02T17:23:23.927800+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,4,0.297,viewed_step_4
+sess-c1ae1da5,2026-09-02T17:23:23.931293+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.3962,4,0.663,quiz_correct
+sess-babb5b1c,2026-09-02T17:29:31.988574+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2933,1,0.220,initialized
+sess-babb5b1c,2026-09-02T17:29:31.988888+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2933,1,0.220,viewed_step_1
+sess-babb5b1c,2026-09-02T17:29:31.991151+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2933,2,0.220,viewed_step_2
+sess-babb5b1c,2026-09-02T17:29:31.993513+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2933,3,0.220,viewed_step_3
+sess-babb5b1c,2026-09-02T17:29:31.995878+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2933,4,0.220,viewed_step_4
+sess-babb5b1c,2026-09-02T17:29:31.997926+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2933,4,0.578,quiz_correct
+sess-00cf6583,2026-09-02T17:29:32.179584+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4379,1,0.328,initialized
+sess-00cf6583,2026-09-02T17:29:32.180108+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4379,1,0.328,viewed_step_1
+sess-00cf6583,2026-09-02T17:29:32.183256+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4379,2,0.328,viewed_step_2
+sess-00cf6583,2026-09-02T17:29:32.187846+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4379,3,0.328,viewed_step_3
+sess-00cf6583,2026-09-02T17:29:32.191192+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4379,4,0.328,viewed_step_4
+sess-00cf6583,2026-09-02T17:29:32.194406+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4379,4,0.692,quiz_correct
+sess-fed75aad,2026-09-02T17:36:05.126441+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2905,1,0.218,initialized
+sess-fed75aad,2026-09-02T17:36:05.126754+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2905,1,0.218,viewed_step_1
+sess-fed75aad,2026-09-02T17:36:05.129011+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2905,2,0.218,viewed_step_2
+sess-fed75aad,2026-09-02T17:36:05.131181+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2905,3,0.218,viewed_step_3
+sess-fed75aad,2026-09-02T17:36:05.133294+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2905,4,0.218,viewed_step_4
+sess-fed75aad,2026-09-02T17:36:05.135868+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2905,4,0.576,quiz_correct
+sess-2f1376d9,2026-09-02T17:36:05.410635+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4406,1,0.330,initialized
+sess-2f1376d9,2026-09-02T17:36:05.411027+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4406,1,0.330,viewed_step_1
+sess-2f1376d9,2026-09-02T17:36:05.413635+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4406,2,0.330,viewed_step_2
+sess-2f1376d9,2026-09-02T17:36:05.416133+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4406,3,0.330,viewed_step_3
+sess-2f1376d9,2026-09-02T17:36:05.418376+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4406,4,0.330,viewed_step_4
+sess-2f1376d9,2026-09-02T17:36:05.420642+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4406,4,0.693,quiz_correct
+sess-2624be3e,2026-09-02T17:43:37.835484+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2909,1,0.218,initialized
+sess-2624be3e,2026-09-02T17:43:37.835876+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2909,1,0.218,viewed_step_1
+sess-2624be3e,2026-09-02T17:43:37.839800+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2909,2,0.218,viewed_step_2
+sess-2624be3e,2026-09-02T17:43:37.843569+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2909,3,0.218,viewed_step_3
+sess-2624be3e,2026-09-02T17:43:37.846581+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2909,4,0.218,viewed_step_4
+sess-2624be3e,2026-09-02T17:43:37.850624+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2909,4,0.576,quiz_correct
+sess-fc693902,2026-09-02T17:43:38.155492+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4411,1,0.331,initialized
+sess-fc693902,2026-09-02T17:43:38.155858+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4411,1,0.331,viewed_step_1
+sess-fc693902,2026-09-02T17:43:38.157841+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4411,2,0.331,viewed_step_2
+sess-fc693902,2026-09-02T17:43:38.159800+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4411,3,0.331,viewed_step_3
+sess-fc693902,2026-09-02T17:43:38.161684+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4411,4,0.331,viewed_step_4
+sess-fc693902,2026-09-02T17:43:38.163513+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4411,4,0.694,quiz_correct
+sess-270238dd,2026-09-02T17:48:49.476819+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2924,1,0.219,initialized
+sess-270238dd,2026-09-02T17:48:49.477205+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2924,1,0.219,viewed_step_1
+sess-270238dd,2026-09-02T17:48:49.479451+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2924,2,0.219,viewed_step_2
+sess-270238dd,2026-09-02T17:48:49.481625+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2924,3,0.219,viewed_step_3
+sess-270238dd,2026-09-02T17:48:49.484177+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2924,4,0.219,viewed_step_4
+sess-270238dd,2026-09-02T17:48:49.487355+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2924,4,0.577,quiz_correct
+sess-e8db2a81,2026-09-02T17:48:49.758954+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4418,1,0.331,initialized
+sess-e8db2a81,2026-09-02T17:48:49.759253+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4418,1,0.331,viewed_step_1
+sess-e8db2a81,2026-09-02T17:48:49.760853+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4418,2,0.331,viewed_step_2
+sess-e8db2a81,2026-09-02T17:48:49.763149+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4418,3,0.331,viewed_step_3
+sess-e8db2a81,2026-09-02T17:48:49.765076+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4418,4,0.331,viewed_step_4
+sess-e8db2a81,2026-09-02T17:48:49.766564+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4418,4,0.694,quiz_correct
+sess-1346cd10,2026-09-02T17:59:47.322145+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,initialized
+sess-1346cd10,2026-09-02T17:59:47.322531+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,viewed_step_1
+sess-1346cd10,2026-09-02T17:59:47.325261+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,2,0.220,viewed_step_2
+sess-1346cd10,2026-09-02T17:59:47.327679+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,3,0.220,viewed_step_3
+sess-1346cd10,2026-09-02T17:59:47.329723+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.220,viewed_step_4
+sess-1346cd10,2026-09-02T17:59:47.332453+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.578,quiz_correct
+sess-6cf43dc5,2026-09-02T17:59:47.663685+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,initialized
+sess-6cf43dc5,2026-09-02T17:59:47.663971+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,viewed_step_1
+sess-6cf43dc5,2026-09-02T17:59:47.665926+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,2,0.325,viewed_step_2
+sess-6cf43dc5,2026-09-02T17:59:47.667629+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,3,0.325,viewed_step_3
+sess-6cf43dc5,2026-09-02T17:59:47.669004+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.325,viewed_step_4
+sess-6cf43dc5,2026-09-02T17:59:47.670316+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.689,quiz_correct
+sess-d8ade53f,2026-09-02T18:03:24.737832+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,initialized
+sess-d8ade53f,2026-09-02T18:03:24.738185+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,viewed_step_1
+sess-d8ade53f,2026-09-02T18:03:24.741316+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,2,0.220,viewed_step_2
+sess-d8ade53f,2026-09-02T18:03:24.743724+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,3,0.220,viewed_step_3
+sess-d8ade53f,2026-09-02T18:03:24.745926+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.220,viewed_step_4
+sess-d8ade53f,2026-09-02T18:03:24.749266+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.578,quiz_correct
+sess-5cbea7c7,2026-09-02T18:03:25.106036+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,initialized
+sess-5cbea7c7,2026-09-02T18:03:25.106598+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,viewed_step_1
+sess-5cbea7c7,2026-09-02T18:03:25.109070+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,2,0.325,viewed_step_2
+sess-5cbea7c7,2026-09-02T18:03:25.110861+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,3,0.325,viewed_step_3
+sess-5cbea7c7,2026-09-02T18:03:25.112404+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.325,viewed_step_4
+sess-5cbea7c7,2026-09-02T18:03:25.115004+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.689,quiz_correct
+sess-7ea143ff,2026-09-03T04:52:58.745576+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,initialized
+sess-7ea143ff,2026-09-03T04:52:58.745965+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,viewed_step_1
+sess-7ea143ff,2026-09-03T04:52:58.748691+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,2,0.220,viewed_step_2
+sess-7ea143ff,2026-09-03T04:52:58.751327+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,3,0.220,viewed_step_3
+sess-7ea143ff,2026-09-03T04:52:58.753240+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.220,viewed_step_4
+sess-7ea143ff,2026-09-03T04:52:58.755289+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.578,quiz_correct
+sess-e7ef6c82,2026-09-03T04:52:59.203117+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,initialized
+sess-e7ef6c82,2026-09-03T04:52:59.203433+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,viewed_step_1
+sess-e7ef6c82,2026-09-03T04:52:59.204864+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,2,0.325,viewed_step_2
+sess-e7ef6c82,2026-09-03T04:52:59.206428+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,3,0.325,viewed_step_3
+sess-e7ef6c82,2026-09-03T04:52:59.208063+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.325,viewed_step_4
+sess-e7ef6c82,2026-09-03T04:52:59.209420+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.689,quiz_correct
+sess-5dbb24b6,2026-09-03T04:53:56.786926+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,initialized
+sess-5dbb24b6,2026-09-03T04:53:56.787368+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,1,0.220,viewed_step_1
+sess-5dbb24b6,2026-09-03T04:53:56.789881+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,2,0.220,viewed_step_2
+sess-5dbb24b6,2026-09-03T04:53:56.792851+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,3,0.220,viewed_step_3
+sess-5dbb24b6,2026-09-03T04:53:56.795718+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.220,viewed_step_4
+sess-5dbb24b6,2026-09-03T04:53:56.797904+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2940,4,0.578,quiz_correct
+sess-38479725,2026-09-03T04:53:57.225191+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,initialized
+sess-38479725,2026-09-03T04:53:57.225478+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,1,0.325,viewed_step_1
+sess-38479725,2026-09-03T04:53:57.226996+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,2,0.325,viewed_step_2
+sess-38479725,2026-09-03T04:53:57.228397+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,3,0.325,viewed_step_3
+sess-38479725,2026-09-03T04:53:57.230136+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.325,viewed_step_4
+sess-38479725,2026-09-03T04:53:57.231717+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4332,4,0.689,quiz_correct
+sess-8ba494a6,2026-09-03T05:10:29.241976+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2777,1,0.208,initialized
+sess-8ba494a6,2026-09-03T05:10:29.242328+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2777,1,0.208,viewed_step_1
+sess-8ba494a6,2026-09-03T05:10:29.244671+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2777,2,0.208,viewed_step_2
+sess-8ba494a6,2026-09-03T05:10:29.247064+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2777,3,0.208,viewed_step_3
+sess-8ba494a6,2026-09-03T05:10:29.249088+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2777,4,0.208,viewed_step_4
+sess-8ba494a6,2026-09-03T05:10:29.250987+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.2777,4,0.563,quiz_correct
+sess-979132f5,2026-09-03T05:10:29.688682+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4335,1,0.325,initialized
+sess-979132f5,2026-09-03T05:10:29.689064+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4335,1,0.325,viewed_step_1
+sess-979132f5,2026-09-03T05:10:29.691118+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4335,2,0.325,viewed_step_2
+sess-979132f5,2026-09-03T05:10:29.692599+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4335,3,0.325,viewed_step_3
+sess-979132f5,2026-09-03T05:10:29.694132+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4335,4,0.325,viewed_step_4
+sess-979132f5,2026-09-03T05:10:29.695531+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4335,4,0.689,quiz_correct
+sess-8428f6a7,2026-09-03T07:31:06.664380+00:00,student_local,What is photosynthesis,BIO-C13-00,0.2194,1,0.165,initialized
+sess-8428f6a7,2026-09-03T07:31:06.664718+00:00,student_local,What is photosynthesis,BIO-C13-00,0.2194,1,0.165,viewed_step_1
+sess-33ae5cc7,2026-09-03T07:32:49.041120+00:00,student_local,What is photosynthesis,BIO-C13-02,0.2104,1,0.158,initialized
+sess-33ae5cc7,2026-09-03T07:32:49.041473+00:00,student_local,What is photosynthesis,BIO-C13-02,0.2104,1,0.158,viewed_step_1
+sess-1c43e220,2026-09-03T07:50:39.053686+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4786,1,0.359,initialized
+sess-1c43e220,2026-09-03T07:50:39.053997+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.4786,1,0.359,viewed_step_1
+sess-fb14523e,2026-09-03T07:51:24.682925+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.5007,1,0.376,initialized
+sess-fb14523e,2026-09-03T07:51:24.683249+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.5007,1,0.376,viewed_step_1
+sess-fb14523e,2026-09-03T07:51:24.684944+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.5007,2,0.376,viewed_step_2
+sess-fb14523e,2026-09-03T07:51:24.686197+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.5007,3,0.376,viewed_step_3
+sess-fb14523e,2026-09-03T07:51:24.687430+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.5007,4,0.376,viewed_step_4
+sess-fb14523e,2026-09-03T07:51:24.688865+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,0.5007,4,0.732,quiz_correct
+sess-c3219a48,2026-09-03T07:51:43.897675+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.4159,1,0.312,initialized
+sess-c3219a48,2026-09-03T07:51:43.898066+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.4159,1,0.312,viewed_step_1
+sess-c3219a48,2026-09-03T07:51:43.900673+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.4159,2,0.312,viewed_step_2
+sess-c3219a48,2026-09-03T07:51:43.902467+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.4159,3,0.312,viewed_step_3
+sess-c3219a48,2026-09-03T07:51:43.903977+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.4159,4,0.312,viewed_step_4
+sess-c3219a48,2026-09-03T07:51:43.905506+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.4159,4,0.677,quiz_correct
+sess-54eae854,2026-09-03T14:43:43.248262+00:00,student_local,What is lac operon regulation repressor,NCERT-ClassXI-CH05-P100-35,0.9929,1,0.745,initialized
+sess-de61be7c,2026-09-03T14:44:23.856173+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6702,1,0.503,initialized
+sess-de61be7c,2026-09-03T14:44:23.856455+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6702,1,0.503,viewed_step_1
+sess-de61be7c,2026-09-03T14:44:23.860882+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6702,2,0.503,viewed_step_2
+sess-de61be7c,2026-09-03T14:44:23.862578+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6702,3,0.503,viewed_step_3
+sess-de61be7c,2026-09-03T14:44:23.863795+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6702,4,0.503,viewed_step_4
+sess-de61be7c,2026-09-03T14:44:23.864817+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6702,4,0.817,quiz_correct
+sess-3f0a380c,2026-09-03T14:44:37.319734+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-00,0.5616,1,0.421,initialized
+sess-3f0a380c,2026-09-03T14:44:37.320001+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-00,0.5616,1,0.421,viewed_step_1
+sess-98e22efe,2026-09-03T14:46:36.868390+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6238,1,0.468,initialized
+sess-98e22efe,2026-09-03T14:46:36.868665+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6238,1,0.468,viewed_step_1
+sess-98e22efe,2026-09-03T14:46:36.871317+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6238,2,0.468,viewed_step_2
+sess-98e22efe,2026-09-03T14:46:36.873246+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6238,3,0.468,viewed_step_3
+sess-98e22efe,2026-09-03T14:46:36.874833+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6238,4,0.468,viewed_step_4
+sess-98e22efe,2026-09-03T14:46:36.876444+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6238,4,0.796,quiz_correct
+sess-93192f1c,2026-09-03T14:46:58.360424+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6628,1,0.497,initialized
+sess-93192f1c,2026-09-03T14:46:58.360698+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6628,1,0.497,viewed_step_1
+sess-93192f1c,2026-09-03T14:46:58.362668+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6628,2,0.497,viewed_step_2
+sess-93192f1c,2026-09-03T14:46:58.363922+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6628,3,0.497,viewed_step_3
+sess-93192f1c,2026-09-03T14:46:58.364943+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6628,4,0.497,viewed_step_4
+sess-93192f1c,2026-09-03T14:46:58.365933+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6628,4,0.813,quiz_correct
+sess-973fe2d5,2026-09-03T15:12:49.334638+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6703,1,0.950,initialized
+sess-973fe2d5,2026-09-03T15:12:49.334964+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6703,1,0.950,viewed_step_1
+sess-973fe2d5,2026-09-03T15:12:49.337217+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6703,2,0.950,viewed_step_2
+sess-973fe2d5,2026-09-03T15:12:49.338493+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6703,3,0.950,viewed_step_3
+sess-973fe2d5,2026-09-03T15:12:49.339537+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6703,4,0.950,viewed_step_4
+sess-973fe2d5,2026-09-03T15:12:49.340507+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.6703,4,0.988,quiz_correct
+sess-80c3ed52,2026-09-03T15:13:03.965256+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6240,1,0.950,initialized
+sess-80c3ed52,2026-09-03T15:13:03.966841+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6240,1,0.950,viewed_step_1
+sess-80c3ed52,2026-09-03T15:13:03.969217+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6240,2,0.950,viewed_step_2
+sess-80c3ed52,2026-09-03T15:13:03.970909+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6240,3,0.950,viewed_step_3
+sess-80c3ed52,2026-09-03T15:13:03.972287+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6240,4,0.950,viewed_step_4
+sess-80c3ed52,2026-09-03T15:13:03.974391+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6240,4,0.988,quiz_correct
+sess-6fff3916,2026-09-03T16:16:04.152186+00:00,test_verify,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6314,1,0.815,initialized
+sess-6fff3916,2026-09-03T16:16:04.152815+00:00,test_verify,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.6314,1,0.815,viewed_step_1
+sess-b0aa0773,2026-09-03T16:16:18.537965+00:00,test_verify,Explain Calvin cycle,BIO-C13-02,0.5270,1,0.815,initialized
+sess-b0aa0773,2026-09-03T16:16:18.538243+00:00,test_verify,Explain Calvin cycle,BIO-C13-02,0.5270,1,0.815,viewed_step_1
+sess-d1b7b606,2026-09-03T16:31:37.514985+00:00,beast_verify,difference between mitosis and meiosis,BIO-C10-03,0.6847,1,0.500,initialized
+sess-d1b7b606,2026-09-03T16:31:37.516160+00:00,beast_verify,difference between mitosis and meiosis,BIO-C10-03,0.6847,1,0.500,viewed_step_1
+sess-b8fc98b0,2026-09-03T16:38:11.663215+00:00,foot_test,teach me about a earthworm,NCERT-ClassXI-CH04-P043-15,0.5888,1,0.500,initialized
+sess-7b01af67,2026-09-03T16:50:51.101736+00:00,final_check,teach me about a earthworm,NCERT-ClassXI-CH04-P043-15,0.5888,1,0.500,initialized
+sess-f18620a8,2026-09-03T16:54:34.663148+00:00,conn2,What is photosynthesis?,BIO-C13-00,0.7909,1,0.500,initialized
+sess-f18620a8,2026-09-03T16:54:34.663499+00:00,conn2,What is photosynthesis?,BIO-C13-00,0.7909,1,0.500,viewed_step_1
+sess-a9a0f29a,2026-09-03T16:56:19.993476+00:00,rag1,Why is brain white?,BIO-C21-01,0.7785,1,0.500,initialized
+sess-a9a0f29a,2026-09-03T16:56:19.993767+00:00,rag1,Why is brain white?,BIO-C21-01,0.7785,1,0.500,viewed_step_1
+sess-e63ac695,2026-09-03T17:25:40.095643+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,1,0.988,initialized
+sess-e63ac695,2026-09-03T17:25:40.096115+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,1,0.988,viewed_step_1
+sess-e63ac695,2026-09-03T17:25:40.098932+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,2,0.988,viewed_step_2
+sess-e63ac695,2026-09-03T17:25:40.101709+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,3,0.988,viewed_step_3
+sess-e63ac695,2026-09-03T17:25:40.103813+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,4,0.988,viewed_step_4
+sess-e63ac695,2026-09-03T17:25:40.106245+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,4,0.990,quiz_correct
+sess-4b8ce182,2026-09-03T17:25:42.594019+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.8426,1,0.988,initialized
+sess-4b8ce182,2026-09-03T17:25:42.594353+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.8426,1,0.988,viewed_step_1
+sess-4b8ce182,2026-09-03T17:25:42.596298+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.8426,2,0.988,viewed_step_2
+sess-4b8ce182,2026-09-03T17:25:42.598480+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.8426,3,0.988,viewed_step_3
+sess-4b8ce182,2026-09-03T17:25:42.599807+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.8426,4,0.988,viewed_step_4
+sess-4b8ce182,2026-09-03T17:25:42.601012+00:00,student_local,What is lac operon regulation repressor,BIO-C05-03,0.8426,4,0.990,quiz_correct
+sess-6be63b26,2026-09-03T17:26:00.858495+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7686,1,0.990,initialized
+sess-6be63b26,2026-09-03T17:26:00.858895+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7686,1,0.990,viewed_step_1
+sess-6be63b26,2026-09-03T17:26:00.861841+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7686,2,0.990,viewed_step_2
+sess-6be63b26,2026-09-03T17:26:00.866310+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7686,3,0.990,viewed_step_3
+sess-6be63b26,2026-09-03T17:26:00.868645+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7686,4,0.990,viewed_step_4
+sess-6be63b26,2026-09-03T17:26:00.872384+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7686,4,0.990,quiz_correct
+sess-44260e68,2026-09-03T17:26:32.679591+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,1,0.990,initialized
+sess-44260e68,2026-09-03T17:26:32.680217+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,1,0.990,viewed_step_1
+sess-44260e68,2026-09-03T17:26:32.685411+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,2,0.990,viewed_step_2
+sess-44260e68,2026-09-03T17:26:32.688840+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,3,0.990,viewed_step_3
+sess-44260e68,2026-09-03T17:26:32.692427+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,4,0.990,viewed_step_4
+sess-44260e68,2026-09-03T17:26:32.696011+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7641,4,0.990,quiz_correct
+sess-d1be6dba,2026-09-04T02:17:19.233975+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7955,1,0.990,initialized
+sess-d1be6dba,2026-09-04T02:17:19.234210+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7955,1,0.990,viewed_step_1
+sess-d1be6dba,2026-09-04T02:17:19.237396+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7955,2,0.990,viewed_step_2
+sess-d1be6dba,2026-09-04T02:17:19.239167+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7955,3,0.990,viewed_step_3
+sess-d1be6dba,2026-09-04T02:17:19.240608+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7955,4,0.990,viewed_step_4
+sess-d1be6dba,2026-09-04T02:17:19.242416+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,0.7955,4,0.990,quiz_correct
+sess-922217e0,2026-09-04T02:55:32.863271+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-922217e0,2026-09-04T02:55:32.863515+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-922217e0,2026-09-04T02:55:32.865732+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-922217e0,2026-09-04T02:55:32.867328+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-922217e0,2026-09-04T02:55:32.868720+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-922217e0,2026-09-04T02:55:32.870920+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-3f4dac95,2026-09-04T04:39:43.987111+00:00,live1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-3f4dac95,2026-09-04T04:39:43.990283+00:00,live1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-ef294670,2026-09-04T04:42:01.694725+00:00,fail1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-ef294670,2026-09-04T04:42:01.695326+00:00,fail1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-300d45ea,2026-09-04T04:42:06.394161+00:00,fail1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-300d45ea,2026-09-04T04:42:06.394748+00:00,fail1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-a751a032,2026-09-04T04:46:51.311134+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-a751a032,2026-09-04T04:46:51.311955+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-656faf51,2026-09-04T04:46:53.528776+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.250,initialized
+sess-656faf51,2026-09-04T04:46:53.529379+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.250,viewed_step_1
+sess-a2b1ec4f,2026-09-04T04:51:18.206426+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-a2b1ec4f,2026-09-04T04:51:18.206952+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-6cd789b6,2026-09-04T04:51:20.226444+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.186,initialized
+sess-6cd789b6,2026-09-04T04:51:20.227054+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.186,viewed_step_1
+sess-b5e74b7d,2026-09-04T05:09:02.559939+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,initialized
+sess-b5e74b7d,2026-09-04T05:09:02.560531+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,viewed_step_1
+sess-b5e74b7d,2026-09-04T05:09:02.565493+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,2,0.990,viewed_step_2
+sess-b5e74b7d,2026-09-04T05:09:02.569107+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,3,0.990,viewed_step_3
+sess-b5e74b7d,2026-09-04T05:09:02.572934+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,viewed_step_4
+sess-b5e74b7d,2026-09-04T05:09:02.577385+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,quiz_correct
+sess-de4acbf0,2026-09-04T05:23:32.667696+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-de4acbf0,2026-09-04T05:23:32.668421+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-00c4567e,2026-09-04T05:23:34.199285+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.175,initialized
+sess-00c4567e,2026-09-04T05:23:34.200040+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.175,viewed_step_1
+sess-eeaec5c7,2026-09-04T05:28:22.548842+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-eeaec5c7,2026-09-04T05:28:22.549928+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-eeaec5c7,2026-09-04T05:28:22.556755+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-eeaec5c7,2026-09-04T05:28:22.558553+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-eeaec5c7,2026-09-04T05:28:22.560114+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-eeaec5c7,2026-09-04T05:28:22.561623+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-12bcf132,2026-09-04T05:45:37.502877+00:00,livenew1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-12bcf132,2026-09-04T05:45:37.503630+00:00,livenew1,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-bf1f64fe,2026-09-04T05:46:39.578747+00:00,lv2,Compare xylem and phloem.,BIO-C06-02,1.1081,1,0.500,initialized
+sess-bf1f64fe,2026-09-04T05:46:39.579269+00:00,lv2,Compare xylem and phloem.,BIO-C06-02,1.1081,1,0.500,viewed_step_1
+sess-b5317514,2026-09-04T05:46:51.833960+00:00,lv2,Why does it have folds?,NCERT-ClassXI-CH08-P102-30,0.6011,1,0.500,initialized
+sess-a6f586ff,2026-09-04T05:57:10.079930+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,initialized
+sess-a6f586ff,2026-09-04T05:57:10.080713+00:00,e2e_obs,Explain mitochondria.,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-86b29ea0,2026-09-04T05:57:19.868759+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.173,initialized
+sess-86b29ea0,2026-09-04T05:57:19.869251+00:00,e2e_learn,Explain it again.,BIO-C08-01,0.2877,1,0.173,viewed_step_1
+sess-57507fcd,2026-09-04T05:57:45.889646+00:00,lv2,Compare xylem and phloem.,BIO-C06-02,1.1081,1,0.500,initialized
+sess-57507fcd,2026-09-04T05:57:45.890201+00:00,lv2,Compare xylem and phloem.,BIO-C06-02,1.1081,1,0.500,viewed_step_1
+sess-ab641bed,2026-09-04T05:57:55.573413+00:00,lv2,Why does it have folds?,NCERT-ClassXI-CH08-P102-30,0.5947,1,0.500,initialized
+sess-8ccfa3d3,2026-09-04T06:59:09.392772+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-8ccfa3d3,2026-09-04T06:59:09.393065+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-8ccfa3d3,2026-09-04T06:59:09.395500+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-8ccfa3d3,2026-09-04T06:59:09.397767+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-8ccfa3d3,2026-09-04T06:59:09.399533+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-8ccfa3d3,2026-09-04T06:59:09.401335+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-d75c7d64,2026-09-04T06:59:22.980726+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.815,initialized
+sess-d75c7d64,2026-09-04T06:59:22.981050+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.815,viewed_step_1
+sess-d75c7d64,2026-09-04T06:59:22.982642+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,2,0.815,viewed_step_2
+sess-d75c7d64,2026-09-04T06:59:22.983787+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,3,0.815,viewed_step_3
+sess-d75c7d64,2026-09-04T06:59:22.984912+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.815,viewed_step_4
+sess-d75c7d64,2026-09-04T06:59:22.985985+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.950,quiz_correct
+sess-f998cc99,2026-09-04T07:15:16.924072+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-f998cc99,2026-09-04T07:15:16.924381+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-f998cc99,2026-09-04T07:15:16.926734+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-f998cc99,2026-09-04T07:15:16.928692+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-f998cc99,2026-09-04T07:15:16.930833+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-f998cc99,2026-09-04T07:15:16.932492+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-600f4155,2026-09-04T07:15:19.811598+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,1,0.950,initialized
+sess-600f4155,2026-09-04T07:15:19.812195+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,1,0.950,viewed_step_1
+sess-600f4155,2026-09-04T07:15:19.814113+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,2,0.950,viewed_step_2
+sess-600f4155,2026-09-04T07:15:19.815651+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,3,0.950,viewed_step_3
+sess-600f4155,2026-09-04T07:15:19.817050+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,4,0.950,viewed_step_4
+sess-600f4155,2026-09-04T07:15:19.818237+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,4,0.988,quiz_correct
+sess-a5049333,2026-09-04T07:19:22.663545+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-a5049333,2026-09-04T07:19:22.663938+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-a5049333,2026-09-04T07:19:22.666715+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-a5049333,2026-09-04T07:19:22.668934+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-a5049333,2026-09-04T07:19:22.671146+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-a5049333,2026-09-04T07:19:22.672838+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-f028a8c3,2026-09-04T07:19:25.620491+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,1,0.988,initialized
+sess-f028a8c3,2026-09-04T07:19:25.620812+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,1,0.988,viewed_step_1
+sess-f028a8c3,2026-09-04T07:19:25.622417+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,2,0.988,viewed_step_2
+sess-f028a8c3,2026-09-04T07:19:25.624854+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,3,0.988,viewed_step_3
+sess-f028a8c3,2026-09-04T07:19:25.626261+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,4,0.988,viewed_step_4
+sess-f028a8c3,2026-09-04T07:19:25.627405+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,4,0.990,quiz_correct
+sess-f9b7144c,2026-09-04T07:36:31.156315+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-f9b7144c,2026-09-04T07:36:31.156636+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-f9b7144c,2026-09-04T07:36:31.158932+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-f9b7144c,2026-09-04T07:36:31.161344+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-f9b7144c,2026-09-04T07:36:31.163414+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-f9b7144c,2026-09-04T07:36:31.165096+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-ed175ab1,2026-09-04T07:37:01.870460+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,1,0.990,initialized
+sess-ed175ab1,2026-09-04T07:37:01.870919+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,1,0.990,viewed_step_1
+sess-ed175ab1,2026-09-04T07:37:01.873390+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,2,0.990,viewed_step_2
+sess-ed175ab1,2026-09-04T07:37:01.874876+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,3,0.990,viewed_step_3
+sess-ed175ab1,2026-09-04T07:37:01.876087+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,4,0.990,viewed_step_4
+sess-ed175ab1,2026-09-04T07:37:01.877154+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4627,4,0.990,quiz_correct
+sess-10bfbe98,2026-09-04T09:17:05.206196+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-10bfbe98,2026-09-04T09:17:05.207087+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-10bfbe98,2026-09-04T09:17:05.212058+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-10bfbe98,2026-09-04T09:17:05.216481+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-10bfbe98,2026-09-04T09:17:05.221136+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-10bfbe98,2026-09-04T09:17:05.225336+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-641a04ae,2026-09-04T09:17:41.857758+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,1,0.990,initialized
+sess-641a04ae,2026-09-04T09:17:41.858193+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,1,0.990,viewed_step_1
+sess-641a04ae,2026-09-04T09:17:41.861095+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,2,0.990,viewed_step_2
+sess-641a04ae,2026-09-04T09:17:41.862887+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,3,0.990,viewed_step_3
+sess-641a04ae,2026-09-04T09:17:41.864329+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,4,0.990,viewed_step_4
+sess-641a04ae,2026-09-04T09:17:41.865857+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4625,4,0.990,quiz_correct
+sess-940db98e,2026-09-04T09:24:13.937395+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,initialized
+sess-940db98e,2026-09-04T09:24:13.938389+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-6a4bc1c4,2026-09-04T09:24:27.660778+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,initialized
+sess-6a4bc1c4,2026-09-04T09:24:27.661989+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,viewed_step_1
+sess-27d3fd7b,2026-09-04T09:25:51.155100+00:00,test_sensitive,Explain human reproduction and menstrual cycle,BIO-C03-01,0.9983,1,0.500,initialized
+sess-27d3fd7b,2026-09-04T09:25:51.156274+00:00,test_sensitive,Explain human reproduction and menstrual cycle,BIO-C03-01,0.9983,1,0.500,viewed_step_1
+sess-e8f51c01,2026-09-04T09:33:31.386086+00:00,test_sensitive2,Explain human reproduction and menstrual cycle,BIO-C03-01,0.9983,1,0.500,initialized
+sess-e8f51c01,2026-09-04T09:33:31.387000+00:00,test_sensitive2,Explain human reproduction and menstrual cycle,BIO-C03-01,0.9983,1,0.500,viewed_step_1
+sess-94dbb3c6,2026-09-04T09:34:36.047059+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-94dbb3c6,2026-09-04T09:34:36.047562+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-94dbb3c6,2026-09-04T09:34:36.050632+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-94dbb3c6,2026-09-04T09:34:36.052743+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-94dbb3c6,2026-09-04T09:34:36.055728+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-94dbb3c6,2026-09-04T09:34:36.058024+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-5814715c,2026-09-04T09:36:33.333014+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,initialized
+sess-5814715c,2026-09-04T09:36:33.333403+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-fc394262,2026-09-04T09:36:44.136173+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,initialized
+sess-fc394262,2026-09-04T09:36:44.137316+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,viewed_step_1
+sess-87b105f8,2026-09-04T10:14:57.148265+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-87b105f8,2026-09-04T10:14:57.149148+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-87b105f8,2026-09-04T10:14:57.158402+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-87b105f8,2026-09-04T10:14:57.163454+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-87b105f8,2026-09-04T10:14:57.168438+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-87b105f8,2026-09-04T10:14:57.172768+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-dbb511be,2026-09-04T10:17:00.639382+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,initialized
+sess-dbb511be,2026-09-04T10:17:00.640156+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-1fd06ce5,2026-09-04T10:17:08.478539+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,initialized
+sess-1fd06ce5,2026-09-04T10:17:08.479187+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,viewed_step_1
+sess-2763e5e5,2026-09-04T14:21:03.805597+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-2763e5e5,2026-09-04T14:21:03.805898+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-2763e5e5,2026-09-04T14:21:03.812718+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-2763e5e5,2026-09-04T14:21:03.814682+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-2763e5e5,2026-09-04T14:21:03.816755+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-2763e5e5,2026-09-04T14:21:03.818309+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-5fc06f85,2026-09-04T14:35:43.065313+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-5fc06f85,2026-09-04T14:35:43.066012+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-5fc06f85,2026-09-04T14:35:43.069418+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-5fc06f85,2026-09-04T14:35:43.073271+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-5fc06f85,2026-09-04T14:35:43.076149+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-5fc06f85,2026-09-04T14:35:43.079650+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-965140e5,2026-09-04T14:56:16.765682+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.3022,1,0.990,initialized
+sess-965140e5,2026-09-04T14:56:16.765960+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.3022,1,0.990,viewed_step_1
+sess-965140e5,2026-09-04T14:56:16.769174+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.3022,2,0.990,viewed_step_2
+sess-965140e5,2026-09-04T14:56:16.771083+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.3022,3,0.990,viewed_step_3
+sess-965140e5,2026-09-04T14:56:16.772842+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.3022,4,0.990,viewed_step_4
+sess-965140e5,2026-09-04T14:56:16.775265+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.3022,4,0.990,quiz_correct
+sess-3d741b95,2026-09-04T16:09:20.893902+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-3d741b95,2026-09-04T16:09:20.894338+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-3d741b95,2026-09-04T16:09:20.901942+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-3d741b95,2026-09-04T16:09:20.903649+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-3d741b95,2026-09-04T16:09:20.905174+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-3d741b95,2026-09-04T16:09:20.907474+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-d036da09,2026-09-04T16:18:40.658316+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-d036da09,2026-09-04T16:18:40.658795+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-d036da09,2026-09-04T16:18:40.662978+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-d036da09,2026-09-04T16:18:40.665787+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-d036da09,2026-09-04T16:18:40.669089+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-d036da09,2026-09-04T16:18:40.671662+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-7663291c,2026-09-04T16:30:08.172054+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-7663291c,2026-09-04T16:30:08.172299+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-7663291c,2026-09-04T16:30:08.174662+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-7663291c,2026-09-04T16:30:08.176241+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-7663291c,2026-09-04T16:30:08.178276+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-7663291c,2026-09-04T16:30:08.180170+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-76bd8290,2026-09-04T16:33:59.101106+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-76bd8290,2026-09-04T16:33:59.101355+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-76bd8290,2026-09-04T16:33:59.103412+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-76bd8290,2026-09-04T16:33:59.105067+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-76bd8290,2026-09-04T16:33:59.107872+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-76bd8290,2026-09-04T16:33:59.109496+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-207f58b5,2026-09-04T16:40:23.095805+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-207f58b5,2026-09-04T16:40:23.096418+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-207f58b5,2026-09-04T16:40:23.101028+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-207f58b5,2026-09-04T16:40:23.104461+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-207f58b5,2026-09-04T16:40:23.107723+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-207f58b5,2026-09-04T16:40:23.110735+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-41b0b98e,2026-09-04T17:14:31.381256+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,1,0.990,initialized
+sess-41b0b98e,2026-09-04T17:14:31.381698+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,1,0.990,viewed_step_1
+sess-41b0b98e,2026-09-04T17:14:31.392037+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,2,0.990,viewed_step_2
+sess-41b0b98e,2026-09-04T17:14:31.396240+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,3,0.990,viewed_step_3
+sess-41b0b98e,2026-09-04T17:14:31.399472+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,4,0.990,viewed_step_4
+sess-41b0b98e,2026-09-04T17:14:31.403254+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,4,0.990,quiz_correct
+sess-8105c374,2026-09-04T17:14:34.992219+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,1,0.990,initialized
+sess-8105c374,2026-09-04T17:14:34.992763+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,1,0.990,viewed_step_1
+sess-8105c374,2026-09-04T17:14:34.996388+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,2,0.990,viewed_step_2
+sess-8105c374,2026-09-04T17:14:34.999768+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,3,0.990,viewed_step_3
+sess-8105c374,2026-09-04T17:14:35.002917+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,4,0.990,viewed_step_4
+sess-8105c374,2026-09-04T17:14:35.006278+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,4,0.990,quiz_correct
+sess-70e0e0a2,2026-09-04T17:40:28.994062+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,1,0.990,initialized
+sess-70e0e0a2,2026-09-04T17:40:28.994435+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,1,0.990,viewed_step_1
+sess-70e0e0a2,2026-09-04T17:40:28.998941+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,2,0.990,viewed_step_2
+sess-70e0e0a2,2026-09-04T17:40:29.001010+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,3,0.990,viewed_step_3
+sess-70e0e0a2,2026-09-04T17:40:29.003010+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,4,0.990,viewed_step_4
+sess-70e0e0a2,2026-09-04T17:40:29.004794+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,4,0.990,quiz_correct
+sess-b24629d2,2026-09-04T17:40:32.147622+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.990,initialized
+sess-b24629d2,2026-09-04T17:40:32.147888+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.990,viewed_step_1
+sess-b24629d2,2026-09-04T17:40:32.149640+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,2,0.990,viewed_step_2
+sess-b24629d2,2026-09-04T17:40:32.151215+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,3,0.990,viewed_step_3
+sess-b24629d2,2026-09-04T17:40:32.152436+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.990,viewed_step_4
+sess-b24629d2,2026-09-04T17:40:32.153523+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.990,quiz_correct
+sess-a7b6cebc,2026-09-04T18:17:32.325410+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,1,0.990,initialized
+sess-a7b6cebc,2026-09-04T18:17:32.325772+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,1,0.990,viewed_step_1
+sess-a7b6cebc,2026-09-04T18:17:32.327466+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,2,0.990,viewed_step_2
+sess-a7b6cebc,2026-09-04T18:17:32.328664+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,3,0.990,viewed_step_3
+sess-a7b6cebc,2026-09-04T18:17:32.329675+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,4,0.990,viewed_step_4
+sess-a7b6cebc,2026-09-04T18:17:32.330633+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,4,0.990,quiz_correct
+sess-8c479119,2026-09-04T18:19:40.330088+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.990,initialized
+sess-8c479119,2026-09-04T18:19:40.330428+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.990,viewed_step_1
+sess-8c479119,2026-09-04T18:19:40.331888+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,2,0.990,viewed_step_2
+sess-8c479119,2026-09-04T18:19:40.332903+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,3,0.990,viewed_step_3
+sess-8c479119,2026-09-04T18:19:40.333859+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.990,viewed_step_4
+sess-8c479119,2026-09-04T18:19:40.334862+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.990,quiz_correct
+sess-2e0d206c,2026-09-04T18:20:05.793328+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,initialized
+sess-2e0d206c,2026-09-04T18:20:05.793605+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,viewed_step_1
+sess-2e0d206c,2026-09-04T18:20:05.795467+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,2,0.990,viewed_step_2
+sess-2e0d206c,2026-09-04T18:20:05.797289+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,3,0.990,viewed_step_3
+sess-2e0d206c,2026-09-04T18:20:05.798747+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,viewed_step_4
+sess-2e0d206c,2026-09-04T18:20:05.800090+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,quiz_correct
+sess-6c234312,2026-09-05T00:57:06.289189+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,1,0.990,initialized
+sess-6c234312,2026-09-05T00:57:06.289416+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,1,0.990,viewed_step_1
+sess-6c234312,2026-09-05T00:57:06.292212+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,2,0.990,viewed_step_2
+sess-6c234312,2026-09-05T00:57:06.294034+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,3,0.990,viewed_step_3
+sess-6c234312,2026-09-05T00:57:06.295319+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,4,0.990,viewed_step_4
+sess-6c234312,2026-09-05T00:57:06.296380+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,4,0.990,quiz_correct
+sess-f2cd819a,2026-09-05T00:57:41.216897+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-f2cd819a,2026-09-05T00:57:41.217691+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-f2cd819a,2026-09-05T00:57:41.221167+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-f2cd819a,2026-09-05T00:57:41.225426+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-f2cd819a,2026-09-05T00:57:41.228236+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-f2cd819a,2026-09-05T00:57:41.231611+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-fbd4457d,2026-09-05T01:28:37.631149+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,1,0.990,initialized
+sess-fbd4457d,2026-09-05T01:28:37.631453+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,1,0.990,viewed_step_1
+sess-fbd4457d,2026-09-05T01:28:37.633297+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,2,0.990,viewed_step_2
+sess-fbd4457d,2026-09-05T01:28:37.634533+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,3,0.990,viewed_step_3
+sess-fbd4457d,2026-09-05T01:28:37.635637+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,4,0.990,viewed_step_4
+sess-fbd4457d,2026-09-05T01:28:37.637307+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4575,4,0.990,quiz_correct
+sess-0c3b7596,2026-09-05T03:48:14.330275+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,initialized
+sess-0c3b7596,2026-09-05T03:48:14.330550+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,viewed_step_1
+sess-0c3b7596,2026-09-05T03:48:14.339085+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,2,0.990,viewed_step_2
+sess-0c3b7596,2026-09-05T03:48:14.342658+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,3,0.990,viewed_step_3
+sess-0c3b7596,2026-09-05T03:48:14.344230+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,viewed_step_4
+sess-0c3b7596,2026-09-05T03:48:14.345792+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,quiz_correct
+sess-a45a9e0e,2026-09-05T03:48:28.769218+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4564,1,0.990,initialized
+sess-a45a9e0e,2026-09-05T03:48:28.769462+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4564,1,0.990,viewed_step_1
+sess-a45a9e0e,2026-09-05T03:48:28.771914+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4564,2,0.990,viewed_step_2
+sess-a45a9e0e,2026-09-05T03:48:28.773141+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4564,3,0.990,viewed_step_3
+sess-a45a9e0e,2026-09-05T03:48:28.774342+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4564,4,0.990,viewed_step_4
+sess-a45a9e0e,2026-09-05T03:48:28.775480+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4564,4,0.990,quiz_correct
+sess-76f37880,2026-09-05T04:23:24.433033+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,initialized
+sess-76f37880,2026-09-05T04:23:24.433250+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,viewed_step_1
+sess-76f37880,2026-09-05T04:23:24.440153+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,2,0.990,viewed_step_2
+sess-76f37880,2026-09-05T04:23:24.443709+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,3,0.990,viewed_step_3
+sess-76f37880,2026-09-05T04:23:24.446934+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,viewed_step_4
+sess-76f37880,2026-09-05T04:23:24.450219+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,quiz_correct
+sess-d928c63b,2026-09-05T04:23:37.807309+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,1,0.990,initialized
+sess-d928c63b,2026-09-05T04:23:37.807628+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,1,0.990,viewed_step_1
+sess-d928c63b,2026-09-05T04:23:37.809377+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,2,0.990,viewed_step_2
+sess-d928c63b,2026-09-05T04:23:37.810532+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,3,0.990,viewed_step_3
+sess-d928c63b,2026-09-05T04:23:37.811526+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,4,0.990,viewed_step_4
+sess-d928c63b,2026-09-05T04:23:37.812487+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4653,4,0.990,quiz_correct
+sess-ce550465,2026-09-05T04:31:41.661819+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,initialized
+sess-ce550465,2026-09-05T04:31:41.662067+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,1,0.990,viewed_step_1
+sess-ce550465,2026-09-05T04:31:41.664343+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,2,0.990,viewed_step_2
+sess-ce550465,2026-09-05T04:31:41.665981+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,3,0.990,viewed_step_3
+sess-ce550465,2026-09-05T04:31:41.667539+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,viewed_step_4
+sess-ce550465,2026-09-05T04:31:41.669117+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2940,4,0.990,quiz_correct
+sess-280355ef,2026-09-05T04:33:13.196796+00:00,,What is mitosis?,BIO-C10-03,1.2992,1,0.500,initialized
+sess-280355ef,2026-09-05T04:33:13.197254+00:00,,What is mitosis?,BIO-C10-03,1.2992,1,0.500,viewed_step_1
+sess-922a7da8,2026-09-05T04:34:22.403910+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.946,initialized
+sess-922a7da8,2026-09-05T04:34:22.404368+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.946,viewed_step_1
+sess-fb79f182,2026-09-05T04:36:07.477796+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.946,initialized
+sess-fb79f182,2026-09-05T04:36:07.478000+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.946,viewed_step_1
+sess-a7806a0e,2026-09-05T04:36:44.039618+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.946,initialized
+sess-a7806a0e,2026-09-05T04:36:44.040084+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.946,viewed_step_1
+sess-3a585a1b,2026-09-05T04:37:31.047316+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,initialized
+sess-3a585a1b,2026-09-05T04:37:31.047539+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,viewed_step_1
+sess-3a585a1b,2026-09-05T04:37:31.054051+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,2,0.990,viewed_step_2
+sess-3a585a1b,2026-09-05T04:37:31.057210+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,3,0.990,viewed_step_3
+sess-3a585a1b,2026-09-05T04:37:31.061080+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,viewed_step_4
+sess-3a585a1b,2026-09-05T04:37:31.064788+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,quiz_correct
+sess-7882e5a4,2026-09-05T04:39:55.895784+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,1,0.990,initialized
+sess-7882e5a4,2026-09-05T04:39:55.898272+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,1,0.990,viewed_step_1
+sess-7882e5a4,2026-09-05T04:39:55.908389+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,2,0.990,viewed_step_2
+sess-7882e5a4,2026-09-05T04:39:55.913392+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,3,0.990,viewed_step_3
+sess-7882e5a4,2026-09-05T04:39:55.917884+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,4,0.990,viewed_step_4
+sess-7882e5a4,2026-09-05T04:39:55.921938+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4620,4,0.990,quiz_correct
+sess-4346a4f5,2026-09-05T04:43:31.077674+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,initialized
+sess-4346a4f5,2026-09-05T04:43:31.078093+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-ff675654,2026-09-05T04:43:40.166525+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,initialized
+sess-ff675654,2026-09-05T04:43:40.166814+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,viewed_step_1
+sess-ebc22ff4,2026-09-05T05:05:18.563333+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,initialized
+sess-ebc22ff4,2026-09-05T05:05:18.563589+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,viewed_step_1
+sess-ebc22ff4,2026-09-05T05:05:18.567256+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,2,0.990,viewed_step_2
+sess-ebc22ff4,2026-09-05T05:05:18.569055+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,3,0.990,viewed_step_3
+sess-ebc22ff4,2026-09-05T05:05:18.570534+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,viewed_step_4
+sess-ebc22ff4,2026-09-05T05:05:18.571943+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,quiz_correct
+sess-f3627a8b,2026-09-05T05:09:16.620727+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,initialized
+sess-f3627a8b,2026-09-05T05:09:16.621031+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,viewed_step_1
+sess-93c8fdda,2026-09-05T05:10:17.178599+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,initialized
+sess-93c8fdda,2026-09-05T05:10:17.178896+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,viewed_step_1
+sess-0cf274f3,2026-09-05T05:10:55.207085+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,initialized
+sess-0cf274f3,2026-09-05T05:10:55.207375+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,viewed_step_1
+sess-e5dec07d,2026-09-05T05:11:42.492948+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,initialized
+sess-e5dec07d,2026-09-05T05:11:42.493226+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.980,viewed_step_1
+sess-60d88daf,2026-09-05T05:12:19.524084+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,initialized
+sess-60d88daf,2026-09-05T05:12:19.524406+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,1,0.990,viewed_step_1
+sess-60d88daf,2026-09-05T05:12:19.526490+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,2,0.990,viewed_step_2
+sess-60d88daf,2026-09-05T05:12:19.529039+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,3,0.990,viewed_step_3
+sess-60d88daf,2026-09-05T05:12:19.530814+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,viewed_step_4
+sess-60d88daf,2026-09-05T05:12:19.532226+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2915,4,0.990,quiz_correct
+sess-96757eeb,2026-09-05T05:13:27.363959+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,initialized
+sess-96757eeb,2026-09-05T05:13:27.364245+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-f15b9e56,2026-09-05T05:13:35.364309+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,initialized
+sess-f15b9e56,2026-09-05T05:13:35.364591+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,viewed_step_1
+sess-82220820,2026-09-05T05:20:58.619646+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,initialized
+sess-82220820,2026-09-05T05:20:58.619922+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,viewed_step_1
+sess-9a6fa824,2026-09-05T05:26:21.442730+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,1,0.990,initialized
+sess-9a6fa824,2026-09-05T05:26:21.443018+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,1,0.990,viewed_step_1
+sess-9a6fa824,2026-09-05T05:26:21.445128+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,2,0.990,viewed_step_2
+sess-9a6fa824,2026-09-05T05:26:21.446658+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,3,0.990,viewed_step_3
+sess-9a6fa824,2026-09-05T05:26:21.448674+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,4,0.990,viewed_step_4
+sess-9a6fa824,2026-09-05T05:26:21.450607+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2956,4,0.990,quiz_correct
+sess-9f5bebe4,2026-09-05T05:28:31.365389+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,initialized
+sess-9f5bebe4,2026-09-05T05:28:31.365677+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-d66ac01a,2026-09-05T05:28:41.766399+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,initialized
+sess-d66ac01a,2026-09-05T05:28:41.766726+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,viewed_step_1
+sess-afb8c65d,2026-09-05T05:30:18.110552+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.990,initialized
+sess-afb8c65d,2026-09-05T05:30:18.110927+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,1,0.990,viewed_step_1
+sess-afb8c65d,2026-09-05T05:30:18.112787+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,2,0.990,viewed_step_2
+sess-afb8c65d,2026-09-05T05:30:18.114252+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,3,0.990,viewed_step_3
+sess-afb8c65d,2026-09-05T05:30:18.115395+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.990,viewed_step_4
+sess-afb8c65d,2026-09-05T05:30:18.116387+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4636,4,0.990,quiz_correct
+sess-2311b5bc,2026-09-05T05:31:42.964209+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,initialized
+sess-2311b5bc,2026-09-05T05:31:42.964540+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,viewed_step_1
+sess-4f72e4f2,2026-09-05T05:33:44.681060+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,initialized
+sess-4f72e4f2,2026-09-05T05:33:44.681356+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,viewed_step_1
+sess-86ee1c99,2026-09-05T05:46:45.764361+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,initialized
+sess-86ee1c99,2026-09-05T05:46:45.764639+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,viewed_step_1
+sess-c3aaadce,2026-09-05T05:47:13.318393+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,initialized
+sess-c3aaadce,2026-09-05T05:47:13.318656+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,viewed_step_1
+sess-4eed3dff,2026-09-05T05:48:09.516129+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,initialized
+sess-4eed3dff,2026-09-05T05:48:09.516391+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,1,0.990,viewed_step_1
+sess-4eed3dff,2026-09-05T05:48:09.520359+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,2,0.990,viewed_step_2
+sess-4eed3dff,2026-09-05T05:48:09.522217+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,3,0.990,viewed_step_3
+sess-4eed3dff,2026-09-05T05:48:09.523771+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,viewed_step_4
+sess-4eed3dff,2026-09-05T05:48:09.525320+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.2985,4,0.990,quiz_correct
+sess-445c52d4,2026-09-05T05:50:23.735157+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,initialized
+sess-445c52d4,2026-09-05T05:50:23.735429+00:00,test_integration2,What is mitochondria?,BIO-C08-01,1.1037,1,0.500,viewed_step_1
+sess-273e2fd1,2026-09-05T05:50:33.040467+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,initialized
+sess-273e2fd1,2026-09-05T05:50:33.040754+00:00,test_integration2,Explain human reproduction,BIO-C03-01,0.6681,1,0.500,viewed_step_1
+sess-b80def39,2026-09-05T05:52:11.055121+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4640,1,0.990,initialized
+sess-b80def39,2026-09-05T05:52:11.055449+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4640,1,0.990,viewed_step_1
+sess-b80def39,2026-09-05T05:52:11.057104+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4640,2,0.990,viewed_step_2
+sess-b80def39,2026-09-05T05:52:11.058344+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4640,3,0.990,viewed_step_3
+sess-b80def39,2026-09-05T05:52:11.059670+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4640,4,0.990,viewed_step_4
+sess-b80def39,2026-09-05T05:52:11.061647+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.4640,4,0.990,quiz_correct
+sess-b7191990,2026-09-05T05:53:36.965811+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,initialized
+sess-b7191990,2026-09-05T05:53:36.966117+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,viewed_step_1
+sess-63fd2280,2026-09-05T05:55:32.704319+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,initialized
+sess-63fd2280,2026-09-05T05:55:32.704556+00:00,student_local,What is mitosis?,BIO-C10-03,1.2992,1,0.990,viewed_step_1
+sess-cd988532,2026-09-05T09:18:41.076375+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,initialized
+sess-cd988532,2026-09-05T09:18:41.077404+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1
+sess-34cc18cf,2026-09-05T09:22:26.525953+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,initialized
+sess-34cc18cf,2026-09-05T09:22:26.526263+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1
+sess-9d48545a,2026-09-05T09:22:56.161066+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,initialized
+sess-9d48545a,2026-09-05T09:22:56.161752+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1
+sess-53ef042c,2026-09-05T09:24:12.397448+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,initialized
+sess-53ef042c,2026-09-05T09:24:12.397719+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1
+sess-96f454f9,2026-09-05T09:29:34.213325+00:00,student_local,explain parts of flower,NCERT-ClassXI-CH05-P063-16,1.1673,1,0.990,initialized
+sess-db8c4d5b,2026-09-05T09:33:28.710165+00:00,student_test,explain parts of flower,NCERT-ClassXI-CH05-P063-16,1.1673,1,0.500,initialized
+sess-c2428608,2026-09-05T09:33:34.611662+00:00,student_test,explain me parts of flower,NCERT-ClassXI-CH05-P063-16,1.1736,1,0.500,initialized
+sess-e13e03dd,2026-09-05T09:33:39.801669+00:00,student_test,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6150,1,0.500,initialized
+sess-db952687,2026-09-05T09:33:45.608496+00:00,student_test,what is mitochondria?,BIO-C08-01,1.1186,1,0.500,initialized
+sess-db952687,2026-09-05T09:33:45.608812+00:00,student_test,what is mitochondria?,BIO-C08-01,1.1186,1,0.500,viewed_step_1
+sess-6879657b,2026-09-05T09:33:58.704671+00:00,student_test,difference between mitosis and meiosis,BIO-C10-03,1.2935,1,0.500,initialized
+sess-6879657b,2026-09-05T09:33:58.704996+00:00,student_test,difference between mitosis and meiosis,BIO-C10-03,1.2935,1,0.500,viewed_step_1
+sess-a5b77e7f,2026-09-05T09:48:42.304764+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,initialized
+sess-a5b77e7f,2026-09-05T09:48:42.305097+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,viewed_step_1
+sess-69f875dc,2026-09-05T09:48:49.647400+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6202,1,0.500,initialized
+sess-82c72cca,2026-09-05T09:49:24.107466+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,initialized
+sess-82c72cca,2026-09-05T09:49:24.107930+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,viewed_step_1
+sess-e376291d,2026-09-05T09:49:31.359918+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6208,1,0.500,initialized
+sess-f3518eb2,2026-09-05T09:50:05.922390+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,initialized
+sess-f3518eb2,2026-09-05T09:50:05.922749+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,viewed_step_1
+sess-19ff761f,2026-09-05T09:50:12.891298+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6187,1,0.500,initialized
+sess-de11f968,2026-09-05T09:51:41.130105+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6277,1,0.500,initialized
+sess-24728766,2026-09-05T09:53:39.027179+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,initialized
+sess-24728766,2026-09-05T09:53:39.027533+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,viewed_step_1
+sess-9c7ec04e,2026-09-05T09:53:46.444182+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6202,1,0.500,initialized
+sess-9c7ec04e,2026-09-05T09:53:46.444511+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6202,1,0.500,viewed_step_1
+sess-c2c64a57,2026-09-05T10:00:48.291915+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,initialized
+sess-c2c64a57,2026-09-05T10:00:48.292215+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,viewed_step_1
+sess-fe01e13e,2026-09-05T10:01:10.202641+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6208,1,0.500,initialized
+sess-fe01e13e,2026-09-05T10:01:10.202991+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6208,1,0.500,viewed_step_1
+sess-e56bd44c,2026-09-05T10:03:53.783997+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,initialized
+sess-e56bd44c,2026-09-05T10:03:53.784332+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,viewed_step_1
+sess-cd10698d,2026-09-05T10:04:14.527356+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6242,1,0.500,initialized
+sess-cd10698d,2026-09-05T10:04:14.527655+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6242,1,0.500,viewed_step_1
+sess-dcb9c90a,2026-09-05T10:12:20.282162+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,initialized
+sess-dcb9c90a,2026-09-05T10:12:20.282491+00:00,test_eval_student,Explain human spermatogenesis and role of Leydig cells,BIO-C03-01,0.3429,1,0.500,viewed_step_1
+sess-72a2d89a,2026-09-05T10:12:34.841697+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6202,1,0.500,initialized
+sess-72a2d89a,2026-09-05T10:12:34.842015+00:00,test_eval_student,explain photosynthesis,NCERT-ClassXI-CH11-P136-09,1.6202,1,0.500,viewed_step_1
+sess-9cc87b49,2026-09-05T10:15:48.123997+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,initialized
+sess-9cc87b49,2026-09-05T10:15:48.124302+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1
+sess-01f2ba54,2026-09-05T12:48:05.088238+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,initialized
+sess-01f2ba54,2026-09-05T12:48:05.089740+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1
+sess-862a7056,2026-09-05T13:12:25.782735+00:00,docker-smoke-test,What is photosynthesis?,NCERT-ClassXI-CH11-P136-09,1.6218,1,0.500,initialized
+sess-862a7056,2026-09-05T13:12:25.791784+00:00,docker-smoke-test,What is photosynthesis?,NCERT-ClassXI-CH11-P136-09,1.6218,1,0.500,viewed_step_1

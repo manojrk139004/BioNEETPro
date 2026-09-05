@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_05f1511564",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH05-P095-27",
+    "title": "Molecular Basis of Inheritance \u2014 5.6 GENETIC CODE"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH05-P095-27": {
+      "next_review": "2026-09-08T06:40:09.005066+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.6 GENETIC CODE"
+    }
+  },
+  "updated_at": "2026-09-05T06:40:09.005085+00:00"
+}

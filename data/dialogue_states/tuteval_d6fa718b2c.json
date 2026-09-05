@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d6fa718b2c",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH08-P156-14",
+    "title": "Microbes in Human Welfare \u2014 8.5 MICROBES AS BIOCONTROL AGENTS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH08-P156-14": {
+      "next_review": "2026-09-08T09:08:58.187782+00:00",
+      "mastery": 0.5,
+      "title": "Microbes in Human Welfare \u2014 8.5 MICROBES AS BIOCONTROL AGENTS"
+    }
+  },
+  "updated_at": "2026-09-05T09:08:58.187795+00:00"
+}

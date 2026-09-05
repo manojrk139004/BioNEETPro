@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_bad7bc34fe",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH05-P093-23",
+    "title": "Molecular Basis of Inheritance \u2014 5.5.3 Types of RNA and the process of Transcription"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH04-P072-34": {
+      "next_review": "2026-09-08T09:00:17.671884+00:00",
+      "mastery": 0.5,
+      "title": "Principles of Inheritance and Variation \u2014 4.7 MUTATION"
+    },
+    "NCERT-ClassXII-CH05-P093-23": {
+      "next_review": "2026-09-08T09:00:21.574452+00:00",
+      "mastery": 0.5,
+      "title": "Molecular Basis of Inheritance \u2014 5.5.3 Types of RNA and the process of Transcription"
+    }
+  },
+  "updated_at": "2026-09-05T09:00:21.574467+00:00"
+}

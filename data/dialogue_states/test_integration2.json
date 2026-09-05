@@ -1,0 +1,47 @@
+{
+  "student_id": "test_integration2",
+  "turns": 21,
+  "focal": {
+    "concept_id": "BIO-C11-01",
+    "title": "Genetics"
+  },
+  "last_strategy": "mcq_practice",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P096-22": {
+      "next_review": "2026-09-08T05:50:20.645254+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.4 Mitochondria"
+    },
+    "BIO-C03-01": {
+      "next_review": "2026-09-08T05:50:30.009271+00:00",
+      "mastery": 0.5,
+      "title": "Human Reproduction: Spermatogenesis, Oogenesis, Menstrual Cycle & Fertilization"
+    },
+    "BIO-C24-02": {
+      "next_review": "2026-09-07T09:36:44.359005+00:00",
+      "mastery": 0.5,
+      "title": "Genetics"
+    },
+    "BIO-C24-04": {
+      "next_review": "2026-09-07T10:17:08.876020+00:00",
+      "mastery": 0.5,
+      "title": "Genetics"
+    },
+    "BIO-C25-06": {
+      "next_review": "2026-09-08T04:43:43.224782+00:00",
+      "mastery": 0.5,
+      "title": "Genetics"
+    },
+    "BIO-C11-01": {
+      "next_review": "2026-09-08T05:50:36.166590+00:00",
+      "mastery": 0.5,
+      "title": "Genetics"
+    },
+    "BIO-C05-02": {
+      "next_review": "2026-09-08T05:28:44.896996+00:00",
+      "mastery": 0.5,
+      "title": "Genetics"
+    }
+  },
+  "updated_at": "2026-09-05T05:50:36.166607+00:00"
+}

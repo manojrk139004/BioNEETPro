@@ -1,0 +1,42 @@
+{
+  "student_id": "tuteval_8ecbd6ee25",
+  "turns": 6,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH10-P182-08",
+    "title": "Biotechnology and its Applications \u2014 10.2.1 Genetically Engineered Insulin"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P200-16": {
+      "next_review": "2026-09-08T07:59:11.814993+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "NCERT-ClassXI-CH05-P062-14": {
+      "next_review": "2026-09-08T07:59:19.491427+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5 THE FLOWER"
+    },
+    "BIO-C19-03": {
+      "next_review": "2026-09-08T07:59:22.215039+00:00",
+      "mastery": 0.5,
+      "title": "Nephron Function, Counter-Current Mechanism & Renin-Angiotensin-Aldosterone System (RAAS)"
+    },
+    "BIO-C28-01": {
+      "next_review": "2026-09-08T07:59:26.804700+00:00",
+      "mastery": 0.5,
+      "title": "Semi-Conservative DNA Replication"
+    },
+    "NCERT-ClassXI-CH10-P125-12": {
+      "next_review": "2026-09-08T07:59:29.641598+00:00",
+      "mastery": 0.5,
+      "title": "Cell Cycle and Cell Division \u2014 10.3 Significance of Mitosis"
+    },
+    "NCERT-ClassXII-CH10-P182-08": {
+      "next_review": "2026-09-08T07:59:35.274897+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology and its Applications \u2014 10.2.1 Genetically Engineered Insulin"
+    }
+  },
+  "updated_at": "2026-09-05T07:59:35.274913+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "student_id": "repro_flower_case",
+  "turns": 4,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P063-16",
+    "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH15-P200-16": {
+      "next_review": "2026-09-08T06:08:27.792362+00:00",
+      "mastery": 0.5,
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle"
+    },
+    "NCERT-ClassXI-CH05-P063-16": {
+      "next_review": "2026-09-08T06:08:36.167956+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower"
+    }
+  },
+  "updated_at": "2026-09-05T06:08:36.167973+00:00"
+}

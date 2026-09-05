@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_e9647f7c5d",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH02-P028-04",
+    "title": "Human Reproduction \u2014 2.2 THE FEMALE REPRODUCTIVE SYSTEM"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH02-P028-04": {
+      "next_review": "2026-09-08T07:41:59.335046+00:00",
+      "mastery": 0.5,
+      "title": "Human Reproduction \u2014 2.2 THE FEMALE REPRODUCTIVE SYSTEM"
+    }
+  },
+  "updated_at": "2026-09-05T07:41:59.335062+00:00"
+}

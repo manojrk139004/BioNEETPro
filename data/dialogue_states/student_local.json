@@ -1,0 +1,142 @@
+{
+  "student_id": "student_local",
+  "reviews": {
+    "NCERT-ClassXI-CH07-P084-12": {
+      "title": "Structural Organisation in Animals \u2014 7.3 ), which are found adhered to the upper part",
+      "mastery": 0.99,
+      "next_review": "2026-10-04T09:38:35.322906+00:00"
+    },
+    "BIO-C28-02": {
+      "title": "Genetics",
+      "mastery": 0.977,
+      "next_review": "2026-10-04T07:03:09.583836+00:00"
+    },
+    "BIO-C06-02": {
+      "title": "Xylem & Phloem Elements",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T05:56:50.847838+00:00"
+    },
+    "NCERT-ClassXI-CH08-P003-04": {
+      "next_review": "2026-10-05T12:50:19.456283+00:00",
+      "mastery": 0.99,
+      "title": "Cell : The Unit of Life \u2014 8.1 WHAT IS A CELL?"
+    },
+    "NCERT-ClassXI-CH04-P051-29": {
+      "title": "Animal Kingdom \u2014 4.2.11.7 Class \u2013 Mammalia",
+      "mastery": 0.946,
+      "next_review": "2026-10-04T14:32:56.428050+00:00"
+    },
+    "NCERT-ClassXI-CH11-P136-09": {
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?",
+      "mastery": 0.946,
+      "next_review": "2026-10-04T14:18:47.819789+00:00"
+    },
+    "BIO-C13-04": {
+      "title": "Why Leaves Are Green: Chlorophyll a, Chlorophyll b, Chloroplasts & Light Absorption",
+      "mastery": 0.99,
+      "next_review": "2026-10-05T09:22:38.716207+00:00"
+    },
+    "NCERT-ClassXI-CH12-P155-05": {
+      "title": "Respiration in Plants \u2014 12.2 GLYCOLYSIS",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T05:55:42.797108+00:00"
+    },
+    "BIO-C16-01": {
+      "title": "Human Digestive System: Gastrointestinal Secretions, Enzymes & Absorption",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T06:27:26.503683+00:00"
+    },
+    "NCERT-ClassXI-CH05-P063-16": {
+      "title": "Morphology of Flowering Plants \u2014 5.5.1 Parts of a Flower",
+      "mastery": 0.99,
+      "next_review": "2026-10-05T09:29:31.034593+00:00"
+    },
+    "NCERT-ClassXI-CH12-P156-06": {
+      "title": "Respiration in Plants \u2014 12.2 GLYCOLYSIS",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T05:55:49.478866+00:00"
+    },
+    "NCERT-ClassXI-CH07-P079-02": {
+      "title": "Structural Organisation in Animals \u2014 7.1 ORGAN AND ORGAN SYSTEM",
+      "mastery": 0.99,
+      "next_review": "2026-10-04T10:11:46.895622+00:00"
+    },
+    "NCERT-ClassXI-CH18-P235-10": {
+      "title": "Neural Control and Coordination \u2014 18.4 CENTRAL NEURAL SYSTEM",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T05:55:05.126673+00:00"
+    },
+    "NCERT-ClassXI-CH05-P062-14": {
+      "title": "Morphology of Flowering Plants \u2014 5.5 THE FLOWER",
+      "mastery": 0.99,
+      "next_review": "2026-10-05T11:40:37.091129+00:00"
+    },
+    "NCERT-ClassXII-CH04-P070-31": {
+      "title": "Principles of Inheritance and Variation \u2014 4.12 c). In this case the total number of chromosome is same in both",
+      "mastery": 0.99,
+      "next_review": "2026-10-04T07:29:57.163036+00:00"
+    },
+    "BIO-C25-05": {
+      "title": "Genetics",
+      "mastery": 0.977,
+      "next_review": "2026-10-04T07:03:00.186718+00:00"
+    },
+    "NCERT-ClassXI-CH08-P096-22": {
+      "title": "Cell : The Unit of Life \u2014 8.5.4 Mitochondria",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T05:57:03.707323+00:00"
+    },
+    "NCERT-ClassXI-CH10-P125-12": {
+      "title": "Cell Cycle and Cell Division \u2014 10.3 Significance of Mitosis",
+      "mastery": 0.99,
+      "next_review": "2026-10-05T12:48:01.945587+00:00"
+    },
+    "NCERT-ClassXII-CH05-P108-48": {
+      "title": "Molecular Basis of Inheritance \u2014 5.10 DNA FINGERPRINTING",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T02:17:19.111786+00:00"
+    },
+    "BIO-C14-02": {
+      "title": "Krebs Citric Acid Cycle, Mitochondrial Electron Transport System & Chemiosmosis",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T05:56:56.060806+00:00"
+    },
+    "NCERT-ClassXI-CH15-P199-15": {
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T06:26:13.882229+00:00"
+    },
+    "BIO-C18-03": {
+      "title": "Blood Composition, Formed Elements, ABO Groups & Coagulation",
+      "mastery": 0.946,
+      "next_review": "2026-10-04T16:20:34.286635+00:00"
+    },
+    "NCERT-ClassXII-CH12-P206-04": {
+      "title": "Ecosystem \u2014 12.2 PRODUCTIVITY",
+      "mastery": 0.932,
+      "next_review": "2026-10-04T06:22:11.235666+00:00"
+    },
+    "NCERT-ClassXI-CH17-P224-09": {
+      "title": "Locomotion and Movement \u2014 17.3 SKELETAL SYSTEM",
+      "mastery": 0.99,
+      "next_review": "2026-10-04T09:23:19.747065+00:00"
+    },
+    "BIO-C28-01": {
+      "title": "Semi-Conservative DNA Replication",
+      "mastery": 0.99,
+      "next_review": "2026-10-05T05:48:03.840499+00:00"
+    },
+    "NCERT-ClassXI-CH15-P200-16": {
+      "title": "Body Fluids and Circulation \u2014 15.3.2 Cardiac Cycle",
+      "mastery": 0.99,
+      "next_review": "2026-10-05T05:49:13.790450+00:00"
+    }
+  },
+  "last_strategy": "advanced_concise",
+  "updated_at": "2026-09-05T12:50:19.456304+00:00",
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P003-04",
+    "title": "Cell : The Unit of Life \u2014 8.1 WHAT IS A CELL?"
+  },
+  "turns": 232
+}

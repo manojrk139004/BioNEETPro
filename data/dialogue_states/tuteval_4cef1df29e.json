@@ -1,0 +1,32 @@
+{
+  "student_id": "tuteval_4cef1df29e",
+  "turns": 4,
+  "focal": {
+    "concept_id": "BIO-C06-02",
+    "title": "Xylem & Phloem Elements"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C05-02": {
+      "next_review": "2026-09-08T06:30:55.843112+00:00",
+      "mastery": 0.5,
+      "title": "Central Dogma of Molecular Biology: Genetic Code Properties & Wobble Hypothesis"
+    },
+    "NCERT-ClassXI-CH12-P165-22": {
+      "next_review": "2026-09-08T06:31:06.243288+00:00",
+      "mastery": 0.5,
+      "title": "Respiration in Plants \u2014 12.7 RESPIRATORY QUOTIENT"
+    },
+    "BIO-C07-01": {
+      "next_review": "2026-09-08T06:31:14.576006+00:00",
+      "mastery": 0.5,
+      "title": "Types of Epithelium"
+    },
+    "BIO-C06-02": {
+      "next_review": "2026-09-08T06:31:20.482551+00:00",
+      "mastery": 0.5,
+      "title": "Xylem & Phloem Elements"
+    }
+  },
+  "updated_at": "2026-09-05T06:31:20.482568+00:00"
+}

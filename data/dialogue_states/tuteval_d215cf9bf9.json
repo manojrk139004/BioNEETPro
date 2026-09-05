@@ -1,0 +1,22 @@
+{
+  "student_id": "tuteval_d215cf9bf9",
+  "turns": 2,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH11-P138-11",
+    "title": "Photosynthesis in Higher Plants \u2014 11.5 WHAT IS LIGHT REACTION?"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH11-P136-09": {
+      "next_review": "2026-09-08T07:49:42.415957+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.3 WHERE DOES PHOTOSYNTHESIS TAKE PLACE?"
+    },
+    "NCERT-ClassXI-CH11-P138-11": {
+      "next_review": "2026-09-08T07:49:45.575746+00:00",
+      "mastery": 0.5,
+      "title": "Photosynthesis in Higher Plants \u2014 11.5 WHAT IS LIGHT REACTION?"
+    }
+  },
+  "updated_at": "2026-09-05T07:49:45.575761+00:00"
+}

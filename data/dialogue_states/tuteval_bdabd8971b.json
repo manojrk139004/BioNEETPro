@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_bdabd8971b",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH12-P001-02",
+    "title": "Ecosystem \u2014 12.1 Ecosystem\u2013Structure"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH12-P001-02": {
+      "next_review": "2026-09-08T07:27:50.537562+00:00",
+      "mastery": 0.5,
+      "title": "Ecosystem \u2014 12.1 Ecosystem\u2013Structure"
+    }
+  },
+  "updated_at": "2026-09-05T07:27:50.537576+00:00"
+}

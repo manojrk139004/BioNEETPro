@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_ee7ac461fa",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C13-04",
+    "title": "Why Leaves Are Green: Chlorophyll a, Chlorophyll b, Chloroplasts & Light Absorption"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C13-04": {
+      "next_review": "2026-09-08T09:11:25.410107+00:00",
+      "mastery": 0.5,
+      "title": "Why Leaves Are Green: Chlorophyll a, Chlorophyll b, Chloroplasts & Light Absorption"
+    }
+  },
+  "updated_at": "2026-09-05T09:11:25.410122+00:00"
+}

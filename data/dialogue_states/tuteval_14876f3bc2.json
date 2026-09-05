@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_14876f3bc2",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH14-P189-13",
+    "title": "Breathing and Exchange of Gases \u2014 14.4 TRANSPORT OF GASES"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH14-P189-13": {
+      "next_review": "2026-09-08T07:56:54.056922+00:00",
+      "mastery": 0.5,
+      "title": "Breathing and Exchange of Gases \u2014 14.4 TRANSPORT OF GASES"
+    }
+  },
+  "updated_at": "2026-09-05T07:56:54.056936+00:00"
+}

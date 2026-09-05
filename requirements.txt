@@ -1,0 +1,14 @@
+Flask==3.1.2
+flask-cors==6.0.1
+requests==2.32.5
+python-dotenv==1.2.1
+pandas>=2.2.0
+scikit-learn>=1.4.0
+numpy>=1.26.0
+# Optional but recommended: enables the Firestore backend for per-student
+# stores (flashcards, mastery, dialogue, predictions, lesson + chat state).
+# Without it (or without a service-account key) the app runs on local files.
+firebase-admin>=6.0.0
+# Production WSGI server for the Docker deployment.
+gunicorn>=21.0.0
+

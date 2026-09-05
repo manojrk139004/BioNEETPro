@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d28142be1c",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C05-03",
+    "title": "Arrangement of Leaves"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C05-03": {
+      "next_review": "2026-09-08T07:00:22.404773+00:00",
+      "mastery": 0.5,
+      "title": "Arrangement of Leaves"
+    }
+  },
+  "updated_at": "2026-09-05T07:00:22.404786+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_90df6317ce",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH09-P169-14",
+    "title": "Biotechnology : Principles and Processes \u2014 9.2.2 Cloning Vectors"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH09-P169-14": {
+      "next_review": "2026-09-08T09:02:40.396807+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology : Principles and Processes \u2014 9.2.2 Cloning Vectors"
+    }
+  },
+  "updated_at": "2026-09-05T09:02:40.396820+00:00"
+}

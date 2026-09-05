@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_6c8c8a603b",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C24-03",
+    "title": "Incomplete Dominance & Co-dominance"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C24-03": {
+      "next_review": "2026-09-08T09:02:44.448475+00:00",
+      "mastery": 0.5,
+      "title": "Incomplete Dominance & Co-dominance"
+    }
+  },
+  "updated_at": "2026-09-05T09:02:44.448489+00:00"
+}

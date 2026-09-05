@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_969e3436dc",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH04-P060-15",
+    "title": "Principles of Inheritance and Variation \u2014 4.2.2.1 Incomplete Dominance"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH04-P060-15": {
+      "next_review": "2026-09-08T08:20:43.805573+00:00",
+      "mastery": 0.5,
+      "title": "Principles of Inheritance and Variation \u2014 4.2.2.1 Incomplete Dominance"
+    }
+  },
+  "updated_at": "2026-09-05T08:20:43.805594+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_2d5f6225fb",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH02-P021-27",
+    "title": "Biological Classification \u2014 2.6 VIRUSES, VIROIDS, PRIONS AND LICHENS"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH02-P021-27": {
+      "next_review": "2026-09-08T07:39:58.536236+00:00",
+      "mastery": 0.5,
+      "title": "Biological Classification \u2014 2.6 VIRUSES, VIROIDS, PRIONS AND LICHENS"
+    }
+  },
+  "updated_at": "2026-09-05T07:39:58.536254+00:00"
+}

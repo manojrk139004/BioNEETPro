@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_9d65618031",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C21-04",
+    "title": "Syngamy & Triple Fusion"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C21-04": {
+      "next_review": "2026-09-08T06:20:07.693000+00:00",
+      "mastery": 0.5,
+      "title": "Syngamy & Triple Fusion"
+    }
+  },
+  "updated_at": "2026-09-05T06:20:07.693016+00:00"
+}

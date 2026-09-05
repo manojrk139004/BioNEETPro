@@ -1,0 +1,625 @@
+{
+ "target_per_chapter": 200,
+ "files": {
+  "indexed_mcqs_cache.json": {
+   "total": 6600,
+   "chapters": 33,
+   "chapters_pass": "33/33",
+   "valid_total": 6600,
+   "invalid_total": 0,
+   "duplicate_exact": 0,
+   "duplicate_near_sample": 13,
+   "invalid_sample": [],
+   "rows": [
+    {
+     "chapter": "Anatomy of Flowering Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Animal Kingdom",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biodiversity and Conservation",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biological Classification",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biomolecules",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biotechnology and Its Applications",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biotechnology: Principles and Processes",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Body Fluids and Circulation",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Breathing and Exchange of Gases",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Cell Cycle and Cell Division",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Cell: The Unit of Life",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Chemical Coordination and Integration",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Digestion and Absorption",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Ecosystem",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Evolution",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Excretory Products and Elimination",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Human Health and Disease",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Human Reproduction",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Locomotion and Movement",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Microbes in Human Welfare",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Molecular Basis of Inheritance",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Morphology of Flowering Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Neural Control and Coordination",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Organisms and Populations",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Photosynthesis in Higher Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Plant Growth and Development",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Plant Kingdom",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Principles of Inheritance and Variation",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Reproductive Health",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Respiration in Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Sexual Reproduction in Flowering Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Structural Organisation in Animals / Tissues",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "The Living World",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    }
+   ],
+   "status": "PASS"
+  },
+  "mcq_firestore_seed.json": {
+   "total": 6600,
+   "chapters": 33,
+   "chapters_pass": "33/33",
+   "valid_total": 6600,
+   "invalid_total": 0,
+   "duplicate_exact": 0,
+   "duplicate_near_sample": 13,
+   "invalid_sample": [],
+   "rows": [
+    {
+     "chapter": "Anatomy of Flowering Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Animal Kingdom",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biodiversity and Conservation",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biological Classification",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biomolecules",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biotechnology and Its Applications",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Biotechnology: Principles and Processes",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Body Fluids and Circulation",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Breathing and Exchange of Gases",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Cell Cycle and Cell Division",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Cell: The Unit of Life",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Chemical Coordination and Integration",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Digestion and Absorption",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Ecosystem",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Evolution",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Excretory Products and Elimination",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Human Health and Disease",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Human Reproduction",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Locomotion and Movement",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Microbes in Human Welfare",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Molecular Basis of Inheritance",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Morphology of Flowering Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Neural Control and Coordination",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Organisms and Populations",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Photosynthesis in Higher Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Plant Growth and Development",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Plant Kingdom",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Principles of Inheritance and Variation",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Reproductive Health",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Respiration in Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Sexual Reproduction in Flowering Plants",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "Structural Organisation in Animals / Tissues",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    },
+    {
+     "chapter": "The Living World",
+     "current_count": 200,
+     "valid_count": 200,
+     "target": 200,
+     "missing": 0,
+     "final_count": 200,
+     "status": "PASS"
+    }
+   ],
+   "status": "PASS"
+  }
+ }
+}

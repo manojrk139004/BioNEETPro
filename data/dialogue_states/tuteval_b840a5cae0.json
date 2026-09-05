@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_b840a5cae0",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH06-P118-13",
+    "title": "Evolution \u2014 6.5 BIOLOGICAL EVOLUTION"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH06-P118-13": {
+      "next_review": "2026-09-08T08:21:22.851012+00:00",
+      "mastery": 0.5,
+      "title": "Evolution \u2014 6.5 BIOLOGICAL EVOLUTION"
+    }
+  },
+  "updated_at": "2026-09-05T08:21:22.851027+00:00"
+}

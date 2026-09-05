@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_2725b8eb90",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P095-18",
+    "title": "Cell : The Unit of Life \u2014 8.5.3.1 The Endoplasmic Reticulum (ER)"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P095-18": {
+      "next_review": "2026-09-08T08:26:49.298619+00:00",
+      "mastery": 0.5,
+      "title": "Cell : The Unit of Life \u2014 8.5.3.1 The Endoplasmic Reticulum (ER)"
+    }
+  },
+  "updated_at": "2026-09-05T08:26:49.298633+00:00"
+}

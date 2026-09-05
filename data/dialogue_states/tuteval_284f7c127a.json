@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_284f7c127a",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH09-P172-19",
+    "title": "Biotechnology : Principles and Processes \u2014 9.3.3 Amplification of Gene of Interest using PCR"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH09-P172-19": {
+      "next_review": "2026-09-08T08:22:30.586146+00:00",
+      "mastery": 0.5,
+      "title": "Biotechnology : Principles and Processes \u2014 9.3.3 Amplification of Gene of Interest using PCR"
+    }
+  },
+  "updated_at": "2026-09-05T08:22:30.586161+00:00"
+}

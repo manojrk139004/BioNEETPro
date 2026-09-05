@@ -1,0 +1,173 @@
+{
+  "main_dataset": {
+    "dataset": "Main Classifier Dataset",
+    "total_samples": 422,
+    "accuracy": 0.9526,
+    "macro_precision": 0.9773,
+    "macro_recall": 0.9416,
+    "macro_f1": 0.9582,
+    "per_class_precision": {
+      "Academic": 0.9384,
+      "Educational-Sensitive": 0.9255,
+      "Off-Topic": 1.0,
+      "Inappropriate": 1.0,
+      "Harmful": 1.0,
+      "Prompt-Injection": 1.0
+    },
+    "per_class_recall": {
+      "Academic": 0.9659,
+      "Educational-Sensitive": 0.956,
+      "Off-Topic": 0.9216,
+      "Inappropriate": 1.0,
+      "Harmful": 0.88,
+      "Prompt-Injection": 0.9259
+    },
+    "per_class_f1": {
+      "Academic": 0.9519,
+      "Educational-Sensitive": 0.9405,
+      "Off-Topic": 0.9592,
+      "Inappropriate": 1.0,
+      "Harmful": 0.9362,
+      "Prompt-Injection": 0.9615
+    },
+    "confusion_matrix": {
+      "Academic": {
+        "Academic": 198,
+        "Educational-Sensitive": 7,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Educational-Sensitive": {
+        "Academic": 4,
+        "Educational-Sensitive": 87,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Off-Topic": {
+        "Academic": 4,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 47,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Inappropriate": {
+        "Academic": 0,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 23,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Harmful": {
+        "Academic": 3,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 22,
+        "Prompt-Injection": 0
+      },
+      "Prompt-Injection": {
+        "Academic": 2,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 25
+      }
+    },
+    "avg_latency_ms": 0.05,
+    "p95_latency_ms": 0.09,
+    "error_count": 20
+  },
+  "adversarial_dataset": {
+    "dataset": "Adversarial Dataset",
+    "total_samples": 57,
+    "accuracy": 0.5263,
+    "macro_precision": 0.4944,
+    "macro_recall": 0.4141,
+    "macro_f1": 0.3631,
+    "per_class_precision": {
+      "Academic": 0.1333,
+      "Educational-Sensitive": 1.0,
+      "Off-Topic": 0.0,
+      "Inappropriate": 0.0,
+      "Harmful": 0.8333,
+      "Prompt-Injection": 1.0
+    },
+    "per_class_recall": {
+      "Academic": 1.0,
+      "Educational-Sensitive": 0.5263,
+      "Off-Topic": 0.0,
+      "Inappropriate": 0.0,
+      "Harmful": 0.5,
+      "Prompt-Injection": 0.4583
+    },
+    "per_class_f1": {
+      "Academic": 0.2353,
+      "Educational-Sensitive": 0.6897,
+      "Off-Topic": 0.0,
+      "Inappropriate": 0.0,
+      "Harmful": 0.625,
+      "Prompt-Injection": 0.6286
+    },
+    "confusion_matrix": {
+      "Academic": {
+        "Academic": 4,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Educational-Sensitive": {
+        "Academic": 9,
+        "Educational-Sensitive": 10,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Off-Topic": {
+        "Academic": 0,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Inappropriate": {
+        "Academic": 0,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 0,
+        "Prompt-Injection": 0
+      },
+      "Harmful": {
+        "Academic": 5,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 5,
+        "Prompt-Injection": 0
+      },
+      "Prompt-Injection": {
+        "Academic": 12,
+        "Educational-Sensitive": 0,
+        "Off-Topic": 0,
+        "Inappropriate": 0,
+        "Harmful": 1,
+        "Prompt-Injection": 11
+      }
+    },
+    "avg_latency_ms": 0.07,
+    "p95_latency_ms": 0.16,
+    "error_count": 27
+  },
+  "timestamp": "2026-09-04 15:28:17"
+}

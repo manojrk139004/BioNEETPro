@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_5c4cc596fe",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C05-02",
+    "title": "Central Dogma of Molecular Biology: Genetic Code Properties & Wobble Hypothesis"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C05-02": {
+      "next_review": "2026-09-08T07:02:15.182459+00:00",
+      "mastery": 0.5,
+      "title": "Central Dogma of Molecular Biology: Genetic Code Properties & Wobble Hypothesis"
+    }
+  },
+  "updated_at": "2026-09-05T07:02:15.182473+00:00"
+}

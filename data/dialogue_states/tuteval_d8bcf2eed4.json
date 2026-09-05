@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d8bcf2eed4",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P011-16",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.2.3 Pollination"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P011-16": {
+      "next_review": "2026-09-08T06:55:32.309612+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.2.3 Pollination"
+    }
+  },
+  "updated_at": "2026-09-05T06:55:32.309642+00:00"
+}

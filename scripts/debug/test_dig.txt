@@ -1,0 +1,12 @@
+👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor]:**
+*"Here is your authoritative NCERT breakdown for **Human Digestive System: Gastrointestinal Secretions, Enzymes & Absorption**:"*
+
+📖 **Chapter:** Digestion and Absorption
+
+🔢 **Sequential Process:**
+  1. Buccal Cavity: Salivary amylase (ptyalin, pH 6.8) hydrolyzes 30% of dietary starch into maltose; Lysozyme provides antibacterial defense
+  2. Stomach Secretions: Gastric glands contain Parietal/Oxyntic cells (secrete HCl pH 1.8 and Castle's Intrinsic Factor for Vitamin B12 absorption in ileum), Peptic/Chief cells (secrete inactive proenzyme Pepsinogen), and Mucous cells
+  3. HCl activates pepsinogen to Pepsin, which cleaves proteins into proteoses and peptones
+  4. Pancreatic Juice (Alkaline pH 7.8): Enterokinase from intestinal mucosa activates Trypsinogen to active Trypsin
+  5. Trypsin activates Chymotrypsinogen, Procarboxypeptidase, Pancreatic Amylase, Pancreatic Lipase (steapsin), and Nucleases
+  6. Liver & Bile: Bi

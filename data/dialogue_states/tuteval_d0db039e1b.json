@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_d0db039e1b",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH14-P186-08",
+    "title": "Breathing and Exchange of Gases \u2014 14.2 MECHANISM OF BREATHING"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH14-P186-08": {
+      "next_review": "2026-09-08T07:08:13.040837+00:00",
+      "mastery": 0.5,
+      "title": "Breathing and Exchange of Gases \u2014 14.2 MECHANISM OF BREATHING"
+    }
+  },
+  "updated_at": "2026-09-05T07:08:13.040851+00:00"
+}

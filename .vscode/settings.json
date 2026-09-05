@@ -1,0 +1,15 @@
+﻿{
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/*.py",
+    "**/*.pyc",
+    "**/*.json",
+    "**/*.jsonl",
+    "**/*.csv",
+    "**/data/**",
+    "**/datasets/**",
+    "**/Textbook/**",
+    "**/__pycache__/**",
+    "**/.venv/**"
+  ]
+}

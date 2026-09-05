@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_f1d8ea2029",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH05-P066-23",
+    "title": "Morphology of Flowering Plants \u2014 5.7.1 Structure of a Dicotyledonous Seed"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXI-CH05-P066-23": {
+      "next_review": "2026-09-08T09:04:07.484282+00:00",
+      "mastery": 0.5,
+      "title": "Morphology of Flowering Plants \u2014 5.7.1 Structure of a Dicotyledonous Seed"
+    }
+  },
+  "updated_at": "2026-09-05T09:04:07.484301+00:00"
+}

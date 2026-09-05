@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_8fa854c120",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXI-CH08-P098-24",
+    "title": "Ribosome"
+  },
+  "last_strategy": "guided_lesson",
+  "reviews": {
+    "NCERT-ClassXI-CH08-P098-24": {
+      "next_review": "2026-09-08T06:36:13.244878+00:00",
+      "mastery": 0.5,
+      "title": "Ribosome"
+    }
+  },
+  "updated_at": "2026-09-05T06:36:13.244895+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_78b1681e61",
+  "turns": 1,
+  "focal": {
+    "concept_id": "KAG-SAM-020",
+    "title": "Which plant hormone is primarily responsible for apical dominance and promo..."
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "KAG-SAM-020": {
+      "next_review": "2026-09-08T08:27:57.004040+00:00",
+      "mastery": 0.5,
+      "title": "Which plant hormone is primarily responsible for apical dominance and promo..."
+    }
+  },
+  "updated_at": "2026-09-05T08:27:57.004054+00:00"
+}

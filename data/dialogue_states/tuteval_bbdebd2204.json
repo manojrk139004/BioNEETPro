@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_bbdebd2204",
+  "turns": 1,
+  "focal": {
+    "concept_id": "NCERT-ClassXII-CH01-P005-08",
+    "title": "Sexual Reproduction in Flowering Plants \u2014 1.2.1 Stamen, Microsporangium and Pollen Grain"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "NCERT-ClassXII-CH01-P005-08": {
+      "next_review": "2026-09-08T07:24:51.796635+00:00",
+      "mastery": 0.5,
+      "title": "Sexual Reproduction in Flowering Plants \u2014 1.2.1 Stamen, Microsporangium and Pollen Grain"
+    }
+  },
+  "updated_at": "2026-09-05T07:24:51.796654+00:00"
+}

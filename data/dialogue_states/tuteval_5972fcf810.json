@@ -1,0 +1,17 @@
+{
+  "student_id": "tuteval_5972fcf810",
+  "turns": 1,
+  "focal": {
+    "concept_id": "BIO-C21-01",
+    "title": "Brain Anatomy: White Matter vs Grey Matter"
+  },
+  "last_strategy": "standard_ncert",
+  "reviews": {
+    "BIO-C21-01": {
+      "next_review": "2026-09-08T08:39:17.731510+00:00",
+      "mastery": 0.5,
+      "title": "Brain Anatomy: White Matter vs Grey Matter"
+    }
+  },
+  "updated_at": "2026-09-05T08:39:17.731529+00:00"
+}
