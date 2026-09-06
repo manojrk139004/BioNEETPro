@@ -323,12 +323,12 @@ def payload():
 
 
 def candidate_models():
-    models = [OPENROUTER_MODEL]
+    models = [OPENROUTER_MODEL] if OPENROUTER_MODEL and OPENROUTER_MODEL != "agnes-2.0-flash" else []
     if OPENROUTER_KEY and OPENROUTER_KEY.startswith("sk-nry-"):
-        models.extend(["agnes-2.5-flash", "agnes-2.0-flash"])
+        models.extend(["agnes-2.5-flash"])
     else:
         models.extend(["google/gemini-2.0-flash-lite:free", "meta-llama/llama-3.3-70b-instruct:free"])
-    return list(dict.fromkeys([m for m in models if m and m != "minimax-m3-free"]))
+    return list(dict.fromkeys([m for m in models if m and m != "minimax-m3-free" and m != "agnes-2.0-flash"]))
 
 
 try:
@@ -478,7 +478,7 @@ def ai_reply():
                     f"{OPENROUTER_BASE_URL}/chat/completions",
                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {OPENROUTER_KEY}"},
                     json={"model": model, "messages": messages, "max_tokens": AI_MAX_TOKENS, "temperature": 0.5},
-                    timeout=45,
+                    timeout=8,
                 )
                 response.raise_for_status()
                 body = response.json()

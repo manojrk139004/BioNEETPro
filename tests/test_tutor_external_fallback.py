@@ -281,13 +281,33 @@ class TestTutorExternalFallback(unittest.TestCase):
 
     # --- Scenario N: "explain biofertilizers" answered via external fallback ---
     def test_scenario_n_biofertilizers_answered(self):
-        res = adaptive_tutor.generate_tutoring_response(
-            "explain biofertilizers",
-            student_id=self.student_id
-        )
-        self.assertEqual(res.get("status"), "success")
-        self.assertNotIn("couldn't find enough verified NCERT evidence", res.get("reply", ""))
-        self.assertEqual(res.get("source_mode"), "external_llm_fallback")
+        fake_llm_response = mock.MagicMock()
+        fake_llm_response.status_code = 200
+        fake_llm_response.headers = {"Content-Type": "application/json"}
+        fake_llm_response.text = '{"choices": []}'
+        fake_llm_response.json.return_value = {
+            "choices": [{
+                "message": {
+                    "content": (
+                        "Biofertilizers are preparations containing living microorganisms like Rhizobium, Azotobacter, and mycorrhizae.\n\n"
+                        "NEET Traps:\n"
+                        "1. Azospirillum is free living.\n"
+                        "2. Anabaena fixes nitrogen.\n"
+                        "3. Glomus forms mycorrhizae.\n\n"
+                        "Check Question: Which fixes nitrogen in paddy fields?"
+                    )
+                }
+            }]
+        }
+        with mock.patch("requests.post", return_value=fake_llm_response), \
+             mock.patch("adaptive_tutor.OPENROUTER_KEY", "test-key"):
+            res = adaptive_tutor.generate_tutoring_response(
+                "explain biofertilizers",
+                student_id=self.student_id
+            )
+            self.assertEqual(res.get("status"), "success")
+            self.assertNotIn("couldn't find enough verified NCERT evidence", res.get("reply", ""))
+            self.assertEqual(res.get("source_mode"), "external_llm_fallback")
 
     # --- Scenario O: Multi-turn topic switch dominance ---
     def test_scenario_o_multi_turn_topic_switch(self):

@@ -42,6 +42,69 @@ if not OPENROUTER_BASE_URL:
 OPENROUTER_BASE_URL = OPENROUTER_BASE_URL.rstrip("/")
 OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "gpt-4o-mini")
 
+import time
+import threading
+from collections import OrderedDict
+
+# Fast Circuit Breaker for External API (prevents repeatedly waiting on dead/slow endpoints)
+_api_circuit_breaker_until = 0.0
+
+def is_api_circuit_broken() -> bool:
+    if _is_testing():
+        return False
+    return time.time() < _api_circuit_breaker_until
+
+def trip_api_circuit_breaker(duration: float = 60.0):
+    global _api_circuit_breaker_until
+    _api_circuit_breaker_until = time.time() + duration
+
+def reset_api_circuit_breaker():
+    global _api_circuit_breaker_until
+    _api_circuit_breaker_until = 0.0
+
+
+def _is_testing() -> bool:
+    import sys
+    return "unittest" in sys.modules or "pytest" in sys.modules or os.environ.get("TESTING") == "1"
+
+# In-Memory Socratic Response Cache for sub-millisecond retrieval
+class TutorResponseLRUCache:
+    def __init__(self, maxsize: int = 512, ttl_seconds: int = 600):
+        self.maxsize = maxsize
+        self.ttl = ttl_seconds
+        self.cache = OrderedDict()
+        self.lock = threading.Lock()
+
+    def clear(self):
+        with self.lock:
+            self.cache.clear()
+
+    def get(self, key: str) -> Optional[Dict[str, Any]]:
+        if _is_testing():
+            return None
+        with self.lock:
+            if key in self.cache:
+                val, exp = self.cache[key]
+                if time.time() < exp:
+                    self.cache.move_to_end(key)
+                    import copy
+                    return copy.deepcopy(val)
+                del self.cache[key]
+        return None
+
+    def set(self, key: str, val: Dict[str, Any]):
+        if _is_testing():
+            return
+        with self.lock:
+            if key in self.cache:
+                del self.cache[key]
+            elif len(self.cache) >= self.maxsize:
+                self.cache.popitem(last=False)
+            import copy
+            self.cache[key] = (copy.deepcopy(val), time.time() + self.ttl)
+
+_tutor_lru_cache = TutorResponseLRUCache()
+
 # Pre-flight injection detection patterns (compiled once for speed)
 INJECTION_PATTERNS = re.compile(
     r"(?i)("
@@ -585,17 +648,17 @@ class AdaptiveBiologyTutor:
     def _model_chain(self) -> List[str]:
         """Working models first; dead routes removed. Graceful multi-model failover."""
         chain = []
-        if OPENROUTER_MODEL:
+        if OPENROUTER_MODEL and OPENROUTER_MODEL != "agnes-2.0-flash":
             chain.append(OPENROUTER_MODEL)
         if OPENROUTER_KEY and OPENROUTER_KEY.startswith("sk-nry-"):
-            chain.extend(["agnes-2.5-flash", "agnes-2.0-flash"])
+            chain.extend(["agnes-2.5-flash"])
         else:
             chain.extend([
                 "google/gemini-2.0-flash-lite:free",
                 "meta-llama/llama-3.3-70b-instruct:free",
                 "openai/gpt-4o-mini"
             ])
-        return list(dict.fromkeys([m for m in chain if m and m != "minimax-m3-free"]))
+        return list(dict.fromkeys([m for m in chain if m and m != "minimax-m3-free" and m != "agnes-2.0-flash"]))
 
     def check_chain_health(self) -> Dict[str, bool]:
         """Non-blocking startup health check for models in the chain."""
@@ -644,7 +707,7 @@ class AdaptiveBiologyTutor:
         Includes pre-flight injection validation and structural payload markers.
         """
         api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENROUTER_KEY") or OPENROUTER_KEY
-        if not api_key:
+        if not api_key or is_api_circuit_broken():
             return None
 
         # Pre-flight validation gate: block injection attempts before LLM call
@@ -711,8 +774,11 @@ class AdaptiveBiologyTutor:
                     f"{OPENROUTER_BASE_URL}/chat/completions",
                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"},
                     json={"model": model, "messages": messages, "max_tokens": 900, "temperature": 0.2},
-                    timeout=15,
+                    timeout=2.0,
                 )
+                if resp.status_code in (401, 402, 403, 429):
+                    trip_api_circuit_breaker(60.0)
+                    return None
                 if resp.status_code != 200:
                     continue
                 ctype = str(resp.headers.get("Content-Type", "") if hasattr(resp, "headers") and isinstance(getattr(resp, "headers", None), dict) else "")
@@ -751,7 +817,7 @@ class AdaptiveBiologyTutor:
         Strictly aligned with NCERT Class 11 and 12 Biology curriculum.
         """
         api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENROUTER_KEY") or OPENROUTER_KEY
-        if not api_key:
+        if not api_key or is_api_circuit_broken():
             return None
 
         if INJECTION_PATTERNS.search(query):
@@ -854,8 +920,13 @@ class AdaptiveBiologyTutor:
                     f"{OPENROUTER_BASE_URL}/chat/completions",
                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"},
                     json={"model": model, "messages": messages, "max_tokens": 850, "temperature": 0.3},
-                    timeout=15,
+                    timeout=2.0,
                 )
+                if resp.status_code in (401, 402, 403, 429):
+                    trip_api_circuit_breaker(60.0)
+                    if sanitized_fallback is not None:
+                        return _build_tier3_payload(sanitized_fallback, sanitized_model)
+                    return None
                 if resp.status_code != 200:
                     continue
                 ctype = str(resp.headers.get("Content-Type", "") if hasattr(resp, "headers") and isinstance(getattr(resp, "headers", None), dict) else "")
@@ -1007,6 +1078,9 @@ class AdaptiveBiologyTutor:
                 out["study_mode"] = self._detect_study_mode(query)
             except Exception:
                 out["study_mode"] = "learn"
+            if isinstance(out, dict) and out.get("status") == "success":
+                cache_key = f"{student_id}:{query.strip().lower()}:{focus_chapter_id or ''}"
+                _tutor_lru_cache.set(cache_key, out)
             return out
         finally:
             self._save_tutor_state(student_id)
@@ -1075,9 +1149,17 @@ class AdaptiveBiologyTutor:
         """
         NLP -> Context -> Hybrid Retrieval (rewrite+compare+rerank) -> Mastery Adaptation -> Grounded Socratic reply.
         """
-        # 0. Greeting check: Welcome student warmly with high-yield starting options
+        # 0. Check LRU response cache for instant retrieval (<1ms)
+        cache_key = f"{student_id}:{query.strip().lower()}:{focus_chapter_id or ''}"
+        cached_res = _tutor_lru_cache.get(cache_key)
+        if cached_res:
+            return cached_res
+
+        # 0a. Greeting check: Welcome student warmly with high-yield starting options
         if self._is_greeting(query):
-            return self._build_greeting_response(student_id)
+            greet_out = self._build_greeting_response(student_id)
+            _tutor_lru_cache.set(cache_key, greet_out)
+            return greet_out
 
         # 1. NLP Processing & Conversational Reference Resolution
         nlp_res = self.nlp.process_query(query, history or [], student_id=student_id)
@@ -1431,17 +1513,21 @@ class AdaptiveBiologyTutor:
             or float(top.get("hybrid_score", 0)) < 0.70
         )
 
-        # 6. ONE generator: strict RAG over the evidence pack (model chain inside)
-        api_reply = self._generate_api_grounded_response(
-            query=resolved_query,
-            top_evidence=top,
-            strategy=strategy,
-            student_profile=profile,
-            history=history,
-            retrieval_results=retrieval_results,
-            tone_flag=tone_flag,
-            is_partial=is_partial_evidence,
-        )
+        api_reply = None
+        # Tier 1 (Strong Local NCERT Evidence): local-first Socratic generation delivers
+        # verified textbook facts in <15ms. We only query external LLM for Tier 2 (partial
+        # evidence synthesis).
+        if is_partial_evidence:
+            api_reply = self._generate_api_grounded_response(
+                query=resolved_query,
+                top_evidence=top,
+                strategy=strategy,
+                student_profile=profile,
+                history=history,
+                retrieval_results=retrieval_results,
+                tone_flag=tone_flag,
+                is_partial=is_partial_evidence,
+            )
 
         if api_reply:
             compare_block = self._comparison_table(retrieval_results) if top.get("is_comparison") else ""

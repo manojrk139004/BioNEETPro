@@ -113,56 +113,98 @@ def _collection_subdir(collection: str) -> str:
     }.get(collection, collection)
 
 
+from concurrent.futures import ThreadPoolExecutor
+
+_sync_pool = ThreadPoolExecutor(max_workers=3, thread_name_prefix="firestore_sync")
+
+
+def _bg_firestore_save(collection: str, doc_id: str, payload: Any):
+    try:
+        db = _init()
+        if db is not None:
+            db.collection(collection).document(safe_id(doc_id)).set(payload)
+    except Exception:
+        pass
+
+
+def _bg_firestore_delete(collection: str, doc_id: str):
+    try:
+        db = _init()
+        if db is not None:
+            db.collection(collection).document(safe_id(doc_id)).delete()
+    except Exception:
+        pass
+
+
 def load_doc(collection: str, doc_id: str, default: Any = None,
              subdir: Optional[str] = None) -> Any:
-    """Firestore-first read; local file fallback. Returns default if neither."""
-    db = _init()
-    if db is not None:
-        try:
-            snap = db.collection(collection).document(safe_id(doc_id)).get()
-            if snap.exists:
-                return snap.to_dict()
-        except Exception:
-            pass
+    """Local-cache-first read with Firestore fallback. Ultra-fast sub-millisecond retrieval."""
+    # 1. Check local filesystem cache first (<1ms)
     path = _local_path(collection, doc_id, subdir)
     if path.exists():
         try:
             return json.loads(path.read_text(encoding="utf-8"))
         except Exception:
             pass
+
+    # 2. If not found locally, fetch from Firestore and prime local cache
+    db = _init()
+    if db is not None:
+        try:
+            snap = db.collection(collection).document(safe_id(doc_id)).get()
+            if snap.exists:
+                doc_dict = snap.to_dict()
+                try:
+                    path.write_text(json.dumps(doc_dict, indent=2, default=str), encoding="utf-8")
+                except Exception:
+                    pass
+                return doc_dict
+        except Exception:
+            pass
+
     return default
 
 
 def save_doc(collection: str, doc_id: str, data: Any,
-             subdir: Optional[str] = None) -> bool:
-    """Write local cache first, then Firestore when enabled. Never raises."""
+             subdir: Optional[str] = None, sync: bool = False) -> bool:
+    """Write local cache first (<1ms), then sync to Firestore asynchronously."""
     try:
         path = _local_path(collection, doc_id, subdir)
         path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
     except Exception:
         pass
+
     db = _init()
     if db is not None:
-        try:
-            import copy
-            payload = copy.deepcopy(data) if isinstance(data, dict) else {"value": data}
-            db.collection(collection).document(safe_id(doc_id)).set(payload)
+        import copy
+        payload = copy.deepcopy(data) if isinstance(data, dict) else {"value": data}
+        if sync:
+            try:
+                db.collection(collection).document(safe_id(doc_id)).set(payload)
+                return True
+            except Exception:
+                return False
+        else:
+            _sync_pool.submit(_bg_firestore_save, collection, doc_id, payload)
             return True
-        except Exception:
-            return False
     return False
 
 
-def delete_doc(collection: str, doc_id: str, subdir: Optional[str] = None) -> None:
+def delete_doc(collection: str, doc_id: str, subdir: Optional[str] = None, sync: bool = False) -> None:
     try:
         p = _local_path(collection, doc_id, subdir)
         if p.exists():
             p.unlink()
     except Exception:
         pass
+
     db = _init()
     if db is not None:
-        try:
-            db.collection(collection).document(safe_id(doc_id)).delete()
-        except Exception:
-            pass
+        if sync:
+            try:
+                db.collection(collection).document(safe_id(doc_id)).delete()
+            except Exception:
+                pass
+        else:
+            _sync_pool.submit(_bg_firestore_delete, collection, doc_id)
+
