@@ -96,5 +96,46 @@ service cloud.firestore {
       allow create, read, update: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
       allow delete: if signedIn() && (request.auth.uid == studentId || request.auth.token.email == studentId || isAppAdmin());
     }
+
+    // --- V2 Institutional Ecosystem Rules ---
+
+    function isTeacher() {
+      return signedIn() && (
+        request.auth.token.role in ["teacher", "TEACHER"] ||
+        exists(/databases/$(database)/documents/teachers/$(request.auth.uid)) ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["teacher", "TEACHER"])
+      );
+    }
+
+    match /teachers/{teacherId} {
+      allow read: if signedIn();
+      allow write: if isAppAdmin();
+    }
+
+    match /assessments/{assessmentId} {
+      allow read: if signedIn();
+      allow create, update: if isAppAdmin() || isTeacher();
+      allow delete: if isAppAdmin();
+    }
+
+    match /assessment_results/{resultId} {
+      allow create: if signedIn() && (
+        request.resource.data.student_id == request.auth.uid ||
+        request.resource.data.student_id == request.auth.token.email
+      );
+      allow read: if signedIn() && (
+        resource.data.student_id == request.auth.uid ||
+        resource.data.student_id == request.auth.token.email ||
+        isTeacher() ||
+        isAppAdmin()
+      );
+      allow update, delete: if isAppAdmin();
+    }
+
+    match /pending_mcqs/{mcqId} {
+      allow read, write: if isTeacher() || isAppAdmin();
+    }
   }
 }
+

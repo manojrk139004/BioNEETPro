@@ -22,6 +22,14 @@ BioNeet-Pro.html.bak
 
 AUDIT_2026-09-03_BioNEETPro.zip
 
+data/assessment_results/
+data/assessments/
+data/pending_mcqs/
+data/teachers/
+data/users/
+data/tutor_states/test_*
+
+
 Textbook/lebo102.pdf
 archive/datasets/train1.csv
 

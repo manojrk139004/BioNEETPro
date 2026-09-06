@@ -103,6 +103,8 @@ class LearnerProfileManager:
         self.save_profile(student_id, default_profile)
         return default_profile
 
+    get_profile = get_or_create_profile
+
     def save_profile(self, student_id: str, profile: Dict[str, Any]):
         profile["last_active"] = datetime.now(timezone.utc).isoformat()
         firestore_store.save_doc(_COLLECTION, student_id, profile)

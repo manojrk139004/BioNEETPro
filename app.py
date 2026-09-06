@@ -339,6 +339,19 @@ def serve_index():
     return health()
 
 
+@app.get("/<path:filename>")
+def serve_root_asset(filename):
+    """Serve frontend script, style, and media assets from project directory."""
+    # Never expose source code, database, or secret files
+    blocked_exts = (".py", ".pyc", ".env", ".db", ".sqlite", ".rules")
+    if not any(filename.endswith(ext) or filename == ".env" for ext in blocked_exts):
+        target = (BASE_DIR / filename).resolve()
+        # Path traversal guard
+        if str(target).startswith(str(BASE_DIR)) and target.exists() and target.is_file():
+            return send_file(target)
+    return health()
+
+
 @app.get("/health")
 def health():
     ds_count = len(tutor_engine.df) if tutor_engine else 0
@@ -1656,6 +1669,414 @@ def tutor_answer_stream():
         yield f"data: {json.dumps({'type': 'done', 'latency_ms': out.get('latency_ms'), 'citations': out.get('citations', []), 'figures': out.get('figures', []), 'check_mcq': out.get('check_mcq')})}\n\n"
 
     return Response(generate(), mimetype="text/event-stream")
+
+
+# =====================================================================
+# BioNEETPro V2 - INSTITUTIONAL ASSESSMENT & ROLE-BASED ECOSYSTEM ROUTES
+# =====================================================================
+
+from teacher_manager import teacher_manager
+from assessment_engine import assessment_engine
+from assistant_service import assistant_service
+import syllabus
+
+
+def is_super_admin_request(uid=None, claims=None) -> bool:
+    """True if caller has verified super admin / institutional admin rights."""
+    claims = claims or {}
+    if claims.get("admin") is True or str(claims.get("role") or "").upper() in ("SUPER_ADMIN", "ADMIN"):
+        return True
+    return is_admin_request(uid, claims) or teacher_manager.is_super_admin(uid, claims)
+
+
+def is_teacher_request(uid=None, claims=None) -> bool:
+    """True if caller is verified as an active faculty/teacher."""
+    claims = claims or {}
+    if str(claims.get("role") or "").upper() in ("TEACHER", "FACULTY"):
+        return True
+    if not uid:
+        return False
+    return teacher_manager.is_teacher(uid)
+
+
+def resolve_user_role(uid=None, claims=None) -> str:
+    """
+    Resolves role hierarchy: SUPER_ADMIN > TEACHER > STUDENT.
+    In dev mode (non-strict), honors explicit dev role headers/parameters for testing.
+    """
+    claims = claims or {}
+    if not is_strict_auth():
+        dev_role = request.headers.get("X-Dev-Role") or (payload() or {}).get("dev_role") or request.args.get("dev_role")
+        if dev_role and str(dev_role).upper() in ("SUPER_ADMIN", "ADMIN", "TEACHER", "STUDENT"):
+            r = str(dev_role).upper()
+            return "SUPER_ADMIN" if r == "ADMIN" else r
+    if is_super_admin_request(uid, claims):
+        return "SUPER_ADMIN"
+    if is_teacher_request(uid, claims):
+        return "TEACHER"
+    return "STUDENT"
+
+
+@app.get("/api/auth/me")
+def api_auth_me():
+    """Returns authenticated profile and role permissions for frontend routing."""
+    hid, claims, hkind = _header_identity()
+    if hkind not in ("verified", "dev-raw"):
+        if is_strict_auth():
+            return jsonify({"error": "Authentication required. Sign in and retry."}), 401
+        hid = _sanitize_sid(request.args.get("student_id") or "student_local")
+        claims = {}
+
+    role = resolve_user_role(hid, claims)
+    user_info = {
+        "uid": hid,
+        "role": role,
+        "email": claims.get("email") or "",
+        "displayName": claims.get("name") or "",
+    }
+    if role == "TEACHER":
+        t_doc = teacher_manager.get_teacher(hid)
+        if t_doc:
+            user_info["teacher_profile"] = t_doc
+    return jsonify({"success": True, "user": user_info})
+
+
+# --- Teacher Management (Admin Only) ---
+
+@app.post("/api/admin/teachers")
+def api_admin_teachers_create():
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    if resolve_user_role(uid, claims) != "SUPER_ADMIN":
+        return jsonify({"error": "Unauthorized. SUPER_ADMIN privileges required."}), 403
+    data = payload() or {}
+    res = teacher_manager.create_teacher(data, creator_uid=uid)
+    status_code = 201 if res.get("success") else 400
+    return jsonify(res), status_code
+
+
+@app.get("/api/admin/teachers")
+def api_admin_teachers_list():
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    if resolve_user_role(uid, claims) != "SUPER_ADMIN":
+        return jsonify({"error": "Unauthorized. SUPER_ADMIN privileges required."}), 403
+    status_filter = request.args.get("status")
+    teachers = teacher_manager.list_teachers(status=status_filter)
+    return jsonify({"success": True, "teachers": teachers, "count": len(teachers)})
+
+
+@app.get("/api/admin/teachers/<teacher_id>")
+def api_admin_teachers_get(teacher_id):
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+    if role != "SUPER_ADMIN" and uid != teacher_id:
+        return jsonify({"error": "Unauthorized."}), 403
+    t = teacher_manager.get_teacher(teacher_id)
+    if not t:
+        return jsonify({"error": "Teacher not found."}), 404
+    return jsonify({"success": True, "teacher": t})
+
+
+@app.patch("/api/admin/teachers/<teacher_id>/status")
+def api_admin_teachers_status(teacher_id):
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    if resolve_user_role(uid, claims) != "SUPER_ADMIN":
+        return jsonify({"error": "Unauthorized. SUPER_ADMIN privileges required."}), 403
+    data = payload() or {}
+    new_status = str(data.get("status") or "").upper()
+    res = teacher_manager.update_status(teacher_id, new_status)
+    status_code = 200 if res.get("success") else 400
+    return jsonify(res), status_code
+
+
+@app.put("/api/admin/teachers/<teacher_id>")
+def api_admin_teachers_update(teacher_id):
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    if resolve_user_role(uid, claims) != "SUPER_ADMIN":
+        return jsonify({"error": "Unauthorized. SUPER_ADMIN privileges required."}), 403
+    data = payload() or {}
+    res = teacher_manager.edit_teacher(teacher_id, data)
+    status_code = 200 if res.get("success") else 400
+    return jsonify(res), status_code
+
+
+# --- Canonical NCERT Curriculum ---
+
+@app.get("/api/curriculum")
+def api_curriculum_canonical():
+    """Returns canonical Class 11 and Class 12 NCERT curriculum hierarchy."""
+    return jsonify(syllabus.get_canonical_curriculum())
+
+
+# --- AI-Assisted MCQ Generation & Teacher Review Gating ---
+
+@app.post("/api/mcqs/ai-generate")
+def api_mcqs_ai_generate():
+    """
+    AI-assisted question curation for teachers.
+    Pulls verified NCERT questions strictly matching curriculum.
+    """
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+    if role not in ("TEACHER", "SUPER_ADMIN"):
+        return jsonify({"error": "Unauthorized. Teacher or Admin privileges required."}), 403
+
+    data = payload() or {}
+    chapter = str(data.get("chapter") or data.get("chapter_name") or data.get("chapter_id") or "").strip()
+    topic = str(data.get("topic") or "").strip()
+    count = min(30, max(1, int(data.get("count") or 5)))
+    difficulty = str(data.get("difficulty") or "medium").lower()
+
+    if chapter:
+        gen_res = mcq_engine.generate_chapter_mcqs(
+            chapter=chapter,
+            count=count,
+            difficulty=difficulty if difficulty in ("easy", "medium", "hard") else None
+        )
+        selected = gen_res.get("mcqs", [])
+    else:
+        pool = mcq_engine.mcq_pool
+        if difficulty in ("easy", "medium", "hard"):
+            pool = [q for q in pool if str(q.get("difficulty", "")).lower() == difficulty]
+        import random
+        selected = random.sample(pool, min(count, len(pool))) if pool else []
+
+    formatted = []
+    for idx, q in enumerate(selected):
+        opts = q.get("options") or q.get("opts") or []
+        c_idx = q.get("correct_index", q.get("correct", 0))
+        corr_ans = q.get("correct_answer") or (opts[c_idx] if isinstance(c_idx, int) and 0 <= c_idx < len(opts) else (opts[0] if opts else ""))
+        formatted.append({
+            "id": q.get("id") or f"gen_mcq_{int(time.time())}_{idx}",
+            "question": q.get("question") or q.get("q"),
+            "options": opts,
+            "correct_index": c_idx,
+            "correct_answer": corr_ans,
+            "chapter": q.get("chapter", chapter or "General Biology"),
+            "topic": q.get("topic", topic or chapter),
+            "difficulty": q.get("difficulty", difficulty),
+            "explanation": q.get("explanation", ""),
+            "is_ai_generated": True,
+            "status": "PENDING_REVIEW"
+        })
+
+    return jsonify({
+        "success": True,
+        "questions": formatted,
+        "count": len(formatted),
+        "review_required": True,
+        "message": "Questions curated successfully. Review and edit before attaching to assessment."
+    })
+
+
+@app.post("/api/mcqs/approve")
+def api_mcqs_approve():
+    """Teacher review gating: mark MCQs as approved."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+    if role not in ("TEACHER", "SUPER_ADMIN"):
+        return jsonify({"error": "Unauthorized. Teacher or Admin privileges required."}), 403
+
+    data = payload() or {}
+    questions = data.get("questions")
+    if not questions and "question" in data:
+        questions = [data["question"]]
+    if not isinstance(questions, list) or not questions:
+        return jsonify({"error": "No questions provided for approval."}), 400
+
+    approved = []
+    for q in questions:
+        if mcq_engine.validate_mcq(q):
+            q["status"] = "APPROVED"
+            q["approved_by"] = uid
+            q["approved_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            approved.append(q)
+            qid = str(q.get("id") or f"mcq_{int(time.time()*1000)}")
+            firestore_store.save_doc("pending_mcqs", qid, q)
+
+    return jsonify({
+        "success": True,
+        "approved_count": len(approved),
+        "approved_questions": approved
+    })
+
+
+# --- Generic Assessment Engine Endpoints ---
+
+@app.post("/api/assessments")
+def api_assessments_create():
+    """Create teacher-scheduled or institutional assessment."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+    if role not in ("TEACHER", "SUPER_ADMIN"):
+        return jsonify({"error": "Unauthorized. Teacher or Admin role required."}), 403
+    data = payload() or {}
+    res = assessment_engine.create_assessment(data, creator_uid=uid, role=role)
+    status_code = 201 if res.get("success") else 400
+    return jsonify(res), status_code
+
+
+@app.get("/api/assessments")
+def api_assessments_list():
+    """List assessments filtered by lifecycle state, class, chapter, or teacher."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+
+    status_filter = request.args.get("status")
+    type_filter = request.args.get("type")
+    chapter_id = request.args.get("chapter_id")
+    class_id = request.args.get("class_id")
+    teacher_id = request.args.get("teacher_id")
+
+    if role == "TEACHER" and not teacher_id and request.args.get("all") != "true":
+        teacher_id = uid
+
+    assessments = assessment_engine.list_assessments(
+        role=role,
+        caller_uid=uid,
+        status=status_filter,
+        type_filter=type_filter,
+        chapter_id=chapter_id,
+        class_id=class_id,
+        teacher_id=teacher_id,
+    )
+
+    if role == "STUDENT":
+        for a in assessments:
+            asmt_id = a.get("id")
+            sub = assessment_engine.get_student_result(asmt_id, uid)
+            a["has_submitted"] = bool(sub)
+            if sub:
+                a["my_score"] = sub.get("score")
+                a["my_percentage"] = sub.get("percentage")
+
+    return jsonify({"success": True, "assessments": assessments, "count": len(assessments)})
+
+
+@app.get("/api/assessments/upcoming")
+def api_assessments_upcoming():
+    """Dedicated endpoint for student upcoming test notifications and schedules."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    upcoming = assessment_engine.get_upcoming_assessments(student_id=uid)
+    return jsonify({"success": True, "upcoming_assessments": upcoming, "count": len(upcoming)})
+
+
+@app.get("/api/assessments/<assessment_id>")
+def api_assessments_get(assessment_id):
+    """Get assessment metadata and questions (answers hidden for students unless results published)."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+
+    asmt = assessment_engine.get_assessment(assessment_id, role=role, caller_uid=uid)
+    if not asmt:
+        return jsonify({"error": "Assessment not found or access restricted."}), 404
+
+    if role == "STUDENT":
+        sub = assessment_engine.get_student_result(assessment_id, uid)
+        asmt["has_submitted"] = bool(sub)
+        if sub:
+            asmt["my_result"] = sub
+
+    return jsonify({"success": True, "assessment": asmt})
+
+
+@app.put("/api/assessments/<assessment_id>")
+def api_assessments_update(assessment_id):
+    """Edit assessment (Teacher owner or Admin only, strictly while DRAFT)."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+    if role not in ("TEACHER", "SUPER_ADMIN"):
+        return jsonify({"error": "Unauthorized."}), 403
+    data = payload() or {}
+    res = assessment_engine.update_assessment(assessment_id, data, caller_uid=uid, role=role)
+    status_code = 200 if res.get("success") else 400
+    return jsonify(res), status_code
+
+
+@app.post("/api/assessments/<assessment_id>/status")
+def api_assessments_status_transition(assessment_id):
+    """Transition assessment lifecycle (e.g. DRAFT -> PUBLISHED, LIVE -> CLOSED)."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+    if role not in ("TEACHER", "SUPER_ADMIN"):
+        return jsonify({"error": "Unauthorized."}), 403
+    data = payload() or {}
+    new_status = str(data.get("status") or "").upper()
+    res = assessment_engine.transition_status(assessment_id, new_status, caller_uid=uid, role=role)
+    status_code = 200 if res.get("success") else 400
+    return jsonify(res), status_code
+
+
+@app.post("/api/assessments/<assessment_id>/submit")
+def api_assessments_submit(assessment_id):
+    """Student submits answers for an assessment; evaluates score and integrates with BKT."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    data = payload() or {}
+    answers = data.get("answers", {})
+    time_spent = int(data.get("time_spent_seconds") or 0)
+    res = assessment_engine.submit_assessment(assessment_id, uid, answers, time_spent_seconds=time_spent)
+    status_code = 200 if res.get("success") else 400
+    return jsonify(res), status_code
+
+
+@app.get("/api/assessments/<assessment_id>/my-result")
+def api_assessments_my_result(assessment_id):
+    """Student retrieves their own score, breakdown, and rank for a test."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    res = assessment_engine.get_student_result(assessment_id, uid)
+    if not res:
+        return jsonify({"error": "No submission found for this assessment."}), 404
+    return jsonify({"success": True, "result": res})
+
+
+@app.get("/api/assessments/<assessment_id>/results")
+def api_assessments_all_results(assessment_id):
+    """Teacher/Admin retrieves full roster, leaderboard, and question-level analytics."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    role = resolve_user_role(uid, claims)
+    res = assessment_engine.get_assessment_results(assessment_id, caller_uid=uid, role=role)
+    if not res.get("success"):
+        return jsonify(res), 403
+    return jsonify(res)
+
+
+# --- Global Floating AI Assistant ---
+
+@app.post("/api/assistant/chat")
+def api_assistant_chat():
+    """Multi-role AI assistant endpoint serving Student, Teacher, and Admin personas."""
+    hid, claims, hkind = _header_identity()
+    uid = hid or auth_student_id()
+    data = payload() or {}
+    message = str(data.get("message") or "").strip()
+    if not message:
+        return jsonify({"error": "Message is required."}), 400
+
+    role = resolve_user_role(uid, claims)
+    req_role = str(data.get("role") or "").upper()
+    if req_role in ("TEACHER", "SUPER_ADMIN", "STUDENT"):
+        if req_role == "STUDENT" or role == "SUPER_ADMIN" or (req_role == "TEACHER" and role in ("TEACHER", "SUPER_ADMIN")):
+            role = req_role
+
+    history = data.get("history", [])
+    context = data.get("context", {})
+    res = assistant_service.chat(role=role, user_id=uid, message=message, history=history, context=context)
+    return jsonify(res)
 
 
 if __name__ == "__main__":

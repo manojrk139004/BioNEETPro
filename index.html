@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v2_ecosystem.css">
 <script>
 // BioNEET Pro: Guard against Live Server auto-reloading when backend writes to data/ logs/files.
 // NOTE: only suppresses while a request is in flight or right after API
@@ -630,14 +631,25 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
   <div class="nav-links hidden" id="sNav">
     <a onclick="go('dashboard')">Dashboard</a>
     <a onclick="go('mcq')">Mock Test</a>
+    <a onclick="go('teacher')" id="navTeacherLink" style="display:none;color:var(--blue);font-weight:700">Teacher Portal</a>
+    <a onclick="go('admin')" id="navAdminLink" style="display:none;color:var(--y);font-weight:700">Admin Panel</a>
     <a onclick="go('ai-tutor')">AI Tutor</a>
     <a onclick="go('flashcards')">Flashcards</a>
     <a onclick="go('lessons')">Lessons</a>
     <a onclick="go('videos')">Videos</a>
     <a onclick="go('updates')">Updates</a>
   </div>
+  <div class="nav-links hidden" id="tNav">
+    <a onclick="go('teacher'); switchTeacherTab('assessments')">My Assessments</a>
+    <a onclick="go('teacher'); switchTeacherTab('builder')">Builder Wizard</a>
+    <a onclick="go('teacher'); switchTeacherTab('analytics')">Results & Analytics</a>
+    <a onclick="go('dashboard')">Student View</a>
+    <a onclick="go('ai-tutor')">AI Tutor</a>
+  </div>
   <div class="nav-links hidden" id="aNav">
     <a onclick="go('admin')">Overview</a>
+    <a onclick="go('admin-teachers')">Teachers</a>
+    <a onclick="go('teacher')">Teacher Portal</a>
     <a onclick="go('admin-students')">Students</a>
     <a onclick="go('admin-mcq')">MCQs</a>
     <a onclick="go('admin-videos')">Videos</a>
@@ -941,7 +953,22 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
             <div id="gamBadgeShelf" style="display:flex; gap:8px;"></div>
           </div>
         </div>
+      <!-- ═══════════════════ UPCOMING & ACTIVE TESTS (V2) ═══════════════════ -->
+      <div class="card" style="margin-bottom:24px;border:2px solid var(--y);background:linear-gradient(135deg, #fff 0%, #fffdf0 100%)">
+        <div class="sh-row" style="margin-bottom:14px">
+          <div>
+            <h3 style="font-weight:800;font-size:1.05rem;display:flex;align-items:center;gap:8px">
+              <span>📅</span> Institutional Assessments & Scheduled Tests
+            </h3>
+            <p style="font-size:0.78rem;color:var(--muted)">Teacher-assigned tests, weekly milestones & live exam countdowns</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="loadStudentUpcomingTests()">🔄 Refresh</button>
+        </div>
+        <div id="studentUpcomingContainer">
+          <div style="text-align:center;padding:24px;color:var(--muted)">Loading upcoming tests...</div>
+        </div>
       </div>
+
       <div class="grid g2" style="margin-bottom:24px">
         <div class="card">
           <div class="sh-row" style="margin-bottom:16px"><h3 style="font-weight:800;font-size:.95rem">Chapter Progress</h3><span class="badge by">Based on tests</span></div>
@@ -1452,10 +1479,375 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
   </div>
 </div>
 
+<!-- ═══════════════════ ADMIN TEACHERS (V2) ═════════════ -->
+<div class="page" id="page-admin-teachers">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><div class="logo-mark">A</div><div class="logo-text">Admin <span>Panel</span></div></div>
+      <div style="display:flex;align-items:center;gap:9px;padding:10px;background:rgba(245,197,24,.1);border-radius:var(--rs);margin-bottom:20px;border:1px solid rgba(245,197,24,.2)">
+        <div class="avatar" style="background:var(--y);color:var(--ink)">A</div>
+        <div><p style="font-weight:700;font-size:.83rem;color:#fff">Admin</p><p style="font-size:.7rem;color:#777">BioNEET Pro</p></div>
+      </div>
+      <div class="sl-label">Management</div>
+      <div class="sl" onclick="go('admin')"><span>📊</span> Overview</div>
+      <div class="sl active" onclick="go('admin-teachers')"><span>👨‍🏫</span> Manage Teachers</div>
+      <div class="sl" onclick="go('teacher')"><span>📋</span> Teacher Studio</div>
+      <div class="sl" onclick="go('admin-students')"><span>👥</span> Students</div>
+      <div class="sl" onclick="go('admin-mcq')"><span>📝</span> Manage MCQs</div>
+      <div class="sl" onclick="go('admin-videos')"><span>🎬</span> Videos</div>
+      <div class="sl" onclick="go('admin-updates')"><span>🔔</span> Updates</div>
+      <div style="border-top:1px solid #333;margin:14px 0"></div>
+      <div class="sl" onclick="logout()"><span>🚪</span> Logout</div>
+    </aside>
+    <main class="dash-main">
+      <div class="sh-row" style="margin-bottom:24px">
+        <div class="sh">
+          <h2>👨‍🏫 Faculty & Teacher Accounts</h2>
+          <p>Institutional teacher management, subject authorization & status governance</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn btn-outline btn-sm" onclick="loadAdminTeachers()">🔄 Refresh</button>
+          <button class="btn btn-primary btn-sm" onclick="openModal('teacherCreateModal')">+ Onboard Teacher</button>
+        </div>
+      </div>
+      <div class="grid g3" style="margin-bottom:24px">
+        <div class="stat-card"><div class="stat-info"><h3 id="adminTotalTeachersCount">0</h3><p>Active Faculty Members</p></div></div>
+        <div class="stat-card"><div class="stat-info"><h3 style="color:var(--blue)">Class 11 & 12</h3><p>NCERT Curriculum Coverage</p></div></div>
+        <div class="stat-card"><div class="stat-info"><h3 style="color:var(--green)">100% Secure</h3><p>Role-Gated Permissions</p></div></div>
+      </div>
+      <div class="card" style="padding:20px">
+        <table class="table" style="width:100%">
+          <thead>
+            <tr>
+              <th>Teacher Name</th>
+              <th>Institutional Email</th>
+              <th>Department</th>
+              <th>Assigned Subjects</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminTeachersTableBody">
+            <tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Loading faculty accounts...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ═══════════════════ TEACHER PORTAL (V2) ═════════════ -->
+<div class="page" id="page-teacher">
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark" style="background:var(--blue);color:#fff">T</div>
+        <div class="logo-text">Teacher <span>Studio</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;padding:10px;background:rgba(59,130,246,.1);border-radius:var(--rs);margin-bottom:20px;border:1px solid rgba(59,130,246,.2)">
+        <div class="avatar" style="background:var(--blue);color:#fff">T</div>
+        <div><p style="font-weight:700;font-size:.83rem;color:#fff" id="teacherPortalName">Faculty Portal</p><p style="font-size:.7rem;color:#777">Biology Dept</p></div>
+      </div>
+      <div class="sl-label">Teacher Hub</div>
+      <div class="sl active" id="tNavAssessments" onclick="switchTeacherTab('assessments')"><span>📋</span> My Assessments</div>
+      <div class="sl" id="tNavBuilder" onclick="switchTeacherTab('builder')"><span>✨</span> Assessment Builder</div>
+      <div class="sl" id="tNavAnalytics" onclick="switchTeacherTab('analytics')"><span>📊</span> Results & Analytics</div>
+      <div style="border-top:1px solid #333;margin:14px 0"></div>
+      <div class="sl-label">Platform</div>
+      <div class="sl" onclick="go('dashboard')"><span>🎓</span> Student View</div>
+      <div class="sl" onclick="go('ai-tutor')"><span>🤖</span> AI Biology Tutor</div>
+      <div class="sl" onclick="logout()"><span>🚪</span> Logout</div>
+    </aside>
+    <main class="dash-main">
+      <!-- Tab 1: Assessments List -->
+      <div id="tViewAssessments">
+        <div class="sh-row" style="margin-bottom:24px">
+          <div class="sh">
+            <h2>📋 Teacher Assessments Studio</h2>
+            <p>Schedule, publish, and monitor your institutional tests and assignments</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn btn-outline btn-sm" onclick="loadTeacherAssessments()">🔄 Refresh</button>
+            <button class="btn btn-primary btn-sm" onclick="switchTeacherTab('builder')">+ New Assessment</button>
+          </div>
+        </div>
+        <div class="card" style="padding:20px">
+          <div id="teacherAssessmentsList">
+            <div style="text-align:center;padding:24px;color:var(--muted)">Loading assessments...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Assessment Builder Wizard -->
+      <div id="tViewBuilder" class="hidden">
+        <div class="sh-row" style="margin-bottom:20px">
+          <div class="sh">
+            <h2>✨ Assessment Builder & AI Curation Wizard</h2>
+            <p>Design NCERT-grounded assessments with automated question generation and teacher review gating</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="switchTeacherTab('assessments')">← Back to Assessments</button>
+        </div>
+
+        <!-- Step 1: Configuration -->
+        <div class="card" style="margin-bottom:20px;padding:20px">
+          <h3 style="font-weight:800;font-size:1rem;margin-bottom:16px">1. Assessment Configuration & Schedule</h3>
+          <div class="form-row">
+            <div class="fg" style="flex:2">
+              <label class="fl">Assessment Title</label>
+              <input type="text" class="fi" id="bTitleInput" placeholder="e.g. Class 11 Photosynthesis & Respiration Test">
+            </div>
+            <div class="fg">
+              <label class="fl">Assessment Type</label>
+              <select class="fs" id="bTypeSelect">
+                <option value="DAILY_TEST">Daily Test</option>
+                <option value="WEEKLY_TEST" selected>Weekly Test</option>
+                <option value="SATURDAY_TEST">Saturday Test</option>
+                <option value="CHAPTER_TEST">Chapter Test</option>
+                <option value="UNIT_TEST">Unit Test</option>
+                <option value="MOCK_TEST">Full Mock Test</option>
+                <option value="REVISION_TEST">Revision Test</option>
+                <option value="CUSTOM_TEST">Custom Test</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Cascading NCERT Curriculum Selector -->
+          <div class="form-row">
+            <div class="fg">
+              <label class="fl">Curriculum Class</label>
+              <select class="fs" id="bClassSelect"><option value="">-- Select Class --</option></select>
+            </div>
+            <div class="fg">
+              <label class="fl">Unit</label>
+              <select class="fs" id="bUnitSelect"><option value="">-- Select Unit --</option></select>
+            </div>
+            <div class="fg" style="flex:1.5">
+              <label class="fl">Canonical NCERT Chapter</label>
+              <select class="fs" id="bChapSelect"><option value="">-- Select Chapter --</option></select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="fg">
+              <label class="fl">Duration (Minutes)</label>
+              <input type="number" class="fi" id="bDurationInput" value="30" min="5" max="180">
+            </div>
+            <div class="fg">
+              <label class="fl">Start Date & Time (Schedule)</label>
+              <input type="datetime-local" class="fi" id="bStartAt">
+            </div>
+            <div class="fg">
+              <label class="fl">End Date & Time (Deadline)</label>
+              <input type="datetime-local" class="fi" id="bEndAt">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Question Studio & AI MCQ Generator -->
+        <div class="card" style="margin-bottom:20px;padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+            <div>
+              <h3 style="font-weight:800;font-size:1rem">2. Questions Studio & Teacher Review Gating</h3>
+              <p style="font-size:0.8rem;color:var(--muted)">Curate verified NCERT MCQs or draft custom questions</p>
+            </div>
+            <div style="display:flex;gap:8px">
+              <span class="badge" id="builderQuestionsCount" style="background:#e0f2fe;color:#0369a1;font-weight:700">0 Questions (0 Marks)</span>
+              <button class="btn btn-sm btn-outline" onclick="approveAllBuilderQuestions()">✓ Approve All</button>
+              <button class="btn btn-sm btn-outline" onclick="openCustomQuestionModal()">+ Add Custom MCQ</button>
+            </div>
+          </div>
+
+          <div style="background:#f8fafc;border:1px solid var(--bdr);border-radius:var(--rs);padding:14px;margin-bottom:16px">
+            <div style="font-weight:700;font-size:0.85rem;margin-bottom:8px">🤖 AI-Assisted MCQ Curation & Bank Extraction</div>
+            <div class="form-row" style="align-items:flex-end">
+              <div class="fg" style="flex:2">
+                <label class="fl">Topic / Nuance Guidance (Optional)</label>
+                <input type="text" class="fi" id="bCustomPrompt" placeholder="e.g. Focus on Calvin cycle, Z-scheme and enzyme traps">
+              </div>
+              <div class="fg" style="width:120px">
+                <label class="fl">Count</label>
+                <input type="number" class="fi" id="bCountInput" value="5" min="1" max="25">
+              </div>
+              <div class="fg" style="width:140px">
+                <label class="fl">Difficulty</label>
+                <select class="fs" id="bDiffSelect">
+                  <option value="easy">Easy</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="hard">Hard (NEET Traps)</option>
+                </select>
+              </div>
+              <div class="fg">
+                <button class="btn btn-primary" id="bGenerateAiBtn" onclick="generateAiAssessmentQuestions()">🤖 Generate with AI</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="builderQuestionsList"></div>
+        </div>
+
+        <!-- Step 3: Save & Publish -->
+        <div style="display:flex;justify-content:flex-end;gap:12px">
+          <button class="btn btn-outline" onclick="saveAssessment('DRAFT')">💾 Save as Draft</button>
+          <button class="btn btn-primary" onclick="saveAssessment('PUBLISHED')">🚀 Schedule &amp; Publish Test</button>
+        </div>
+      </div>
+
+      <!-- Tab 3: Analytics -->
+      <div id="tViewAnalytics" class="hidden">
+        <div class="sh-row" style="margin-bottom:20px">
+          <div class="sh">
+            <h2>📊 Assessment Analytics & Class Mastery</h2>
+            <p>Detailed performance roster, score distribution & diagnostic misconception breakdown</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <select class="fs" id="analyticsAsmtSelect" onchange="onTeacherAnalyticsSelect(this.value)" style="min-width:260px">
+              <option value="">-- Select Assessment --</option>
+            </select>
+          </div>
+        </div>
+        <div id="teacherAnalyticsContent">
+          <div style="text-align:center;padding:40px;color:var(--muted)">Select an assessment above to review performance metrics.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ═══════════════════ LIVE ASSESSMENT TAKING HALL (V2) ═════════════ -->
+<div class="page" id="page-assessment-take">
+  <div style="max-width:1100px;margin:0 auto;padding:20px">
+    <!-- Header -->
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#fff;border-radius:var(--r);box-shadow:var(--sh);margin-bottom:20px;border:1px solid var(--bdr)">
+      <div>
+        <h2 id="examTitleHeader" style="font-weight:800;font-size:1.25rem">Assessment in Progress</h2>
+        <p id="examMetaHeader" style="font-size:0.8rem;color:var(--muted)">NEET Biology Scheduled Examination</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="text-align:right">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase">Time Remaining</div>
+          <div id="examTimerDisplay" style="font-size:1.6rem;font-weight:800;font-family:monospace;letter-spacing:1px">30:00</div>
+        </div>
+        <button class="btn btn-primary" onclick="confirmAndSubmitExam()">Submit Test</button>
+      </div>
+    </div>
+
+    <!-- Exam Body -->
+    <div class="exam-hall-layout">
+      <!-- Left: Question & Options -->
+      <div class="card" style="padding:24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #eee">
+          <span id="examQIndexText" style="font-weight:800;font-size:1rem;color:var(--blue)">Question 1 of 10</span>
+          <button class="btn btn-ghost btn-sm" id="examMarkBtn" onclick="examToggleMark()">☆ Mark for Review</button>
+        </div>
+        <div id="examQuestionText" style="font-size:1.05rem;font-weight:600;margin-bottom:24px;line-height:1.5">Loading question...</div>
+        <div id="examOptionsContainer" style="margin-bottom:24px"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #eee">
+          <button class="btn btn-outline btn-sm" onclick="examClearResponse()">Clear Choice</button>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-outline" id="examPrevBtn" onclick="examPrevQuestion()">← Previous</button>
+            <button class="btn btn-primary" id="examNextBtn" onclick="examNextQuestion()">Next Question →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Palette -->
+      <div class="card" style="padding:20px">
+        <h4 style="font-weight:800;font-size:0.9rem;margin-bottom:12px">Question Palette</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;font-size:0.72rem;color:var(--muted)">
+          <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#22c55e;border-radius:50%"></span> Answered</span>
+          <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#f97316;border-radius:50%"></span> Marked</span>
+          <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#f3f4f6;border-radius:50%"></span> Not Visited</span>
+        </div>
+        <div id="examQuestionPalette" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div><!-- #main -->
 
 <!-- ═══════════════════ TOAST ══════════════════════ -->
 <div id="toast-box"></div>
+
+<!-- ═══════════════════ ONBOARD TEACHER MODAL (V2) ═════════════ -->
+<div class="overlay hidden" id="teacherCreateModal">
+  <div class="modal" style="max-width:560px">
+    <div class="mhdr">
+      <h3 class="mtitle">👨‍🏫 Onboard New Teacher</h3>
+      <div class="mclose" onclick="closeModal('teacherCreateModal')">✕</div>
+    </div>
+    <div class="fg">
+      <label class="fl">Faculty Full Name *</label>
+      <input type="text" class="fi" id="newTeacherName" placeholder="e.g. Dr. Rajesh Verma">
+    </div>
+    <div class="fg">
+      <label class="fl">Institutional Email *</label>
+      <input type="email" class="fi" id="newTeacherEmail" placeholder="e.g. r.verma@institution.edu">
+    </div>
+    <div class="fg">
+      <label class="fl">Temporary Password *</label>
+      <input type="password" class="fi" id="newTeacherPassword" placeholder="Minimum 6 characters">
+    </div>
+    <div class="form-row">
+      <div class="fg">
+        <label class="fl">Department</label>
+        <input type="text" class="fi" id="newTeacherDept" value="Department of Biology">
+      </div>
+      <div class="fg">
+        <label class="fl">Contact Phone</label>
+        <input type="tel" class="fi" id="newTeacherPhone" placeholder="+91-9876543210">
+      </div>
+    </div>
+    <div class="fg">
+      <label class="fl">Assigned Subjects (comma-separated)</label>
+      <input type="text" class="fi" id="newTeacherSubjects" value="Class 11 Biology, Class 12 Biology, NEET Mock Tests">
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+      <button class="btn btn-outline" onclick="closeModal('teacherCreateModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitCreateTeacherModal()">Create Teacher Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ GLOBAL FLOATING AI ASSISTANT (V2) ═════════════ -->
+<div class="floating-assistant-btn" id="floatingAssistantBtn" onclick="toggleFloatingAssistant()" title="Ask BioNEET AI Assistant">
+  ✨
+</div>
+
+<div class="floating-assistant-window hidden" id="floatingAssistantWindow">
+  <!-- Header -->
+  <div style="padding:14px 16px;background:var(--ink);color:#fff;display:flex;justify-content:space-between;align-items:center">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:34px;height:34px;border-radius:50%;background:var(--y);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.95rem">
+        🤖
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <strong id="floatingAssistantTitle" style="font-size:0.92rem">Dr. Priya</strong>
+          <span class="badge" id="floatingAssistantRoleBadge" style="font-size:0.65rem;padding:2px 6px">NEET Mentor</span>
+        </div>
+        <p style="font-size:0.68rem;color:#aaa">BioNEETPro Intelligent AI Assistant</p>
+      </div>
+    </div>
+    <div style="cursor:pointer;font-size:1.1rem;color:#aaa;padding:4px" onclick="toggleFloatingAssistant()">✕</div>
+  </div>
+
+  <!-- Quick Action Chips -->
+  <div id="floatingAssistantChips" style="padding:8px 12px;background:#fafafa;border-bottom:1px solid #eee;overflow-x:auto;white-space:nowrap"></div>
+
+  <!-- Messages List -->
+  <div id="floatingAssistantMessages" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column">
+    <div style="align-self:flex-start;background:#fff;border:1px solid #e5e7eb;padding:12px 14px;border-radius:14px 14px 14px 2px;max-width:90%;font-size:0.85rem;margin-bottom:10px;line-height:1.5;box-shadow:0 2px 6px rgba(0,0,0,0.03)">
+      👋 Hello! I am your <strong>BioNEETPro AI Assistant</strong>. Ask me anything about NCERT Biology concepts, assessment design, or system administration!
+    </div>
+  </div>
+
+  <!-- Footer Input -->
+  <div style="padding:10px 12px;border-top:1px solid var(--bdr);display:flex;gap:8px;background:#fff">
+    <input type="text" class="fi" id="floatingAssistantInput" placeholder="Ask Dr. Priya or Prof. Sharma..." style="flex:1;font-size:0.85rem;padding:8px 12px" onkeydown="if(event.key==='Enter')sendFloatingAssistantMessage()">
+    <button class="btn btn-primary btn-sm" onclick="sendFloatingAssistantMessage()">Send</button>
+  </div>
+</div>
 
 <!-- ═══════════════════ MCQ MODAL ═════════════════ -->
 <div class="overlay hidden" id="mcqModal">
@@ -1845,12 +2237,23 @@ var selectedChapter = null;
 function go(page) {
   window.go = go;
   window.currentPage = page;
+
+  var isSuperAdmin = DB.isAdmin || DB.userRole === 'SUPER_ADMIN';
+  var isTeacher = isSuperAdmin || DB.isTeacher || DB.userRole === 'TEACHER';
+
   // Role Guard: Block non-admins from admin pages
-  if (page.startsWith('admin') && page !== 'admin-login' && !DB.isAdmin) {
+  if (page.startsWith('admin') && page !== 'admin-login' && !isSuperAdmin) {
     toast('Access denied. Admins only! 🔒', 'e');
     go('dashboard');
     return;
   }
+  // Role Guard: Block non-teachers from teacher studio
+  if (page === 'teacher' && !isTeacher) {
+    toast('Access denied. Faculty & Teachers only! 👨‍🏫', 'e');
+    go('dashboard');
+    return;
+  }
+
   // Exam guard: leaving mid-test auto-submits (same rule as tab switch).
   if (typeof testIsLive === 'function' && testIsLive() && page !== 'mcq') {
     if (!confirm('A test is running — leaving now will auto-submit it. Continue?')) return;
@@ -1874,15 +2277,16 @@ function go(page) {
     window.scrollTo(0, 0);
   }
   document.querySelectorAll('.sl').forEach(s => s.classList.remove('active'));
-  var sideEl = document.querySelector('.sl[onclick*="go(\'' + page + '\')"]');
+  var sideEl = document.querySelector('.sl[onclick*="' + page + '"]');
   if (sideEl) sideEl.classList.add('active');
-  document.querySelectorAll('#gNav a,#sNav a,#aNav a').forEach(a => a.classList.remove('active'));
-  var navA = document.querySelector('#gNav a[onclick*="' + page + '"],#sNav a[onclick*="' + page + '"],#aNav a[onclick*="' + page + '"]');
+  document.querySelectorAll('#gNav a,#sNav a,#aNav a,#tNav a').forEach(a => a.classList.remove('active'));
+  var navA = document.querySelector('#gNav a[onclick*="' + page + '"],#sNav a[onclick*="' + page + '"],#aNav a[onclick*="' + page + '"],#tNav a[onclick*="' + page + '"]');
   if (navA) navA.classList.add('active');
   updateNav();
+
   var renders = {
     'home': renderHome,
-    'dashboard': renderDashboard,
+    'dashboard': function() { renderDashboard(); if (window.loadStudentUpcomingTests) loadStudentUpcomingTests(); },
     'mcq': renderMCQLand,
     'ai-tutor': function() { renderAITopics(); renderTutorGreeting(); },
     'flashcards': renderFlashcardsPage,
@@ -1893,6 +2297,8 @@ function go(page) {
     'updates': renderUpdates,
     'profile': renderProfile,
     'admin': renderAdmin,
+    'admin-teachers': function() { if (window.loadAdminTeachers) loadAdminTeachers(); },
+    'teacher': function() { if (window.loadTeacherAssessments) loadTeacherAssessments(); },
     'admin-students': renderStudentTable,
     'admin-mcq': renderMCQTable,
     'admin-videos': renderAdminVideos,
@@ -1908,18 +2314,34 @@ function updateNav() {
   var gNav = document.getElementById('gNav');
   var sNav = document.getElementById('sNav');
   var aNav = document.getElementById('aNav');
+  var tNav = document.getElementById('tNav');
   var gBtns = document.getElementById('gBtns');
   var uBtns = document.getElementById('uBtns');
-  if (DB.isAdmin) {
-    gNav.classList.add('hidden'); sNav.classList.add('hidden'); aNav.classList.remove('hidden');
-    gBtns.classList.add('hidden'); uBtns.classList.add('hidden');
+  var navTeacherLink = document.getElementById('navTeacherLink');
+  var navAdminLink = document.getElementById('navAdminLink');
+
+  var isSuperAdmin = DB.isAdmin || DB.userRole === 'SUPER_ADMIN';
+  var isTeacher = DB.isTeacher || DB.userRole === 'TEACHER';
+
+  if (isSuperAdmin) {
+    gNav.classList.add('hidden'); sNav.classList.add('hidden'); if (tNav) tNav.classList.add('hidden'); aNav.classList.remove('hidden');
+    gBtns.classList.add('hidden'); uBtns.classList.remove('hidden');
+    if (navTeacherLink) navTeacherLink.style.display = 'inline-block';
+    if (navAdminLink) navAdminLink.style.display = 'inline-block';
+  } else if (isTeacher) {
+    gNav.classList.add('hidden'); sNav.classList.add('hidden'); aNav.classList.add('hidden'); if (tNav) tNav.classList.remove('hidden');
+    gBtns.classList.add('hidden'); uBtns.classList.remove('hidden');
+    if (navTeacherLink) navTeacherLink.style.display = 'inline-block';
+    if (navAdminLink) navAdminLink.style.display = 'none';
   } else if (DB.currentUser) {
-    gNav.classList.add('hidden'); sNav.classList.remove('hidden'); aNav.classList.add('hidden');
+    gNav.classList.add('hidden'); sNav.classList.remove('hidden'); aNav.classList.add('hidden'); if (tNav) tNav.classList.add('hidden');
     gBtns.classList.add('hidden'); uBtns.classList.remove('hidden');
     document.getElementById('navAv').textContent = (DB.currentUser.name||'S')[0].toUpperCase();
-    document.getElementById('navName').textContent = DB.currentUser.name.split(' ')[0];
+    document.getElementById('navName').textContent = (DB.currentUser.name||'Student').split(' ')[0];
+    if (navTeacherLink) navTeacherLink.style.display = 'none';
+    if (navAdminLink) navAdminLink.style.display = 'none';
   } else {
-    gNav.classList.remove('hidden'); sNav.classList.add('hidden'); aNav.classList.add('hidden');
+    gNav.classList.remove('hidden'); sNav.classList.add('hidden'); aNav.classList.add('hidden'); if (tNav) tNav.classList.add('hidden');
     gBtns.classList.remove('hidden'); uBtns.classList.add('hidden');
   }
 }
@@ -2057,22 +2479,40 @@ async function logout() {
 async function loadUserProfile(firebaseUser) {
   const ref = doc(db, "users", firebaseUser.uid);
   const snap = await getDoc(ref);
+  var profile;
   if (snap.exists()) {
-    const profile = { id: firebaseUser.uid, ...snap.data() };
-    DB.users = DB.users.filter(u => u.id !== profile.id);
-    DB.users.push(profile);
-    save('users');
-    return profile;
+    profile = { id: firebaseUser.uid, ...snap.data() };
+  } else {
+    profile = {
+      id: firebaseUser.uid,
+      name: firebaseUser.displayName || firebaseUser.email.split('@')[0],
+      email: firebaseUser.email,
+      target: 'NEET 2026',
+      role: 'student',
+      joined: new Date().toISOString()
+    };
+    await setDoc(ref, profile);
   }
-  const profile = {
-    id: firebaseUser.uid,
-    name: firebaseUser.displayName || firebaseUser.email.split('@')[0],
-    email: firebaseUser.email,
-    target: 'NEET 2026',
-    role: 'student',
-    joined: new Date().toISOString()
-  };
-  await setDoc(ref, profile);
+
+  // Synchronize server-verified role from BioNEETPro V2 API
+  try {
+    if (window.V2 && window.V2.apiFetch) {
+      const meRes = await window.V2.apiFetch('/api/auth/me');
+      if (meRes.ok) {
+        const meData = await meRes.json();
+        if (meData.user && meData.user.role) {
+          profile.role = meData.user.role;
+          if (meData.user.teacher_profile) profile.teacher_profile = meData.user.teacher_profile;
+        }
+      }
+    }
+  } catch (err) {
+    console.warn("Could not sync server role:", err);
+  }
+
+  DB.users = DB.users.filter(u => u.id !== profile.id);
+  DB.users.push(profile);
+  save('users');
   return profile;
 }
 
@@ -2207,13 +2647,31 @@ try {
       try {
         const profile = await loadUserProfile(firebaseUser);
         DB.currentUser = profile;
-        DB.isAdmin = (profile.role === 'admin');
+        var r = (profile.role || '').toUpperCase();
+        DB.isAdmin = (r === 'ADMIN' || r === 'SUPER_ADMIN');
+        DB.isTeacher = (r === 'TEACHER' || r === 'FACULTY');
+        DB.userRole = DB.isAdmin ? 'SUPER_ADMIN' : (DB.isTeacher ? 'TEACHER' : 'STUDENT');
         localStorage.setItem('currentUser', JSON.stringify(profile));
         localStorage.setItem('isAdmin', JSON.stringify(DB.isAdmin));
+        localStorage.setItem('isTeacher', JSON.stringify(DB.isTeacher));
+        localStorage.setItem('userRole', DB.userRole);
         updateNav();
+        if (window.updateAssistantRole) updateAssistantRole();
+        if (currentPage === 'dashboard' && window.loadStudentUpcomingTests) loadStudentUpcomingTests();
       } catch (err) {
         console.warn("Auth state restore error:", err);
       }
+    } else {
+      DB.currentUser = null;
+      DB.isAdmin = false;
+      DB.isTeacher = false;
+      DB.userRole = 'STUDENT';
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('isAdmin');
+      localStorage.removeItem('isTeacher');
+      localStorage.removeItem('userRole');
+      updateNav();
+      if (window.updateAssistantRole) updateAssistantRole();
     }
     setupRealtimeListeners();
   });
@@ -5222,6 +5680,8 @@ window.setupRealtimeListeners = setupRealtimeListeners;
 
 window.doAdminLogin = doAdminLogin;
 </script>
+<script src="v2_ecosystem.js"></script>
 </body>
 </html>
+
 

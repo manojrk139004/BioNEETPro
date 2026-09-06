@@ -73,6 +73,8 @@ class LocalMCQEngine:
         c_idx = mcq.get("correct_index", -1)
         if not isinstance(c_idx, int) or not (0 <= c_idx <= 3):
             return False
+        if not mcq.get("correct_answer"):
+            mcq["correct_answer"] = str(opts[c_idx]).strip()
         if str(mcq.get("correct_answer")).strip() != str(opts[c_idx]).strip():
             return False
         return True

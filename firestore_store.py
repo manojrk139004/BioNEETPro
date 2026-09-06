@@ -110,6 +110,11 @@ def _collection_subdir(collection: str) -> str:
         "score_predictions": "score_predictions",
         "tutor_states": "tutor_states",
         "chat_threads": "chat_threads",
+        "teachers": "teachers",
+        "assessments": "assessments",
+        "assessment_results": "assessment_results",
+        "assessmentResults": "assessment_results",
+        "pending_mcqs": "pending_mcqs",
     }.get(collection, collection)
 
 
@@ -166,3 +171,34 @@ def delete_doc(collection: str, doc_id: str, subdir: Optional[str] = None) -> No
             db.collection(collection).document(safe_id(doc_id)).delete()
         except Exception:
             pass
+
+
+def list_docs(collection: str, subdir: Optional[str] = None) -> list:
+    """Lists all documents in a collection. Firestore first, merging with local cache."""
+    docs = {}
+    db = _init()
+    if db is not None:
+        try:
+            for snap in db.collection(collection).stream():
+                d = snap.to_dict() or {}
+                if "id" not in d:
+                    d["id"] = snap.id
+                docs[str(snap.id)] = d
+            if docs:
+                return list(docs.values())
+        except Exception:
+            pass
+    # Local fallback
+    d = DATA_DIR / (subdir or _collection_subdir(collection))
+    if d.exists():
+        for p in d.glob("*.json"):
+            try:
+                data = json.loads(p.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    doc_id = data.get("id") or data.get("uid") or data.get("assessmentId") or data.get("resultId") or p.stem
+                    data["id"] = doc_id
+                    docs[str(doc_id)] = data
+            except Exception:
+                pass
+    return list(docs.values())
+

@@ -466,6 +466,8 @@ class SyllabusValidator:
             "refusal_message": OUT_OF_SYLLABUS_MESSAGE,
         }
 
+    validate_query_syllabus = check_query_syllabus
+
     def get_canonical_chapter_name(self, name: str) -> str:
         """Normalizes chapter names."""
         clean_name = name.lower().strip()
@@ -526,3 +528,71 @@ class SyllabusValidator:
 
 
 syllabus_validator = SyllabusValidator()
+
+
+def get_canonical_curriculum() -> Dict[str, Any]:
+    """
+    Returns the canonical hierarchical NCERT Biology curriculum for Class 11 and Class 12.
+    Guarantees structured cascading hierarchy with stable chapter IDs.
+    """
+    classes_list = []
+    flat_list = []
+
+    for class_key, class_label in [("class_11", "Class 11"), ("class_12", "Class 12")]:
+        class_data = OFFICIAL_SYLLABUS.get(class_key, {})
+        units_list = []
+        for unit_key, unit_data in class_data.items():
+            unit_name = unit_data.get("unit_name", unit_key)
+            chaps_list = []
+            for chap_id, chap_data in unit_data.get("chapters", {}).items():
+                chap_name = chap_data.get("chapter_name", chap_id)
+                chap_obj = {
+                    "id": chap_id,
+                    "name": chap_name,
+                    "class_id": class_key,
+                    "class_name": class_label,
+                    "unit_id": unit_key,
+                    "unit_name": unit_name,
+                }
+                chaps_list.append(chap_obj)
+                flat_list.append(chap_obj)
+
+            units_list.append({
+                "id": unit_key,
+                "name": unit_name,
+                "chapters": chaps_list,
+            })
+
+        classes_list.append({
+            "id": class_key,
+            "name": class_label,
+            "units": units_list,
+        })
+
+    return {
+        "success": True,
+        "classes": classes_list,
+        "chapters_flat": flat_list,
+        "total_chapters": len(flat_list),
+    }
+
+
+def validate_curriculum_chapter(chapter_id: str) -> Optional[Dict[str, Any]]:
+    """
+    Validates a chapter ID against the canonical curriculum.
+    Returns metadata dict if valid, None otherwise.
+    """
+    if not chapter_id:
+        return None
+    cid = chapter_id.strip().lower()
+    curriculum = get_canonical_curriculum()
+    for chap in curriculum["chapters_flat"]:
+        if chap["id"].lower() == cid:
+            return chap
+    # Try normalized id
+    normalized = syllabus_validator.normalize_chapter_id(cid)
+    if normalized:
+        for chap in curriculum["chapters_flat"]:
+            if chap["id"].lower() == normalized.lower():
+                return chap
+    return None
