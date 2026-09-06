@@ -1207,11 +1207,27 @@
   }
   window.toggleFloatingAssistant = toggleFloatingAssistant;
 
-  function updateAssistantRole() {
-    var role = (window.DB && window.DB.userRole) ? window.DB.userRole : (window.DB && window.DB.isAdmin ? 'SUPER_ADMIN' : 'STUDENT');
+  window.currentAssistantPersona = 'STUDENT';
+  window.activeMCQBatch = null;
+
+  function switchAssistantPersona(role) {
+    window.currentAssistantPersona = role;
+    updateAssistantRole(role);
+  }
+  window.switchAssistantPersona = switchAssistantPersona;
+
+  function updateAssistantRole(overrideRole) {
+    var role = overrideRole || window.currentAssistantPersona || 'STUDENT';
     var badge = document.getElementById('floatingAssistantRoleBadge');
     var title = document.getElementById('floatingAssistantTitle');
     var chips = document.getElementById('floatingAssistantChips');
+    var tabS = document.getElementById('personaTabStudent');
+    var tabT = document.getElementById('personaTabTeacher');
+    var tabA = document.getElementById('personaTabAdmin');
+    if (tabS) tabS.classList.toggle('active', role === 'STUDENT');
+    if (tabT) tabT.classList.toggle('active', role === 'TEACHER');
+    if (tabA) tabA.classList.toggle('active', role === 'SUPER_ADMIN' || role === 'ADMIN');
+
     if (!badge || !title) return;
 
     if (role === 'TEACHER') {
@@ -1237,9 +1253,10 @@
       badge.style.background = '#fef9c3'; badge.style.color = '#854d0e';
       title.textContent = 'Dr. Priya';
       if (chips) {
-        chips.innerHTML = '<span class="v2-chip" onclick="sendFloatingChip(\'Explain the light reaction of photosynthesis simply\')">Light Reaction</span>' +
-          '<span class="v2-chip" onclick="sendFloatingChip(\'What are my weak topics from recent tests?\')">My Weak Areas</span>' +
-          '<span class="v2-chip" onclick="sendFloatingChip(\'High-yield NCERT facts for Cell Division\')">Cell Division Tips</span>';
+        chips.innerHTML = '<span class="v2-chip" onclick="sendFloatingChip(\'Give me 3 MCQs on Photosynthesis\')">🌿 Photosynthesis MCQs</span>' +
+          '<span class="v2-chip" onclick="sendFloatingChip(\'Explain the light reaction of photosynthesis simply\')">Light Reaction</span>' +
+          '<span class="v2-chip" onclick="sendFloatingChip(\'Give me 3 hard MCQs in Genetics\')">🧬 Genetics MCQs</span>' +
+          '<span class="v2-chip" onclick="sendFloatingChip(\'What are my weak topics from recent tests?\')">My Weak Areas</span>';
       }
     }
   }
@@ -1274,7 +1291,7 @@
     msgList.appendChild(typingBubble);
     msgList.scrollTop = msgList.scrollHeight;
 
-    var role = (window.DB && window.DB.userRole) ? window.DB.userRole : 'STUDENT';
+    var role = window.currentAssistantPersona || 'STUDENT';
 
     try {
       var res = await apiFetch('/api/assistant/chat', {
@@ -1282,12 +1299,19 @@
         body: JSON.stringify({
           message: text,
           role: role,
+          active_mcqs: window.activeMCQBatch || [],
+          context: { active_mcqs: window.activeMCQBatch || [] },
           history: assistantHistory.slice(-6)
         })
       });
 
       var data = await res.json();
       typingBubble.remove();
+
+      // Track active MCQs across the session
+      if (data.mcqs && data.mcqs.length) {
+        window.activeMCQBatch = data.mcqs;
+      }
 
       var replyText = data.reply || "I am here to support your preparation!";
       assistantHistory.push({ role: 'user', content: text });

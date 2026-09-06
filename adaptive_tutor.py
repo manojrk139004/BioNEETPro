@@ -1129,12 +1129,13 @@ class AdaptiveBiologyTutor:
         student_id: str = "student_local",
         history: Optional[List[Dict[str, str]]] = None,
         focus_chapter_id: Optional[str] = None,
-        tone_flag: Optional[str] = None
+        tone_flag: Optional[str] = None,
+        context: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """Public entry: inner pipeline + write-through lesson-state persist."""
         try:
             out = self._generate_inner(query, student_id, history,
-                                       focus_chapter_id, tone_flag)
+                                       focus_chapter_id, tone_flag, context=context)
             try:
                 out["study_mode"] = self._detect_study_mode(query)
             except Exception:
@@ -1209,7 +1210,8 @@ class AdaptiveBiologyTutor:
         student_id: str = "student_local",
         history: Optional[List[Dict[str, str]]] = None,
         focus_chapter_id: Optional[str] = None,
-        tone_flag: Optional[str] = None
+        tone_flag: Optional[str] = None,
+        context: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """
         NLP -> Context -> Hybrid Retrieval (rewrite+compare+rerank) -> Mastery Adaptation -> Grounded Socratic reply.
@@ -1296,6 +1298,13 @@ class AdaptiveBiologyTutor:
                     sub_answers = {q_idx: m_letters[0].upper()}
 
             recent_mcqs = mcq_engine.get_recent_mcqs(student_id=student_id)
+            if not recent_mcqs and context and isinstance(context, dict):
+                ctx_mcqs = context.get("active_mcqs")
+                if isinstance(ctx_mcqs, list) and ctx_mcqs:
+                    recent_mcqs = ctx_mcqs
+                    mcq_engine.set_recent_mcqs(student_id, ctx_mcqs)
+            if not recent_mcqs and (not student_id or student_id == "student_local"):
+                recent_mcqs = mcq_engine.get_recent_mcqs(student_id="student_local")
 
             # If user submitted explicit option answers AND we have recent MCQs, evaluate them!
             if sub_answers and recent_mcqs:

@@ -1824,7 +1824,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
 
 <div class="floating-assistant-window hidden" id="floatingAssistantWindow">
   <!-- Header -->
-  <div style="padding:14px 16px;background:var(--ink);color:#fff;display:flex;justify-content:space-between;align-items:center">
+  <div style="padding:14px 16px;background:var(--ink);color:#fff;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
     <div style="display:flex;align-items:center;gap:10px">
       <div style="width:34px;height:34px;border-radius:50%;background:var(--y);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.95rem">
         🤖
@@ -1840,18 +1840,25 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
     <div style="cursor:pointer;font-size:1.1rem;color:#aaa;padding:4px" onclick="toggleFloatingAssistant()">✕</div>
   </div>
 
+  <!-- Persona Switcher Bar -->
+  <div class="assistant-persona-bar" id="floatingAssistantPersonaBar">
+    <button type="button" class="assistant-persona-tab active" id="personaTabStudent" onclick="switchAssistantPersona('STUDENT')">👩‍⚕️ Dr. Priya (Mentor)</button>
+    <button type="button" class="assistant-persona-tab" id="personaTabTeacher" onclick="switchAssistantPersona('TEACHER')">👨‍🏫 Prof. Sharma</button>
+    <button type="button" class="assistant-persona-tab" id="personaTabAdmin" onclick="switchAssistantPersona('SUPER_ADMIN')">👑 Ops Advisor</button>
+  </div>
+
   <!-- Quick Action Chips -->
-  <div id="floatingAssistantChips" style="padding:8px 12px;background:#fafafa;border-bottom:1px solid #eee;overflow-x:auto;white-space:nowrap"></div>
+  <div id="floatingAssistantChips" style="padding:8px 12px;background:#fafafa;border-bottom:1px solid #eee;overflow-x:auto;white-space:nowrap;flex-shrink:0;-webkit-overflow-scrolling:touch"></div>
 
   <!-- Messages List -->
-  <div id="floatingAssistantMessages" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column">
+  <div id="floatingAssistantMessages" style="flex:1 1 auto;min-height:0;overflow-y:auto;padding:14px;display:flex;flex-direction:column;-webkit-overflow-scrolling:touch">
     <div style="align-self:flex-start;background:#fff;border:1px solid #e5e7eb;padding:12px 14px;border-radius:14px 14px 14px 2px;max-width:90%;font-size:0.85rem;margin-bottom:10px;line-height:1.5;box-shadow:0 2px 6px rgba(0,0,0,0.03)">
-      👋 Hello! I am your <strong>BioNEETPro AI Assistant</strong>. Ask me anything about NCERT Biology concepts, assessment design, or system administration!
+      👋 Hello! I am <strong>Dr. Priya</strong>, your NEET Biology AI Mentor. Ask me any NCERT concept, request MCQs, or solve practice tests!
     </div>
   </div>
 
   <!-- Footer Input -->
-  <div style="padding:10px 12px;border-top:1px solid var(--bdr);display:flex;gap:8px;background:#fff">
+  <div style="padding:10px 12px;border-top:1px solid var(--bdr);display:flex;gap:8px;background:#fff;flex-shrink:0;position:sticky;bottom:0;z-index:10">
     <input type="text" class="fi" id="floatingAssistantInput" placeholder="Ask Dr. Priya or Prof. Sharma..." style="flex:1;font-size:0.85rem;padding:8px 12px" onkeydown="if(event.key==='Enter')sendFloatingAssistantMessage()">
     <button class="btn btn-primary btn-sm" onclick="sendFloatingAssistantMessage()">Send</button>
   </div>

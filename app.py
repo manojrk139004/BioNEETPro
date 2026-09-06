@@ -2147,7 +2147,9 @@ def api_assistant_chat():
             role = "SUPER_ADMIN" if req_role == "ADMIN" else req_role
 
     history = data.get("history", [])
-    context = data.get("context", {})
+    context = data.get("context") or {}
+    if data.get("active_mcqs") and not context.get("active_mcqs"):
+        context["active_mcqs"] = data.get("active_mcqs")
     res = assistant_service.chat(role=role, user_id=uid, message=message, history=history, context=context)
     return jsonify(res)
 

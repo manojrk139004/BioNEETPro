@@ -89,6 +89,65 @@ class TestInteractiveMCQEvaluation(unittest.TestCase):
         self.assertIn("active test", res.get("reply", "").lower())
         self.assertIn("MCQs", res.get("reply", ""))
 
+    def test_06_assistant_chat_mcq_interactive_flow(self):
+        """Replicates full mobile user flow: request MCQs via /api/assistant/chat, then answer Q1: A."""
+        from app import app
+        client = app.test_client()
+
+        # Step 1: Request MCQs
+        req_res = client.post('/api/assistant/chat', json={
+            "message": "Give me 3 MCQs on Photosynthesis",
+            "role": "STUDENT"
+        })
+        self.assertEqual(req_res.status_code, 200)
+        data = req_res.get_json()
+        self.assertEqual(data.get("status"), "success")
+        self.assertIn("mcqs", data)
+        self.assertEqual(len(data["mcqs"]), 3)
+        mcqs = data["mcqs"]
+
+        # Step 2: Answer Q1: A
+        ans_res = client.post('/api/assistant/chat', json={
+            "message": "Q1: A",
+            "role": "STUDENT",
+            "active_mcqs": mcqs,
+            "context": {"active_mcqs": mcqs}
+        })
+        self.assertEqual(ans_res.status_code, 200)
+        ans_data = ans_res.get_json()
+        self.assertEqual(ans_data.get("status"), "success")
+        reply = ans_data.get("reply", "")
+        self.assertNotIn("isn't an active test", reply.lower())
+        self.assertIn("Marks", reply)
+        self.assertIn("NEET Scheme: +4 / -1", reply)
+        self.assertIn("Question 1:", reply)
+
+    def test_07_assistant_chat_admin_answering_mcq(self):
+        """Even if role is SUPER_ADMIN, submitting an MCQ answer evaluates biology, not admin protocol."""
+        from app import app
+        client = app.test_client()
+
+        # Request MCQs
+        req = client.post('/api/assistant/chat', json={
+            "message": "Give me 3 MCQs on Cell Division",
+            "role": "SUPER_ADMIN"
+        })
+        self.assertEqual(req.status_code, 200)
+        mcqs = req.get_json().get("mcqs", [])
+
+        # Submit answer Q1: B
+        ans = client.post('/api/assistant/chat', json={
+            "message": "Q1: B",
+            "role": "SUPER_ADMIN",
+            "active_mcqs": mcqs,
+            "context": {"active_mcqs": mcqs}
+        })
+        self.assertEqual(ans.status_code, 200)
+        reply = ans.get_json().get("reply", "")
+        self.assertNotIn("isn't an active test", reply.lower())
+        self.assertIn("Priya", reply)
+        self.assertIn("Marks", reply)
+
 
 if __name__ == "__main__":
     unittest.main()

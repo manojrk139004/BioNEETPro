@@ -155,7 +155,8 @@ class AssistantService:
         # 3. Call Adaptive Biology Tutor single-brain (NCERT groundings, analogies, traps & chips)
         focus_chap = (context or {}).get("chapter") or (context or {}).get("chapter_id")
         tutor_res = adaptive_tutor.generate_tutoring_response(
-            query=query, student_id=student_id, history=history or [], focus_chapter_id=focus_chap
+            query=query, student_id=student_id, history=history or [], focus_chapter_id=focus_chap,
+            context=context
         )
         reply = tutor_res.get("reply", "")
         if "Priya" not in reply:
@@ -246,10 +247,21 @@ class AssistantService:
         history_msgs = history or []
         ctx = context or {}
 
+        # Register client active MCQs with mcq_engine immediately if provided
+        if ctx.get("active_mcqs") and isinstance(ctx["active_mcqs"], list):
+            try:
+                from mcq_engine import mcq_engine
+                mcq_engine.set_recent_mcqs(user_id, ctx["active_mcqs"])
+            except Exception:
+                pass
+
+        # Check if caller specifically submitted an MCQ answer
+        is_answer_submission = bool(re.search(r'^\s*(?:q\d|option|\d+[:.\-\)]\s*[a-d]|\(?\s*[a-d]\s*\)?$)', clean_msg, re.I))
+
         # 1. Format LLM call if available
-        if norm_role == "TEACHER":
+        if norm_role == "TEACHER" and not is_answer_submission:
             sys_prompt = TEACHER_SYSTEM_PROMPT
-        elif norm_role in ("SUPER_ADMIN", "ADMIN"):
+        elif norm_role in ("SUPER_ADMIN", "ADMIN") and not is_answer_submission:
             sys_prompt = ADMIN_SYSTEM_PROMPT
         else:
             sys_prompt = STUDENT_SYSTEM_PROMPT
@@ -264,11 +276,11 @@ class AssistantService:
 
         llm_reply = self._call_llm(sys_prompt, formatted_history)
         if llm_reply:
-            if norm_role == "TEACHER" and "Sharma" not in llm_reply:
+            if norm_role == "TEACHER" and not is_answer_submission and "Sharma" not in llm_reply:
                 llm_reply = f"👨‍🏫 **Prof. Sharma (Assessment Specialist):**\n\n{llm_reply}"
-            elif norm_role in ("SUPER_ADMIN", "ADMIN") and "Administrator" not in llm_reply and "Admin" not in llm_reply:
+            elif norm_role in ("SUPER_ADMIN", "ADMIN") and not is_answer_submission and "Administrator" not in llm_reply and "Admin" not in llm_reply:
                 llm_reply = f"👑 **BioNEETPro Operations (Administrator Support):**\n\n{llm_reply}"
-            elif norm_role == "STUDENT" and "Priya" not in llm_reply:
+            elif "Priya" not in llm_reply:
                 llm_reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n{llm_reply}"
 
             chips = self._get_role_chips(norm_role, clean_msg, llm_reply)
@@ -284,10 +296,10 @@ class AssistantService:
         # 2. Local fallback by role
         chips = []
         mcqs = []
-        if norm_role == "TEACHER":
+        if norm_role == "TEACHER" and not is_answer_submission:
             reply = self._teacher_fallback(clean_msg, ctx)
             chips = self._get_role_chips(norm_role, clean_msg, reply)
-        elif norm_role in ("SUPER_ADMIN", "ADMIN"):
+        elif norm_role in ("SUPER_ADMIN", "ADMIN") and not is_answer_submission:
             reply = self._admin_fallback(clean_msg, ctx)
             chips = self._get_role_chips(norm_role, clean_msg, reply)
         else:

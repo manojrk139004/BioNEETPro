@@ -35,7 +35,20 @@ OPENROUTER_BASE_URL = os.environ.get("OPENROUTER_BASE_URL") or os.environ.get("A
 if not OPENROUTER_BASE_URL:
     OPENROUTER_BASE_URL = "https://router.bynara.id/v1" if OPENROUTER_KEY and OPENROUTER_KEY.startswith("sk-nry-") else "https://openrouter.ai/api/v1"
 OPENROUTER_BASE_URL = OPENROUTER_BASE_URL.rstrip("/")
-OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "gpt-4o-mini")
+import logging
+import tempfile
+
+logger = logging.getLogger(__name__)
+
+SESSION_MCQ_CACHE = DATA_DIR / "active_mcq_sessions.json"
+
+def _get_session_cache_path() -> Path:
+    try:
+        if DATA_DIR.exists() and os.access(DATA_DIR, os.W_OK):
+            return SESSION_MCQ_CACHE
+    except Exception:
+        pass
+    return Path(tempfile.gettempdir()) / "bioneet_active_mcq_sessions.json"
 
 
 class LocalMCQEngine:
@@ -47,7 +60,28 @@ class LocalMCQEngine:
     def __init__(self):
         self.mcq_pool: List[Dict[str, Any]] = []
         self.last_generated_mcqs: Dict[str, List[Dict[str, Any]]] = {}
+        self._load_session_cache()
         self._load_or_build_mcq_pool()
+
+    def _save_session_cache(self):
+        try:
+            path = _get_session_cache_path()
+            to_save = dict(list(self.last_generated_mcqs.items())[-50:])
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(to_save, f, ensure_ascii=False)
+        except Exception as e:
+            logger.debug(f"Could not persist active MCQ sessions: {e}")
+
+    def _load_session_cache(self):
+        try:
+            path = _get_session_cache_path()
+            if path.exists():
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if isinstance(data, dict):
+                        self.last_generated_mcqs.update(data)
+        except Exception as e:
+            logger.debug(f"Could not load active MCQ sessions: {e}")
 
     def _load_or_build_mcq_pool(self):
         if INDEXED_MCQ_CACHE.exists():
@@ -268,9 +302,10 @@ class LocalMCQEngine:
 
         # 4. Parse target topic or resolve from conversational context
         target_topic = None
-        # 4. Parse target topic or resolve from conversational context
-        target_topic = None
-        if "cockroach" in clean or "periplaneta" in clean:
+        is_general_bio = any(w in clean for w in ["biology", "general biology", "mixed", "syllabus", "whole"])
+        if is_general_bio:
+            target_topic = "biology"
+        elif "cockroach" in clean or "periplaneta" in clean:
             target_topic = "cockroach"
         elif "genetics" in clean or "inheritance" in clean:
             target_topic = "genetics"
@@ -290,7 +325,7 @@ class LocalMCQEngine:
                         break
 
         # If no explicit topic in message, check active conversational context
-        if not target_topic:
+        if not target_topic and not is_general_bio:
             focal = nlp_pipeline.context_tracker.get_focal_concept(student_id)
             if focal and focal[2]:
                 target_topic = focal[2].lower()
@@ -423,26 +458,30 @@ class LocalMCQEngine:
 
         elif topic_filter and topic_filter != "__weak_topics__":
             tf = topic_filter.lower()
-            # Exact canonical-chapter match first (no substring bleed:
-            # "cell" must not match "cell cycle" chapters).
-            cnorm = self._norm_chapter(topic_filter)
-            exact = [q for q in candidates
-                     if self._norm_chapter(q.get("chapter", "")) == cnorm]
-            if exact:
-                candidates = exact
+            if tf in ("biology", "general biology", "neet biology", "mixed biology", "mixed ncert biology", "all"):
+                candidates = self.mcq_pool
+                topic_matched = True
             else:
-                filtered = [
-                    q for q in candidates
-                    if tf in q["question"].lower()
-                    or tf in q["chapter"].lower()
-                    or tf in q["topic"].lower()
-                    or (tf in ["cockroach", "cockroach chapter", "periplaneta"] and any(k in (q["question"] + " " + q["topic"]).lower() for k in ["cockroach", "periplaneta", "malpighian", "spiracle", "ommatidia"]))
-                    or (tf == "genetics" and any(k in (q["chapter"] + " " + q["topic"] + " " + q["question"]).lower() for k in ["inheritance", "molecular basis", "mendel", "dna", "linkage", "cross", "operon", "chargaff", "recombinant"]))
-                ]
-                if filtered:
-                    candidates = filtered
+                # Exact canonical-chapter match first (no substring bleed:
+                # "cell" must not match "cell cycle" chapters).
+                cnorm = self._norm_chapter(topic_filter)
+                exact = [q for q in candidates
+                         if self._norm_chapter(q.get("chapter", "")) == cnorm]
+                if exact:
+                    candidates = exact
                 else:
-                    topic_matched = False
+                    filtered = [
+                        q for q in candidates
+                        if tf in q["question"].lower()
+                        or tf in q["chapter"].lower()
+                        or tf in q["topic"].lower()
+                        or (tf in ["cockroach", "cockroach chapter", "periplaneta"] and any(k in (q["question"] + " " + q["topic"]).lower() for k in ["cockroach", "periplaneta", "malpighian", "spiracle", "ommatidia"]))
+                        or (tf == "genetics" and any(k in (q["chapter"] + " " + q["topic"] + " " + q["question"]).lower() for k in ["inheritance", "molecular basis", "mendel", "dna", "linkage", "cross", "operon", "chargaff", "recombinant"]))
+                    ]
+                    if filtered:
+                        candidates = filtered
+                    else:
+                        topic_matched = False
 
         # 3. Filter by difficulty if enough items exist
         diff_filtered = [q for q in candidates if q["difficulty"] == chosen_diff]
@@ -453,7 +492,11 @@ class LocalMCQEngine:
             selected = random.sample(candidates, sample_size) if sample_size > 0 else []
 
         if selected:
-            self.last_generated_mcqs[student_id] = selected
+            sid = str(student_id or "student_local").strip() or "student_local"
+            self.last_generated_mcqs[sid] = selected
+            self.last_generated_mcqs["student_local"] = selected
+            self.last_generated_mcqs["__latest__"] = selected
+            self._save_session_cache()
 
         return {
             "status": "success",
@@ -466,9 +509,34 @@ class LocalMCQEngine:
             "mcqs": selected
         }
 
+    def set_recent_mcqs(self, student_id: str = "student_local", mcqs: Optional[List[Dict[str, Any]]] = None):
+        """Manually registers an active batch of MCQs (e.g. passed from client context)."""
+        if not mcqs or not isinstance(mcqs, list):
+            return
+        sid = str(student_id or "student_local").strip() or "student_local"
+        self.last_generated_mcqs[sid] = mcqs
+        self.last_generated_mcqs["__latest__"] = mcqs
+        if sid != "student_local":
+            self.last_generated_mcqs["student_local"] = mcqs
+        self._save_session_cache()
+
     def get_recent_mcqs(self, student_id: str = "student_local") -> List[Dict[str, Any]]:
-        """Returns the most recently generated batch of MCQs for a student."""
-        return self.last_generated_mcqs.get(student_id, [])
+        """
+        Returns the most recently generated batch of MCQs for a student.
+        For guest/local sessions ('student_local'), falls back to '__latest__'.
+        For specific student IDs, returns that student's active batch.
+        """
+        self._load_session_cache()
+        sid = str(student_id or "student_local").strip() or "student_local"
+        mcqs = self.last_generated_mcqs.get(sid)
+        if not mcqs and sid == "student_local":
+            mcqs = self.last_generated_mcqs.get("__latest__")
+        return mcqs or []
+
+    def get_any_recent_mcqs(self) -> List[Dict[str, Any]]:
+        """Fallback to retrieve any active test batch across all sessions."""
+        self._load_session_cache()
+        return self.last_generated_mcqs.get("__latest__") or self.last_generated_mcqs.get("student_local") or []
 
     def get_recent_mcq(self, question_number: int, student_id: str = "student_local") -> Optional[Dict[str, Any]]:
         """Returns the specific 1-indexed MCQ from the student's active batch."""
