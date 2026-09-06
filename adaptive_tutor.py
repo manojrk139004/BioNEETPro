@@ -1117,7 +1117,7 @@ class AdaptiveBiologyTutor:
                     pass
             profile = self.learner.get_or_create_profile(student_id)
             out = {
-                "reply": mcq_engine.format_mcqs_for_chat(mcq_data),
+                "reply": mcq_engine.format_mcq_intro(mcq_data) if mcqs else mcq_engine.format_mcqs_for_chat(mcq_data),
                 "mode": "mcq_practice",
                 "status": "success",
                 "confidence": "HIGH" if mcqs else "LOW",

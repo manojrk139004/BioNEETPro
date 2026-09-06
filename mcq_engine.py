@@ -266,26 +266,38 @@ class LocalMCQEngine:
 
         # 4. Parse target topic or resolve from conversational context
         target_topic = None
-        # 4. Parse target topic or resolve from conversational context
-        target_topic = None
         if "cockroach" in clean or "periplaneta" in clean:
             target_topic = "cockroach"
         elif "genetics" in clean or "inheritance" in clean:
             target_topic = "genetics"
         else:
-            # Check canonical concept normalizer
-            canon = concept_normalizer.get_canonical_concept_name(clean)
-            if canon:
-                target_topic = canon.lower()
-            else:
-                for t in ["mitochondria", "cell division", "meiosis", "mitosis", "photosynthesis",
-                          "glycolysis", "respiration", "heart", "circulation", "kidney", "excretion", "bone",
-                          "skeleton", "cell", "biomolecules", "ecology", "reproduction", "evolution",
-                          "digestion", "breathing", "neural", "brain", "hormones", "genetics",
-                          "inheritance", "dna", "rna", "biotechnology", "microbes"]:
-                    if t in clean:
-                        target_topic = t
-                        break
+            # Check direct chapter names in MCQ pool
+            clean_low = clean.lower()
+            pool_chaps = {q.get("chapter", "") for q in self.mcq_pool if q.get("chapter")}
+            for ch in sorted(pool_chaps, key=len, reverse=True):
+                ch_norm = re.sub(r"[^a-z0-9]+", " ", ch.lower()).strip()
+                if ch.lower() in clean_low or ch_norm in clean_low:
+                    target_topic = ch
+                    break
+                words = [w for w in ch_norm.split() if w not in {"and", "in", "the", "of", "its", "higher"}]
+                if len(words) >= 2 and " ".join(words[:2]) in clean_low:
+                    target_topic = ch
+                    break
+
+            if not target_topic:
+                # Check canonical concept normalizer
+                canon = concept_normalizer.get_canonical_concept_name(clean)
+                if canon:
+                    target_topic = canon.lower()
+                else:
+                    for t in ["mitochondria", "cell division", "meiosis", "mitosis", "photosynthesis",
+                              "glycolysis", "respiration", "heart", "circulation", "kidney", "excretion", "bone",
+                              "skeleton", "cell", "biomolecules", "ecology", "reproduction", "evolution",
+                              "digestion", "breathing", "neural", "brain", "hormones", "genetics",
+                              "inheritance", "dna", "rna", "biotechnology", "microbes"]:
+                        if t in clean:
+                            target_topic = t
+                            break
 
         # If no explicit topic in message, check active conversational context
         if not target_topic:
@@ -475,6 +487,30 @@ class LocalMCQEngine:
         if 0 <= idx < len(mcqs):
             return mcqs[idx]
         return None
+
+    def format_mcq_intro(self, mcq_result: Dict[str, Any]) -> str:
+        """
+        Formats a clean, spoiler-free introductory prompt for Dr. Priya.
+        Answers and explanations are held back so the student can attempt the interactive test.
+        """
+        mcqs = mcq_result.get("mcqs", [])
+        if not mcqs:
+            return (
+                "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+                "*\"I could not retrieve enough verified MCQs for this specific topic right now. "
+                "Try asking 'Give me 5 MCQs on Animal Kingdom' or 'Give me 3 questions on Photosynthesis'!\"*"
+            )
+
+        diff = mcq_result.get("difficulty", "medium").upper()
+        mode = "Your Selection" if mcq_result.get("difficulty_mode") == "user_override" else "Adaptive to Your Mastery"
+        topic = mcq_result.get("topic", "NEET Biology")
+        count = len(mcqs)
+
+        return (
+            f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [On-Demand NEET MCQ Practice]:**\n\n"
+            f"*\"Here are **{count} high-yield MCQs** on **{topic}** (Difficulty: **{diff}** — *{mode}*):\"*\n\n"
+            f"📝 Select your answer for each question below and click **Submit All Answers** at the bottom to evaluate your test and see NCERT explanations!"
+        )
 
     def format_mcqs_for_chat(self, mcq_result: Dict[str, Any]) -> str:
         """

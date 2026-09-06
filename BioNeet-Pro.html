@@ -3701,25 +3701,217 @@ function renderTutorGreeting() {
   } catch (e) {}
 }
 
-// ---- Interactive chat MCQs: QUESTION_SHOWN -> OPTION_SELECTED ->
-// ANSWER_SUBMITTED -> EVALUATED -> EXPLANATION_SHOWN (+ next prompt) ----
+// ---- Interactive chat MCQs: BATCH TEST MODE (Q1..QN -> SINGLE SUBMIT -> BATCH EVALUATION) ----
 window.__chatMCQ = window.__chatMCQ || {};
+window.__chatMCQBatches = window.__chatMCQBatches || {};
+
 function renderChatMCQs(mcqs) {
+  if (!mcqs || !mcqs.length) return;
   var msgs = document.getElementById('chatMsgs');
-  (mcqs || []).slice(0, 5).forEach(function(q, qi) {
-    if (!q || !q.question || !q.options || q.options.length !== 4) return;
-    var id = 'cq-' + Date.now() + '-' + qi;
-    window.__chatMCQ[id] = { mcq: q, selected: -1, submitted: false, t0: Date.now() };
-    var opts = q.options.map(function(o, i) {
-      return '<div class="mcq-opt" id="' + id + '-opt' + i + '" onclick="selectChatOpt(\'' + id + '\',' + i + ')"><div class="mcq-badge">' + String.fromCharCode(65 + i) + '</div><span>' + escHtml(o) + '</span></div>';
-    }).join('');
-    msgs.innerHTML += '<div class="chat-msg ai"><div class="chat-av ai">AI</div><div class="bubble"><p style="font-weight:800;margin-bottom:8px">🧠 Quick check: ' + escHtml(q.question) + '</p><div id="' + id + '-opts">' + opts + '</div><div id="' + id + '-fb" style="margin-top:8px"></div><button class="btn btn-sm btn-primary" id="' + id + '-btn" onclick="submitChatMCQ(\'' + id + '\')" style="margin-top:8px">Submit answer</button></div></div>';
+  var validMCQs = mcqs.filter(function(q) {
+    return q && q.question && q.options && q.options.length === 4;
   });
-  msgs.scrollTop = msgs.scrollHeight;
+  if (!validMCQs.length) return;
+
+  var batchId = 'mcq-batch-' + Date.now();
+  window.__chatMCQBatches[batchId] = {
+    questions: validMCQs,
+    selected: new Array(validMCQs.length).fill(-1),
+    submitted: false,
+    t0: Date.now()
+  };
+
+  var topicName = validMCQs[0].topic || validMCQs[0].chapter || 'NEET Biology';
+  var cardsHtml = '';
+
+  validMCQs.forEach(function(q, qi) {
+    var optsHtml = q.options.map(function(opt, oi) {
+      var letter = String.fromCharCode(65 + oi);
+      return '<div class="mcq-opt" id="' + batchId + '-q' + qi + '-opt' + oi + '" onclick="selectChatBatchOpt(\'' + batchId + '\',' + qi + ',' + oi + ')">' +
+        '<div class="mcq-badge">' + letter + '</div>' +
+        '<span>' + escHtml(opt) + '</span>' +
+      '</div>';
+    }).join('');
+
+    cardsHtml +=
+      '<div class="chat-mcq-item" id="' + batchId + '-card-' + qi + '" style="margin-bottom:16px;padding:14px;border:2px solid var(--ink);border-radius:var(--r);background:var(--sur);box-shadow:3px 3px 0 var(--ink)">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
+          '<span style="font-size:0.75rem;font-weight:800;text-transform:uppercase;background:var(--y);color:var(--ink);padding:3px 8px;border:1.5px solid var(--ink);border-radius:4px">' +
+            'Question ' + (qi + 1) + ' of ' + validMCQs.length +
+          '</span>' +
+          '<span style="font-size:0.75rem;color:var(--muted);font-weight:700">' +
+            escHtml(q.chapter || 'NEET Biology') +
+          '</span>' +
+        '</div>' +
+        '<p style="font-weight:800;font-size:0.92rem;line-height:1.5;margin-bottom:12px;color:var(--ink)">' +
+          escHtml(q.question) +
+        '</p>' +
+        '<div id="' + batchId + '-q' + qi + '-opts">' + optsHtml + '</div>' +
+        '<div id="' + batchId + '-q' + qi + '-fb" style="display:none;margin-top:10px;padding:10px 12px;border-left:4px solid var(--ink);background:var(--bg);border-radius:4px"></div>' +
+      '</div>';
+  });
+
+  var batchContainerHtml =
+    '<div class="chat-msg ai" id="' + batchId + '" style="animation:fadeIn .3s ease">' +
+      '<div class="chat-av ai">AI</div>' +
+      '<div class="bubble" style="max-width:94%;width:100%">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px dashed var(--ink)">' +
+          '<span style="font-size:1.2rem">📝</span>' +
+          '<div>' +
+            '<div style="font-weight:900;font-size:0.98rem;color:var(--ink)">Practice Test: ' + escHtml(topicName) + '</div>' +
+            '<div style="font-size:0.75rem;color:var(--muted);font-weight:600">' + validMCQs.length + ' High-Yield Questions • Select your answers and click Submit below</div>' +
+          '</div>' +
+        '</div>' +
+        cardsHtml +
+        '<div style="margin-top:14px">' +
+          '<button class="btn btn-primary" id="' + batchId + '-submit-btn" onclick="submitChatMCQBatch(\'' + batchId + '\')" style="width:100%;padding:12px;font-size:0.95rem;font-weight:800;box-shadow:4px 4px 0 var(--ink)">' +
+            'Submit All Answers (0/' + validMCQs.length + ' answered) 🚀' +
+          '</button>' +
+          '<div id="' + batchId + '-summary"></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  msgs.innerHTML += batchContainerHtml;
+  msgscroll();
 }
+
+function selectChatBatchOpt(batchId, qIdx, optIdx) {
+  var batch = (window.__chatMCQBatches || {})[batchId];
+  if (!batch || batch.submitted) return;
+
+  batch.selected[qIdx] = optIdx;
+
+  for (var k = 0; k < 4; k++) {
+    var el = document.getElementById(batchId + '-q' + qIdx + '-opt' + k);
+    if (el) el.classList.toggle('sel', k === optIdx);
+  }
+
+  var answered = batch.selected.filter(function(x) { return x >= 0; }).length;
+  var total = batch.questions.length;
+  var btn = document.getElementById(batchId + '-submit-btn');
+  if (btn) {
+    btn.textContent = 'Submit All Answers (' + answered + '/' + total + ' answered)' + (answered === total ? ' ✅' : ' 🚀');
+  }
+}
+
+async function submitChatMCQBatch(batchId) {
+  var batch = (window.__chatMCQBatches || {})[batchId];
+  if (!batch || batch.submitted) return;
+
+  var unans = [];
+  for (var i = 0; i < batch.questions.length; i++) {
+    if (batch.selected[i] < 0) unans.push(i + 1);
+  }
+  if (unans.length > 0) {
+    toast('Please select an answer for all questions first! (Missing: Q' + unans.join(', Q') + ') ☝️', 'w');
+    var firstCard = document.getElementById(batchId + '-card-' + (unans[0] - 1));
+    if (firstCard) firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  batch.submitted = true;
+  var btn = document.getElementById(batchId + '-submit-btn');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Grading Test... ⏳';
+  }
+
+  var correctCount = 0;
+  var total = batch.questions.length;
+
+  batch.questions.forEach(function(q, qi) {
+    var sel = batch.selected[qi];
+    var isOk = (sel === q.correct_index);
+    if (isOk) correctCount++;
+
+    for (var k = 0; k < 4; k++) {
+      var optEl = document.getElementById(batchId + '-q' + qi + '-opt' + k);
+      if (!optEl) continue;
+      optEl.style.pointerEvents = 'none';
+      if (k === q.correct_index) {
+        optEl.classList.add('correct');
+      } else if (k === sel && !isOk) {
+        optEl.classList.add('wrong');
+      }
+    }
+
+    var fbEl = document.getElementById(batchId + '-q' + qi + '-fb');
+    if (fbEl) {
+      fbEl.style.display = 'block';
+      var corrLetter = String.fromCharCode(65 + q.correct_index);
+      fbEl.innerHTML =
+        '<p style="font-weight:800;font-size:0.88rem;color:' + (isOk ? 'var(--green)' : 'var(--red)') + ';margin-bottom:4px">' +
+          (isOk ? '✅ Correct! Well done.' : '❌ Incorrect — Correct answer is (' + corrLetter + ') ' + escHtml(q.options[q.correct_index])) +
+        '</p>' +
+        '<p style="font-size:0.82rem;color:var(--ink);line-height:1.6;margin-top:4px">' +
+          '📖 <strong>NCERT Explanation:</strong> ' + escHtml(q.explanation || 'See NCERT Biology textbook.') +
+        '</p>';
+    }
+  });
+
+  var pct = Math.round((correctCount / total) * 100);
+  var badgeBg = pct >= 80 ? 'var(--green)' : (pct >= 50 ? 'var(--y)' : 'var(--red)');
+  var badgeColor = pct >= 50 && pct < 80 ? 'var(--ink)' : '#fff';
+  var headline = pct === 100 ? '🌟 Perfect Score! Outstanding NCERT mastery!' :
+                 pct >= 80 ? '🎉 Excellent! Great preparation for NEET 360!' :
+                 pct >= 50 ? '👍 Good Effort! Review the explanations above.' :
+                 '💪 Keep Practicing! Read the NCERT chapter to master these questions.';
+
+  var topic = batch.questions[0].topic || batch.questions[0].chapter || 'Biology';
+  var summaryEl = document.getElementById(batchId + '-summary');
+  if (summaryEl) {
+    summaryEl.innerHTML =
+      '<div style="margin-top:16px;padding:16px;border:2px solid var(--ink);border-radius:var(--r);background:var(--ylight);box-shadow:4px 4px 0 var(--ink);animation:fadeIn .3s ease">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+          '<span style="font-weight:900;font-size:1.15rem;color:var(--ink)">🎯 Score: ' + correctCount + ' / ' + total + ' (' + pct + '%)</span>' +
+          '<span style="font-weight:800;font-size:0.78rem;background:' + badgeBg + ';color:' + badgeColor + ';padding:4px 10px;border-radius:99px;border:1.5px solid var(--ink)">' +
+            (pct >= 70 ? 'PASS ✅' : 'REVIEW 📖') +
+          '</span>' +
+        '</div>' +
+        '<p style="font-size:0.875rem;font-weight:700;color:var(--ink);margin-bottom:12px">' + headline + '</p>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+          '<button class="btn btn-sm btn-primary" onclick="quickAsk(\'Give me ' + total + ' more MCQs on ' + escHtml(topic) + '\')" style="font-size:0.8rem">' +
+            '🧪 Practice More ' + escHtml(topic) +
+          '</button>' +
+          '<button class="btn btn-sm btn-outline" onclick="quickAsk(\'Explain key NEET traps in ' + escHtml(topic) + '\')" style="font-size:0.8rem">' +
+            '⚠️ NEET Exam Traps' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+  }
+
+  if (btn) btn.style.display = 'none';
+  msgscroll();
+
+  try {
+    var sid = ((DB.currentUser || {}).email || 'student_local');
+    var timeTakenPerQ = Math.max(1, Math.round(((Date.now() - batch.t0) / 1000) / total));
+    var attempts = batch.questions.map(function(q, qi) {
+      return {
+        concept_id: q.concept_id || 'BIO-GEN',
+        chapter_id: q.chapter || 'general',
+        topic_id: q.topic || q.chapter || 'Unknown',
+        is_correct: batch.selected[qi] === q.correct_index,
+        difficulty: q.difficulty || 'medium',
+        cognitive_level: q.cognitive_level || 'BT2',
+        time_taken: timeTakenPerQ
+      };
+    });
+    await fetch(`${AI_BACKEND_URL}/api/mcq/submit-batch`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ student_id: sid, attempts: attempts })
+    });
+  } catch (e) {
+    console.log('Batch progress sync deferred:', e);
+  }
+}
+
+// Retain legacy single-question helpers for backwards compatibility
 function selectChatOpt(id, i) {
   var st = window.__chatMCQ[id];
-  if (!st || st.submitted) return; // locked after submission
+  if (!st || st.submitted) return;
   st.selected = i;
   for (var k = 0; k < 4; k++) {
     var el = document.getElementById(id + '-opt' + k);
@@ -3728,7 +3920,7 @@ function selectChatOpt(id, i) {
 }
 async function submitChatMCQ(id) {
   var st = window.__chatMCQ[id];
-  if (!st || st.submitted) return; // prevent duplicate submissions
+  if (!st || st.submitted) return;
   if (st.selected < 0) { toast('Pick an option first! ☝️', 'i'); return; }
   st.submitted = true;
   var btn = document.getElementById(id + '-btn');
@@ -3747,7 +3939,6 @@ async function submitChatMCQ(id) {
   }
   if (btn) btn.textContent = ok ? 'Done ✅' : 'Reviewed 📖';
   msgscroll();
-  // Record for BKT (best-effort: grading stands even if sync fails).
   try {
     var sid = ((DB.currentUser || {}).email || 'student_local');
     var t0 = st.t0 || Date.now();
@@ -3818,9 +4009,19 @@ async function sendChat() {
     document.getElementById(typingId)?.remove();
 
     if (data.reply) {
-      appendMsg(formatAIReply(data.reply), 'ai');
+      var replyToDisplay = data.reply;
+      if (data.mcqs && data.mcqs.length) {
+        if (replyToDisplay.includes('<details>') || replyToDisplay.includes('Question 1 [') || replyToDisplay.includes('Question 1:')) {
+          var introEnd = replyToDisplay.indexOf('Question 1');
+          if (introEnd !== -1) {
+            replyToDisplay = replyToDisplay.substring(0, introEnd).trim() +
+              '\n\n📝 *Attempt each question in the test card below and click **Submit All Answers** when done!*';
+          }
+        }
+      }
+      appendMsg(formatAIReply(replyToDisplay), 'ai');
       if (data.mcqs && data.mcqs.length) renderChatMCQs(data.mcqs);
-      chatHistory.push({ role: 'user', content: sendMsg }, { role: 'assistant', content: data.reply });
+      chatHistory.push({ role: 'user', content: sendMsg }, { role: 'assistant', content: replyToDisplay });
     } else {
       appendMsg(localTutorFallback(msg, data.error), 'ai');
     }
@@ -5198,6 +5399,8 @@ window.quickAsk = quickAsk;
 window.clearChat = clearChat;
 window.selectChatOpt = selectChatOpt;
 window.submitChatMCQ = submitChatMCQ;
+window.selectChatBatchOpt = selectChatBatchOpt;
+window.submitChatMCQBatch = submitChatMCQBatch;
 window.setTutorMode = setTutorMode;
 window.chipAct = chipAct;
 window.saveProfile = saveProfile;
