@@ -1829,7 +1829,10 @@ def api_mcqs_ai_generate():
     data = payload() or {}
     chapter = str(data.get("chapter") or data.get("chapter_name") or data.get("chapter_id") or "").strip()
     topic = str(data.get("topic") or "").strip()
-    count = min(30, max(1, int(data.get("count") or 5)))
+    try:
+        count = min(30, max(1, int(data.get("count") or 5)))
+    except (ValueError, TypeError):
+        count = 5
     difficulty = str(data.get("difficulty") or "medium").lower()
 
     if chapter:
@@ -2000,8 +2003,11 @@ def api_assessments_update(assessment_id):
         return jsonify({"error": "Unauthorized."}), 403
     data = payload() or {}
     res = assessment_engine.update_assessment(assessment_id, data, caller_uid=uid, role=role)
-    status_code = 200 if res.get("success") else 400
-    return jsonify(res), status_code
+    if not res.get("success"):
+        err = str(res.get("error", "")).lower()
+        status_code = 403 if ("access denied" in err or "unauthorized" in err) else 400
+        return jsonify(res), status_code
+    return jsonify(res), 200
 
 
 @app.post("/api/assessments/<assessment_id>/status")
@@ -2015,8 +2021,11 @@ def api_assessments_status_transition(assessment_id):
     data = payload() or {}
     new_status = str(data.get("status") or "").upper()
     res = assessment_engine.transition_status(assessment_id, new_status, caller_uid=uid, role=role)
-    status_code = 200 if res.get("success") else 400
-    return jsonify(res), status_code
+    if not res.get("success"):
+        err = str(res.get("error", "")).lower()
+        status_code = 403 if ("access denied" in err or "unauthorized" in err) else 400
+        return jsonify(res), status_code
+    return jsonify(res), 200
 
 
 @app.post("/api/assessments/<assessment_id>/submit")
@@ -2026,7 +2035,10 @@ def api_assessments_submit(assessment_id):
     uid = hid or auth_student_id()
     data = payload() or {}
     answers = data.get("answers", {})
-    time_spent = int(data.get("time_spent_seconds") or 0)
+    try:
+        time_spent = max(0, int(data.get("time_spent_seconds") or 0))
+    except (ValueError, TypeError):
+        time_spent = 0
     res = assessment_engine.submit_assessment(assessment_id, uid, answers, time_spent_seconds=time_spent)
     status_code = 200 if res.get("success") else 400
     return jsonify(res), status_code

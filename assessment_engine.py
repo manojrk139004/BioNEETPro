@@ -83,14 +83,16 @@ class AssessmentEngine:
         start_at = _parse_iso(asmt.get("start_at") or asmt.get("startAt"))
         end_at = _parse_iso(asmt.get("end_at") or asmt.get("endAt"))
 
+        if end_at and now > end_at:
+            return "CLOSED"
         if start_at and now < start_at:
             return "UPCOMING"
         if start_at and end_at:
             if start_at <= now <= end_at:
                 return "LIVE"
-            if now > end_at:
-                return "CLOSED"
         elif start_at and now >= start_at:
+            return "LIVE"
+        elif end_at and now <= end_at:
             return "LIVE"
 
         return current_status
@@ -342,6 +344,12 @@ class AssessmentEngine:
         if not asmt:
             return {"success": False, "error": "Assessment not found."}
 
+        raw_status = str(asmt.get("status", "")).upper()
+        if raw_status == "DRAFT":
+            return {"success": False, "error": "This assessment is a draft and is not accepting submissions."}
+        if raw_status == "RESULTS_AVAILABLE":
+            return {"success": False, "error": "Assessment results have already been released. Submissions are closed."}
+
         dynamic_status = self.compute_dynamic_status(asmt)
         now = datetime.datetime.now(timezone.utc)
         start_at = _parse_iso(asmt.get("start_at") or asmt.get("startAt"))
@@ -360,6 +368,14 @@ class AssessmentEngine:
         existing = firestore_store.load_doc("assessment_results", result_id)
         if existing:
             return {"success": False, "error": "You have already submitted this assessment. Duplicate submissions are not allowed."}
+
+        if not isinstance(answers, dict):
+            answers = {}
+
+        try:
+            time_spent_seconds = max(0, min(86400, int(time_spent_seconds or 0)))
+        except (ValueError, TypeError):
+            time_spent_seconds = 0
 
         questions = asmt.get("questions") or asmt.get("questionSnapshots") or []
         negative_marking = bool(asmt.get("negative_marking") if "negative_marking" in asmt else asmt.get("negativeMarking", True))
@@ -385,10 +401,22 @@ class AssessmentEngine:
             chapter = q.get("chapter") or asmt.get("chapter_name") or asmt.get("chapterName") or "General Biology"
             concept_id = q.get("concept_id") or q.get("concept") or chapter.lower().replace(" ", "_")
 
-            if chosen is None or chosen == -1 or chosen == "":
+            chosen_int = None
+            if chosen is not None and chosen != "" and chosen != -1:
+                try:
+                    chosen_int = int(chosen)
+                except (ValueError, TypeError):
+                    chosen_int = None
+
+            try:
+                corr_int = int(correct_ans)
+            except (ValueError, TypeError):
+                corr_int = 0
+
+            if chosen_int is None or chosen_int < 0 or chosen_int > 3:
                 unattempted_count += 1
                 outcome = "unattempted"
-            elif int(chosen) == int(correct_ans):
+            elif chosen_int == corr_int:
                 correct_count += 1
                 outcome = "correct"
             else:
@@ -399,8 +427,8 @@ class AssessmentEngine:
                 "questionIndex": idx,
                 "question_index": idx,
                 "question": q.get("question") or q.get("q"),
-                "chosen": chosen,
-                "correct": correct_ans,
+                "chosen": chosen_int,
+                "correct": corr_int,
                 "outcome": outcome,
                 "chapter": chapter
             })
@@ -435,6 +463,9 @@ class AssessmentEngine:
         percentage = round((correct_count / total_qs) * 100, 1)
         total_marks = asmt.get("total_marks") or asmt.get("totalMarks") or (total_qs * 4)
 
+        passing_marks = int(asmt.get("passing_marks") or asmt.get("passingMarks") or max(1, int(total_marks * 0.4)))
+        passed = bool(score >= passing_marks)
+
         result_doc = {
             "resultId": result_id,
             "id": result_id,
@@ -448,6 +479,11 @@ class AssessmentEngine:
             "score": score,
             "totalMarks": total_marks,
             "total_marks": total_marks,
+            "maxMarks": total_marks,
+            "max_marks": total_marks,
+            "passingMarks": passing_marks,
+            "passing_marks": passing_marks,
+            "passed": passed,
             "percentage": percentage,
             "correct": correct_count,
             "correct_count": correct_count,
@@ -471,6 +507,10 @@ class AssessmentEngine:
             "result": result_doc,
             "score": score,
             "total_marks": total_marks,
+            "totalMarks": total_marks,
+            "max_marks": total_marks,
+            "maxMarks": total_marks,
+            "passed": passed,
             "percentage": percentage,
             "correct": correct_count,
             "correct_count": correct_count,

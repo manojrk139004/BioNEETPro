@@ -565,7 +565,8 @@
         return;
       }
 
-      alert("Test submitted successfully!\nScore: " + data.score + " / " + data.max_marks + " (" + data.percentage + "%)\nYour mastery has been synced to your adaptive learner profile!");
+      var maxM = data.max_marks || data.total_marks || data.totalMarks || (data.result && data.result.total_marks) || 0;
+      alert("Test submitted successfully!\nScore: " + data.score + " / " + maxM + " (" + data.percentage + "%)\nYour mastery has been synced to your adaptive learner profile!");
 
       activeExam = null;
       if (typeof window.go === 'function') {
@@ -588,12 +589,13 @@
       }
       var data = await res.json();
       var r = data.result;
+      var totalM = r.max_marks || r.total_marks || r.totalMarks || 0;
 
       var html = "Assessment Result for " + asmtId + ":\n" +
-        "• Score: " + r.score + " / " + r.max_marks + " (" + r.percentage + "%)\n" +
-        "• Correct: " + r.correct_count + "\n" +
-        "• Incorrect: " + r.incorrect_count + "\n" +
-        "• Unattempted: " + r.unattempted_count + "\n" +
+        "• Score: " + r.score + " / " + totalM + " (" + r.percentage + "%)\n" +
+        "• Correct: " + (r.correct_count !== undefined ? r.correct_count : r.correct) + "\n" +
+        "• Incorrect: " + (r.incorrect_count !== undefined ? r.incorrect_count : r.incorrect) + "\n" +
+        "• Unattempted: " + (r.unattempted_count !== undefined ? r.unattempted_count : r.unattempted) + "\n" +
         "• Status: " + (r.passed ? "PASSED ✅" : "NEEDS REMEDIATION ⚠️") + "\n" +
         "• Rank: #" + (r.rank || 1);
 

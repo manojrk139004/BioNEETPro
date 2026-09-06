@@ -122,11 +122,15 @@ service cloud.firestore {
     match /assessment_results/{resultId} {
       allow create: if signedIn() && (
         request.resource.data.student_id == request.auth.uid ||
-        request.resource.data.student_id == request.auth.token.email
+        request.resource.data.studentId == request.auth.uid ||
+        request.resource.data.student_id == request.auth.token.email ||
+        request.resource.data.studentId == request.auth.token.email
       );
       allow read: if signedIn() && (
         resource.data.student_id == request.auth.uid ||
+        resource.data.studentId == request.auth.uid ||
         resource.data.student_id == request.auth.token.email ||
+        resource.data.studentId == request.auth.token.email ||
         isTeacher() ||
         isAppAdmin()
       );
