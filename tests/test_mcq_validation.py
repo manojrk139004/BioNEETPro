@@ -70,15 +70,22 @@ class TestMCQValidation(unittest.TestCase):
         print(f"[PASS] Topic Filtering: Verified across {topics}.")
 
     def test_05_chat_formatting_structure(self):
-        """Tests that Markdown formatting includes Dr. Priya header and collapsible answers."""
+        """Tests that Markdown formatting includes Dr. Priya header and spoiler-free questions by default, with collapsible answers in review mode."""
         result = self.engine.generate_mcqs("Give me 2 MCQs on Genetics")
+        # Default mode: interactive test without answer spoilers
         formatted = self.engine.format_mcqs_for_chat(result)
-
         self.assertIn("Dr. Priya", formatted)
-        self.assertIn("<details>", formatted)
-        self.assertIn("</details>", formatted)
-        self.assertIn("Correct Answer:", formatted)
-        self.assertIn("NCERT Explanation:", formatted)
+        self.assertIn("Question 1", formatted)
+        self.assertIn("Question 2", formatted)
+        self.assertNotIn("<details>", formatted)
+        self.assertIn("How to answer", formatted)
+
+        # Review mode: collapsible answer reveals
+        revealed = self.engine.format_mcqs_for_chat(result, reveal_answers=True)
+        self.assertIn("<details>", revealed)
+        self.assertIn("</details>", revealed)
+        self.assertIn("Correct Answer:", revealed)
+        self.assertIn("NCERT Explanation:", revealed)
 
         print(f"[PASS] Socratic Chat Formatting: Proper Markdown generated with interactive tags.")
 

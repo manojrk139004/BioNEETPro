@@ -1297,6 +1297,40 @@
       aiBubble.style.cssText = 'align-self:flex-start;background:#fff;border:1px solid #e5e7eb;color:var(--ink);padding:12px 14px;border-radius:14px 14px 14px 2px;max-width:90%;font-size:0.85rem;margin-bottom:10px;line-height:1.5;box-shadow:0 2px 8px rgba(0,0,0,0.04)';
       aiBubble.innerHTML = formatAssistantMarkdown(replyText);
 
+      // Render interactive MCQ cards with clickable option badges if present
+      if (data.mcqs && data.mcqs.length) {
+        var mcqContainer = document.createElement('div');
+        mcqContainer.style.cssText = 'margin-top:12px;display:flex;flex-direction:column;gap:10px';
+        data.mcqs.forEach(function(q, qIdx) {
+          var card = document.createElement('div');
+          card.style.cssText = 'background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:12px;font-size:0.82rem';
+          var qTitle = document.createElement('div');
+          qTitle.style.cssText = 'font-weight:700;color:#0f172a;margin-bottom:8px';
+          qTitle.textContent = 'Q' + (qIdx + 1) + '. ' + q.question;
+          card.appendChild(qTitle);
+
+          var optGrid = document.createElement('div');
+          optGrid.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:6px';
+          (q.options || []).forEach(function(opt, optIdx) {
+            var letter = String.fromCharCode(65 + optIdx);
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.style.cssText = 'background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:7px 10px;font-size:0.78rem;text-align:left;cursor:pointer;color:#1e293b;transition:all 0.15s ease;display:flex;gap:5px;align-items:flex-start';
+            btn.innerHTML = '<strong style="color:#2563eb">(' + letter + ')</strong> <span>' + escapeHtml(opt) + '</span>';
+            btn.onmouseover = function() { btn.style.background = '#eff6ff'; btn.style.borderColor = '#3b82f6'; };
+            btn.onmouseout = function() { btn.style.background = '#fff'; btn.style.borderColor = '#cbd5e1'; };
+            btn.onclick = function() {
+              var queryText = (data.mcqs.length > 1 ? ('Q' + (qIdx + 1) + ': ') : 'Option ') + letter;
+              sendFloatingChip(queryText);
+            };
+            optGrid.appendChild(btn);
+          });
+          card.appendChild(optGrid);
+          mcqContainer.appendChild(card);
+        });
+        aiBubble.appendChild(mcqContainer);
+      }
+
       // Interactive follow-up chips for 1-click cross-replies
       var followUpChips = data.chips || data.suggested_actions || [];
       if (followUpChips && followUpChips.length) {
@@ -1333,15 +1367,74 @@
   function formatAssistantMarkdown(text) {
     if (!text) return '';
     var escaped = escapeHtml(text);
+    // Unescape safe tags for interactive collapsible sections
+    escaped = escaped.replace(/&lt;(\/?(?:details|summary|b|strong|i|em))&gt;/gi, '<$1>');
     // Bold
     escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     // Italics
     escaped = escaped.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    // Bullet points
-    escaped = escaped.replace(/• (.*?)(?:\n|$)/g, '<li style="margin-left:14px">$1</li>');
-    // Line breaks
-    escaped = escaped.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
-    return escaped;
+    // Inline code
+    escaped = escaped.replace(/`([^`\n]+)`/g, '<code style="background:#f1f5f9;padding:2px 5px;border-radius:4px;font-family:monospace;font-size:0.82em;color:#0f172a">$1</code>');
+
+    // Parse Markdown tables and lists
+    var lines = escaped.split('\n');
+    var out = [];
+    var i = 0;
+    while (i < lines.length) {
+      if (/^\s*\|.*\|\s*$/.test(lines[i])) {
+        var tableRows = [];
+        while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) {
+          tableRows.push(lines[i]);
+          i++;
+        }
+        if (tableRows.length >= 2) {
+          var parseCells = function(rStr) {
+            return rStr.trim().replace(/^\||\|$/g, '').split('|').map(function(c){ return c.trim(); });
+          };
+          var isDelim = function(rStr) {
+            return /^\|\s*[-:]+[-| :]*\|\s*$/.test(rStr.trim());
+          };
+          var headers = parseCells(tableRows[0]);
+          var bodyStart = (tableRows.length > 1 && isDelim(tableRows[1])) ? 2 : 1;
+          var tHtml = '<div style="overflow-x:auto;margin:8px 0;border:1px solid #e2e8f0;border-radius:6px">';
+          tHtml += '<table style="width:100%;border-collapse:collapse;font-size:0.78rem;text-align:left;background:#fff">';
+          tHtml += '<thead><tr style="background:#f8fafc;border-bottom:2px solid #cbd5e1">';
+          for (var h = 0; h < headers.length; h++) {
+            tHtml += '<th style="padding:6px 8px;font-weight:700;color:#0f172a">' + headers[h] + '</th>';
+          }
+          tHtml += '</tr></thead><tbody>';
+          for (var r = bodyStart; r < tableRows.length; r++) {
+            if (isDelim(tableRows[r])) continue;
+            var cells = parseCells(tableRows[r]);
+            var bg = (r % 2 === 0) ? '#f8fafc' : '#ffffff';
+            tHtml += '<tr style="background:' + bg + ';border-bottom:1px solid #f1f5f9">';
+            for (var c = 0; c < headers.length; c++) {
+              tHtml += '<td style="padding:6px 8px;color:#334155">' + (cells[c] || '') + '</td>';
+            }
+            tHtml += '</tr>';
+          }
+          tHtml += '</tbody></table></div>';
+          out.push(tHtml);
+          continue;
+        }
+      }
+      if (/^\s*•\s+/.test(lines[i])) {
+        out.push('<ul style="margin:4px 0 6px 16px;padding:0">');
+        while (i < lines.length && /^\s*•\s+/.test(lines[i])) {
+          out.push('<li>' + lines[i].replace(/^\s*•\s+/, '') + '</li>');
+          i++;
+        }
+        out.push('</ul>');
+        continue;
+      }
+      out.push(lines[i]);
+      i++;
+    }
+
+    var joined = out.join('\n');
+    joined = joined.replace(/>\n</g, '><');
+    joined = joined.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+    return joined;
   }
 
   function escapeHtml(str) {

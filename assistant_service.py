@@ -122,7 +122,7 @@ class AssistantService:
         # 1. Greeting check: Warm mentor welcome + starting options
         if AdaptiveBiologyTutor._is_greeting(query):
             res = adaptive_tutor.generate_tutoring_response("Hi", student_id=student_id)
-            return res.get("reply", ""), res.get("follow_up_chips", [])
+            return res.get("reply", ""), res.get("follow_up_chips", []), []
 
         # 2. Check weak topics query
         q_low = query.lower()
@@ -141,13 +141,15 @@ class AssistantService:
                     f"Based on your recent practice sessions, here are the topics you should focus on:\n\n"
                     f"{weak_list}\n\n"
                     f"💡 **Recommendation:** Spend 20 minutes reviewing the NCERT chapter lines and take a targeted Chapter Test in the Teacher/Assessment section!",
-                    chips
+                    chips,
+                    []
                 )
             else:
                 return (
                     "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
                     "Great work! Your mastery across practiced topics is solid. Keep up the momentum by attempting upcoming scheduled assessments or practicing mixed Mock Tests.",
-                    chips
+                    chips,
+                    []
                 )
 
         # 3. Call Adaptive Biology Tutor single-brain (NCERT groundings, analogies, traps & chips)
@@ -159,7 +161,8 @@ class AssistantService:
         if "Priya" not in reply:
             reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n{reply}"
         chips = tutor_res.get("follow_up_chips") or self._get_role_chips("STUDENT", query, reply)
-        return reply, chips
+        mcqs = tutor_res.get("mcqs", [])
+        return reply, chips, mcqs
 
     def _teacher_fallback(self, query: str, context: Dict[str, Any]) -> str:
         q_low = query.lower()
@@ -280,6 +283,7 @@ class AssistantService:
 
         # 2. Local fallback by role
         chips = []
+        mcqs = []
         if norm_role == "TEACHER":
             reply = self._teacher_fallback(clean_msg, ctx)
             chips = self._get_role_chips(norm_role, clean_msg, reply)
@@ -287,11 +291,11 @@ class AssistantService:
             reply = self._admin_fallback(clean_msg, ctx)
             chips = self._get_role_chips(norm_role, clean_msg, reply)
         else:
-            reply, chips = self._student_fallback(clean_msg, user_id, history=history_msgs, context=ctx)
+            reply, chips, mcqs = self._student_fallback(clean_msg, user_id, history=history_msgs, context=ctx)
             if not chips:
                 chips = self._get_role_chips(norm_role, clean_msg, reply)
 
-        return {
+        res_payload = {
             "reply": reply,
             "role": norm_role,
             "mode": "local_assistant_knowledge",
@@ -299,6 +303,9 @@ class AssistantService:
             "chips": chips,
             "suggested_actions": chips,
         }
+        if mcqs:
+            res_payload["mcqs"] = mcqs
+        return res_payload
 
     def _get_role_chips(self, role: str, message: str, reply: str) -> List[Dict[str, str]]:
         norm_role = (role or "STUDENT").upper()

@@ -478,9 +478,10 @@ class LocalMCQEngine:
             return mcqs[idx]
         return None
 
-    def format_mcqs_for_chat(self, mcq_result: Dict[str, Any]) -> str:
+    def format_mcqs_for_chat(self, mcq_result: Dict[str, Any], reveal_answers: bool = False) -> str:
         """
         Formats generated MCQs into an interactive Markdown prompt for Dr. Priya.
+        Answers and explanations are withheld by default so the student can solve them.
         """
         mcqs = mcq_result.get("mcqs", [])
         if not mcqs:
@@ -502,20 +503,28 @@ class LocalMCQEngine:
 
         for i, q in enumerate(mcqs):
             opts_formatted = "\n".join([f"    **({chr(65+j)})** {opt}" for j, opt in enumerate(q["options"])])
-            lines.append(
-                f"\n**Question {i+1} [{q['chapter']} • {q['cognitive_level']}]:**\n"
-                f"{q['question']}\n\n"
-                f"{opts_formatted}\n\n"
-                f"<details>\n<summary>🔍 <b>Click to Reveal NCERT Answer & Explanation</b></summary>\n\n"
-                f"✅ **Correct Answer:** ({chr(65 + q['correct_index'])}) {q['correct_answer']}\n\n"
-                 f"📖 **NCERT Explanation:**\n{q['explanation']}\n"
-                f"</details>\n"
-                f"─────────────────────────────"
-            )
+            q_block = [
+                f"\n**Question {i+1} [{q['chapter']} • {q['cognitive_level']}]:**\n{q['question']}\n\n{opts_formatted}\n"
+            ]
+            if reveal_answers:
+                q_block.append(
+                    f"<details>\n<summary>🔍 <b>Click to Reveal NCERT Answer & Explanation</b></summary>\n\n"
+                    f"✅ **Correct Answer:** ({chr(65 + q['correct_index'])}) {q['correct_answer']}\n\n"
+                    f"📖 **NCERT Explanation:**\n{q['explanation']}\n"
+                    f"</details>\n"
+                )
+            q_block.append("─────────────────────────────")
+            lines.append("\n".join(q_block))
 
-        lines.append(
-            "\n💡 *Try answering without peeking! Enter your answers in chat or type another question when ready.*"
-        )
+        if reveal_answers:
+            lines.append(
+                "\n💡 *Try answering without peeking! Enter your answers in chat or type another question when ready.*"
+            )
+        else:
+            lines.append(
+                "\n👉 **How to answer:** Click an option badge below or type your answers in chat "
+                "(e.g. `1:C, 2:A, 3:B` or `C A B` or `Option C`) to evaluate your NEET score!"
+            )
 
         return "\n".join(lines)
 

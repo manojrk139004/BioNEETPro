@@ -45,6 +45,7 @@ class TestTutorExternalFallback(unittest.TestCase):
 
     def setUp(self):
         self.student_id = "test_eval_student"
+        adaptive_tutor._api_cooldown_until = 0
 
     # --- Scenario A: Strong local evidence -> Tier 1 (local_ncert) ---
     def test_scenario_a_strong_local_evidence(self):
@@ -281,13 +282,35 @@ class TestTutorExternalFallback(unittest.TestCase):
 
     # --- Scenario N: "explain biofertilizers" answered via external fallback ---
     def test_scenario_n_biofertilizers_answered(self):
-        res = adaptive_tutor.generate_tutoring_response(
-            "explain biofertilizers",
-            student_id=self.student_id
-        )
-        self.assertEqual(res.get("status"), "success")
-        self.assertNotIn("couldn't find enough verified NCERT evidence", res.get("reply", ""))
-        self.assertEqual(res.get("source_mode"), "external_llm_fallback")
+        fake_llm_response = mock.MagicMock()
+        fake_llm_response.status_code = 200
+        fake_llm_response.headers = {"Content-Type": "application/json"}
+        fake_llm_response.text = '{"choices": []}'
+        fake_llm_response.json.return_value = {
+            "choices": [{
+                "message": {
+                    "content": (
+                        "Biofertilizers are organisms that enrich the nutrient quality of the soil, including bacteria, "
+                        "fungi, and cyanobacteria. Rhizobium fixes atmospheric nitrogen symbiotically in leguminous plants.\n\n"
+                        "NEET Traps:\n"
+                        "1. Mycorrhizae (Glomus) absorb phosphorus from soil for the host plant.\n"
+                        "2. Nostoc and Anabaena serve as biofertilizers in paddy fields.\n"
+                        "3. Azotobacter and Azospirillum are free-living nitrogen fixers.\n\n"
+                        "Check Question: Name a free-living nitrogen-fixing bacterium."
+                    )
+                }
+            }]
+        }
+        with mock.patch("requests.post", return_value=fake_llm_response), \
+             mock.patch("adaptive_tutor.OPENROUTER_KEY", "test-key"), \
+             mock.patch.object(adaptive_tutor.retrieval, "search", return_value=[]):
+            res = adaptive_tutor.generate_tutoring_response(
+                "explain biofertilizers",
+                student_id=self.student_id
+            )
+            self.assertEqual(res.get("status"), "success")
+            self.assertNotIn("couldn't find enough verified NCERT evidence", res.get("reply", ""))
+            self.assertEqual(res.get("source_mode"), "external_llm_fallback")
 
     # --- Scenario O: Multi-turn topic switch dominance ---
     def test_scenario_o_multi_turn_topic_switch(self):

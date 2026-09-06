@@ -213,6 +213,7 @@ class NLPPipeline:
         ("request_chapter_pdf", r"\b(pdf|ncert\s*pdf|download\b.{0,25}\b(chapter|ncert|pdf)|give me\b.{0,30}\bpdf|this chapter'?s\b.{0,25}\b(ncert\s*)?pdf)\b"),
         # Answering / referring to a specific MCQ / quiz feedback.
         # Must precede mcq_request: "I got question 2 wrong" is a quiz result report.
+        ("quiz_answer_submission", r"^\s*\(?\s*[a-d]\s*\)?[\.\)]?\s*$|^\s*(?:option|opt|ans(?:wer)?|choice|my\s+answer)\s*(?:is\s*)?[:.\-]?\s*\(?\s*([a-d])\s*\)?\s*$|^\s*(?:q(?:uestion)?\s*)?\d+\s*[:.\-)]?\s*\(?\s*([a-d])\s*\)?\s*$|^\s*(?:\(?\b[a-d]\)?[\s,]+){1,9}\(?\b[a-d]\)?[\.\)]?\s*$|^(?:\s*(?:q(?:uestion)?\s*)?\d+[\s:.\-)]*\(?[a-d]\)?[\s,;]*){2,}$"),
         ("quiz_feedback", r"\b(i got|my answer was|got\b.{0,15}\b(wrong|right|correct|incorrect)|question(s)?\s*(number|no\.?|#)?\s*\d+\b.{0,25}(wrong|right|correct|incorrect)|i answered|i chose [a-d])\b"),
         ("mcq_answer", r"\b(i chose|i think|my answer|answer is|option [a-d]|explain question)\b"),
         ("mcq_reference", r"\bquestion(s)?\s*(number|no\.?|#)?\s*\d+\b"),
@@ -521,13 +522,20 @@ class NLPPipeline:
         focal = self.context_tracker.get_focal_concept(student_id)
 
         # Check if this is a context-dependent follow-up that should inherit syllabus validity from focal concept
-        follow_up_intents = {"example", "why", "how_process", "function", "definition", "follow_up", "general_doubt"}
+        follow_up_intents = {"example", "why", "how_process", "function", "definition", "follow_up", "quiz_answer_submission"}
         has_focal_context = focal is not None
         
         syllabus_check = self.validator.check_query_syllabus(resolved_query)
         
-        # If query is a generic follow-up but we have focal context or resolved query, allow it
-        if not syllabus_check.get("is_valid") and (has_focal_context or was_resolved) and intent in follow_up_intents:
+        # Non-biology domains (chemistry, physics, math, programming) must NEVER inherit biology context
+        is_explicitly_non_bio = (syllabus_check.get("reason") == "non_biology_domain")
+
+        # Conversational indicator for general_doubt: must contain pronouns or follow-up markers, not gibberish
+        has_followup_marker = any(w in resolved_query.lower().split() for w in ("it", "this", "that", "these", "those", "why", "how", "what", "again", "more", "explain"))
+        is_contextual = was_resolved or (has_focal_context and (intent in follow_up_intents or (intent == "general_doubt" and has_followup_marker)))
+
+        # If query is a contextual follow-up or answer submission, allow inheritance
+        if not syllabus_check.get("is_valid") and not is_explicitly_non_bio and is_contextual:
             # Inherit syllabus validity from focal concept
             focal_concept = (focal[1] if focal else "")
             focal_check = self.validator.check_query_syllabus(focal_concept) if focal_concept else {}
@@ -542,6 +550,16 @@ class NLPPipeline:
                     "unit_name": focal_check.get("unit_name"),
                     "matched_keywords": ["contextual_followup"],
                     "inherited_from": focal_concept or focal_check.get("chapter_name")
+                }
+            elif intent == "quiz_answer_submission":
+                # Answer submissions during active quiz are syllabus-valid
+                syllabus_check = {
+                    "is_valid": True,
+                    "confidence": "quiz_answer",
+                    "chapter_id": "c01",
+                    "chapter_name": "NEET Biology",
+                    "unit_name": "Active Quiz",
+                    "matched_keywords": ["quiz_answer"]
                 }
         
         # Raw-text rescan: cleaning strips symbols ('C++' -> 'C'), so code-flavoured

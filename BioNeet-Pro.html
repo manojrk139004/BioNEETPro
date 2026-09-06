@@ -4371,6 +4371,8 @@ function formatAIReply(text) {
     .replace(/[&<>"']/g, function(ch) {
       return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
     });
+  // Unescape safe semantic tags for interactive collapsible sections
+  esc = esc.replace(/&lt;(\/?(?:details|summary|b|strong|i|em))&gt;/gi, '<$1>');
   // Citation chips: [E1: Chapter — Section] or bare [E1]/[C1] tokens.
   esc = esc.replace(/\[([EC]\d+)(?::([^\]]{1,80}))?\]/g, function(m, code, label) {
     var lab = (label || code).substring(0, 60);
@@ -4382,9 +4384,43 @@ function formatAIReply(text) {
   esc = esc.replace(/\*\*([^*]{1,200})\*\*/g, '<strong>$1</strong>');
   esc = esc.replace(/(^|[\s(])\*([^*\n]{1,200})\*/g, '$1<em>$2</em>');
   esc = esc.replace(/`([^`\n]{1,120})`/g, '<code>$1</code>');
-  // Lists: consecutive "- " / "1. " lines become <ul>/<ol>.
+  // Lists and tables:
   var lines = esc.split('\n'), out = [], i = 0;
   while (i < lines.length) {
+    if (/^\s*\|.*\|\s*$/.test(lines[i])) {
+      var tableRows = [];
+      while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) {
+        tableRows.push(lines[i]); i++;
+      }
+      if (tableRows.length >= 2) {
+        var parseCells = function(rStr) {
+          return rStr.trim().replace(/^\||\|$/g, '').split('|').map(function(c){ return c.trim(); });
+        };
+        var isDelim = function(rStr) {
+          return /^\|\s*[-:]+[-| :]*\|\s*$/.test(rStr.trim());
+        };
+        var headers = parseCells(tableRows[0]);
+        var bodyStart = (tableRows.length > 1 && isDelim(tableRows[1])) ? 2 : 1;
+        var tHtml = '<div style="overflow-x:auto;margin:10px 0"><table style="width:100%;border-collapse:collapse;font-size:0.83rem;background:#ffffff;border:1px solid #e2e8f0;border-radius:6px">';
+        tHtml += '<thead><tr style="background:#f8fafc;border-bottom:2px solid #cbd5e1">';
+        for (var h = 0; h < headers.length; h++) {
+          tHtml += '<th style="padding:6px 10px;text-align:left;font-weight:600;color:#1e293b">' + headers[h] + '</th>';
+        }
+        tHtml += '</tr></thead><tbody>';
+        for (var r = bodyStart; r < tableRows.length; r++) {
+          if (isDelim(tableRows[r])) continue;
+          var cells = parseCells(tableRows[r]);
+          var bg = (r % 2 === 0) ? '#f8fafc' : '#ffffff';
+          tHtml += '<tr style="background:' + bg + ';border-bottom:1px solid #f1f5f9">';
+          for (var c = 0; c < headers.length; c++) {
+            tHtml += '<td style="padding:6px 10px;color:#334155">' + (cells[c] || '') + '</td>';
+          }
+          tHtml += '</tr>';
+        }
+        tHtml += '</tbody></table></div>';
+        out.push(tHtml); continue;
+      }
+    }
     if (/^\s*[-•] /.test(lines[i])) {
       out.push('<ul class="md-list">');
       while (i < lines.length && /^\s*[-•] /.test(lines[i])) {

@@ -359,6 +359,8 @@ def serve_root_asset(filename):
         # Path traversal guard
         if str(target).startswith(str(BASE_DIR)) and target.exists() and target.is_file():
             return send_file(target)
+    if filename.startswith("api/") or filename == "api":
+        return jsonify({"error": "API endpoint not found"}), 404
     return health()
 
 

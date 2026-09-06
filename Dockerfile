@@ -12,7 +12,7 @@ COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Backend source modules & frontend assets
-COPY *.py ./
+COPY app.py tutor_engine.py retrieval_engine.py learner_model.py mcq_engine.py firestore_store.py adaptive_tutor.py nlp_pipeline.py *.py ./
 COPY *.html ./
 COPY *.js ./
 COPY *.css ./

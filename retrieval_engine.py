@@ -559,7 +559,7 @@ class ContextAwareHybridRetrievalEngine:
                 "topic": chunk.get("subsection", chunk.get("section", "")),
                 "definition": chunk.get("text", ""),
                 "mechanism_steps": self._best_window(chunk.get("text", ""), _win_terms),
-                "neet_traps": f"NCERT Class {chunk.get('class', '')} core syllabus fact.",
+                "neet_traps": "",
                 "page_number": chunk.get("page_number"),
                 "section": chunk.get("section"),
                 "chunk_id": chunk.get("chunk_id"),

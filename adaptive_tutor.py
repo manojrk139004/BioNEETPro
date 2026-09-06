@@ -978,23 +978,62 @@ class AdaptiveBiologyTutor:
         except Exception:
             return None
 
+    def _clean_title(self, raw_title: str) -> str:
+        """Strips verbose chapter prefixes and section codes from title for clean display."""
+        if not raw_title:
+            return "this concept"
+        t = str(raw_title).strip()
+        if " — " in t:
+            parts = t.split(" — ")
+            sub = parts[-1].strip()
+            if len(sub) >= 3 and not re.match(r"^c\d+$", sub, re.I):
+                t = sub
+            else:
+                t = parts[0].strip()
+        elif " - " in t:
+            parts = t.split(" - ")
+            sub = parts[-1].strip()
+            if len(sub) >= 3:
+                t = sub
+        # Strip section numbers like '10.1.1 ' or '10.5 ' or 'Chapter 10 '
+        t = re.sub(r"^(?:chapter\s*\d+\s*[:.\-]?\s*|\d+(?:\.\d+)+\s*[:.\-]?\s*|\d+\.\s*)", "", t, flags=re.I).strip()
+        if t.isupper() and len(t) > 4:
+            t = t.title()
+        return t or "this concept"
+
     def _comparison_table(self, results) -> str:
-        """Build A-vs-B contrast table from compare_side tagged results."""
+        """Build clean A-vs-B contrast table from compare_side tagged results."""
         try:
             a = next((r for r in results if r.get("compare_side") == "A"), None)
             b = next((r for r in results if r.get("compare_side") == "B"), None)
             if not a or not b:
                 return ""
             def cell(r):
-                return (str(r.get("definition", ""))[:280] + "…") if r.get("definition") else str(r.get("title", ""))
-            return (
-                "\n\n📊 **Compare at a glance (NEET favourite):**\n\n"
-                f"| Feature | {a.get('title','A')[:60]} | {b.get('title','B')[:60]} |\n"
-                "|---|---|---|\n"
-                f"| Core idea | {cell(a)} | {cell(b)} |\n"
-                f"| Chapter | {a.get('chapter_name','')} | {b.get('chapter_name','')} |\n"
-                f"| Trap | {str(a.get('neet_traps','—'))[:120]} | {str(b.get('neet_traps','—'))[:120]} |\n"
-            )
+                txt = str(r.get("definition", "")).strip()
+                if not txt:
+                    txt = str(r.get("title", ""))
+                first_period = txt.find(". ")
+                if 20 <= first_period <= 110:
+                    return txt[:first_period + 1]
+                return (txt[:110].rsplit(" ", 1)[0] + "…") if len(txt) > 110 else txt
+
+            title_a = self._clean_title(a.get("title", "A"))
+            title_b = self._clean_title(b.get("title", "B"))
+            chap_a = a.get("chapter_name", "") or a.get("chapter_id", "")
+            chap_b = b.get("chapter_name", "") or b.get("chapter_id", "")
+            trap_a = str(a.get("neet_traps", "")).strip()
+            trap_b = str(b.get("neet_traps", "")).strip()
+
+            rows = [
+                f"| Feature | {title_a} | {title_b} |",
+                "|---|---|---|",
+                f"| Core idea | {cell(a)} | {cell(b)} |",
+                f"| Chapter | {chap_a} | {chap_b} |"
+            ]
+            if trap_a or trap_b:
+                rows.append(f"| High-yield trap | {cell({'definition': trap_a}) if trap_a else '—'} | {cell({'definition': trap_b}) if trap_b else '—'} |")
+
+            return "\n\n📊 **Compare at a glance (NEET favourite):**\n\n" + "\n".join(rows) + "\n"
         except Exception:
             return ""
 
@@ -1238,18 +1277,158 @@ class AdaptiveBiologyTutor:
             }
             return out
 
-        # 2b. MCQ answer report / quiz feedback ("I got question 2 wrong"):
-        if nlp_res["intent"] in ("quiz_feedback", "mcq_answer", "mcq_reference"):
+        # 2b. MCQ answer report / quiz feedback ("I got question 2 wrong", "1:C, 2:A, 3:B", "Option C", "C A B"):
+        if nlp_res["intent"] in ("quiz_feedback", "mcq_answer", "mcq_reference", "quiz_answer_submission"):
             from mcq_engine import mcq_engine
-            # Extract question number if present
+
+            # Extract student-submitted answers: {q_num: 'C', ...}
+            sub_answers = {}
+            m_pairs = re.findall(r'(?:q(?:uestion)?\s*)?(\d+)\s*[:.\-)]?\s*\(?([a-d])\)?\b', resolved_query, re.I)
+            if m_pairs:
+                sub_answers = {int(q): opt.upper() for q, opt in m_pairs}
+            else:
+                m_letters = re.findall(r'\b([a-d])\b', resolved_query, re.I)
+                if len(m_letters) > 1:
+                    sub_answers = {i + 1: opt.upper() for i, opt in enumerate(m_letters)}
+                elif len(m_letters) == 1:
+                    m_num = re.search(r"(?:question|q|#)\s*(?:number|no\.?|#)?\s*(\d+)", resolved_query, re.I)
+                    q_idx = int(m_num.group(1)) if m_num else 1
+                    sub_answers = {q_idx: m_letters[0].upper()}
+
+            recent_mcqs = mcq_engine.get_recent_mcqs(student_id=student_id)
+
+            # If user submitted explicit option answers AND we have recent MCQs, evaluate them!
+            if sub_answers and recent_mcqs:
+                evaluated = []
+                total_score = 0
+                correct_cnt = 0
+                incorrect_cnt = 0
+
+                for q_n, chosen_opt in sorted(sub_answers.items()):
+                    if 1 <= q_n <= len(recent_mcqs):
+                        mcq = recent_mcqs[q_n - 1]
+                        c_idx = mcq.get("correct_index", 0)
+                        correct_letter = chr(65 + c_idx)
+                        is_correct = (chosen_opt.upper() == correct_letter)
+
+                        chosen_idx = ord(chosen_opt.upper()) - 65
+                        opts = mcq.get("options", [])
+                        chosen_text = opts[chosen_idx] if 0 <= chosen_idx < len(opts) else chosen_opt
+                        correct_text = opts[c_idx] if 0 <= c_idx < len(opts) else mcq.get("correct_answer", "")
+
+                        if is_correct:
+                            total_score += 4
+                            correct_cnt += 1
+                        else:
+                            total_score -= 1
+                            incorrect_cnt += 1
+
+                        # Update learner BKT model
+                        learner_manager.record_attempt(
+                            student_id=student_id,
+                            concept_id=mcq.get("concept_id") or "BIO-GEN-01",
+                            chapter_id=mcq.get("chapter_id") or mcq.get("chapter") or "c01",
+                            is_correct=is_correct,
+                            topic_id=mcq.get("topic") or mcq.get("chapter") or "NEET Biology"
+                        )
+
+                        evaluated.append({
+                            "q_num": q_n,
+                            "question": mcq.get("question", ""),
+                            "chosen_opt": chosen_opt,
+                            "chosen_text": chosen_text,
+                            "correct_letter": correct_letter,
+                            "correct_text": correct_text,
+                            "is_correct": is_correct,
+                            "explanation": mcq.get("explanation", ""),
+                            "chapter": mcq.get("chapter", "NEET Biology")
+                        })
+
+                if evaluated:
+                    max_score = len(evaluated) * 4
+                    sign = "+" if total_score > 0 else ""
+                    header = (
+                        f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — NEET MCQ Evaluation:**\n\n"
+                        f"🎯 **Your Score: {sign}{total_score}/{max_score} Marks** "
+                        f"({correct_cnt}/{len(evaluated)} Correct | NEET Scheme: +4 / -1)\n\n"
+                        f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                    )
+                    body_parts = []
+                    for item in evaluated:
+                        verdict = "✅ **Correct (+4 Marks)**" if item["is_correct"] else "❌ **Incorrect (-1 Mark)**"
+                        body_parts.append(
+                            f"**Question {item['q_num']}:** {item['question']}\n\n"
+                            f"• **Your Answer:** ({item['chosen_opt']}) {item['chosen_text']}\n"
+                            f"• **Verdict:** {verdict}\n"
+                            f"• **Correct NCERT Key:** ({item['correct_letter']}) {item['correct_text']}\n\n"
+                            f"📖 **NCERT Explanation & Trap Breakdown:**\n{item['explanation']}\n"
+                            f"─────────────────────────────"
+                        )
+
+                    if correct_cnt == len(evaluated):
+                        advice = "🌟 **Outstanding performance!** 100% accuracy on high-yield NCERT concepts. Your BKT mastery score has been updated!"
+                    elif correct_cnt > 0:
+                        advice = "💪 **Good effort!** Notice the subtle wording traps on the missed questions above — reviewing the exact NCERT line is the secret to 360/360."
+                    else:
+                        advice = "💡 **Don't be discouraged!** Every mistake identifies an exact NCERT misconception before the real NEET exam. Let's master it together."
+
+                    reply = header + "\n\n".join(body_parts) + f"\n\n{advice}\n\n*Would you like another practice set or an in-depth breakdown of any question?*"
+
+                    topic_ref = evaluated[0]["chapter"]
+                    chips = [
+                        {"label": "🧪 3 More MCQs", "query": f"Give me 3 practice MCQs on {topic_ref}"},
+                        {"label": "💡 High-Yield Traps", "query": f"What are common NEET traps in {topic_ref}?"},
+                        {"label": "👶 Explain from Basics", "query": f"Teach me {topic_ref} from basics step by step"},
+                        {"label": "🧠 Mnemonic", "query": f"Give me a mnemonic for {topic_ref}"}
+                    ]
+                    return {
+                        "reply": reply,
+                        "mode": "quiz_evaluation",
+                        "status": "success",
+                        "confidence": "HIGH",
+                        "score": total_score,
+                        "max_score": max_score,
+                        "correct_count": correct_cnt,
+                        "total_count": len(evaluated),
+                        "chips": chips,
+                        "follow_up_chips": chips,
+                        "suggested_actions": chips,
+                        "resolved_query": resolved_query,
+                    }
+
+            # If student submitted option answer but there is no active test:
+            if sub_answers and not recent_mcqs:
+                ans_str = ", ".join(f"Q{q}:{opt}" for q, opt in sorted(sub_answers.items()))
+                focal = self.nlp.context_tracker.get_focal_concept(student_id)
+                focal_topic = focal[1] if focal else "Photosynthesis"
+                reply = (
+                    f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+                    f"*\"I noticed your answer submission ({ans_str}), but there isn't an active test in our session right now! "
+                    f"Type 'Give me 3 MCQs on {focal_topic}' or pick a topic below to start a fresh quiz.\"*"
+                )
+                chips = [
+                    {"label": f"🌿 {focal_topic} MCQs", "query": f"Give me 3 MCQs on {focal_topic}"},
+                    {"label": "🧬 Genetics MCQs", "query": "Give me 3 MCQs on Genetics"},
+                    {"label": "🫀 Circulation MCQs", "query": "Give me 3 MCQs on Circulation"},
+                ]
+                return {
+                    "reply": reply,
+                    "mode": "quiz_feedback",
+                    "status": "success",
+                    "confidence": "HIGH",
+                    "chips": chips,
+                    "follow_up_chips": chips,
+                    "suggested_actions": chips,
+                    "resolved_query": resolved_query,
+                }
+
+            # Fallback to existing single question reference / feedback ("I got question 2 wrong"):
             m_num = re.search(r"(?:question|q|#)\s*(?:number|no\.?|#)?\s*(\d+)", resolved_query, re.I)
             q_num = int(m_num.group(1)) if m_num else 1
 
-            # Extract correctness indicators
             is_wrong = bool(re.search(r"\b(wrong|incorrect|not right|false|missed|failed)\b", resolved_query, re.I))
             is_right = bool(re.search(r"\b(right|correct|true|got it right)\b", resolved_query, re.I))
 
-            # Retrieve recent MCQ from session
             recent_mcq = mcq_engine.get_recent_mcq(q_num, student_id=student_id)
 
             if recent_mcq:
@@ -1262,7 +1441,6 @@ class AdaptiveBiologyTutor:
                 explanation = recent_mcq.get("explanation", "See NCERT Biology for key details.")
                 q_text = recent_mcq.get("question", "")
 
-                # If student explicitly reported right/wrong, update learner model
                 if is_wrong or is_right:
                     is_correct_attempt = not is_wrong if is_wrong else is_right
                     learner_manager.record_attempt(
@@ -1289,7 +1467,7 @@ class AdaptiveBiologyTutor:
                     reply = (
                         f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — Quiz Verification:**\n\n"
                         f"🎯 **Spot on!** You got Question {q_num} right:\n\n"
-                        f"❓ **Question {q_num}:** {q_text}\n"
+                        f"❓ **Question {q_num}:** {q_text}\n\n"
                         f"✅ **Answer:** **({letter}) {correct_ans}**\n\n"
                         f"📖 **Key NCERT Point:** {explanation}\n\n"
                         f"Keep up the momentum! Your mastery in **{topic_name}** has been updated."
@@ -1351,6 +1529,18 @@ class AdaptiveBiologyTutor:
             effective_focus = syl_chap
 
         if not nlp_res["syllabus_valid"]:
+            # Explicit non-biology domains (chemistry, physics, math, programming) must NEVER be admitted
+            if nlp_res.get("syllabus_data", {}).get("reason") == "non_biology_domain":
+                refusal = nlp_res["syllabus_data"].get("refusal_message")
+                return {
+                    "reply": refusal,
+                    "mode": "syllabus_restricted",
+                    "source_mode": "safe_fallback",
+                    "fallback_tier": "tier_4",
+                    "status": "out_of_syllabus",
+                    "resolved_query": resolved_query,
+                    "confidence": "REJECTED"
+                }
             probe = self.retrieval.search(
                 query=resolved_query,
                 expanded_query=nlp_res["expanded_query"],
@@ -1647,7 +1837,11 @@ class AdaptiveBiologyTutor:
             steps_block = f"\n\n🔍 **Step-by-Step Biological Detail:**\n{steps_formatted}"
 
         # Traps block
-        traps_block = f"\n\n⚠️ **NEET Traps & Key Facts:**\n{top.get('neet_traps', 'Remember to note the exact NCERT phrasing.')}"
+        trap_val = str(top.get("neet_traps", "")).strip()
+        if trap_val and not trap_val.startswith("NCERT Class Class") and len(trap_val) > 5:
+            traps_block = f"\n\n⚠️ **NEET Traps & Key Facts:**\n{trap_val}"
+        else:
+            traps_block = ""
 
         # Comparison table for A-vs-B questions (beast fix for mitosis-vs-meiosis)
         compare_block = self._comparison_table(retrieval_results) if top.get("is_comparison") else ""
@@ -1657,13 +1851,40 @@ class AdaptiveBiologyTutor:
         try:
             figs = (top.get("figures", []) or [])[:2]
             if figs:
-                caps = "; ".join(f.get("caption", "")[:90] for f in figs if f.get("caption"))
-                visual_block = f"\n\n🖼️ **NCERT Figure to revise:** {caps or 'see cited chapter figures'}"
+                valid_caps = []
+                for f in figs:
+                    cap = str(f.get("caption", "")).strip()
+                    cap = re.sub(r"\s*\(figure[^\)]*$", "", cap, flags=re.I).strip()
+                    cap = cap.rstrip(").,;")
+                    if len(cap) >= 4:
+                        valid_caps.append(cap[:80])
+                if valid_caps:
+                    visual_block = f"\n\n🖼️ **NCERT Figure to revise:** {'; '.join(valid_caps)}"
+
             tabs = (top.get("tables", []) or [])[:1]
             if tabs and tabs[0].get("rows"):
-                rows = tabs[0]["rows"][:4]
-                md = "\n".join("| " + " | ".join(str(c)[:28] for c in r) + " |" for r in rows if r)
-                visual_block += f"\n\n📋 **NCERT Table (first rows):**\n{md}"
+                raw_rows = tabs[0]["rows"][:5]
+                clean_rows = []
+                for r in raw_rows:
+                    if not r or not isinstance(r, (list, tuple)):
+                        continue
+                    cells = []
+                    for c in r:
+                        if c is None:
+                            continue
+                        cs = str(c).replace("\n", " ").strip()
+                        if len(cs) > 1 and not re.match(r"^[a-z\(\)\/\s]{1,3}$", cs, re.I):
+                            cells.append(cs[:35])
+                    if len(cells) >= 2:
+                        clean_rows.append(cells)
+                if len(clean_rows) >= 2:
+                    col_count = max(len(r) for r in clean_rows)
+                    norm_rows = [r + [""] * (col_count - len(r)) for r in clean_rows]
+                    header_line = "| " + " | ".join(norm_rows[0]) + " |"
+                    delimiter_line = "| " + " | ".join(["---"] * col_count) + " |"
+                    body_lines = ["| " + " | ".join(r) + " |" for r in norm_rows[1:]]
+                    md = "\n".join([header_line, delimiter_line] + body_lines)
+                    visual_block += f"\n\n📋 **NCERT Table Reference:**\n{md}"
         except Exception:
             pass
 
@@ -1691,6 +1912,12 @@ class AdaptiveBiologyTutor:
             f"{source_block}"
             f"{self._scope_note(resolved_query, query)}"
         )
+
+        # Post-process: clean trailing broken text like '(Figure' and balance asterisks
+        full_reply = re.sub(r"\s*\(Figure[^\)]*$", "", full_reply, flags=re.I)
+        full_reply = re.sub(r"\s*\(Fig[^\)]*$", "", full_reply, flags=re.I)
+        if full_reply.count("*") % 2 != 0:
+            full_reply = full_reply.rstrip("*").strip()
 
         out = {
             "reply": full_reply,
