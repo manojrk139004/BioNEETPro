@@ -230,6 +230,10 @@ def _policy_redirect_admits(query, history=None):
 def _apply_policy_decision(classif, query, history=None):
     """Returns (allowed: bool, decision: dict). Centralizes the policy gate so
     both chat entry points share the evidence-admission behavior."""
+    from adaptive_tutor import AdaptiveBiologyTutor
+    if AdaptiveBiologyTutor._is_greeting(query):
+        return True, {"action": "allow", "mode": "greeting", "is_greeting": True}
+
     decision = policy_engine.evaluate(classif, query)
     if decision["action"] != "redirect":
         # "block" verdicts (harm, injection, abuse) are NEVER overridden.
@@ -262,6 +266,11 @@ def demo_ai_answer(message, student_id="student_local", history=None, context=No
             "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n"
             "*\"Please ask any NCERT Biology doubt or request practice MCQs!\"*"
         )
+
+    from adaptive_tutor import AdaptiveBiologyTutor
+    if AdaptiveBiologyTutor._is_greeting(clean):
+        res = adaptive_tutor.generate_tutoring_response("Hi", student_id=student_id)
+        return res.get("reply", "")
 
     # 0. Content Classification & Policy Guardrail Gate
     # (evidence-grounded admission for imperfect Off-Topic redirects)
@@ -409,6 +418,8 @@ def ai_reply():
             }
             if out.get("model_used"):
                 resp["model_used"] = out.get("model_used")
+            if out.get("follow_up_chips"):
+                resp["follow_up_chips"] = out.get("follow_up_chips")
             # Interactive chat MCQs: attach the just-generated structured batch
             # ONLY when the current message actually requested MCQs (never a
             # stale batch from an earlier turn).
@@ -1509,7 +1520,21 @@ def build_unified_answer(query, student_id, history=None, context=None, include_
     history = history if isinstance(history, list) else []
     context = context if isinstance(context, dict) else {}
 
-    # 0. Content Classification & Policy Guardrail Gate
+    # 0. Greeting Check: Welcome student warmly with high-yield starting options
+    from adaptive_tutor import AdaptiveBiologyTutor
+    if AdaptiveBiologyTutor._is_greeting(query):
+        greet_res = adaptive_tutor.generate_tutoring_response("Hi", student_id=student_id)
+        greet_res["latency_ms"] = int((time.time() - t0) * 1000)
+        greet_res["resolved_query"] = query
+        log_query({
+            "student_id": student_id, "query": query[:300],
+            "mode": greet_res.get("mode"), "confidence": greet_res.get("confidence"),
+            "concept_id": greet_res.get("concept_id"), "chapter_id": greet_res.get("chapter_id"),
+            "strategy": greet_res.get("strategy"), "latency_ms": greet_res.get("latency_ms"),
+        })
+        return greet_res
+
+    # 0b. Content Classification & Policy Guardrail Gate
     # (evidence-grounded admission for imperfect Off-Topic redirects)
     classif = content_classifier.classify(query, history=history)
     allowed, decision = _apply_policy_decision(classif, query, history)
