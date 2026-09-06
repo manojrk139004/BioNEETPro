@@ -294,6 +294,8 @@ class ContextAwareHybridRetrievalEngine:
             # 6. Chapter focus boost
             if focus_chapter_id and focus_chapter_id.lower() in chap_id:
                 score += self.WEIGHTS['chapter']
+            if chap_name and chap_name.lower() in clean_query:
+                score += 0.25
 
             # 7. Concept graph bonus
             neighbors = concept_graph.get_neighbors(c_id)
@@ -511,6 +513,8 @@ class ContextAwareHybridRetrievalEngine:
             # 6. Chapter focus boost
             if focus_chapter_id and focus_chapter_id.lower() in chap_id:
                 score += self.WEIGHTS['chapter']
+            if chap_title and chap_title in clean_query:
+                score += 0.25
 
             # 6b. Syllabus chapter affinity (authoritative ownership signal)
             if _aff and self._syllabus_affinity(chap_title, _aff):

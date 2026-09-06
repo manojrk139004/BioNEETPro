@@ -12,7 +12,7 @@ import json
 import time
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import requests
 
@@ -29,6 +29,7 @@ import firestore_store
 from syllabus import syllabus_validator, get_canonical_curriculum
 from learner_model import learner_manager
 from retrieval_engine import retrieval_engine
+from adaptive_tutor import adaptive_tutor, AdaptiveBiologyTutor
 
 logger = logging.getLogger("assistant_service")
 
@@ -101,61 +102,64 @@ class AssistantService:
                 choices = data.get("choices", [])
                 if choices and "message" in choices[0]:
                     return choices[0]["message"].get("content", "").strip()
-            elif res.status_code in (401, 403):
+            elif res.status_code in (401, 402, 403, 429):
                 self._api_cooldown_until = time.time() + 300
-                logger.warning(f"Assistant LLM key invalid/unauthorized (status {res.status_code}); cooldown set for 300s.")
+                logger.warning(f"Assistant LLM key invalid/unauthorized/rate-limited (status {res.status_code}); cooldown set for 300s.")
         except (requests.Timeout, requests.ConnectionError):
-            self._api_cooldown_until = time.time() + 60
-            logger.warning("Assistant LLM call timed out/connection failed; set circuit breaker for 60s.")
+            self._api_cooldown_until = time.time() + 300
+            logger.warning("Assistant LLM call timed out/connection failed; set circuit breaker for 300s.")
         except Exception as e:
             logger.warning(f"Assistant LLM call failed: {e}")
         return None
 
-    def _student_fallback(self, query: str, student_id: str) -> str:
-        # Check boundary first
-        boundary = syllabus_validator.check_query_syllabus(query)
-        if not boundary.get("is_valid"):
-            return boundary.get("refusal_message", "Please ask questions regarding the NCERT NEET Biology syllabus.")
+    def _student_fallback(
+        self,
+        query: str,
+        student_id: str,
+        history: Optional[List[Dict[str, str]]] = None,
+        context: Optional[Dict[str, Any]] = None
+    ) -> Tuple[str, List[Dict[str, str]]]:
+        # 1. Greeting check: Warm mentor welcome + starting options
+        if AdaptiveBiologyTutor._is_greeting(query):
+            res = adaptive_tutor.generate_tutoring_response("Hi", student_id=student_id)
+            return res.get("reply", ""), res.get("follow_up_chips", [])
 
-        # Check weak topics query
+        # 2. Check weak topics query
         q_low = query.lower()
         if any(w in q_low for w in ["weak", "improve", "my progress", "score", "where to study"]):
             profile = learner_manager.get_profile(student_id)
             weak_concepts = profile.get("weak_concepts", [])
+            chips = [
+                {"label": "📝 Practice Weak Topics", "query": "Give me 5 practice questions on my weak areas"},
+                {"label": "📊 Chapter Diagnostics", "query": "Show my chapter-wise mastery progress"},
+                {"label": "🎯 3 Hard MCQs", "query": "Give me 3 hard MCQs to test my mastery"},
+            ]
             if weak_concepts:
                 weak_list = "\n".join([f"• **{c}**" for c in weak_concepts[:5]])
                 return (
                     f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
                     f"Based on your recent practice sessions, here are the topics you should focus on:\n\n"
                     f"{weak_list}\n\n"
-                    f"💡 **Recommendation:** Spend 20 minutes reviewing the NCERT chapter lines and take a targeted Chapter Test in the Teacher/Assessment section!"
+                    f"💡 **Recommendation:** Spend 20 minutes reviewing the NCERT chapter lines and take a targeted Chapter Test in the Teacher/Assessment section!",
+                    chips
                 )
             else:
                 return (
                     "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
-                    "Great work! Your mastery across practiced topics is solid. Keep up the momentum by attempting upcoming scheduled assessments or practicing mixed Mock Tests."
+                    "Great work! Your mastery across practiced topics is solid. Keep up the momentum by attempting upcoming scheduled assessments or practicing mixed Mock Tests.",
+                    chips
                 )
 
-        # Use retrieval engine to answer query
-        results = retrieval_engine.search(query, top_k=2)
-        if results:
-            top = results[0]
-            title = top.get("title") or top.get("topic") or "Biology Concept"
-            definition = top.get("definition") or top.get("content") or ""
-            traps = top.get("neet_traps", "Be mindful of exact NCERT exceptions.")
-            return (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
-                f"📌 **{title}**\n\n"
-                f"{definition}\n\n"
-                f"⚠️ **NEET Exam Trap:**\n{traps}\n\n"
-                f"📖 *Reference: NCERT Biology ({top.get('chapter_name', 'NEET Syllabus')})*"
-            )
-
-        return (
-            "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
-            "Here is the key NCERT insight: Master the exact definitions and diagram labeling. "
-            "Could you specify the exact chapter or concept (e.g. *Photosynthesis*, *Mendelian Genetics*, *Nephron*) so I can guide you precisely?"
+        # 3. Call Adaptive Biology Tutor single-brain (NCERT groundings, analogies, traps & chips)
+        focus_chap = (context or {}).get("chapter") or (context or {}).get("chapter_id")
+        tutor_res = adaptive_tutor.generate_tutoring_response(
+            query=query, student_id=student_id, history=history or [], focus_chapter_id=focus_chap
         )
+        reply = tutor_res.get("reply", "")
+        if "Priya" not in reply:
+            reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n{reply}"
+        chips = tutor_res.get("follow_up_chips") or self._get_role_chips("STUDENT", query, reply)
+        return reply, chips
 
     def _teacher_fallback(self, query: str, context: Dict[str, Any]) -> str:
         q_low = query.lower()
@@ -275,14 +279,18 @@ class AssistantService:
             }
 
         # 2. Local fallback by role
+        chips = []
         if norm_role == "TEACHER":
             reply = self._teacher_fallback(clean_msg, ctx)
+            chips = self._get_role_chips(norm_role, clean_msg, reply)
         elif norm_role in ("SUPER_ADMIN", "ADMIN"):
             reply = self._admin_fallback(clean_msg, ctx)
+            chips = self._get_role_chips(norm_role, clean_msg, reply)
         else:
-            reply = self._student_fallback(clean_msg, user_id)
+            reply, chips = self._student_fallback(clean_msg, user_id, history=history_msgs, context=ctx)
+            if not chips:
+                chips = self._get_role_chips(norm_role, clean_msg, reply)
 
-        chips = self._get_role_chips(norm_role, clean_msg, reply)
         return {
             "reply": reply,
             "role": norm_role,
@@ -307,6 +315,14 @@ class AssistantService:
                 {"label": "📊 System Overview", "query": "Give me a summary of institutional governance policies"},
             ]
         else:
+            if AdaptiveBiologyTutor._is_greeting(message):
+                return [
+                    {"label": "🌿 Photosynthesis", "query": "Explain Photosynthesis light reaction"},
+                    {"label": "🫀 Heart Chambers", "query": "Why does the human heart have 4 chambers?"},
+                    {"label": "🧬 Genetics", "query": "Explain Mendel's Law of Segregation"},
+                    {"label": "🦁 Animal Kingdom", "query": "Teach me types of animal kingdom classification"},
+                    {"label": "⚡ 5 Hard MCQs", "query": "Give me 5 hard MCQs in Biology"},
+                ]
             return [
                 {"label": "🧪 Take 3-Q Quiz", "query": "Give me 3 practice questions on this topic"},
                 {"label": "💡 NEET Exam Trap", "query": "What are the common NEET exam traps on this?"},

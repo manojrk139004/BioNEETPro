@@ -1033,6 +1033,15 @@ class AdaptiveBiologyTutor:
         mode = out.get("mode")
         chips = []
 
+        if mode == "greeting":
+            return out.get("follow_up_chips") or [
+                {"label": "🌿 Photosynthesis", "query": "Explain Photosynthesis light reaction"},
+                {"label": "🫀 Heart Chambers", "query": "Why does the human heart have 4 chambers?"},
+                {"label": "🧬 Genetics", "query": "Explain Mendel's Law of Segregation"},
+                {"label": "🦁 Animal Kingdom", "query": "Teach me types of animal kingdom classification"},
+                {"label": "⚡ 5 Hard MCQs", "query": "Give me 5 hard MCQs in Biology"},
+            ]
+
         if mode == "mcq_practice":
             chips = [
                 {"label": "🧪 3 More MCQs", "query": f"Give me 3 more MCQs on {title}"},
@@ -1102,6 +1111,59 @@ class AdaptiveBiologyTutor:
         finally:
             self._save_tutor_state(student_id)
 
+    @staticmethod
+    def _is_greeting(query: str) -> bool:
+        clean = re.sub(r"[^\w\s]", "", str(query or "").lower()).strip()
+        if not clean:
+            return False
+        greeting_tokens = {
+            "hi", "hello", "hey", "hola", "namaste", "vanakkam", "pranam",
+            "good morning", "good afternoon", "good evening", "howdy", "greetings",
+            "hi priya", "hello priya", "hey priya", "hi dr priya", "hello dr priya",
+            "who are you", "what can you do", "help", "start", "menu"
+        }
+        if clean in greeting_tokens:
+            return True
+        if re.match(r"^(hi|hello|hey|greetings|namaste)\s+(priya|dr priya|doctor|mentor|there|sir|maam|mam)?$", clean):
+            return True
+        return False
+
+    def _build_greeting_response(self, student_id: str) -> Dict[str, Any]:
+        chips = [
+            {"label": "🌿 Photosynthesis", "query": "Explain Photosynthesis light reaction"},
+            {"label": "🫀 Heart Chambers", "query": "Why does the human heart have 4 chambers?"},
+            {"label": "🧬 Genetics", "query": "Explain Mendel's Law of Segregation"},
+            {"label": "🦁 Animal Kingdom", "query": "Teach me types of animal kingdom classification"},
+            {"label": "⚡ 5 Hard MCQs", "query": "Give me 5 hard MCQs in Biology"},
+        ]
+        reply = (
+            "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+            "👋 **Hello! I'm Dr. Priya, your dedicated NEET Biology AI Mentor.**\n\n"
+            "Ask me any doubt! I will explain biological concepts directly from NCERT, break down mechanisms step-by-step, share intuitive everyday analogies, and warn you about tricky NEET exam traps.\n\n"
+            "**What would you like to master today?**\n"
+            "• 🌿 **Plant Physiology:** Photosynthesis, Respiration in Plants, Plant Growth\n"
+            "• 🧬 **Genetics & Evolution:** Mendelian Genetics, Molecular Basis of Inheritance\n"
+            "• 🫀 **Human Physiology:** Heart & Circulation, Neural Control, Nephron & Excretion\n"
+            "• 🔬 **Cell Biology:** Cell Cycle, Mitosis vs Meiosis, Cell Organelles\n"
+            "• 🦁 **Diversity:** Animal Kingdom & Plant Kingdom Classification\n\n"
+            "Try clicking one of the topic chips below or ask me any question!"
+        )
+        return {
+            "reply": reply,
+            "mode": "greeting",
+            "status": "success",
+            "confidence": "HIGH",
+            "concept_id": "BIO-GREETING",
+            "chapter_id": "c01",
+            "title": "Welcome to NEET Biology Mentor",
+            "strategy": "socratic_intro",
+            "strategy_used": "socratic_intro",
+            "resolved_query": "Hi",
+            "student_id": student_id,
+            "follow_up_chips": chips,
+            "suggested_actions": chips,
+        }
+
     def _generate_inner(
         self,
         query: str,
@@ -1113,6 +1175,10 @@ class AdaptiveBiologyTutor:
         """
         NLP -> Context -> Hybrid Retrieval (rewrite+compare+rerank) -> Mastery Adaptation -> Grounded Socratic reply.
         """
+        # 0. Greeting check: Welcome student warmly with high-yield starting options
+        if self._is_greeting(query):
+            return self._build_greeting_response(student_id)
+
         # 1. NLP Processing & Conversational Reference Resolution
         nlp_res = self.nlp.process_query(query, history or [], student_id=student_id)
         resolved_query = nlp_res["resolved_query"]
@@ -1279,11 +1345,10 @@ class AdaptiveBiologyTutor:
         # biology topic terms, do NOT let a stale UI context (e.g. default 'Photosynthesis')
         # restrict retrieval to an unrelated chapter.
         effective_focus = focus_chapter_id
-        if effective_focus:
-            syl_data = nlp_res.get("syllabus_data") or {}
-            matched_terms = syl_data.get("matched_keywords") or syl_data.get("matched_terms") or []
-            if matched_terms:
-                effective_focus = None
+        syl_data = nlp_res.get("syllabus_data") or {}
+        syl_chap = syl_data.get("chapter_id")
+        if syl_chap and syl_chap != "general_biology":
+            effective_focus = syl_chap
 
         if not nlp_res["syllabus_valid"]:
             probe = self.retrieval.search(
@@ -1572,8 +1637,9 @@ class AdaptiveBiologyTutor:
         prefix_chap = f"c{int(m_c.group(0)):02d}" if m_c else chap_id[:3]
 
         analogy_text = ""
-        if (strategy in ("concrete_analogy", "simplified_steps") or is_explain_again or mistake_count >= 2) and prefix_chap in self.ANALOGIES:
-            analogy_text = f"\n\n💡 **Intuitive Analogy (Mental Model):**\n*{self.ANALOGIES[prefix_chap]}*"
+        is_asking_analogy = any(p in resolved_query.lower() for p in ["analogy", "simple", "simpler", "everyday", "intuitive", "mental model"])
+        if (strategy in ("concrete_analogy", "simplified_steps") or is_explain_again or mistake_count >= 2 or is_asking_analogy) and prefix_chap in self.ANALOGIES:
+            analogy_text = f"\n\n💡 **Intuitive Everyday Analogy (Mental Model):**\n*{self.ANALOGIES[prefix_chap]}*"
 
         # Steps block
         steps_block = ""

@@ -341,6 +341,24 @@ class NLPPipeline:
                 if norm_c:
                     focal_name = norm_c
                     break
+                # Assistant format extraction: 📌 **<Title>** or 📖 **Chapter:** <Chapter>
+                m_t = re.search(r"📌\s*\*\*([^*]+)\*\*", content)
+                if m_t:
+                    cand = m_t.group(1).split("—")[0].strip()
+                    if cand and len(cand) >= 3:
+                        focal_name = cand
+                        break
+                m_ch = re.search(r"📖\s*\*\*Chapter:\*\*\s*([^\n\r]+)", content)
+                if m_ch:
+                    cand = m_ch.group(1).strip()
+                    if cand and len(cand) >= 3:
+                        focal_name = cand
+                        break
+                # User query syllabus extraction
+                s_chk = self.validator.check_query_syllabus(content)
+                if s_chk.get("is_valid") and s_chk.get("chapter_name"):
+                    focal_name = s_chk["chapter_name"]
+                    break
 
         # Check subtopic from history (e.g. "folds", "cristae")
         if history and not last_subtopic:
@@ -400,6 +418,12 @@ class NLPPipeline:
                 self.context_tracker.get_state(student_id).last_subtopic = f"{focal_name} folds"
             resolved = re.sub(r"\b" + re.escape(p) + r"\b", focal_name, resolved, count=1, flags=re.IGNORECASE)
             was_resolved = True
+
+        # 5. Follow-ups without explicit pronoun: "give me an analogy", "explain simpler", "give mnemonic", "exam traps"
+        if focal_name and not was_resolved:
+            if re.search(r"\b(analogy|simpler|simple terms|everyday terms|mnemonic|mnemonics|exam traps?|traps?)\b", resolved, re.IGNORECASE):
+                resolved = f"{resolved.rstrip('.?!')} for {focal_name}"
+                was_resolved = True
 
         return resolved, was_resolved
 
@@ -502,11 +526,13 @@ class NLPPipeline:
         
         syllabus_check = self.validator.check_query_syllabus(resolved_query)
         
-        # If query is a generic follow-up but we have focal context, allow it
-        if not syllabus_check.get("is_valid") and has_focal_context and intent in follow_up_intents:
+        # If query is a generic follow-up but we have focal context or resolved query, allow it
+        if not syllabus_check.get("is_valid") and (has_focal_context or was_resolved) and intent in follow_up_intents:
             # Inherit syllabus validity from focal concept
-            focal_concept = focal[1] if focal else ""
-            focal_check = self.validator.check_query_syllabus(focal_concept)
+            focal_concept = (focal[1] if focal else "")
+            focal_check = self.validator.check_query_syllabus(focal_concept) if focal_concept else {}
+            if not focal_check.get("is_valid"):
+                focal_check = self.validator.check_query_syllabus(resolved_query)
             if focal_check.get("is_valid"):
                 syllabus_check = {
                     "is_valid": True,
@@ -515,7 +541,7 @@ class NLPPipeline:
                     "chapter_name": focal_check.get("chapter_name"),
                     "unit_name": focal_check.get("unit_name"),
                     "matched_keywords": ["contextual_followup"],
-                    "inherited_from": focal_concept
+                    "inherited_from": focal_concept or focal_check.get("chapter_name")
                 }
         
         # Raw-text rescan: cleaning strips symbols ('C++' -> 'C'), so code-flavoured
