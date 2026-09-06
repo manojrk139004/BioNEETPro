@@ -11,30 +11,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Backend source modules
-COPY app.py ./
-COPY adaptive_tutor.py ./
-COPY concept_graph.py ./
-COPY concept_normalizer.py ./
-COPY content_classifier.py ./
-COPY dialogue_state.py ./
-COPY fallback_controller.py ./
-COPY figure_extractor.py ./
-COPY firestore_store.py ./
-COPY flashcard_backend.py ./
-COPY knowledge_ingestion.py ./
-COPY learner_model.py ./
-COPY mcq_bank_generator.py ./
-COPY mcq_engine.py ./
-COPY ncert_ingestion.py ./
-COPY nlp_pipeline.py ./
-COPY policy_engine.py ./
-COPY response_validator.py ./
-COPY retrieval_engine.py ./
-COPY score_predictor.py ./
-COPY syllabus.py ./
-COPY tutor_engine.py ./
-COPY update_kb.py ./
+# Backend source modules & frontend assets
+COPY *.py ./
+COPY *.html ./
+COPY *.js ./
+COPY *.css ./
 
 # Runtime data
 COPY data ./data
