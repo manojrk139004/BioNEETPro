@@ -9,6 +9,7 @@ Provides contextual, role-aware AI guidance for:
 import os
 import re
 import json
+import time
 import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -74,9 +75,12 @@ class AssistantService:
         self.openrouter_key = OPENROUTER_KEY
         self.openrouter_url = OPENROUTER_BASE_URL
         self.model = OPENROUTER_MODEL
+        self._api_cooldown_until: float = 0.0
 
     def _call_llm(self, system_prompt: str, messages: List[Dict[str, str]]) -> Optional[str]:
         if not self.openrouter_key:
+            return None
+        if time.time() < getattr(self, "_api_cooldown_until", 0):
             return None
         try:
             headers = {
@@ -91,12 +95,18 @@ class AssistantService:
                 "temperature": 0.4,
                 "max_tokens": 600,
             }
-            res = requests.post(f"{self.openrouter_url}/chat/completions", headers=headers, json=payload, timeout=12)
+            res = requests.post(f"{self.openrouter_url}/chat/completions", headers=headers, json=payload, timeout=2.5)
             if res.status_code == 200:
                 data = res.json()
                 choices = data.get("choices", [])
                 if choices and "message" in choices[0]:
                     return choices[0]["message"].get("content", "").strip()
+            elif res.status_code in (401, 403):
+                self._api_cooldown_until = time.time() + 300
+                logger.warning(f"Assistant LLM key invalid/unauthorized (status {res.status_code}); cooldown set for 300s.")
+        except (requests.Timeout, requests.ConnectionError):
+            self._api_cooldown_until = time.time() + 60
+            logger.warning("Assistant LLM call timed out/connection failed; set circuit breaker for 60s.")
         except Exception as e:
             logger.warning(f"Assistant LLM call failed: {e}")
         return None
@@ -254,11 +264,14 @@ class AssistantService:
             elif norm_role == "STUDENT" and "Priya" not in llm_reply:
                 llm_reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n{llm_reply}"
 
+            chips = self._get_role_chips(norm_role, clean_msg, llm_reply)
             return {
                 "reply": llm_reply,
                 "role": norm_role,
                 "mode": "ai_assistant_online",
-                "status": "success"
+                "status": "success",
+                "chips": chips,
+                "suggested_actions": chips,
             }
 
         # 2. Local fallback by role
@@ -269,12 +282,37 @@ class AssistantService:
         else:
             reply = self._student_fallback(clean_msg, user_id)
 
+        chips = self._get_role_chips(norm_role, clean_msg, reply)
         return {
             "reply": reply,
             "role": norm_role,
             "mode": "local_assistant_knowledge",
-            "status": "success"
+            "status": "success",
+            "chips": chips,
+            "suggested_actions": chips,
         }
+
+    def _get_role_chips(self, role: str, message: str, reply: str) -> List[Dict[str, str]]:
+        norm_role = (role or "STUDENT").upper()
+        if norm_role == "TEACHER":
+            return [
+                {"label": "📝 5 Balanced MCQs", "query": "Suggest 5 balanced MCQs for this topic with difficulty distribution"},
+                {"label": "⚠️ Common Student Traps", "query": "What misconceptions and traps do students encounter here?"},
+                {"label": "⚖️ Test Blueprints", "query": "How should I structure a 45-minute NEET Biology assessment?"},
+            ]
+        elif norm_role in ("SUPER_ADMIN", "ADMIN"):
+            return [
+                {"label": "👑 Faculty Management", "query": "How do teacher accounts and permissions work?"},
+                {"label": "🔐 Security & Integrity", "query": "What security guardrails protect student submissions?"},
+                {"label": "📊 System Overview", "query": "Give me a summary of institutional governance policies"},
+            ]
+        else:
+            return [
+                {"label": "🧪 Take 3-Q Quiz", "query": "Give me 3 practice questions on this topic"},
+                {"label": "💡 NEET Exam Trap", "query": "What are the common NEET exam traps on this?"},
+                {"label": "🧠 Mnemonic", "query": "Give me a memorable mnemonic for this"},
+                {"label": "👶 Explain Simpler", "query": "Explain this in very simple everyday terms with an analogy"},
+            ]
 
 
 assistant_service = AssistantService()

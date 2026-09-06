@@ -354,6 +354,14 @@ tbody tr:hover { background:var(--ylight); }
 .md-list { margin:6px 0 6px 18px; } .md-list li { margin-bottom:3px; }
 .md-h2 { font-size:.95rem; display:block; margin:8px 0 4px; } .md-h3 { font-size:.88rem; display:block; margin:6px 0 3px; }
 .bubble code { background:var(--ylight); border:1px solid var(--bdr); border-radius:4px; padding:0 4px; font-size:.78rem; }
+/* AI Tutor Interactive Chips & Action Bar */
+.tutor-chips-container { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; padding-top:8px; border-top:1.5px dashed var(--bdr, #cbd5e1); }
+.tutor-chip-btn { background:#fff; border:1.5px solid var(--ink); border-radius:99px; padding:4px 11px; font-size:0.75rem; font-weight:700; color:var(--ink); cursor:pointer; display:inline-flex; align-items:center; gap:5px; box-shadow:2px 2px 0 var(--ink); transition:all .15s ease; font-family:'Syne',sans-serif; }
+.tutor-chip-btn:hover { background:var(--y, #fef08a); transform:translate(-1px,-1px); box-shadow:3px 3px 0 var(--ink); }
+.tutor-chip-btn:active { transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+.tutor-action-bar { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:8px; padding-top:6px; border-top:1px solid #e2e8f0; font-size:0.75rem; color:var(--muted); }
+.tutor-action-btn { background:rgba(0,0,0,0.04); border:1px solid rgba(0,0,0,0.12); border-radius:6px; cursor:pointer; font-size:0.72rem; font-weight:700; color:var(--ink); padding:3px 8px; display:inline-flex; align-items:center; gap:3px; transition:all .15s ease; }
+.tutor-action-btn:hover { background:var(--y, #fde047); border-color:var(--ink); }
 /* Phase 6: flashcard flip + review feedback */
 .fc-flip { transition:transform .35s ease, background .3s ease; transform-style:preserve-3d; }
 .fc-flip.flipping { transform:rotateY(12deg) scale(1.02); }
@@ -4276,7 +4284,7 @@ async function sendChat() {
     document.getElementById(typingId)?.remove();
 
     if (data.reply) {
-      appendMsg(formatAIReply(data.reply), 'ai');
+      appendMsg(formatAIReply(data.reply), 'ai', data.follow_up_chips || data.suggested_actions);
       if (data.mcqs && data.mcqs.length) renderChatMCQs(data.mcqs);
       chatHistory.push({ role: 'user', content: sendMsg }, { role: 'assistant', content: data.reply });
     } else {
@@ -4401,13 +4409,76 @@ function formatAIReply(text) {
   return esc.replace(/\n/g, '<br>');
 }
 
-function appendMsg(text, role) {
+function escTutorText(s) {
+  return String(s || '').replace(/[&<>"']/g, function(c) {
+    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+  });
+}
+
+function appendMsg(text, role, chips) {
   var msgs = document.getElementById('chatMsgs');
+  if (!msgs) return;
   var userName = (DB.currentUser && DB.currentUser.name) ? DB.currentUser.name : 'User';
   var av = role === 'ai' ? 'AI' : (userName[0] || 'U').toUpperCase();
-  msgs.innerHTML += '<div class="chat-msg ' + role + '"><div class="chat-av ' + (role === 'ai' ? 'ai' : 'usr') + '">' + av + '</div><div class="bubble">' + text + '</div></div>';
+  var chipsHtml = '';
+  if (role === 'ai' && chips && chips.length) {
+    chipsHtml = '<div class="tutor-chips-container">';
+    chips.forEach(function(c) {
+      var label = typeof c === 'string' ? c : (c.label || c.text || '');
+      var query = typeof c === 'object' && c.query ? c.query : label;
+      var cleanLabel = escTutorText(label);
+      var cleanQuery = encodeURIComponent(query);
+      chipsHtml += '<button type="button" class="tutor-chip-btn" data-query="' + cleanQuery + '" onclick="window.triggerTutorChipFromEl(this)">' + cleanLabel + '</button>';
+    });
+    chipsHtml += '</div>';
+  }
+  var actionToolbar = '';
+  var bubbleId = 'tutor-bubble-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+  if (role === 'ai') {
+    actionToolbar = '<div class="tutor-action-bar">' +
+      '<button type="button" class="tutor-action-btn" title="Copy answer" onclick="window.copyTutorMsg(\'' + bubbleId + '\')">📋 Copy</button>' +
+      '<button type="button" class="tutor-action-btn" title="Take 3-Q Quiz" onclick="window.triggerTutorChip(\'🧪 3-Q Quiz\', \'Give me 3 practice MCQs on this concept\')">🧪 3-Q Quiz</button>' +
+      '<button type="button" class="tutor-action-btn" title="Show NEET Traps" onclick="window.triggerTutorChip(\'💡 NEET Traps\', \'What are the high-yield NEET traps and exceptions for this?\')">💡 NEET Traps</button>' +
+      '<button type="button" class="tutor-action-btn" title="Memory Mnemonic" onclick="window.triggerTutorChip(\'🧠 Mnemonic\', \'Give me a memorable mnemonic for this topic\')">🧠 Mnemonic</button>' +
+      '<button type="button" class="tutor-action-btn" title="Explain Simpler" onclick="window.triggerTutorChip(\'👶 Simpler\', \'Explain this in simple beginner terms with an everyday analogy\')">👶 Simpler</button>' +
+      '</div>';
+  }
+  msgs.innerHTML += '<div class="chat-msg ' + role + '"><div class="chat-av ' + (role === 'ai' ? 'ai' : 'usr') + '">' + av + '</div><div class="bubble" id="' + bubbleId + '">' + text + actionToolbar + chipsHtml + '</div></div>';
   msgs.scrollTop = msgs.scrollHeight;
 }
+
+window.triggerTutorChipFromEl = function(el) {
+  if (!el) return;
+  var q = decodeURIComponent(el.getAttribute('data-query') || el.textContent || '');
+  window.triggerTutorChip(el.textContent, q);
+};
+
+window.triggerTutorChip = function(label, query) {
+  var inp = document.getElementById('chatIn');
+  if (!inp) return;
+  inp.value = query || label;
+  sendChat();
+};
+
+window.copyTutorMsg = function(bubbleId) {
+  var b = document.getElementById(bubbleId);
+  if (!b) return;
+  var clone = b.cloneNode(true);
+  var tb = clone.querySelector('.tutor-action-bar');
+  if (tb) tb.remove();
+  var tc = clone.querySelector('.tutor-chips-container');
+  if (tc) tc.remove();
+  var text = (clone.innerText || clone.textContent || '').trim();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      if (typeof showToast === 'function') showToast('Copied tutor answer to clipboard! 📋');
+    }).catch(function() {
+      if (typeof showToast === 'function') showToast('Copied!');
+    });
+  } else {
+    if (typeof showToast === 'function') showToast('Copied!');
+  }
+};
 
 function clearChat() {
   chatHistory = [];

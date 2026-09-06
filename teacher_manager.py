@@ -23,6 +23,18 @@ class TeacherManager:
     def __init__(self):
         pass
 
+    def is_super_admin(self, uid: Optional[str] = None, claims: Optional[Dict[str, Any]] = None) -> bool:
+        claims = claims or {}
+        return claims.get("admin") is True or str(claims.get("role") or "").upper() in ("SUPER_ADMIN", "ADMIN")
+
+    def is_teacher(self, teacher_uid: Optional[str] = None) -> bool:
+        if not teacher_uid:
+            return False
+        t = self.get_teacher(str(teacher_uid))
+        if t and str(t.get("status", "ACTIVE")).upper() != "INACTIVE":
+            return True
+        return False
+
     def create_teacher(self, *args, **kwargs) -> Dict[str, Any]:
         """
         Creates a teacher record. Supports both:

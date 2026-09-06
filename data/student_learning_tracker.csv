@@ -691,3 +691,27 @@ sess-01f2ba54,2026-09-05T12:48:05.088238+00:00,student_local,What is mitosis?,BI
 sess-01f2ba54,2026-09-05T12:48:05.089740+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1
 sess-862a7056,2026-09-05T13:12:25.782735+00:00,docker-smoke-test,What is photosynthesis?,NCERT-ClassXI-CH11-P136-09,1.6218,1,0.500,initialized
 sess-862a7056,2026-09-05T13:12:25.791784+00:00,docker-smoke-test,What is photosynthesis?,NCERT-ClassXI-CH11-P136-09,1.6218,1,0.500,viewed_step_1
+sess-80f93a52,2026-09-06T08:43:36.505080+00:00,student_local,What is the Z-scheme of light reaction and where does photolysis of water occur?,BIO-C13-01,1.4089,1,0.990,initialized
+sess-80f93a52,2026-09-06T08:43:36.505356+00:00,student_local,What is the Z-scheme of light reaction and where does photolysis of water occur?,BIO-C13-01,1.4089,1,0.990,viewed_step_1
+sess-c073a359,2026-09-06T08:43:53.316621+00:00,student_local,What is the Z-scheme of light reaction and where does photolysis of water occur?,BIO-C13-01,1.4069,1,0.990,initialized
+sess-c073a359,2026-09-06T08:43:53.316941+00:00,student_local,What is the Z-scheme of light reaction and where does photolysis of water occur?,BIO-C13-01,1.4069,1,0.990,viewed_step_1
+sess-dc1113ec,2026-09-06T09:01:59.882070+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,1,0.990,initialized
+sess-dc1113ec,2026-09-06T09:01:59.882398+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,1,0.990,viewed_step_1
+sess-dc1113ec,2026-09-06T09:01:59.884593+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,2,0.990,viewed_step_2
+sess-dc1113ec,2026-09-06T09:01:59.886294+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,3,0.990,viewed_step_3
+sess-dc1113ec,2026-09-06T09:01:59.887730+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,4,0.990,viewed_step_4
+sess-dc1113ec,2026-09-06T09:01:59.889089+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,4,0.990,quiz_correct
+sess-4b70e0d3,2026-09-06T09:02:45.154245+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,1,0.990,initialized
+sess-4b70e0d3,2026-09-06T09:02:45.154471+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,1,0.990,viewed_step_1
+sess-4b70e0d3,2026-09-06T09:02:45.156598+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,2,0.990,viewed_step_2
+sess-4b70e0d3,2026-09-06T09:02:45.158239+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,3,0.990,viewed_step_3
+sess-4b70e0d3,2026-09-06T09:02:45.159651+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,4,0.990,viewed_step_4
+sess-4b70e0d3,2026-09-06T09:02:45.161007+00:00,student_local,Explain Calvin cycle steps in photosynthesis,BIO-C13-02,1.0068,4,0.990,quiz_correct
+sess-86921a15,2026-09-06T09:02:55.273333+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.5823,1,0.990,initialized
+sess-86921a15,2026-09-06T09:02:55.273687+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.5823,1,0.990,viewed_step_1
+sess-86921a15,2026-09-06T09:02:55.277229+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.5823,2,0.990,viewed_step_2
+sess-86921a15,2026-09-06T09:02:55.279873+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.5823,3,0.990,viewed_step_3
+sess-86921a15,2026-09-06T09:02:55.281202+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.5823,4,0.990,viewed_step_4
+sess-86921a15,2026-09-06T09:02:55.282429+00:00,student_local,What is lac operon regulation repressor,BIO-C28-02,1.5823,4,0.990,quiz_correct
+sess-446a676b,2026-09-06T09:03:19.507503+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,initialized
+sess-446a676b,2026-09-06T09:03:19.507791+00:00,student_local,What is mitosis?,BIO-C10-03,1.2935,1,0.990,viewed_step_1

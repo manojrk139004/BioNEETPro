@@ -13,6 +13,7 @@ Implements:
 
 import os
 import re
+import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -146,6 +147,7 @@ class AdaptiveBiologyTutor:
         # Tutor state for guided lessons (Firestore-first, file fallback).
         self._tutor_states: Dict[str, Dict[str, Any]] = {}
         self._tutor_state_collection = "tutor_states"
+        self._api_cooldown_until: float = 0.0
 
     def _default_tutor_state(self) -> Dict[str, Any]:
         return {
@@ -303,8 +305,21 @@ class AdaptiveBiologyTutor:
                     "check_question": state["pending_check_question"],
                 }
         
+        # Topic switch or new question breaks out of existing guided lesson
+        is_new_topic = (
+            state.get("active_lesson") and state.get("pending_check_question")
+            and (
+                (top.get("concept_id") and state.get("lesson_concept") and top.get("concept_id") != state.get("lesson_concept") and len(query.split()) > 2)
+                or any(query.strip().lower().startswith(p) for p in ["what is", "what are", "explain", "how does", "how do", "why does", "why is", "compare", "describe", "define"])
+            )
+        )
+        if is_new_topic:
+            state["active_lesson"] = False
+            state["pending_check_question"] = None
+
         # Continue existing guided lesson
         if state["active_lesson"] and state["pending_check_question"]:
+            header = "👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor • Guided Lesson]:**\n\n"
             # Evaluate student's answer to the check question
             evaluation = self._evaluate_student_answer(query, state["pending_check_question"])
             
@@ -342,7 +357,7 @@ class AdaptiveBiologyTutor:
                     state["active_lesson"] = False
                     state["pending_check_question"] = None
                     concept_name = concept_normalizer.get_canonical_concept_name(top.get("title", "")) or top.get("title", "this topic")
-                    reply = f"🎉 **Lesson Complete!** You've mastered **{concept_name}**!\n\n"
+                    reply = f"{header}🎉 **Lesson Complete!** You've mastered **{concept_name}**!\n\n"
                     reply += f"📖 **Summary:** {top.get('definition', '')[:300]}...\n\n"
                     reply += "Would you like to practice with some MCQs or move to another topic?"
                     return {
@@ -355,7 +370,7 @@ class AdaptiveBiologyTutor:
             
             elif evaluation == "partially_correct":
                 # Provide gentle correction and re-ask
-                reply = f"👍 **Good start!** Let me clarify a bit more:\n\n"
+                reply = f"{header}👍 **Good start!** Let me clarify a bit more:\n\n"
                 reply += self._clarify_concept(state["pending_check_question"], top)
                 reply += f"\n\n**Check Question:** {state['pending_check_question']}"
                 return {
@@ -371,7 +386,7 @@ class AdaptiveBiologyTutor:
             elif evaluation == "incorrect":
                 # Provide correct explanation and try again
                 misconception_count = state["misconceptions"].get(concept_id, 0)
-                reply = f"🤔 **Not quite right.** Let me explain the key point:\n\n"
+                reply = f"{header}🤔 **Not quite right.** Let me explain the key point:\n\n"
                 reply += self._clarify_concept(state["pending_check_question"], top)
                 
                 if misconception_count >= 2:
@@ -647,6 +662,10 @@ class AdaptiveBiologyTutor:
         if not api_key:
             return None
 
+        # Circuit breaker: if external API recently timed out or failed, skip to prevent latency
+        if time.time() < getattr(self, "_api_cooldown_until", 0):
+            return None
+
         # Pre-flight validation gate: block injection attempts before LLM call
         if INJECTION_PATTERNS.search(query):
             return None
@@ -711,8 +730,11 @@ class AdaptiveBiologyTutor:
                     f"{OPENROUTER_BASE_URL}/chat/completions",
                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"},
                     json={"model": model, "messages": messages, "max_tokens": 900, "temperature": 0.2},
-                    timeout=15,
+                    timeout=2.5,
                 )
+                if resp.status_code in (401, 403):
+                    self._api_cooldown_until = time.time() + 300
+                    break
                 if resp.status_code != 200:
                     continue
                 ctype = str(resp.headers.get("Content-Type", "") if hasattr(resp, "headers") and isinstance(getattr(resp, "headers", None), dict) else "")
@@ -732,6 +754,10 @@ class AdaptiveBiologyTutor:
                     f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [{tag} • {strategy.replace('_', ' ').title()}]:**\n\n"
                 )
                 return header + content
+            except (requests.Timeout, requests.ConnectionError):
+                # Remote host is unreachable or timing out; trip circuit breaker for 60s
+                self._api_cooldown_until = time.time() + 60
+                break
             except Exception:
                 continue
 
@@ -752,6 +778,10 @@ class AdaptiveBiologyTutor:
         """
         api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENROUTER_KEY") or OPENROUTER_KEY
         if not api_key:
+            return None
+
+        # Circuit breaker: skip external call if cooldown active
+        if time.time() < getattr(self, "_api_cooldown_until", 0):
             return None
 
         if INJECTION_PATTERNS.search(query):
@@ -854,7 +884,7 @@ class AdaptiveBiologyTutor:
                     f"{OPENROUTER_BASE_URL}/chat/completions",
                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"},
                     json={"model": model, "messages": messages, "max_tokens": 850, "temperature": 0.3},
-                    timeout=15,
+                    timeout=2.5,
                 )
                 if resp.status_code != 200:
                     continue
@@ -884,6 +914,9 @@ class AdaptiveBiologyTutor:
                     continue
 
                 return _build_tier3_payload(sanitized_content, model)
+            except (requests.Timeout, requests.ConnectionError):
+                self._api_cooldown_until = time.time() + 60
+                break
             except Exception:
                 continue
 
@@ -991,6 +1024,57 @@ class AdaptiveBiologyTutor:
             out["reply"] += ("\n\n⚠️ *Low grounding — verify with the cited NCERT section above and ask a follow-up.*")
         return out
 
+    def _build_follow_up_chips(self, out: Dict[str, Any], query: str) -> List[Dict[str, str]]:
+        """
+        Generates context-sensitive, interactive action chips for Dr. Priya's reply.
+        Enables 1-click cross-replies, micro-quizzes, mnemonics, traps, and simpler explanations.
+        """
+        title = out.get("title") or "this concept"
+        mode = out.get("mode")
+        chips = []
+
+        if mode == "mcq_practice":
+            chips = [
+                {"label": "🧪 3 More MCQs", "query": f"Give me 3 more MCQs on {title}"},
+                {"label": "💡 Explain Option Traps", "query": f"Explain why the wrong options are tricky in {title}"},
+                {"label": "📖 NCERT Summary", "query": f"Summarize key NCERT lines for {title}"},
+                {"label": "🧠 Mnemonic", "query": f"Give me a mnemonic for {title}"},
+            ]
+        elif mode in ("quiz_feedback", "mcq_review"):
+            chips = [
+                {"label": "🧪 Practice Another MCQ", "query": f"Give me 1 more practice question on {title}"},
+                {"label": "💡 High-Yield Traps", "query": f"What are common NEET traps in {title}?"},
+                {"label": "👶 Explain from Basics", "query": f"Teach me {title} from basics step by step"},
+            ]
+        elif mode in ("syllabus_restricted", "policy_restricted") or out.get("status") in ("out_of_syllabus", "policy_restricted"):
+            chips = [
+                {"label": "🧬 Photosynthesis", "query": "Explain Photosynthesis light reaction"},
+                {"label": "🧬 Meiosis Prophase 1", "query": "Explain Meiosis Prophase 1 stages"},
+                {"label": "🧬 Lac Operon", "query": "Explain Lac Operon mechanism"},
+                {"label": "🧬 Nephron Function", "query": "Explain Nephron countercurrent mechanism"},
+            ]
+        else:
+            lower_q = (query or "").lower()
+            lower_title = (title or "").lower()
+
+            chips.append({"label": "🧪 Take 3-Q Quiz", "query": f"Give me 3 practice MCQs on {title}"})
+            chips.append({"label": "💡 Show NEET Trap", "query": f"What are the common NEET exam traps and exceptions for {title}?"})
+            chips.append({"label": "🧠 Memory Mnemonic", "query": f"Give me a memorable mnemonic for {title}"})
+            chips.append({"label": "📖 NCERT Line", "query": f"Quote the most high-yield NCERT textbook lines for {title}"})
+
+            if any(k in lower_title or k in lower_q for k in ["mitosis", "meiosis"]):
+                chips.append({"label": "⚔️ Mitosis vs Meiosis", "query": "Compare mitosis and meiosis at a glance"})
+            elif any(k in lower_title or k in lower_q for k in ["c3", "c4"]):
+                chips.append({"label": "⚔️ C3 vs C4 Plants", "query": "Compare C3 and C4 pathways at a glance"})
+            elif any(k in lower_title or k in lower_q for k in ["spermatogenesis", "oogenesis"]):
+                chips.append({"label": "⚔️ Sperm vs Egg Genesis", "query": "Compare spermatogenesis and oogenesis"})
+            elif any(k in lower_title or k in lower_q for k in ["dna", "rna"]):
+                chips.append({"label": "⚔️ DNA vs RNA", "query": "Compare DNA and RNA structure and stability"})
+            else:
+                chips.append({"label": "👶 Explain Simpler (ELI5)", "query": f"Explain {title} in simple beginner terms with an everyday analogy"})
+
+        return chips
+
     def generate_tutoring_response(
         self,
         query: str,
@@ -1007,6 +1091,13 @@ class AdaptiveBiologyTutor:
                 out["study_mode"] = self._detect_study_mode(query)
             except Exception:
                 out["study_mode"] = "learn"
+            try:
+                chips = self._build_follow_up_chips(out, query)
+                out["follow_up_chips"] = chips
+                out["suggested_actions"] = chips
+            except Exception:
+                out["follow_up_chips"] = []
+                out["suggested_actions"] = []
             return out
         finally:
             self._save_tutor_state(student_id)

@@ -1296,6 +1296,27 @@
       var aiBubble = document.createElement('div');
       aiBubble.style.cssText = 'align-self:flex-start;background:#fff;border:1px solid #e5e7eb;color:var(--ink);padding:12px 14px;border-radius:14px 14px 14px 2px;max-width:90%;font-size:0.85rem;margin-bottom:10px;line-height:1.5;box-shadow:0 2px 8px rgba(0,0,0,0.04)';
       aiBubble.innerHTML = formatAssistantMarkdown(replyText);
+
+      // Interactive follow-up chips for 1-click cross-replies
+      var followUpChips = data.chips || data.suggested_actions || [];
+      if (followUpChips && followUpChips.length) {
+        var chipsWrap = document.createElement('div');
+        chipsWrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding-top:8px;border-top:1px dashed #e5e7eb';
+        followUpChips.forEach(function(c) {
+          var chipBtn = document.createElement('button');
+          chipBtn.type = 'button';
+          chipBtn.style.cssText = 'background:#f9fafb;border:1px solid #d1d5db;border-radius:12px;padding:4px 9px;font-size:0.75rem;cursor:pointer;font-weight:700;color:var(--ink);transition:all .15s ease;display:inline-flex;align-items:center;gap:4px';
+          var label = typeof c === 'string' ? c : (c.label || c.text);
+          var q = typeof c === 'object' && c.query ? c.query : label;
+          chipBtn.textContent = label;
+          chipBtn.onmouseover = function() { chipBtn.style.background = '#fef08a'; chipBtn.style.borderColor = '#0a0a0a'; };
+          chipBtn.onmouseout = function() { chipBtn.style.background = '#f9fafb'; chipBtn.style.borderColor = '#d1d5db'; };
+          chipBtn.onclick = function() { sendFloatingChip(q); };
+          chipsWrap.appendChild(chipBtn);
+        });
+        aiBubble.appendChild(chipsWrap);
+      }
+
       msgList.appendChild(aiBubble);
       msgList.scrollTop = msgList.scrollHeight;
 

@@ -17,6 +17,7 @@ Secrets are never printed or logged here.
 
 import json
 import os
+import threading
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -120,19 +121,24 @@ def _collection_subdir(collection: str) -> str:
 
 def load_doc(collection: str, doc_id: str, default: Any = None,
              subdir: Optional[str] = None) -> Any:
-    """Firestore-first read; local file fallback. Returns default if neither."""
+    """Cache-first read: local file first for ultra-low latency, with Firestore fallback."""
+    path = _local_path(collection, doc_id, subdir)
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
     db = _init()
     if db is not None:
         try:
             snap = db.collection(collection).document(safe_id(doc_id)).get()
             if snap.exists:
-                return snap.to_dict()
-        except Exception:
-            pass
-    path = _local_path(collection, doc_id, subdir)
-    if path.exists():
-        try:
-            return json.loads(path.read_text(encoding="utf-8"))
+                data = snap.to_dict()
+                try:
+                    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+                except Exception:
+                    pass
+                return data
         except Exception:
             pass
     return default
@@ -140,7 +146,7 @@ def load_doc(collection: str, doc_id: str, default: Any = None,
 
 def save_doc(collection: str, doc_id: str, data: Any,
              subdir: Optional[str] = None) -> bool:
-    """Write local cache first, then Firestore when enabled. Never raises."""
+    """Write local cache synchronously (<1ms), then sync to Firestore asynchronously. Never blocks."""
     try:
         path = _local_path(collection, doc_id, subdir)
         path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
@@ -148,13 +154,15 @@ def save_doc(collection: str, doc_id: str, data: Any,
         pass
     db = _init()
     if db is not None:
-        try:
-            import copy
-            payload = copy.deepcopy(data) if isinstance(data, dict) else {"value": data}
-            db.collection(collection).document(safe_id(doc_id)).set(payload)
-            return True
-        except Exception:
-            return False
+        def _bg_sync():
+            try:
+                import copy
+                payload = copy.deepcopy(data) if isinstance(data, dict) else {"value": data}
+                db.collection(collection).document(safe_id(doc_id)).set(payload)
+            except Exception:
+                pass
+        threading.Thread(target=_bg_sync, daemon=True).start()
+        return True
     return False
 
 
@@ -167,14 +175,16 @@ def delete_doc(collection: str, doc_id: str, subdir: Optional[str] = None) -> No
         pass
     db = _init()
     if db is not None:
-        try:
-            db.collection(collection).document(safe_id(doc_id)).delete()
-        except Exception:
-            pass
+        def _bg_del():
+            try:
+                db.collection(collection).document(safe_id(doc_id)).delete()
+            except Exception:
+                pass
+        threading.Thread(target=_bg_del, daemon=True).start()
 
 
 def list_docs(collection: str, subdir: Optional[str] = None) -> list:
-    """Lists all documents in a collection. Firestore first, merging with local cache."""
+    """Lists all documents in a collection. Reads local cache and merges with Firestore."""
     docs = {}
     db = _init()
     if db is not None:
@@ -184,20 +194,19 @@ def list_docs(collection: str, subdir: Optional[str] = None) -> list:
                 if "id" not in d:
                     d["id"] = snap.id
                 docs[str(snap.id)] = d
-            if docs:
-                return list(docs.values())
         except Exception:
             pass
-    # Local fallback
+
+    # Merge local cache (local overrides/supplements Firestore with most recent writes)
     d = DATA_DIR / (subdir or _collection_subdir(collection))
     if d.exists():
         for p in d.glob("*.json"):
             try:
                 data = json.loads(p.read_text(encoding="utf-8"))
                 if isinstance(data, dict):
-                    doc_id = data.get("id") or data.get("uid") or data.get("assessmentId") or data.get("resultId") or p.stem
+                    doc_id = str(data.get("id") or data.get("uid") or data.get("resultId") or data.get("assessmentId") or p.stem)
                     data["id"] = doc_id
-                    docs[str(doc_id)] = data
+                    docs[doc_id] = data
             except Exception:
                 pass
     return list(docs.values())

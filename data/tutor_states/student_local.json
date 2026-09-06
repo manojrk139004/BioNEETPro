@@ -1,10 +1,23 @@
 {
-  "lesson_stage": 0,
-  "lesson_concept": null,
+  "lesson_stage": 1,
+  "lesson_concept": "NCERT-ClassXI-CH11-P143-23",
   "pending_check_question": null,
-  "current_step_index": 0,
-  "lesson_steps": [],
+  "current_step_index": 1,
+  "lesson_steps": [
+    [
+      "definition",
+      "Calvin and his co-workers then worked out the whole pathway and showed that the pathway operated in a cyclic manner; the RuBP was regenerated. Let us now see how the Calvin pathway operates and where the sugar is synthesised.  Let us at the outset understand very clearly that the Calvin pathway occurs in all photosynthetic plants; it does not matter whether they have C3 or C4 (or any other) pathwa"
+    ],
+    [
+      "definition",
+      "Figure 11.2 Diagrammatic representation of an electron micrograph of a section of chloroplast Outer membrane Inner membrane Stromal lamella Grana Stroma Ribosomes Starch granule Lipid droplet INVOLVED IN PHOTOSYNTHESIS? Looking at plants have you ever wondered why and how there are so many shades of green in their leaves \u2013 even in the same plant? We can look for an answer to this question by tryin"
+    ],
+    [
+      "definition",
+      "The principles of photosynthesis as established by Calvin are, at present, being used in studies on renewable resource for energy and materials and basic studies in solar energy research. Melvin Calvin All animals including human beings depend on plants for their food. Have you ever wondered from where plants get their food?  Green plants, in fact, have to make or rather synthesise the food they n"
+    ]
+  ],
   "misconceptions": {},
-  "active_lesson": null,
+  "active_lesson": false,
   "last_action": null
 }

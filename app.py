@@ -8,6 +8,7 @@ import sys
 import time
 from collections import defaultdict, deque
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 import requests
 from flask import Flask, Response, jsonify, request, send_file
@@ -390,6 +391,11 @@ def api_ready():
                     "mcq_pool": pool_n}), (200 if ready else 503)
 
 
+_TUTOR_CHAT_CACHE: Dict[str, Dict[str, Any]] = {}
+_TUTOR_CACHE_MAX = 500
+_TUTOR_CACHE_TTL = 300  # 5 minutes
+
+
 def ai_reply():
     try:
         if rate_limited():
@@ -408,6 +414,16 @@ def ai_reply():
             student_id = auth_student_id(data) or "student_local"
             history = data.get("history", [])
             context = data.get("context", {})
+
+            # Instant cache lookup for standalone queries
+            cache_key = f"{student_id}:{message.lower().strip()}"
+            if not history and not context and cache_key in _TUTOR_CHAT_CACHE:
+                cached_entry = _TUTOR_CHAT_CACHE[cache_key]
+                if time.time() - cached_entry.get("ts", 0) < _TUTOR_CACHE_TTL:
+                    cached_resp = dict(cached_entry["data"])
+                    cached_resp["cached"] = True
+                    return jsonify(cached_resp)
+
             out = build_unified_answer(message, student_id=student_id, history=history, context=context, include_steps=False)
             reply_text = out.get("reply", "")
             _append_chat_turn(student_id, message, reply_text)
@@ -419,6 +435,8 @@ def ai_reply():
                 "fallback_tier": out.get("fallback_tier", "tier_1"),
                 "status": out.get("status", "success"),
                 "confidence": out.get("confidence", "HIGH"),
+                "follow_up_chips": out.get("follow_up_chips", []),
+                "suggested_actions": out.get("suggested_actions", []),
             }
             if out.get("model_used"):
                 resp["model_used"] = out.get("model_used")
@@ -449,6 +467,14 @@ def ai_reply():
                     resp["mcq_count"] = len(resp["mcqs"])
             except Exception:
                 pass
+
+            # Store in fast cache if cacheable
+            if not history and not context:
+                if len(_TUTOR_CHAT_CACHE) > _TUTOR_CACHE_MAX:
+                    for k in list(_TUTOR_CHAT_CACHE.keys())[:100]:
+                        _TUTOR_CHAT_CACHE.pop(k, None)
+                _TUTOR_CHAT_CACHE[cache_key] = {"ts": time.time(), "data": resp}
+
             return jsonify(resp)
 
         history = data.get("history", [])
@@ -480,7 +506,7 @@ def ai_reply():
                     f"{OPENROUTER_BASE_URL}/chat/completions",
                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {OPENROUTER_KEY}"},
                     json={"model": model, "messages": messages, "max_tokens": AI_MAX_TOKENS, "temperature": 0.5},
-                    timeout=45,
+                    timeout=3.0,
                 )
                 response.raise_for_status()
                 body = response.json()
@@ -488,6 +514,11 @@ def ai_reply():
             except requests.Timeout:
                 last_error = f"{model}: request timed out"
                 print(f"AI provider timeout on {model}")
+                break
+            except requests.ConnectionError:
+                last_error = f"{model}: connection failed"
+                print(f"AI provider connection error on {model}")
+                break
             except requests.HTTPError as exc:
                 details = exc.response.text[:500] if exc.response is not None else str(exc)
                 last_error = f"{model}: {details}"
@@ -1527,6 +1558,12 @@ def build_unified_answer(query, student_id, history=None, context=None, include_
     classif = content_classifier.classify(query, history=history)
     allowed, decision = _apply_policy_decision(classif, query, history)
     if not allowed:
+        chips = [
+            {"label": "🧬 Photosynthesis", "query": "Explain Photosynthesis light reaction"},
+            {"label": "🧬 Cell Division", "query": "Explain Mitosis vs Meiosis"},
+            {"label": "🧬 Genetics", "query": "Explain Mendel's Law of Segregation"},
+            {"label": "🧬 Human Physiology", "query": "Explain Nephron function"},
+        ]
         return {
             "reply": decision.get("reply") or "Request not permitted.",
             "mode": decision.get("mode", "restricted"),
@@ -1536,6 +1573,8 @@ def build_unified_answer(query, student_id, history=None, context=None, include_
             "resolved_query": query,
             "latency_ms": int((time.time() - t0) * 1000),
             "student_id": student_id,
+            "follow_up_chips": chips,
+            "suggested_actions": chips,
         }
 
     # 0b. Chapter-PDF delivery intent (Phase 5) — before generic tutoring.
@@ -1686,7 +1725,10 @@ def is_super_admin_request(uid=None, claims=None) -> bool:
     claims = claims or {}
     if claims.get("admin") is True or str(claims.get("role") or "").upper() in ("SUPER_ADMIN", "ADMIN"):
         return True
-    return is_admin_request(uid, claims) or teacher_manager.is_super_admin(uid, claims)
+    try:
+        return bool(is_admin_request(uid, claims))
+    except Exception:
+        return False
 
 
 def is_teacher_request(uid=None, claims=None) -> bool:
@@ -1706,7 +1748,7 @@ def resolve_user_role(uid=None, claims=None) -> str:
     """
     claims = claims or {}
     if not is_strict_auth():
-        dev_role = request.headers.get("X-Dev-Role") or (payload() or {}).get("dev_role") or request.args.get("dev_role")
+        dev_role = request.headers.get("X-Dev-Role") or (payload() or {}).get("dev_role") or (payload() or {}).get("role") or request.args.get("dev_role")
         if dev_role and str(dev_role).upper() in ("SUPER_ADMIN", "ADMIN", "TEACHER", "STUDENT"):
             r = str(dev_role).upper()
             return "SUPER_ADMIN" if r == "ADMIN" else r
@@ -2081,9 +2123,9 @@ def api_assistant_chat():
 
     role = resolve_user_role(uid, claims)
     req_role = str(data.get("role") or "").upper()
-    if req_role in ("TEACHER", "SUPER_ADMIN", "STUDENT"):
-        if req_role == "STUDENT" or role == "SUPER_ADMIN" or (req_role == "TEACHER" and role in ("TEACHER", "SUPER_ADMIN")):
-            role = req_role
+    if req_role in ("TEACHER", "SUPER_ADMIN", "ADMIN", "STUDENT"):
+        if not is_strict_auth() or req_role == "STUDENT" or role == "SUPER_ADMIN" or (req_role == "TEACHER" and role in ("TEACHER", "SUPER_ADMIN")):
+            role = "SUPER_ADMIN" if req_role == "ADMIN" else req_role
 
     history = data.get("history", [])
     context = data.get("context", {})
