@@ -7,6 +7,7 @@ import re
 import sys
 import time
 from collections import defaultdict, deque
+from functools import wraps
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -80,6 +81,10 @@ DEFAULT_ALLOWED = [
     "http://127.0.0.1:8000",
     "https://bio-neet-pro.vercel.app",
     "https://bioneetpro.onrender.com",
+    "https://bioneetpro.com",
+    "https://students.bioneetpro.com",
+    "https://teachers.bioneetpro.com",
+    "https://admin.bioneetpro.com",
     "null",
 ]
 
@@ -93,18 +98,26 @@ if env_origins:
 else:
     ALLOWED_ORIGINS = list(DEFAULT_ALLOWED)
 
-for essential in ("https://bio-neet-pro.vercel.app", "null"):
+for essential in (
+    "https://bio-neet-pro.vercel.app",
+    "https://bioneetpro.com",
+    "https://students.bioneetpro.com",
+    "https://teachers.bioneetpro.com",
+    "https://admin.bioneetpro.com",
+    "null"
+):
     if essential not in ALLOWED_ORIGINS and "*" not in ALLOWED_ORIGINS:
         ALLOWED_ORIGINS.append(essential)
 
 VERCEL_ORIGIN_REGEX = re.compile(r"^https:\/\/.*\.vercel\.app$")
+BIONEET_DOMAIN_REGEX = re.compile(r"^https:\/\/(?:[a-zA-Z0-9-]+\.)*bioneetpro\.com$")
 
 CORS(
     app,
     resources={
         r"/*": {
             "origins": (
-                ALLOWED_ORIGINS + [VERCEL_ORIGIN_REGEX]
+                ALLOWED_ORIGINS + [VERCEL_ORIGIN_REGEX, BIONEET_DOMAIN_REGEX]
                 if "*" not in ALLOWED_ORIGINS
                 else "*"
             ),
@@ -125,6 +138,8 @@ def add_cors_headers(response):
             or "*" in ALLOWED_ORIGINS
             or origin.endswith(".vercel.app")
             or origin.endswith(".onrender.com")
+            or origin.endswith(".bioneetpro.com")
+            or origin == "https://bioneetpro.com"
         ):
             response.headers["Access-Control-Allow-Origin"] = origin
             response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
@@ -340,8 +355,17 @@ except Exception as e:
 
 
 @app.get("/")
-def serve_index():
-    """Serve the BioNEET Pro web frontend directly on root URL."""
+@app.get("/student")
+@app.get("/student/")
+@app.get("/student/<path:subpath>")
+@app.get("/teacher")
+@app.get("/teacher/")
+@app.get("/teacher/<path:subpath>")
+@app.get("/admin")
+@app.get("/admin/")
+@app.get("/admin/<path:subpath>")
+def serve_portal_entry(subpath=None):
+    """Serve the BioNEET Pro web frontend for root and all dedicated portal routes."""
     for name in ("index.html", "BioNeet-Pro.html"):
         index_file = BASE_DIR / name
         if index_file.exists():
@@ -359,6 +383,10 @@ def serve_root_asset(filename):
         # Path traversal guard
         if str(target).startswith(str(BASE_DIR)) and target.exists() and target.is_file():
             return send_file(target)
+        # Check basename in case asset was requested with a subpath prefix (e.g. /student/v3_portals.css)
+        base_target = (BASE_DIR / Path(filename).name).resolve()
+        if str(base_target).startswith(str(BASE_DIR)) and base_target.exists() and base_target.is_file():
+            return send_file(base_target)
     if filename.startswith("api/") or filename == "api":
         return jsonify({"error": "API endpoint not found"}), 404
     return health()
@@ -1776,6 +1804,43 @@ def resolve_user_role(uid=None, claims=None) -> str:
     if is_teacher_request(uid, claims):
         return "TEACHER"
     return "STUDENT"
+
+
+def require_portal(allowed_roles: List[str]):
+    """
+    Decorator enforcing strict server-side portal access.
+    Matches the caller's role against allowed_roles for the portal.
+    """
+    def decorator(f):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            hid, claims, _ = _header_identity()
+            uid = hid or auth_student_id()
+            role = resolve_user_role(uid, claims)
+            if role not in allowed_roles:
+                return jsonify({
+                    "error": f"Unauthorized. Access restricted to {', '.join(allowed_roles)}.",
+                    "user_role": role,
+                    "allowed_roles": allowed_roles
+                }), 403
+            return f(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
+def require_student_portal(f):
+    """Requires STUDENT, TEACHER, or SUPER_ADMIN access."""
+    return require_portal(["STUDENT", "TEACHER", "SUPER_ADMIN"])(f)
+
+
+def require_teacher_portal(f):
+    """Requires TEACHER or SUPER_ADMIN access."""
+    return require_portal(["TEACHER", "SUPER_ADMIN"])(f)
+
+
+def require_admin_portal(f):
+    """Requires SUPER_ADMIN access."""
+    return require_portal(["SUPER_ADMIN"])(f)
 
 
 @app.get("/api/auth/me")

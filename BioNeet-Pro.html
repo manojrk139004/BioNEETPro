@@ -9,7 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="v2_ecosystem.css">
+<base href="/">
+<link rel="stylesheet" href="/v2_ecosystem.css">
+<link rel="stylesheet" href="/v3_portals.css">
 <script>
 // BioNEET Pro: Guard against Live Server auto-reloading when backend writes to data/ logs/files.
 // NOTE: only suppresses while a request is in flight or right after API
@@ -752,6 +754,81 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
     </div>
   </div>
 
+  <!-- ═══════════════════ V3 MULTI-PORTAL ECOSYSTEM GATEWAY ═══════════════════ -->
+  <section class="landing-hero" id="portalGatewaySection">
+    <div class="landing-pill">🧬 Unified Educational Ecosystem</div>
+    <h2 class="landing-title">Choose Your <span>Specialized Portal</span></h2>
+    <p class="landing-subtitle">BioNEETPro V3 delivers dedicated, purpose-built workspaces for NEET aspirants, faculty educators, and institutional leadership — all powered by our unified 6,600+ verified MCQ knowledge engine and adaptive AI intelligence.</p>
+
+    <div class="portal-gateway-grid">
+      <!-- 1. Student Portal Card -->
+      <div class="portal-card card-student">
+        <div>
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🎓</div>
+            <div class="portal-card-badge">Students</div>
+          </div>
+          <h3>Student Learning Portal</h3>
+          <p class="portal-card-desc">Master NEET Biology with adaptive BKT question practice, instant AI explanations, upcoming scheduled tests, and personal score forecasting.</p>
+          <ul class="portal-features-list">
+            <li>Adaptive 6,600+ NCERT Question Bank</li>
+            <li>Dr. Priya AI Socratic Biology Mentor</li>
+            <li>Upcoming Scheduled Institutional Tests</li>
+            <li>Bayesian Knowledge Tracing & Weak Topic Radar</li>
+            <li>Interactive Flashcards & Video Archives</li>
+          </ul>
+        </div>
+        <div>
+          <button class="portal-card-btn" onclick="V3.navigateToPortal('STUDENT')">Enter Student Portal →</button>
+        </div>
+      </div>
+
+      <!-- 2. Teacher Portal Card -->
+      <div class="portal-card card-teacher">
+        <div>
+          <div class="portal-card-header">
+            <div class="portal-card-icon">👨‍🏫</div>
+            <div class="portal-card-badge">Faculty</div>
+          </div>
+          <h3>Teacher Assessment Studio</h3>
+          <p class="portal-card-desc">Author rigorous institutional assessments, auto-curate NCERT MCQs with teacher review gating, and monitor real-time class diagnostics.</p>
+          <ul class="portal-features-list">
+            <li>AI Assessment Builder & Wizard</li>
+            <li>Teacher Review Gating & Moderation</li>
+            <li>Class Rosters & Live Exam Windows</li>
+            <li>Deep Question-by-Question Analytics</li>
+            <li>Prof. Sharma AI Assessment Consultant</li>
+          </ul>
+        </div>
+        <div>
+          <button class="portal-card-btn" onclick="V3.navigateToPortal('TEACHER')">Enter Teacher Portal →</button>
+        </div>
+      </div>
+
+      <!-- 3. Super Admin Portal Card -->
+      <div class="portal-card card-admin">
+        <div>
+          <div class="portal-card-header">
+            <div class="portal-card-icon">👑</div>
+            <div class="portal-card-badge">Institutional Admin</div>
+          </div>
+          <h3>Super Admin Console</h3>
+          <p class="portal-card-desc">Comprehensive institutional governance, faculty provisioning, platform telemetry, question bank quality control, and security policies.</p>
+          <ul class="portal-features-list">
+            <li>Faculty Provisioning & Status Lifecycle</li>
+            <li>Institution-wide Student Rosters & Scores</li>
+            <li>Real-time Health & Performance Telemetry</li>
+            <li>Central Question Bank Governance</li>
+            <li>BioNEET Operations AI Systems Advisor</li>
+          </ul>
+        </div>
+        <div>
+          <button class="portal-card-btn" onclick="V3.navigateToPortal('ADMIN')">Enter Super Admin Console →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section style="padding:90px 40px; background:var(--bg);">
     <div style="max-width:1100px;margin:0 auto">
@@ -855,7 +932,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <div class="auth-div"><span>or</span></div>
       <button class="btn btn-outline" style="width:100%;justify-content:center;padding:12px" onclick="demoLogin()">🚀 Try Demo Account</button>
       <div class="auth-sw">Don't have an account? <a onclick="go('register')">Register free</a></div>
-      <div class="auth-sw" style="margin-top:7px"><a onclick="go('admin-login')">Admin Login →</a></div>
+      <div class="auth-sw" style="margin-top:7px"><a onclick="go('teacher-login')">Teacher Portal →</a> &bull; <a onclick="go('admin-login')">Admin Portal →</a></div>
     </div>
   </div>
 </div>
@@ -897,7 +974,24 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <div class="fg"><label class="fl">Username</label><input class="fi" id="aUser" placeholder="admin"></div>
       <div class="fg"><label class="fl">Password</label><input class="fi" id="aPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
       <button class="btn btn-dark" style="width:100%;justify-content:center;padding:13px" onclick="doAdminLogin()">Login as Admin</button>
-      <div class="auth-sw" style="margin-top:12px"><a onclick="go('login')">← Student Login</a></div>
+      <div class="auth-sw" style="margin-top:12px"><a onclick="go('login')">← Student Login</a> &bull; <a onclick="go('teacher-login')">Teacher Portal →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TEACHER LOGIN ═══════════════ -->
+<div class="page" id="page-teacher-login">
+  <div class="auth-wrap">
+    <div class="auth-box">
+      <div class="auth-logo">
+        <div class="logo-big" style="background:var(--portal-teacher-primary);color:#fff">👨‍🏫</div>
+        <h2>Teacher Portal</h2>
+        <p>BioNEET Pro Assessment Studio</p>
+      </div>
+      <div class="fg"><label class="fl">Faculty Email Address</label><input class="fi" id="tEmail" type="email" placeholder="faculty@institution.edu" onkeydown="if(event.key==='Enter')doTeacherLogin()"></div>
+      <div class="fg"><label class="fl">Password</label><input class="fi" id="tPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doTeacherLogin()"></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:13px;background:var(--portal-teacher-primary);border-color:var(--ink)" onclick="doTeacherLogin()">Login to Teacher Studio</button>
+      <div class="auth-sw" style="margin-top:12px"><a onclick="go('login')">← Student Login</a> &bull; <a onclick="go('admin-login')">Admin Portal →</a></div>
     </div>
   </div>
 </div>
@@ -2298,6 +2392,18 @@ function go(page) {
   var navA = document.querySelector('#gNav a[onclick*="' + page + '"],#sNav a[onclick*="' + page + '"],#aNav a[onclick*="' + page + '"],#tNav a[onclick*="' + page + '"]');
   if (navA) navA.classList.add('active');
   updateNav();
+  if (window.V3) {
+    if (page === 'home' || page === 'features' || page === 'updates') {
+      window.V3.activePortal = window.V3.PORTALS.LANDING;
+    } else if (page === 'teacher' || page === 'teacher-login') {
+      window.V3.activePortal = window.V3.PORTALS.TEACHER;
+    } else if (page.startsWith('admin')) {
+      window.V3.activePortal = window.V3.PORTALS.ADMIN;
+    } else if (page === 'dashboard' || page === 'mcq' || page === 'ai-tutor' || page === 'flashcards' || page === 'lessons' || page === 'videos' || page === 'prediction' || page === 'profile') {
+      window.V3.activePortal = window.V3.PORTALS.STUDENT;
+    }
+    if (window.V3.syncPortalAuth) window.V3.syncPortalAuth();
+  }
 
   var renders = {
     'home': renderHome,
@@ -2337,6 +2443,39 @@ function updateNav() {
 
   var isSuperAdmin = DB.isAdmin || DB.userRole === 'SUPER_ADMIN';
   var isTeacher = DB.isTeacher || DB.userRole === 'TEACHER';
+  var p = (window.V3 && window.V3.activePortal) ? window.V3.activePortal : '';
+
+  if (p === 'LANDING' && !DB.currentUser) {
+    gNav.classList.remove('hidden'); sNav.classList.add('hidden'); aNav.classList.add('hidden'); if (tNav) tNav.classList.add('hidden');
+    gBtns.classList.remove('hidden'); uBtns.classList.add('hidden');
+    return;
+  }
+
+  if (p === 'STUDENT' && DB.currentUser) {
+    gNav.classList.add('hidden'); sNav.classList.remove('hidden'); aNav.classList.add('hidden'); if (tNav) tNav.classList.add('hidden');
+    gBtns.classList.add('hidden'); uBtns.classList.remove('hidden');
+    document.getElementById('navAv').textContent = (DB.currentUser.name||'S')[0].toUpperCase();
+    document.getElementById('navName').textContent = (DB.currentUser.name||'Student').split(' ')[0];
+    if (navTeacherLink) navTeacherLink.style.display = isTeacher ? 'inline-block' : 'none';
+    if (navAdminLink) navAdminLink.style.display = isSuperAdmin ? 'inline-block' : 'none';
+    return;
+  }
+
+  if (p === 'TEACHER' && isTeacher) {
+    gNav.classList.add('hidden'); sNav.classList.add('hidden'); aNav.classList.add('hidden'); if (tNav) tNav.classList.remove('hidden');
+    gBtns.classList.add('hidden'); uBtns.classList.remove('hidden');
+    if (navTeacherLink) navTeacherLink.style.display = 'inline-block';
+    if (navAdminLink) navAdminLink.style.display = isSuperAdmin ? 'inline-block' : 'none';
+    return;
+  }
+
+  if (p === 'ADMIN' && isSuperAdmin) {
+    gNav.classList.add('hidden'); sNav.classList.add('hidden'); if (tNav) tNav.classList.add('hidden'); aNav.classList.remove('hidden');
+    gBtns.classList.add('hidden'); uBtns.classList.remove('hidden');
+    if (navTeacherLink) navTeacherLink.style.display = 'inline-block';
+    if (navAdminLink) navAdminLink.style.display = 'inline-block';
+    return;
+  }
 
   if (isSuperAdmin) {
     gNav.classList.add('hidden'); sNav.classList.add('hidden'); if (tNav) tNav.classList.add('hidden'); aNav.classList.remove('hidden');
@@ -2461,23 +2600,69 @@ async function doAdminLogin() {
     }
     const cred = await signInWithEmailAndPassword(auth, u, p);
     const adminUser = await loadUserProfile(cred.user);
-    if (adminUser.role !== 'admin') {
+    var role = (adminUser.role || '').toUpperCase();
+    if (role !== 'ADMIN' && role !== 'SUPER_ADMIN') {
       await signOut(auth);
-      toast('This account is not marked as admin.', 'e');
+      toast('⛔ Access Denied: Institutional Super Admin credentials required.', 'e');
       return;
     }
     DB.isAdmin = true;
+    DB.userRole = 'SUPER_ADMIN';
     DB.currentUser = adminUser;
     // NOTE: admin logins deliberately do NOT touch lastLoginAt/loginCount —
     // Recent Student Logins must reflect students only.
     localStorage.setItem('isAdmin', JSON.stringify(true));
     localStorage.setItem('currentUser', JSON.stringify(adminUser));
+    localStorage.setItem('userRole', 'SUPER_ADMIN');
     setupRealtimeListeners();
     refreshStudentData();
     toast('Admin login successful! ✅', 's');
-    go('admin');
+    if (window.V3 && window.V3.navigateToPortal) window.V3.navigateToPortal('ADMIN');
+    else go('admin');
   } catch (error) {
     console.error("Admin login error:", error);
+    toast(readableAuthError(error), 'e');
+  }
+}
+
+async function doTeacherLogin() {
+  var u = (document.getElementById('tEmail') ? document.getElementById('tEmail').value : '').trim();
+  var p = document.getElementById('tPass') ? document.getElementById('tPass').value : '';
+
+  if (!u || !p) {
+    toast('Please enter faculty email and password', 'e');
+    return;
+  }
+
+  try {
+    const cred = await signInWithEmailAndPassword(auth, u, p);
+    const userProfile = await loadUserProfile(cred.user);
+    var role = (userProfile.role || '').toUpperCase();
+
+    if (role === 'STUDENT') {
+      await signOut(auth);
+      toast('⚠️ Student account detected! Please log in via the Student Portal.', 'e');
+      setTimeout(function() {
+        if (window.V3 && window.V3.navigateToPortal) window.V3.navigateToPortal('STUDENT');
+        else go('login');
+      }, 1500);
+      return;
+    }
+
+    DB.currentUser = userProfile;
+    DB.isTeacher = true;
+    DB.isAdmin = (role === 'SUPER_ADMIN' || role === 'ADMIN');
+    DB.userRole = DB.isAdmin ? 'SUPER_ADMIN' : 'TEACHER';
+    localStorage.setItem('currentUser', JSON.stringify(DB.currentUser));
+    localStorage.setItem('isTeacher', JSON.stringify(true));
+    localStorage.setItem('userRole', DB.userRole);
+
+    setupRealtimeListeners();
+    toast('Welcome to Teacher Studio, ' + (userProfile.name || 'Faculty') + '! 👨‍🏫', 's');
+    if (window.V3 && window.V3.navigateToPortal) window.V3.navigateToPortal('TEACHER');
+    else go('teacher');
+  } catch (error) {
+    console.error("Teacher login error:", error);
     toast(readableAuthError(error), 'e');
   }
 }
@@ -5793,8 +5978,10 @@ window.refreshStudentData = refreshStudentData;
 window.setupRealtimeListeners = setupRealtimeListeners;
 
 window.doAdminLogin = doAdminLogin;
+window.doTeacherLogin = doTeacherLogin;
 </script>
-<script src="v2_ecosystem.js"></script>
+<script src="/v2_ecosystem.js"></script>
+<script src="/v3_portal_router.js"></script>
 </body>
 </html>
 

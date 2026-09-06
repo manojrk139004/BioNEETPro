@@ -1,0 +1,345 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BioNEETPro V3 — Multi-Portal Architecture Design System
+   Visual Identities:
+   1. 🧬 Ecosystem Landing Gateway (bioneetpro.com / /)
+   2. 🎓 Student Learning Portal (students.bioneetpro.com / /student)
+   3. 👨‍🏫 Teacher Assessment Studio (teachers.bioneetpro.com / /teacher)
+   4. 👑 Super Admin Governance Console (admin.bioneetpro.com / /admin)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --portal-student-primary: #10b981;
+  --portal-student-accent: #f59e0b;
+  --portal-student-bg: #ecfdf5;
+  --portal-teacher-primary: #4f46e5;
+  --portal-teacher-accent: #0284c7;
+  --portal-teacher-bg: #eef2ff;
+  --portal-admin-primary: #0f172a;
+  --portal-admin-accent: #7c3aed;
+  --portal-admin-bg: #f8fafc;
+}
+
+/* ─── ECOSYSTEM LANDING GATEWAY ─── */
+.landing-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  text-align: center;
+}
+
+.landing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--y, #f5c518);
+  color: var(--ink, #111);
+  border: 2px solid var(--ink, #111);
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 var(--ink, #111);
+  margin-bottom: 20px;
+}
+
+.landing-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink, #111);
+  margin-bottom: 16px;
+}
+
+.landing-title span {
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-color: var(--y, #f5c518);
+  text-decoration-thickness: 4px;
+}
+
+.landing-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--muted, #555);
+  max-width: 780px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+
+/* Three Portals Grid */
+.portal-gateway-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  max-width: 1160px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.portal-card {
+  background: #ffffff;
+  border: 3px solid var(--ink, #111);
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 6px 6px 0 var(--ink, #111);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.portal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 10px 10px 0 var(--ink, #111);
+}
+
+.portal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+.portal-card.card-student::before { background: var(--portal-student-primary); }
+.portal-card.card-teacher::before { background: var(--portal-teacher-primary); }
+.portal-card.card-admin::before { background: var(--portal-admin-accent); }
+
+.portal-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.portal-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 2px solid var(--ink, #111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 3px 3px 0 var(--ink, #111);
+}
+
+.card-student .portal-card-icon { background: var(--portal-student-bg); color: var(--portal-student-primary); }
+.card-teacher .portal-card-icon { background: var(--portal-teacher-bg); color: var(--portal-teacher-primary); }
+.card-admin .portal-card-icon { background: var(--portal-admin-bg); color: var(--portal-admin-accent); }
+
+.portal-card-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1.5px solid var(--ink, #111);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-student .portal-card-badge { background: #d1fae5; color: #065f46; }
+.card-teacher .portal-card-badge { background: #e0e7ff; color: #3730a3; }
+.card-admin .portal-card-badge { background: #f3e8ff; color: #6b21a8; }
+
+.portal-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--ink, #111);
+}
+
+.portal-card p.portal-card-desc {
+  font-size: 0.92rem;
+  color: var(--muted, #666);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.portal-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+}
+
+.portal-features-list li {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink, #222);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.portal-features-list li::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink, #111);
+  font-size: 0.65rem;
+  font-weight: 900;
+}
+
+.card-student .portal-features-list li::before { background: #a7f3d0; color: #065f46; }
+.card-teacher .portal-features-list li::before { background: #c7d2fe; color: #312e81; }
+.card-admin .portal-features-list li::before { background: #e9d5ff; color: #581c87; }
+
+.portal-card-btn {
+  width: 100%;
+  padding: 13px 20px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border: 2.5px solid var(--ink, #111);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+  box-shadow: 3px 3px 0 var(--ink, #111);
+  text-decoration: none;
+}
+
+.portal-card-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink, #111);
+}
+
+.card-student .portal-card-btn { background: var(--portal-student-primary); color: #ffffff; }
+.card-teacher .portal-card-btn { background: var(--portal-teacher-primary); color: #ffffff; }
+.card-admin .portal-card-btn { background: var(--portal-admin-primary); color: #ffffff; }
+
+/* ─── DEDICATED PORTAL NAVIGATION ACCENTS ─── */
+.portal-indicator-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--ink, #111);
+}
+
+.portal-indicator-bar.student-theme {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.portal-indicator-bar.teacher-theme {
+  background: #eef2ff;
+  color: #312e81;
+}
+
+.portal-indicator-bar.admin-theme {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.portal-indicator-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1.5px solid currentColor;
+  background: #ffffff;
+}
+
+.portal-switcher-btn {
+  background: transparent;
+  border: 1.5px solid currentColor;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: inherit;
+  transition: background 0.15s;
+}
+
+.portal-switcher-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ─── CROSS-PORTAL ACCESS / REDIRECT ALERT ─── */
+.portal-redirect-banner {
+  background: #fffbeb;
+  border: 2.5px solid #d97706;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  box-shadow: 4px 4px 0 #d97706;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.portal-redirect-banner .alert-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.portal-redirect-banner h4 {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #92400e;
+  margin-bottom: 4px;
+}
+
+.portal-redirect-banner p {
+  font-size: 0.84rem;
+  color: #b45309;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.portal-redirect-banner button {
+  background: #d97706;
+  color: #ffffff;
+  border: 2px solid #78350f;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #78350f;
+}
+
+/* ─── DEDICATED TEACHER LOGIN VIEW ─── */
+#page-teacher-login .auth-box {
+  border: 3px solid var(--ink, #111);
+  box-shadow: 8px 8px 0 var(--portal-teacher-primary);
+}
+
+#page-teacher-login .auth-logo .logo-big {
+  background: var(--portal-teacher-primary);
+  color: #ffffff;
+}
+
+/* ─── MOBILE ADAPTATIONS ─── */
+@media (max-width: 900px) {
+  .portal-gateway-grid {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 640px) {
+  .landing-hero {
+    padding: 24px 16px 40px;
+  }
+  .portal-card {
+    padding: 24px 20px;
+  }
+}
