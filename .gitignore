@@ -18,6 +18,7 @@ data/indexed_mcqs_cache.json
 data/student_profiles/*.json
 data/emergency_fallback_audit.log
 BioNeetPro*.zip
+BioNEET_Pro_Handover.zip
 BioNeet-Pro.html.bak
 
 AUDIT_2026-09-03_BioNEETPro.zip
