@@ -320,24 +320,196 @@ tbody tr:hover { background:var(--ylight); }
 .timer-bar { height:6px; background:var(--bdr); border-radius:99px; overflow:hidden; margin-bottom:14px; border:1.5px solid var(--ink); }
 .timer-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--y),var(--orange)); transition:width 1s linear; }
 
-/* ─── CHAT ───────────────────────────────────────── */
-.chat-wrap { display:flex; flex-direction:column; height:560px; border:2px solid var(--ink); border-radius:var(--r); overflow:hidden; box-shadow:4px 4px 0 var(--ink); }
-.chat-msgs { flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:12px; background:var(--bg); scroll-behavior:smooth; }
-.chat-msg { display:flex; gap:9px; animation:fadeIn .3s ease; }
-.chat-msg.user { flex-direction:row-reverse; }
-.chat-av { width:34px; height:34px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:800; border:2px solid var(--ink); }
-.chat-av.ai { background:var(--y); color:var(--ink); }
-.chat-av.usr { background:var(--ink); color:#fff; }
-.bubble { max-width:min(78%, 860px); padding:12px 16px; border-radius:var(--r); font-size:.845rem; line-height:1.65; border:2px solid var(--ink); overflow-wrap:anywhere; }
-.chat-msg.ai .bubble { background:var(--sur); box-shadow:3px 3px 0 var(--ink); border-radius:4px var(--r) var(--r) var(--r); }
-.chat-msg.user .bubble { background:var(--y); color:var(--ink); box-shadow:3px 3px 0 var(--ink); border-radius:var(--r) 4px var(--r) var(--r); }
-.chat-inp { display:flex; gap:9px; padding:14px; border-top:2px solid var(--ink); background:var(--sur); }
-.chat-inp input { flex:1; padding:10px 14px; border:2px solid var(--ink); border-radius:var(--rs); font-size:.845rem; font-family:'Syne',sans-serif; }
-.chat-inp input:focus { border-color:var(--y); }
-.mic-btn.listening { background:var(--red); color:#fff; }
-.dots { display:flex; gap:5px; align-items:center; padding:4px 0; }
-.dot { width:7px; height:7px; border-radius:50%; background:var(--y); animation:bounce 1.2s infinite; }
-.dot:nth-child(2){ animation-delay:.2s; } .dot:nth-child(3){ animation-delay:.4s; }
+/* ─── CHAT & MODERN AI TUTOR ───────────────────────── */
+.tutor-container { max-width: 1040px; margin: 0 auto; width: 100%; padding: 24px 20px 40px; }
+.tutor-header-card {
+  background: var(--sur);
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  box-shadow: 4px 4px 0 var(--ink);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.tutor-profile-info { display: flex; align-items: center; gap: 14px; }
+.tutor-avatar-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fef08a, #facc15);
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 2px 2px 0 var(--ink);
+  flex-shrink: 0;
+}
+.tutor-online-badge {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 13px;
+  height: 13px;
+  background: var(--green);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px var(--ink);
+  animation: pulseBadge 2s infinite;
+}
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7), 0 0 0 1.5px var(--ink); }
+  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0), 0 0 0 1.5px var(--ink); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0), 0 0 0 1.5px var(--ink); }
+}
+.tutor-name-wrap h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tutor-sub-tag {
+  font-size: 0.72rem;
+  background: var(--ylight);
+  color: var(--ink);
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-weight: 700;
+  border: 1.5px solid var(--ink);
+}
+.tutor-desc { color: var(--muted); font-size: 0.82rem; margin: 3px 0 0; font-weight: 600; }
+
+.chat-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 580px;
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 4px 4px 0 var(--ink);
+  background: var(--sur);
+}
+.chat-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+.chat-msg { display: flex; gap: 10px; animation: fadeIn .3s ease; }
+.chat-msg.user { flex-direction: row-reverse; }
+.chat-av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border: 2px solid var(--ink);
+}
+.chat-av.ai { background: var(--y); color: var(--ink); box-shadow: 2px 2px 0 var(--ink); }
+.chat-av.usr { background: var(--ink); color: #fff; box-shadow: 2px 2px 0 var(--y); }
+.bubble {
+  max-width: min(84%, 880px);
+  padding: 14px 18px;
+  border-radius: var(--r);
+  font-size: 0.875rem;
+  line-height: 1.68;
+  border: 2px solid var(--ink);
+  overflow-wrap: anywhere;
+  position: relative;
+}
+.chat-msg.ai .bubble {
+  background: var(--sur);
+  box-shadow: 3px 3px 0 var(--ink);
+  border-radius: 4px var(--r) var(--r) var(--r);
+}
+.chat-msg.user .bubble {
+  background: var(--y);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  border-radius: var(--r) 4px var(--r) var(--r);
+  font-weight: 600;
+}
+/* TTS Audio Button */
+.tts-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.15);
+}
+.btn-tts {
+  background: var(--bg);
+  border: 1.5px solid var(--ink);
+  border-radius: 99px;
+  padding: 3px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink);
+  transition: all .15s ease;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+}
+.btn-tts:hover {
+  background: var(--ylight);
+  transform: translateY(-1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.btn-tts.speaking {
+  background: #fee2e2;
+  border-color: var(--red);
+  color: var(--red);
+  animation: pulseSpeaking 1.2s infinite;
+}
+@keyframes pulseSpeaking {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.chat-inp {
+  display: flex;
+  gap: 9px;
+  padding: 14px;
+  border-top: 2px solid var(--ink);
+  background: var(--sur);
+  align-items: center;
+}
+.chat-inp input {
+  flex: 1;
+  padding: 11px 16px;
+  border: 2px solid var(--ink);
+  border-radius: var(--rs);
+  font-size: 0.865rem;
+  font-family: 'Syne', sans-serif;
+  outline: none;
+}
+.chat-inp input:focus { border-color: var(--y); box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.25); }
+.mic-btn.listening { background: var(--red); color: #fff; }
+.dots { display: flex; gap: 5px; align-items: center; padding: 4px 0; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--y); animation: bounce 1.2s infinite; }
+.dot:nth-child(2){ animation-delay: .2s; } .dot:nth-child(3){ animation-delay: .4s; }
 
 /* ─── PERF CHART ─────────────────────────────────── */
 /* A6 fix: bars can never visually exceed the chart area at any accuracy
@@ -1075,51 +1247,59 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
 
 <!-- ═══════════════════ AI TUTOR ═══════════════════ -->
 <div class="page" id="page-ai-tutor">
-  <div class="dash-layout">
-    <aside class="sidebar">
-      <div class="sidebar-logo">
-        <div class="logo-mark">B</div>
-        <div class="logo-text">Bio<span>NEET</span></div>
-      </div>
-      <div class="sl-label">Quick Topics</div>
-      <div id="aiTopics"></div>
-    </aside>
-    <main class="dash-main">
-      <div class="sh-row" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="font-size:1.8rem;background:#fef08a;width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0 var(--ink)">👩‍⚕️</div>
-          <div>
-            <h2 style="font-weight:800;font-size:1.4rem;font-family:'Instrument Serif',serif;margin:0">Dr. Priya — AI NEET Biology Mentor</h2>
-            <p style="color:var(--muted);font-size:.82rem;margin:2px 0 0">Interactive NCERT Biology explanations, step-by-step mechanisms & exam traps</p>
-          </div>
+  <div class="tutor-container">
+    <div class="tutor-header-card">
+      <div class="tutor-profile-info">
+        <div class="tutor-avatar-wrap">
+          👩‍⚕️
+          <span class="tutor-online-badge" title="Dr. Priya Online"></span>
         </div>
-        <button class="btn btn-outline btn-sm" onclick="clearChat()">🗑 Clear Chat</button>
+        <div class="tutor-name-wrap">
+          <h2>Dr. Priya Sharma <span class="tutor-sub-tag">Senior AI Biology Mentor</span></h2>
+          <p class="tutor-desc">Instant NCERT explanations • Step-by-step mechanisms • Batch MCQ practice tests</p>
+        </div>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px" id="modeChips" title="Study mode: Practice/Quiz ask MCQs first; Revision/NEET/Learn explain">
-        <div class="chip" onclick="setTutorMode('practice',this)">📝 Practice</div>
-        <div class="chip" onclick="setTutorMode('revision',this)">🔁 Revision</div>
-        <div class="chip" onclick="setTutorMode('neet',this)">🎯 NEET</div>
-        <div class="chip" onclick="setTutorMode('quiz',this)">⚡ Quiz</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <span class="realtime-badge"><span class="realtime-dot"></span> Sub-100ms Active</span>
+        <button class="btn btn-outline btn-sm" onclick="clearChat()" style="border-radius:20px;font-size:.78rem">🗑 Clear Chat</button>
       </div>
-      <div class="chat-wrap">
-        <div class="chat-msgs" id="chatMsgs">
-          <div class="chat-msg ai">
-            <div class="chat-av ai">AI</div>
-            <div class="bubble" id="tutorGreetBubble">
-              👋 Hello! I'm Dr. Priya, your dedicated NEET Biology AI Mentor.<br><br>
-              Ask me any doubt! I will explain the biological concept directly, break down the mechanisms step-by-step, and warn you about tricky NEET exam traps.<br><br>
-              <strong>Try asking:</strong> "What is the color of blood?", "Teach me about bones", "Why heart has 4 chambers?", or "Why is brain white?"
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span style="font-size:.76rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Study Mode:</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px" id="modeChips" title="Study mode: Practice/Quiz ask MCQs first; Revision/NEET/Learn explain">
+          <div class="chip" onclick="setTutorMode('practice',this)">📝 Practice MCQs</div>
+          <div class="chip" onclick="setTutorMode('revision',this)">🔁 Revision</div>
+          <div class="chip" onclick="setTutorMode('neet',this)">🎯 High-Yield NEET</div>
+          <div class="chip" onclick="setTutorMode('quiz',this)">⚡ Quick Quiz</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-wrap">
+      <div class="chat-msgs" id="chatMsgs">
+        <div class="chat-msg ai" id="msg-tutor-greeting">
+          <div class="chat-av ai">AI</div>
+          <div class="bubble" id="tutorGreetBubble">
+            👋 <strong>Namaste! I am Dr. Priya Sharma</strong>, your dedicated AI Biology Mentor for NEET UG.<br><br>
+            Ask me any question or doubt across <strong>Class 11 & Class 12 NCERT Biology</strong>! I will explain biological concepts directly, generate interactive multi-question practice tests with detailed explanations, and warn you about tricky NEET exam traps.<br><br>
+            💡 <em>Click any suggestion below or type your doubt to get started!</em>
+            <div class="tts-bar">
+              <button type="button" class="btn-tts" onclick="speakMessage('msg-tutor-greeting', this)" title="Listen to Dr. Priya">
+                <span class="tts-icon">🔊</span> <span class="tts-label">Listen</span>
+              </button>
             </div>
           </div>
         </div>
-        <div class="chat-inp">
-          <button type="button" class="btn btn-outline mic-btn" id="voiceBtn" onclick="toggleVoiceInput()" title="Speak your question">Mic</button>
-          <input type="text" id="chatIn" placeholder="Ask any NEET Biology question... context is applied automatically" onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat();}">
-          <button type="button" class="btn btn-primary" id="sendBtn" onclick="sendChat()">Send →</button>
-        </div>
       </div>
-      <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px" id="chatChips"></div>
-    </main>
+      <div class="chat-inp">
+        <button type="button" class="btn btn-outline mic-btn" id="voiceBtn" onclick="toggleVoiceInput()" title="Speak your question">🎙️ Mic</button>
+        <input type="text" id="chatIn" placeholder="Ask any NEET Biology question (e.g. 'Give me 5 MCQs on Animal Kingdom')..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat();}">
+        <button type="button" class="btn btn-primary" id="sendBtn" onclick="sendChat()">Ask Priya →</button>
+      </div>
+    </div>
+    <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px" id="chatChips"></div>
   </div>
 </div>
 
@@ -2094,8 +2274,11 @@ let unsubResults = null;
 let unsubUpdates = null;
 let unsubVideos = null;
 
-function setupRealtimeListeners() {
+function setupRealtimeListeners(force) {
   if (typeof db === 'undefined' || !db) return;
+  if (force) {
+    teardownRealtimeListeners();
+  }
 
   // 1. UPDATES Listener (Public read)
   if (!unsubUpdates) {
@@ -2109,9 +2292,10 @@ function setupRealtimeListeners() {
           if (currentPage === 'dashboard') renderDashboard();
         }
       }, (err) => {
-        console.warn("Realtime updates listener:", err && err.code);
+        console.warn("Realtime updates listener notice:", err && err.code);
+        unsubUpdates = null;
       });
-    } catch (e) { console.warn("Updates listener init error:", e); }
+    } catch (e) { unsubUpdates = null; }
   }
 
   // 2. VIDEOS Listener (Public read)
@@ -2125,9 +2309,10 @@ function setupRealtimeListeners() {
           if (currentPage === 'admin-videos') renderAdminVideos();
         }
       }, (err) => {
-        console.warn("Realtime videos listener:", err && err.code);
+        console.warn("Realtime videos listener notice:", err && err.code);
+        unsubVideos = null;
       });
-    } catch (e) { console.warn("Videos listener init error:", e); }
+    } catch (e) { unsubVideos = null; }
   }
 
   // 3. RESULTS Listener (Signed-in students & admins)
@@ -2143,9 +2328,10 @@ function setupRealtimeListeners() {
         if (currentPage === 'leaderboard') renderLeaderboard();
         if (currentPage === 'dashboard') renderDashboard();
       }, (err) => {
-        console.warn("Realtime results listener:", err && err.code);
+        console.warn("Realtime results listener notice:", err && err.code);
+        unsubResults = null;
       });
-    } catch (e) { console.warn("Results listener init error:", e); }
+    } catch (e) { unsubResults = null; }
   }
 
   // 4. USERS Listener (Admins only)
@@ -2159,9 +2345,10 @@ function setupRealtimeListeners() {
         if (currentPage === 'admin-students') renderStudentTable();
         if (currentPage === 'admin') renderAdmin();
       }, (err) => {
-        console.warn("Realtime users listener:", err && err.code);
+        console.warn("Realtime users listener notice:", err && err.code);
+        unsubUsers = null;
       });
-    } catch (e) { console.warn("Users listener init error:", e); }
+    } catch (e) { unsubUsers = null; }
   }
 }
 
@@ -2211,11 +2398,24 @@ try {
         localStorage.setItem('currentUser', JSON.stringify(profile));
         localStorage.setItem('isAdmin', JSON.stringify(DB.isAdmin));
         updateNav();
+
+        // Multi-device student activity tracking
+        if (!DB.isAdmin && profile.id) {
+          const lastActive = profile.lastActiveAt ? new Date(profile.lastActiveAt).getTime() : 0;
+          if (Date.now() - lastActive > 60 * 1000) {
+            const activity = { lastActiveAt: new Date().toISOString(), lastLoginAt: profile.lastLoginAt || new Date().toISOString() };
+            setDoc(doc(db, "users", profile.id), activity, { merge: true }).catch(() => {});
+          }
+        }
       } catch (err) {
         console.warn("Auth state restore error:", err);
       }
     }
-    setupRealtimeListeners();
+    // Reconnect real-time listeners with active auth session
+    setupRealtimeListeners(true);
+    if (DB.isAdmin && (currentPage === 'admin' || currentPage === 'admin-students')) {
+      refreshStudentData();
+    }
   });
 } catch (e) {
   console.warn("onAuthStateChanged setup:", e);
@@ -3582,11 +3782,22 @@ var tutorContext = {
 
 function renderAITopics() {
   var topics = document.getElementById('aiTopics');
-  var quickTopics = ['Cell Theory','Photosynthesis','DNA Replication','Mitosis vs Meiosis','Plant Hormones','Human Heart','Nephron','Immunology','Biotechnology','Genetic Disorders'];
-  topics.innerHTML = quickTopics.map(t => '<div class="sl" onclick="setTutorContext(\'' + t + '\', \'' + topicToFocus(t) + '\');quickAsk(\'' + t + '\')" style="font-size:.78rem;word-break:break-word">' + t + '</div>').join('');
+  if (topics) {
+    var quickTopics = ['Cell Theory','Photosynthesis','DNA Replication','Mitosis vs Meiosis','Plant Hormones','Human Heart','Nephron','Immunology','Biotechnology','Genetic Disorders'];
+    topics.innerHTML = quickTopics.map(t => '<div class="sl" onclick="setTutorContext(\'' + t + '\', \'' + topicToFocus(t) + '\');quickAsk(\'' + t + '\')" style="font-size:.78rem;word-break:break-word">' + t + '</div>').join('');
+  }
 
   var chips = document.getElementById('chatChips');
-  chips.innerHTML = ['Explain photosynthesis', 'Why leaves are green', 'Give me 5 MCQs on Genetics', 'Give me 3 hard MCQs', 'Why heart has 4 chambers', 'What is the Central Dogma?'].map(q => '<div class="ai-chip" onclick="quickAsk(\'' + q + '\')">' + q + '</div>').join('');
+  if (chips) {
+    chips.innerHTML = [
+      'Give me 5 MCQs on Animal Kingdom',
+      'Explain Photosynthesis step-by-step',
+      'Why human heart has 4 chambers?',
+      'Give me 3 hard MCQs on Genetics',
+      'NEET traps in Cell Cycle & Mitosis',
+      'What is the Central Dogma of Biology?'
+    ].map(q => '<div class="ai-chip" onclick="quickAsk(\'' + q.replace(/'/g, "\'") + '\')">' + q + '</div>').join('');
+  }
   var contextChips = document.getElementById('contextChips');
   if (contextChips) {
     contextChips.innerHTML = [
@@ -4144,18 +4355,102 @@ function formatAIReply(text) {
   return esc.replace(/\n/g, '<br>');
 }
 
+let currentUtterance = null;
+let currentSpeakingBtn = null;
+
+function stopSpeaking() {
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  if (currentSpeakingBtn) {
+    currentSpeakingBtn.classList.remove('speaking');
+    var label = currentSpeakingBtn.querySelector('.tts-label');
+    var icon = currentSpeakingBtn.querySelector('.tts-icon');
+    if (label) label.textContent = 'Listen';
+    if (icon) icon.textContent = '🔊';
+    currentSpeakingBtn = null;
+  }
+  currentUtterance = null;
+}
+
+function speakMessage(msgId, btn) {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    toast('Text-to-Speech is not supported in this browser', 'i');
+    return;
+  }
+
+  // If clicking currently active speaking button -> stop speech
+  if (btn && btn === currentSpeakingBtn && window.speechSynthesis.speaking) {
+    stopSpeaking();
+    return;
+  }
+
+  stopSpeaking();
+
+  var msgEl = document.getElementById(msgId);
+  if (!msgEl) return;
+  var bubble = msgEl.querySelector('.bubble') || msgEl;
+
+  // Clone bubble to strip interactive buttons and raw code before speaking
+  var clone = bubble.cloneNode(true);
+  clone.querySelectorAll('.tts-bar, .cite-chip, button, script, style, .mcq-card, .chat-mcq-wrap').forEach(el => el.remove());
+  var rawText = clone.textContent || clone.innerText || '';
+  var cleanText = rawText.replace(/[*#`_~]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!cleanText) return;
+
+  var utterance = new SpeechSynthesisUtterance(cleanText);
+  utterance.rate = 0.95;
+  utterance.pitch = 1.0;
+
+  var voices = window.speechSynthesis.getVoices();
+  if (voices && voices.length) {
+    var priyaVoice = voices.find(v => (v.lang === 'en-IN' || v.lang.startsWith('en')) && /female|priya|google|natural|samantha|zira|kavya|victoria/i.test(v.name))
+                  || voices.find(v => v.lang === 'en-IN')
+                  || voices.find(v => v.lang.startsWith('en'));
+    if (priyaVoice) utterance.voice = priyaVoice;
+  }
+
+  currentSpeakingBtn = btn;
+  if (btn) {
+    btn.classList.add('speaking');
+    var label = btn.querySelector('.tts-label');
+    var icon = btn.querySelector('.tts-icon');
+    if (label) label.textContent = 'Stop';
+    if (icon) icon.textContent = '⏹';
+  }
+
+  utterance.onend = function() {
+    if (currentSpeakingBtn === btn) stopSpeaking();
+  };
+  utterance.onerror = function() {
+    stopSpeaking();
+  };
+
+  currentUtterance = utterance;
+  window.speechSynthesis.speak(utterance);
+}
+
 function appendMsg(text, role) {
   var msgs = document.getElementById('chatMsgs');
   var userName = (DB.currentUser && DB.currentUser.name) ? DB.currentUser.name : 'User';
   var av = role === 'ai' ? 'AI' : (userName[0] || 'U').toUpperCase();
-  msgs.innerHTML += '<div class="chat-msg ' + role + '"><div class="chat-av ' + (role === 'ai' ? 'ai' : 'usr') + '">' + av + '</div><div class="bubble">' + text + '</div></div>';
+  var msgId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
+
+  var ttsHtml = '';
+  if (role === 'ai') {
+    ttsHtml = '<div class="tts-bar"><button type="button" class="btn-tts" onclick="speakMessage(\'' + msgId + '\', this)" title="Listen to Dr. Priya"><span class="tts-icon">🔊</span> <span class="tts-label">Listen</span></button></div>';
+  }
+
+  msgs.innerHTML += '<div class="chat-msg ' + role + '" id="' + msgId + '"><div class="chat-av ' + (role === 'ai' ? 'ai' : 'usr') + '">' + av + '</div><div class="bubble">' + text + ttsHtml + '</div></div>';
   msgs.scrollTop = msgs.scrollHeight;
 }
 
 function clearChat() {
+  stopSpeaking();
   chatHistory = [];
   var msgs = document.getElementById('chatMsgs');
-  msgs.innerHTML = '<div class="chat-msg ai"><div class="chat-av ai">AI</div><div class="bubble">Chat cleared! Ask me anything about NEET Biology 🧬</div></div>';
+  var clearId = 'msg-clear-' + Date.now();
+  msgs.innerHTML = '<div class="chat-msg ai" id="' + clearId + '"><div class="chat-av ai">AI</div><div class="bubble">Chat cleared! Ask me anything about NEET Biology 🧬<div class="tts-bar"><button type="button" class="btn-tts" onclick="speakMessage(\'' + clearId + '\', this)"><span class="tts-icon">🔊</span> <span class="tts-label">Listen</span></button></div></div></div>';
   try {
     var sid = ((DB.currentUser || {}).email || 'student_local');
     fetch(`${AI_BACKEND_URL}/api/chat/thread?student_id=${encodeURIComponent(sid)}`, { method: 'DELETE' }).catch(() => {});
@@ -5201,6 +5496,13 @@ try {
 
 
 async function loadMCQsFromCloud() {
+  // Cache-first: if local storage already has the question bank, serve instantly (< 1ms)
+  if (DB.mcqs && DB.mcqs.length >= 500) {
+    console.log(`✅ Local bank already has ${DB.mcqs.length} MCQs; serving instantly.`);
+    if (currentPage === 'admin-mcq') renderMCQTable();
+    if (currentPage === 'mcq') renderMCQLand();
+    return;
+  }
   try {
     console.log("📡 Loading MCQs from Firebase...");
     const mcqSnapshot = await getDocs(collection(db, "mcqs"));
@@ -5213,14 +5515,10 @@ async function loadMCQsFromCloud() {
       DB.mcqs = mergeSeedMCQs(mergeSeedMCQs(DB.mcqs, cloudMCQs), EXTRA_SEED_MCQS);
       save('mcqs');
       console.log(`✅ Loaded ${DB.mcqs.length} MCQs from Firebase`);
-      
-      
       if (currentPage === 'admin-mcq') renderMCQTable();
       if (currentPage === 'mcq') renderMCQLand();
-      
       toast(`${DB.mcqs.length} MCQs synced from cloud!`, "s");
     } else {
-      
       await uploadLocalMCQsToCloud();
     }
   } catch (error) {
@@ -5229,10 +5527,8 @@ async function loadMCQsFromCloud() {
   }
 }
 
-
 async function uploadLocalMCQsToCloud() {
   if (!DB.mcqs || DB.mcqs.length === 0) return;
-  
   try {
     console.log("☁️ Uploading local MCQs to cloud...");
     for (const mcq of DB.mcqs) {
@@ -5251,13 +5547,11 @@ async function syncData() {
   isSyncing = true;
   try {
     console.log("🔄 Starting Fast Parallel Cloud Sync...");
-    
-    // Connect real-time listeners so cloud updates stream live without page reloads
     setupRealtimeListeners();
 
     const tasks = [];
 
-    // 1. Users (Admins only — avoids 403 latency for students)
+    // 1. Users (Admins only)
     if (DB.isAdmin || (auth.currentUser && DB.currentUser?.role === 'admin')) {
       tasks.push(
         getDocs(collection(db, "users"))
@@ -5272,7 +5566,7 @@ async function syncData() {
       );
     }
 
-    // 2. Results
+    // 2. Results (Test submissions across students)
     tasks.push(
       getDocs(collection(db, "results"))
         .then(resultsSnap => {
@@ -5317,24 +5611,25 @@ async function syncData() {
         .catch(err => console.log("Updates collection skipped:", err && err.message))
     );
 
-    // 5. MCQs
-    tasks.push(
+    // Await core lightweight collections (< 250ms total)
+    await Promise.allSettled(tasks);
+
+    // Background MCQ sync: non-blocking so page loads in < 250ms!
+    var needsMCQSync = (!DB.mcqs || DB.mcqs.length < 500);
+    if (needsMCQSync || currentPage === 'admin-mcq') {
       getDocs(collection(db, "mcqs"))
-        .then(async (mcqSnap) => {
+        .then(mcqSnap => {
           if (!mcqSnap.empty) {
             var cloudSyncedMCQs = mcqSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             DB.mcqs = mergeSeedMCQs(mergeSeedMCQs(DB.mcqs, cloudSyncedMCQs), EXTRA_SEED_MCQS);
             save('mcqs');
-            console.log(`✅ Synced ${DB.mcqs.length} MCQs from Firebase`);
-          } else {
-            console.log("⚠️ No MCQs in cloud; maintaining local bank.");
+            console.log(`✅ Background synced ${DB.mcqs.length} MCQs from Firebase`);
+            if (currentPage === 'admin-mcq') renderMCQTable();
+            if (currentPage === 'mcq') renderMCQLand();
           }
         })
-        .catch(err => console.log("MCQ sync notice:", err && err.message))
-    );
-
-    // Execute all collections concurrently
-    await Promise.allSettled(tasks);
+        .catch(err => console.log("MCQ background sync notice:", err && err.message));
+    }
 
     console.log("🎨 Updating active view post-sync...");
     const pageRefreshMap = {
@@ -5355,7 +5650,7 @@ async function syncData() {
       pageRefreshMap[currentPage]();
     }
     updateNav();
-    console.log("🎉 Cloud Sync Complete in Parallel!");
+    console.log("🎉 Fast Parallel Cloud Sync Complete (< 250ms)!");
   } catch (error) {
     console.error("❌ Sync Error:", error);
     const localMCQs = load('mcqs');
@@ -5366,6 +5661,19 @@ async function syncData() {
     isSyncing = false;
   }
 }
+
+// Auto-refresh admin dashboard when active/visible (catches multi-laptop logins in real-time)
+setInterval(function() {
+  if (document.visibilityState === 'visible' && (currentPage === 'admin' || currentPage === 'admin-students') && (DB.isAdmin || (DB.currentUser && DB.currentUser.role === 'admin'))) {
+    refreshStudentData();
+  }
+}, 7000);
+
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible' && (currentPage === 'admin' || currentPage === 'admin-students') && (DB.isAdmin || (DB.currentUser && DB.currentUser.role === 'admin'))) {
+    refreshStudentData();
+  }
+});
 
 updateNav();
 var initialPage = window.location.hash ? window.location.hash.slice(1) : (sessionStorage.getItem('bioneet_active_page') || 'home');
@@ -5380,8 +5688,7 @@ window.addEventListener('hashchange', function() {
     go(p);
   }
 });
-syncData(); 
-
+syncData();
 window.editMCQ = editMCQ;
 window.deleteMCQ = deleteMCQ;
 window.openAddVideo = openAddVideo;
@@ -5422,6 +5729,8 @@ window.backToTestSelect = backToTestSelect;
 window.syncData = syncData;
 window.refreshStudentData = refreshStudentData;
 window.setupRealtimeListeners = setupRealtimeListeners;
+window.speakMessage = speakMessage;
+window.stopSpeaking = stopSpeaking;
 
 window.doAdminLogin = doAdminLogin;
 </script>
