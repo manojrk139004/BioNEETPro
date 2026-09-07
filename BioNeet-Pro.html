@@ -2282,43 +2282,6 @@ canvas#hero3d {
 
   </div>
 </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:.78rem; font-weight:700; margin-bottom:4px"><span>📦 Box 2 (Review every 3 days)</span><span id="fcBox2Count">0</span></div>
-              <div class="pbar"><div class="pfill y" id="fcBox2Bar" style="width:0%"></div></div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:.78rem; font-weight:700; margin-bottom:4px"><span>📦 Box 3 (Review every 5 days)</span><span id="fcBox3Count">0</span></div>
-              <div class="pbar"><div class="pfill g" id="fcBox3Bar" style="width:0%"></div></div>
-            </div>
-          </div>
-        </div>
-        <button class="btn btn-outline btn-sm" style="margin-top:20px; width:100%; justify-content:center" onclick="resetAllFlashcards()">Reset All Cards</button>
-      </div>
-
-      <!-- Flashcard Interactive Widget -->
-      <div class="card" style="min-height:300px; display:flex; flex-direction:column; justify-content:space-between; border-color:var(--ink); box-shadow:6px 6px 0 var(--ink);">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-          <span class="badge by" id="fcCurrentBox">Box 1</span>
-          <span class="badge bgr" id="fcChapterName">Chapter Name</span>
-        </div>
-        
-        <!-- The Flip Card Area -->
-        <div onclick="flipFlashcard()" style="flex:1; display:flex; align-items:center; justify-content:center; cursor:pointer; text-align:center; padding:20px; min-height:160px; background:var(--bg); border:2px dashed var(--ink); border-radius:var(--rs); position:relative; overflow:hidden;" id="fcCardBody">
-          <p id="fcCardText" style="font-size:1.1rem; font-weight:700; font-family:'Instrument Serif',serif; line-height:1.6;"></p>
-          <div style="position:absolute; bottom:8px; right:8px; font-size:.65rem; color:var(--muted); font-weight:700;">🔄 Click to Flip</div>
-        </div>
-
-        <div style="display:flex; gap:12px; margin-top:20px; justify-content:center;" id="fcButtons" class="hidden">
-          <button class="btn btn-danger" style="flex:1; justify-content:center;" onclick="reviewFlashcard(false)">❌ Incorrect</button>
-          <button class="btn btn-primary" style="flex:1; justify-content:center;" onclick="reviewFlashcard(true)">✅ Correct</button>
-        </div>
-        <div style="text-align:center; margin-top:20px;" id="fcPrompt">
-          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="flipFlashcard()">Reveal Answer</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════════════ PROFILE ════════════════════ -->
 <div class="page" id="page-profile">
@@ -3605,32 +3568,6 @@ function renderHome() {
       ctx.beginPath();
       ctx.arc(0, H, 75, 0, Math.PI * 2);
       ctx.fill();
-
-      // Badges
-      var stats = getHeroCanvasStats();
-
-      // Top-Right Score Badge
-      ctx.fillStyle = '#0A0A0A';
-      drawRoundRect(ctx, W - 118, 16, 102, 54, 10);
-      ctx.fill();
-      ctx.fillStyle = '#F5C518';
-      ctx.font = 'bold 9px Syne, sans-serif';
-      ctx.fillText(stats.scoreLabel, W - 108, 32);
-      ctx.font = 'bold 22px Instrument Serif, serif';
-      ctx.fillText(stats.scoreText, W - 108, 58);
-
-      // Bottom-Left Cohort Badge
-      ctx.fillStyle = '#F5C518';
-      drawRoundRect(ctx, 14, H - 66, 155, 52, 10);
-      ctx.fill();
-      ctx.strokeStyle = '#0A0A0A';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-      ctx.fillStyle = '#0A0A0A';
-      ctx.font = 'bold 9px Syne, sans-serif';
-      ctx.fillText(stats.rankText, 22, H - 45);
-      ctx.font = 'bold 11px Syne, sans-serif';
-      ctx.fillText(stats.subText, 22, H - 27);
 
       t += 0.012;
     } catch (err) {
@@ -6956,7 +6893,7 @@ var TRAP_ROUNDS = [
   {
     topic: 'Molecular Basis - DNA Replication & Enzymes',
     statements: [
-      { text: 'DNA polymerase synthesizes the new complementary strand exclusively in 5' to 3' direction.', isTrap: false },
+      { text: "DNA polymerase synthesizes the new complementary strand exclusively in 5' to 3' direction.", isTrap: false },
       { text: 'Meselson and Stahl confirmed semi-conservative replication using radioactive 32P.', isTrap: true, explanation: 'TRAP CAUGHT! Meselson and Stahl used 15N (a heavy non-radioactive isotope of nitrogen), NOT radioactive 32P! Hershey and Chase used 32P and 35S.' },
       { text: 'Okazaki fragments on the lagging strand are covalently joined together by DNA ligase.', isTrap: false },
       { text: 'Replication fork unwinding produces supercoiling strain relieved by topoisomerase.', isTrap: false }
