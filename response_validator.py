@@ -3,7 +3,7 @@ BioNEET-Pro — Response Validator & Grounding Guardrail
 =====================================================
 Post-generation verification pipeline ensuring all outgoing tutor responses:
 1. Are free of system prompt leakage, internal tokens, and API credentials.
-2. Comply with Dr. Priya safety, persona, and tone guidelines.
+2. Comply with Dr. Arya safety, persona, and tone guidelines.
 3. Contain verified NCERT scientific facts and avoid hallucinated biological errors.
 4. Tracks system-wide compliance metrics across all generated turns.
 5. Provides safe fallback substitution if an output fails validation.
@@ -48,7 +48,7 @@ class ResponseValidator:
     ]
 
     SAFE_FALLBACK_TEMPLATE = (
-        "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+        "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
         "*\"Let's review this high-yield NCERT Biology topic together:\"*\n\n"
         "📖 **Core NCERT Concept:**\n"
         "Every concept in NEET Biology is grounded directly in the Class 11 and Class 12 NCERT textbooks. "

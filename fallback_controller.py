@@ -105,7 +105,7 @@ class EmergencyFallbackController:
                     time.sleep(1.0)
 
             tagged_reply = (
-                "👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Emergency Fallback Mode]:**\n"
+                "👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Emergency Fallback Mode]:**\n"
                 "*\"(Note: This answer was resolved via external verified assistance because local evidence was below confidence threshold)*\"\n\n"
                 f"{raw_reply}"
             )

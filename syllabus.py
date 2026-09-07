@@ -272,7 +272,7 @@ def _domain_hit(clean: str, term: str) -> bool:
 
 
 OUT_OF_SYLLABUS_MESSAGE = (
-    "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n"
+    "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n"
     "*\"I am strictly specialized in the **BioNEETPro NEET Biology Syllabus** (Class 11 & Class 12 NCERT Botany and Zoology).*\"\n\n"
     "⚠️ **Syllabus Boundary Notice:**\n"
     "Your question appears to be outside our approved 38-chapter Biology curriculum (or belongs to non-biology domains like Physics, Chemistry, or general topics).\n\n"

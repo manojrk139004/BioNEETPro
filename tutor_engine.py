@@ -342,7 +342,7 @@ class PedagogicalTracker:
 
         if step_number == 1:
             content = (
-                f"### 👩‍⚕️ Dr. Priya (AI Biology Mentor):\n"
+                f"### 👩‍⚕️ Dr. Arya (AI Biology Mentor):\n"
                 f"*\"Great to explore this with you! **{title}** is one of the most high-frequency conceptual questions in {chap}. Let's look at the core NCERT foundation:\"*\n\n"
                 f"**Chapter**: {chap} ({data['chapter_id'].upper()})  \n"
                 f"**Core Topic**: {data['topic']} — *{title}*\n\n"
@@ -353,14 +353,14 @@ class PedagogicalTracker:
             steps_raw = str(data["mechanism_steps"]).split(" -> ")
             formatted_steps = "\n".join(f"- **{s.strip()}**" for s in steps_raw)
             content = (
-                f"### 👩‍⚕️ Dr. Priya (AI Biology Mentor) — Step 2: Biological Mechanism & Process Steps\n"
+                f"### 👩‍⚕️ Dr. Arya (AI Biology Mentor) — Step 2: Biological Mechanism & Process Steps\n"
                 f"*\"Now, let's look behind the scenes! Follow this step-by-step sequence carefully—NEET examiners love asking questions on the chronological order of these events:\"*\n\n"
                 f"{formatted_steps}\n\n"
                 f"*Does this biological sequence make sense? In Step 3, I'll show you the exact traps students fall into.*"
             )
         elif step_number == 3:
             content = (
-                f"### 👩‍⚕️ Dr. Priya (AI Biology Mentor) — Step 3: NEET Traps & Hacks\n"
+                f"### 👩‍⚕️ Dr. Arya (AI Biology Mentor) — Step 3: NEET Traps & Hacks\n"
                 f"*\"Pay very close attention here! Over 40% of students lose negative marks because examiners twist these exact points:\"*\n\n"
                 f"**⚠️ Critical NEET Traps & Common Exam Pitfalls**:\n\n"
                 f"{data['neet_traps']}\n\n"
@@ -374,7 +374,7 @@ class PedagogicalTracker:
                 "correct_index": int(data["correct_answer"])
             }
             content = (
-                f"### 👩‍⚕️ Dr. Priya (AI Biology Mentor):\n"
+                f"### 👩‍⚕️ Dr. Arya (AI Biology Mentor):\n"
                 f"*\"You've learned the concept, the mechanism, and the traps! Now let's do a 30-second rapid diagnostic check to test your mastery. Select your answer below:\"*"
             )
 
@@ -408,7 +408,7 @@ class PedagogicalTracker:
             "related_nodes": session["related_nodes"],
             "predicted_next_steps": predictions,
             "mentor": {
-                "name": "Dr. Priya",
+                "name": "Dr. Arya",
                 "role": "Senior AI Biology Mentor & NEET Specialist",
                 "avatar": "👩‍⚕️",
                 "tagline": "Interactive Socratic Mentorship • Predictive Step Guidance"

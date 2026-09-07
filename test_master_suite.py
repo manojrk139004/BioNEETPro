@@ -118,7 +118,7 @@ class TestAdaptiveTutor(unittest.TestCase):
         res = adaptive_tutor.generate_tutoring_response("why leaf is green?", student_id="unit_test_student")
         self.assertEqual(res["status"], "success")
         self.assertIn("Chlorophyll", res["reply"])
-        self.assertIn("Dr. Priya", res["reply"])
+        self.assertTrue("Dr. Arya" in res["reply"] or "Dr. Arya" in res["reply"])
 
     def test_out_of_syllabus_refusal(self):
         res = adaptive_tutor.generate_tutoring_response("Explain quantum electrodynamics", student_id="unit_test_student")

@@ -263,7 +263,7 @@ def demo_ai_answer(message, student_id="student_local", history=None, context=No
     clean = (message or "").strip()
     if not clean:
         return (
-            "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n"
+            "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n"
             "*\"Please ask any NCERT Biology doubt or request practice MCQs!\"*"
         )
 

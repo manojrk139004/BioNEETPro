@@ -490,13 +490,13 @@ class LocalMCQEngine:
 
     def format_mcq_intro(self, mcq_result: Dict[str, Any]) -> str:
         """
-        Formats a clean, spoiler-free introductory prompt for Dr. Priya.
+        Formats a clean, spoiler-free introductory prompt for Dr. Arya.
         Answers and explanations are held back so the student can attempt the interactive test.
         """
         mcqs = mcq_result.get("mcqs", [])
         if not mcqs:
             return (
-                "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+                "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
                 "*\"I could not retrieve enough verified MCQs for this specific topic right now. "
                 "Try asking 'Give me 5 MCQs on Animal Kingdom' or 'Give me 3 questions on Photosynthesis'!\"*"
             )
@@ -507,19 +507,19 @@ class LocalMCQEngine:
         count = len(mcqs)
 
         return (
-            f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [On-Demand NEET MCQ Practice]:**\n\n"
+            f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [On-Demand NEET MCQ Practice]:**\n\n"
             f"*\"Here are **{count} high-yield MCQs** on **{topic}** (Difficulty: **{diff}** — *{mode}*):\"*\n\n"
             f"📝 Select your answer for each question below and click **Submit All Answers** at the bottom to evaluate your test and see NCERT explanations!"
         )
 
     def format_mcqs_for_chat(self, mcq_result: Dict[str, Any]) -> str:
         """
-        Formats generated MCQs into an interactive Markdown prompt for Dr. Priya.
+        Formats generated MCQs into an interactive Markdown prompt for Dr. Arya.
         """
         mcqs = mcq_result.get("mcqs", [])
         if not mcqs:
             return (
-                "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n"
+                "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n"
                 "*\"I could not retrieve enough verified MCQs for this specific topic right now. "
                 "Try asking 'Give me 5 MCQs on Mitochondria' or 'Give me 3 questions on Photosynthesis'!\"*"
             )
@@ -529,7 +529,7 @@ class LocalMCQEngine:
         topic = mcq_result.get("topic", "NEET Biology")
 
         lines = [
-            f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [On-Demand NEET MCQ Test]:**",
+            f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [On-Demand NEET MCQ Test]:**",
             f"*\"Here are **{len(mcqs)} high-yield MCQs** on **{topic}** (Difficulty: **{diff}** — *{mode}*):\"*\n",
             "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         ]

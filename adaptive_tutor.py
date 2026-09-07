@@ -1,5 +1,5 @@
 """
-BioNEETPro - Adaptive Pedagogical Biology AI Tutor Engine (Dr. Priya)
+BioNEETPro - Adaptive Pedagogical Biology AI Tutor Engine (Dr. Arya)
 =====================================================================
 Implements:
 1. Socratic Mastery-Aware Teaching Adaptation (Novice to NEET Ready)
@@ -135,7 +135,7 @@ EVIDENCE_END = "[VERIFIED NCERT EVIDENCE END]"
 
 class AdaptiveBiologyTutor:
     """
-    Adaptive Biology Tutor Engine embodying Dr. Priya's Socratic teaching methodology.
+    Adaptive Biology Tutor Engine embodying Dr. Arya's Socratic teaching methodology.
     Now with guided lesson mode, answer evaluation, and misconception handling.
     """
 
@@ -487,7 +487,7 @@ class AdaptiveBiologyTutor:
         stage = state["current_step_index"] + 1
         total = len(state["lesson_steps"])
         
-        header = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Guided Lesson: Stage {stage}/{total}]:**\n"
+        header = f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Guided Lesson: Stage {stage}/{total}]:**\n"
         header += f"*\"Let's learn **{title}** step by step. Here's stage {stage}:\"*\n\n"
         
         if step_type == "definition":
@@ -529,13 +529,13 @@ class AdaptiveBiologyTutor:
                 reply += top.get("definition", "See NCERT for the detailed mechanism.")
                 
         elif follow_up_type == "what_does_it_do":
-            reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+            reply = f"👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
             reply += f"⚙️ **Function of {concept_name}:**\n\n"
             reply += top.get("definition", "See NCERT for the function.")
             
         elif follow_up_type == "make_it_harder":
             # Escalate strategy
-            reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+            reply = f"👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
             reply += f"🎯 **Leveling up!** Let's dive deeper into **{concept_name}**:\n\n"
             # Add NEET traps
             for r in retrieval_results:
@@ -546,7 +546,7 @@ class AdaptiveBiologyTutor:
             
         elif follow_up_type == "make_it_easier":
             # Simplify
-            reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+            reply = f"👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
             reply += f"📚 **Simpler explanation of {concept_name}:**\n\n"
             # Use analogy if available
             chap_id = top.get("chapter_id", "")
@@ -565,11 +565,11 @@ class AdaptiveBiologyTutor:
                 state["pending_check_question"] = self._generate_check_question(step_type, step_content, concept_name)
                 return self._format_lesson_step(state, step_type, step_content, concept_name, top.get("chapter_name", ""))
             else:
-                reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+                reply = f"👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
                 reply += f"✅ **Great!** Ready for the next concept or would you like MCQs on **{concept_name}**?"
         
         elif follow_up_type == "example":
-            reply = f"👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+            reply = f"👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
             reply += f"💡 **Example for {concept_name}:**\n\n"
             # Try to find example in retrieval
             for r in retrieval_results:
@@ -740,7 +740,7 @@ class AdaptiveBiologyTutor:
             )
 
         system_instruction = (
-            "You are Dr. Priya, BioNEETPro's NEET Biology mentor. Answer from the NCERT curriculum and the evidence below. "
+            "You are Dr. Arya, BioNEETPro's NEET Biology mentor. Answer from the NCERT curriculum and the evidence below. "
             f"{evidence_rule}"
             "3) Cite sources inline like [E1], [E2] after each paragraph where evidence is used. "
             "4) Shape: one-line direct answer first, then mechanism/steps, then exactly 3 NEET traps, then one check question WITHOUT its answer. "
@@ -795,7 +795,7 @@ class AdaptiveBiologyTutor:
                     continue
                 tag = "NCERT Grounded" if not is_partial else "NCERT Augmented"
                 header = (
-                    f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [{tag} • {strategy.replace('_', ' ').title()}]:**\n\n"
+                    f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [{tag} • {strategy.replace('_', ' ').title()}]:**\n\n"
                 )
                 return header + content
             except Exception:
@@ -833,7 +833,7 @@ class AdaptiveBiologyTutor:
         }
 
         system_instruction = (
-            "You are Dr. Priya, BioNEETPro's expert Senior AI Biology Mentor for NEET-UG aspirants. "
+            "You are Dr. Arya, BioNEETPro's expert Senior AI Biology Mentor for NEET-UG aspirants. "
             "The student is asking about a concept from the NCERT Biology curriculum. "
             "Explain this topic thoroughly, rigorously, and pedagogically according to the NCERT Class 11 & 12 textbooks.\n\n"
             "Requirements:\n"
@@ -869,7 +869,7 @@ class AdaptiveBiologyTutor:
 
         def _build_tier3_payload(content_text: str, used_model: str) -> Dict[str, Any]:
             header = (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [NCERT Biology Curriculum • External Verified Fallback]:**\n\n"
+                f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [NCERT Biology Curriculum • External Verified Fallback]:**\n\n"
             )
             footer = (
                 f"\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
@@ -974,7 +974,7 @@ class AdaptiveBiologyTutor:
             if not rep_tokens or not ev_tokens:
                 return 0.0
             # Ignore generic tutor scaffolding words
-            scaffold = {"neet", "ncert", "priya", "mentor", "biology", "chapter", "traps",
+            scaffold = {"neet", "ncert", "arya", "priya", "mentor", "biology", "chapter", "traps",
                         "mechanism", "step", "explanation", "answer", "question", "ask", "follow"}
             content = [w for w in rep_tokens if w not in scaffold]
             if not content:
@@ -1093,12 +1093,12 @@ class AdaptiveBiologyTutor:
         greeting_tokens = {
             "hi", "hello", "hey", "hola", "namaste", "vanakkam", "pranam",
             "good morning", "good afternoon", "good evening", "howdy", "greetings",
-            "hi priya", "hello priya", "hey priya", "hi dr priya", "hello dr priya", "dr priya",
+            "hi arya", "hello arya", "hey arya", "hi dr arya", "hello dr arya", "dr arya", "hi priya", "hello priya", "dr priya",
             "who are you", "what can you do", "help", "start", "menu"
         }
         if clean in greeting_tokens:
             return True
-        if re.match(r"^(hi|hello|hey|greetings|namaste)\s+(priya|dr priya|doctor|mentor|there|sir|maam|mam)?$", clean):
+        if re.match(r"^(hi|hello|hey|greetings|namaste)\s+(arya|dr arya|priya|dr priya|doctor|mentor|there|sir|maam|mam)?$", clean):
             return True
         return False
 
@@ -1111,8 +1111,8 @@ class AdaptiveBiologyTutor:
             {"label": "⚡ 5 Hard MCQs", "query": "Give me 5 hard MCQs in Biology"},
         ]
         reply = (
-            "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
-            "👋 **Hello! I'm Dr. Priya, your dedicated NEET Biology AI Mentor.**\n\n"
+            "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
+            "👋 **Hello! I'm Dr. Arya, your dedicated NEET Biology AI Mentor.**\n\n"
             "Ask me any doubt! I will explain biological concepts directly from NCERT, break down mechanisms step-by-step, share intuitive everyday analogies, and warn you about tricky NEET exam traps.\n\n"
             "**What would you like to master today?**\n"
             "• 🌿 **Plant Physiology:** Photosynthesis, Respiration in Plants, Plant Growth\n"
@@ -1257,7 +1257,7 @@ class AdaptiveBiologyTutor:
 
                 if is_wrong:
                     reply = (
-                        f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — Targeted MCQ Review:**\n\n"
+                        f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — Targeted MCQ Review:**\n\n"
                         f"Don't worry — clearing up mistakes on high-yield questions is how you hit 360/360 in NEET!\n\n"
                         f"❓ **Question {q_num}:** {q_text}\n\n"
                         f"✅ **Correct Answer:** **({letter}) {correct_ans}**\n\n"
@@ -1269,7 +1269,7 @@ class AdaptiveBiologyTutor:
                     )
                 elif is_right:
                     reply = (
-                        f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — Quiz Verification:**\n\n"
+                        f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — Quiz Verification:**\n\n"
                         f"🎯 **Spot on!** You got Question {q_num} right:\n\n"
                         f"❓ **Question {q_num}:** {q_text}\n"
                         f"✅ **Answer:** **({letter}) {correct_ans}**\n\n"
@@ -1278,7 +1278,7 @@ class AdaptiveBiologyTutor:
                     )
                 else:
                     reply = (
-                        f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — Question {q_num} Review:**\n\n"
+                        f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — Question {q_num} Review:**\n\n"
                         f"❓ **Question {q_num}:** {q_text}\n\n"
                         f"✅ **Correct Answer:** **({letter}) {correct_ans}**\n\n"
                         f"📖 **NCERT Explanation:**\n{explanation}\n\n"
@@ -1301,7 +1301,7 @@ class AdaptiveBiologyTutor:
                 hint = f" on **{focal[1]}**" if focal else ""
                 return {
                     "reply": (
-                        "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n"
+                        "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n"
                         f"*\"Noted — let's review Question {q_num}{hint}. "
                         "I don't see an active test in your current session, but if you paste the question or tell me the topic, "
                         "I'll break down the exact NCERT concept and common traps for you! "
@@ -1378,7 +1378,7 @@ class AdaptiveBiologyTutor:
 
         controlled_refusal = {
             "reply": (
-                "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n"
+                "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n"
                 "*\"I couldn't find enough verified NCERT evidence for that specific Biology question in my local textbook knowledge base. "
                 "Try asking about an NCERT topic such as Mitochondria, Cell Division, Photosynthesis, or Human Neural Control.\"*\n\n"
             ),
@@ -1576,36 +1576,36 @@ class AdaptiveBiologyTutor:
         # Personality Header
         if strategy == "remedial_diagnostic":
             header_intro = (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor • Adaptive Remediation • Foundations Rebuild]:**\n"
+                f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Local Algorithmic Tutor • Adaptive Remediation • Foundations Rebuild]:**\n"
                 f"*\"This is our **Adaptive Remediation** pass for **{title}** — mistakes show the foundation needs a rebuild, "
                 f"so let's reconstruct it from its prerequisite upward!\"*"
             )
         elif strategy == "process_flow":
             header_intro = (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor • Adaptive Remediation • Process Flow]:**\n"
+                f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Local Algorithmic Tutor • Adaptive Remediation • Process Flow]:**\n"
                 f"*\"**Adaptive Remediation** for **{title}**: let's walk the strict step-by-step chain slowly — "
                 f"this is where the errors are creeping in!\"*"
             )
         elif is_explain_again or mistake_count >= 2:
             header_intro = (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor • Analogy & Simplification • Adaptive Remediation]:**\n"
+                f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Local Algorithmic Tutor • Analogy & Simplification • Adaptive Remediation]:**\n"
                 f"*\"I noticed you want another look at **{title}**. "
                 f"Let's step back and look at the intuitive biological mental model so this clicks completely!\"*"
             )
         elif strategy == "advanced_concise":
             header_intro = (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor • NEET Mastery Mode]:**\n"
+                f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Local Algorithmic Tutor • NEET Mastery Mode]:**\n"
                 f"*\"You have a solid foundation here! Let's zero in on high-yield NCERT nuances and exam traps for **{title}**:\"*"
             )
         elif strategy == "simplified_steps":
             header_intro = (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor • Step-by-Step Foundations]:**\n"
+                f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Local Algorithmic Tutor • Step-by-Step Foundations]:**\n"
                 f"*\"Let's break down **{title}** into clear, bite-sized NCERT facts:\"*"
             )
         else:
             greeting_verb = "Why this works in NCERT Biology" if is_why else "Here is your authoritative NCERT breakdown"
             header_intro = (
-                f"👩‍⚕️ **Dr. Priya (AI Biology Mentor) — [Local Algorithmic Tutor]:**\n"
+                f"👩‍⚕️ **Dr. Arya (AI Biology Mentor) — [Local Algorithmic Tutor]:**\n"
                 f"*\"{greeting_verb} for **{title}**:\"*"
             )
 

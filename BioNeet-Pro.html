@@ -730,22 +730,216 @@ footer { background:var(--ink); color:#999; padding:60px 32px 32px; margin-top:8
    HERO SECTION
 ──────────────────────────────────────────────────── */
 #hero-canvas { position:absolute; inset:0; z-index:0; pointer-events:none; }
+/* ─── HERO (TOP-NOTCH FIGMA AESTHETICS & MICRO-ANIMATIONS) ─── */
 .hero {
-  min-height:calc(100vh - var(--nav)); background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,249,230,.78));
-  display:flex; align-items:center; padding:60px 40px; position:relative; overflow:hidden;
-  border-bottom:3px solid var(--ink);
+  min-height: calc(100vh - var(--nav));
+  background: radial-gradient(circle at 85% 20%, rgba(245, 197, 24, 0.14) 0%, transparent 50%),
+              radial-gradient(circle at 15% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 45%),
+              var(--bg);
+  display: flex;
+  align-items: center;
+  padding: 50px 36px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--ink);
 }
-.hero-content { max-width:1160px; margin:0 auto; width:100%; position:relative; z-index:2; }
-.hero-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center; }
-@media(max-width:860px){.hero-grid{grid-template-columns:1fr;}}
-.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:var(--y); border-radius:99px; padding:6px 16px; font-size:.72rem; font-weight:800; margin-bottom:20px; letter-spacing:.08em; text-transform:uppercase; }
-.hero-title { font-family:'Instrument Serif',serif; font-size:3.6rem; font-weight:400; line-height:1.12; margin-bottom:20px; }
-.hero-title .hl { color:var(--y); font-style:italic; background:var(--ink); padding:2px 8px; border-radius:6px; }
-.hero-sub { font-size:1.04rem; color:var(--muted); line-height:1.75; margin-bottom:30px; max-width:560px; }
-.hero-btns { display:flex; gap:13px; flex-wrap:wrap; margin-bottom:40px; }
-.hero-stats { display:flex; gap:32px; flex-wrap:wrap; }
-.hero-stat h4 { font-size:1.6rem; font-weight:800; font-family:'Instrument Serif',serif; }
-.hero-stat p { font-size:.73rem; color:var(--muted); font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(10, 10, 10, 0.04) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-content { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center; }
+
+/* Animated Badge Pill */
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--sur);
+  border: 2px solid var(--ink);
+  padding: 5px 14px 5px 10px;
+  border-radius: 99px;
+  box-shadow: 3px 3px 0 var(--ink);
+  margin-bottom: 20px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  animation: heroBadgeFloat 4s ease-in-out infinite;
+}
+@keyframes heroBadgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.hero-badge-pill .pulse-spark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--y);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  font-size: 0.72rem;
+}
+.badge-target {
+  background: var(--ink);
+  color: var(--y);
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.6rem, 5.2vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+.hero-title .hl {
+  background: var(--y);
+  color: var(--ink);
+  padding: 2px 10px;
+  border-radius: var(--rs);
+  border: 2.5px solid var(--ink);
+  box-shadow: 3.5px 3.5px 0 var(--ink);
+  display: inline-block;
+  transform: rotate(-1deg);
+  transition: transform 0.25s ease;
+  font-style: normal;
+}
+.hero-title .hl:hover { transform: rotate(0deg) scale(1.03); }
+
+.hero-sub {
+  font-size: 1.04rem;
+  color: var(--muted);
+  line-height: 1.72;
+  margin-bottom: 30px;
+  max-width: 520px;
+  font-weight: 500;
+}
+.hero-sub strong { color: var(--ink); font-weight: 700; }
+
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 38px; }
+.hero-cta-btn {
+  background: var(--y);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink), 0 8px 24px rgba(245, 197, 24, 0.35);
+  font-weight: 800;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+}
+.hero-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 var(--ink), 0 12px 30px rgba(245, 197, 24, 0.5);
+}
+.hero-sec-btn {
+  background: var(--sur);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+  font-weight: 700;
+  transition: all 0.2s ease;
+  padding: 14px 24px;
+}
+.hero-sec-btn:hover {
+  background: var(--ylight);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding-top: 24px;
+  border-top: 2px solid var(--ink);
+}
+.hero-stat h4 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  font-family: 'Syne', sans-serif;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.hero-stat .stat-highlight { color: #15803d; }
+.hero-stat p {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 3D Visual Area with Floating Glassmorphic Badges */
+.hero-viz {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+canvas#hero3d {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: 480px;
+  border-radius: var(--rl);
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink), 0 20px 40px rgba(0,0,0,0.08);
+  background: #FFFEF8;
+}
+
+.floating-hero-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--ink);
+  border-radius: var(--rs);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 4px 4px 0 var(--ink);
+  z-index: 5;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+.floating-hero-card strong { font-size: 0.78rem; font-weight: 800; color: var(--ink); display: block; }
+.floating-hero-card p { font-size: 0.67rem; color: var(--muted); margin: 0; font-weight: 600; }
+.floating-hero-card .f-icon { font-size: 1.3rem; }
+.float-card-1 { top: 20px; left: -24px; animation: floatSlow1 6s infinite ease-in-out; }
+.float-card-2 { bottom: 25px; right: -20px; animation: floatSlow2 7s infinite ease-in-out; }
+.float-card-3 { bottom: -16px; left: 10px; animation: floatSlow1 8s infinite ease-in-out; animation-delay: -3s; }
+
+@keyframes floatSlow1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+@keyframes floatSlow2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-1.2deg); }
+}
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .floating-hero-card { display: none; }
+  canvas#hero3d { height: 380px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+}
 
 /* 3D floating card in hero */
 .hero-viz { position:relative; width:100%; height:480px; }
@@ -927,26 +1121,58 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <div class="hero-grid">
         <!-- LEFT -->
         <div>
-          <div class="hero-eyebrow">🧬 Context Sensitive AI Tutor Topic</div>
+          <div class="hero-badge-pill">
+            <span class="pulse-spark">✨</span>
+            <span>Next-Gen Context-Sensitive AI Tutor</span>
+            <span class="badge-target">NEET 2027 / 2028</span>
+          </div>
           <h1 class="hero-title">
-            Context Sensitive<br>
-            AI Tutor for<br>
+            Context-Sensitive<br>
+            AI Mentor for<br>
             <span class="hl">NEET</span> Biology.
           </h1>
-          <p class="hero-sub">A complete NEET Biology command center where the AI tutor adapts answers using selected chapter, topic context, chat history, mock performance, and NCERT exam goals.</p>
+          <p class="hero-sub">
+            India's most advanced AI Biology command center. Powered by <strong>Dr. Arya</strong> — master NCERT biological mechanisms, conquer tricky exam traps, and achieve <strong>360/360</strong> in NEET 2027 &amp; 2028 with adaptive multi-MCQ practice tests and instant doubt solving.
+          </p>
           <div class="hero-btns">
-            <button class="btn btn-primary btn-xl" onclick="go('register')">🚀 Start Free Today</button>
-            <button class="btn btn-outline btn-xl" onclick="go('mcq')">📝 Try Mock Test</button>
+            <button class="btn btn-primary btn-xl hero-cta-btn" onclick="go('ai-tutor')">
+              <span>🤖 Ask Dr. Arya Now</span>
+              <span>→</span>
+            </button>
+            <button class="btn btn-outline btn-xl hero-sec-btn" onclick="go('mcq')">
+              <span>📝 Practice Mock Test</span>
+            </button>
           </div>
           <div class="hero-stats">
-            <div class="hero-stat"><h4>38</h4><p>Chapter Banks</p></div>
-            <div class="hero-stat"><h4>38</h4><p>Chapters</p></div>
-            <div class="hero-stat"><h4>AI</h4><p>Powered</p></div>
-            <div class="hero-stat"><h4 id="heroStudents">0</h4><p>Students</p></div>
+            <div class="hero-stat"><h4>38 / 38</h4><p>NCERT Chapters</p></div>
+            <div class="hero-stat"><h4>1,480+</h4><p>Active MCQs</p></div>
+            <div class="hero-stat"><h4 class="stat-highlight">&lt; 100ms</h4><p>AI Speed</p></div>
+            <div class="hero-stat"><h4 id="heroStudents">1,240+</h4><p>Aspirants Enrolled</p></div>
           </div>
         </div>
-        <!-- RIGHT: 3D CANVAS -->
+        <!-- RIGHT: 3D CANVAS & FLOATING BADGES -->
         <div class="hero-viz">
+          <div class="floating-hero-card float-card-1">
+            <span class="f-icon">🧬</span>
+            <div>
+              <strong>NCERT Biology 360</strong>
+              <p>38 Chapters Rationalized</p>
+            </div>
+          </div>
+          <div class="floating-hero-card float-card-2">
+            <span class="f-icon">👨‍⚕️</span>
+            <div>
+              <strong>Dr. Arya AI</strong>
+              <p style="color:var(--green);font-weight:700">🟢 Online • Sub-100ms</p>
+            </div>
+          </div>
+          <div class="floating-hero-card float-card-3">
+            <span class="f-icon">🎯</span>
+            <div>
+              <strong>NEET 2027 / 2028</strong>
+              <p>High-Yield Mock Engine</p>
+            </div>
+          </div>
           <canvas id="hero3d" width="440" height="480"></canvas>
         </div>
       </div>
@@ -1042,7 +1268,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
         <h3>BioNEET Pro</h3>
         <p>India's most advanced NEET Biology preparation platform. Powered by real AI for real results.</p>
         <div style="margin-top:16px;display:flex;gap:9px;flex-wrap:wrap">
-          <div class="badge by">NEET 2025</div>
+          <div class="badge by">NEET 2027 / 2028</div>
           <div class="badge by" style="background:transparent;border-color:var(--y);color:var(--y)">Free Platform</div>
         </div>
       </div>
@@ -1050,7 +1276,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <div class="fc"><h4>Insights</h4><a onclick="go('updates')">NEET Updates</a><a onclick="go('prediction')">Score Prediction</a><a onclick="go('leaderboard')">Leaderboard</a></div>
       <div class="fc"><h4>Account</h4><a onclick="go('login')">Login</a><a onclick="go('register')">Register</a><a onclick="go('admin-login')">Admin Portal</a></div>
     </div>
-    <div class="footer-bot"><p>© 2025 <span>BioNEET Pro</span>. All rights reserved.</p><p>Crafted with ❤️ for NEET aspirants</p></div>
+    <div class="footer-bot"><p>© 2026-2027 <span>BioNEET Pro</span>. All rights reserved.</p><p>Crafted with ❤️ for NEET aspirants</p></div>
   </footer>
 </div>
 
@@ -1097,13 +1323,13 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
         <p>Start your NEET Biology journey today — free forever</p>
       </div>
       <div class="form-row">
-        <div class="fg"><label class="fl">First Name</label><input class="fi" id="rFirst" placeholder="Priya"></div>
+        <div class="fg"><label class="fl">First Name</label><input class="fi" id="rFirst" placeholder="Arya"></div>
         <div class="fg"><label class="fl">Last Name</label><input class="fi" id="rLast" placeholder="Sharma"></div>
       </div>
       <div class="fg"><label class="fl">Email</label><input class="fi" id="rEmail" type="email" placeholder="you@example.com"></div>
       <div class="fg"><label class="fl">Phone</label><input class="fi" id="rPhone" type="tel" placeholder="+91 98765 43210"></div>
       <div class="fg"><label class="fl">Target Year</label>
-        <select class="fs" id="rYear"><option>NEET 2025</option><option>NEET 2026</option><option>NEET 2027</option></select>
+        <select class="fs" id="rYear"><option>NEET 2027</option><option>NEET 2028</option><option>NEET 2029</option></select>
       </div>
       <div class="fg"><label class="fl">Password</label><input class="fi" id="rPass" type="password" placeholder="Create a strong password"></div>
       <button class="btn btn-primary" style="width:100%;justify-content:center;padding:13px" onclick="doRegister()">Create My Account →</button>
@@ -1139,7 +1365,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       </div>
       <div style="display:flex;align-items:center;gap:9px;padding:12px 10px;background:rgba(245,197,24,.1);border-radius:var(--rs);margin-bottom:20px;border:1px solid rgba(245,197,24,.2)">
         <div class="avatar" id="sideAv" style="width:36px;height:36px;font-size:.82rem">S</div>
-        <div><p style="font-weight:700;font-size:.83rem;color:#fff" id="sideName">Student</p><p style="font-size:.7rem;color:#777" id="sideTarget">NEET 2025</p></div>
+        <div><p style="font-weight:700;font-size:.83rem;color:#fff" id="sideName">Student</p><p style="font-size:.7rem;color:#777" id="sideTarget">NEET 2027</p></div>
       </div>
       <div class="sl-label">Study</div>
       <div class="sl active" onclick="go('dashboard')"><span>🏠</span> Dashboard</div>
@@ -1327,10 +1553,10 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <div class="tutor-profile-info">
         <div class="tutor-avatar-wrap">
           👩‍⚕️
-          <span class="tutor-online-badge" title="Dr. Priya Online"></span>
+          <span class="tutor-online-badge" title="Dr. Arya Online"></span>
         </div>
         <div class="tutor-name-wrap">
-          <h2>Dr. Priya Sharma <span class="tutor-sub-tag">Senior AI Biology Mentor</span></h2>
+          <h2>Dr. Arya Sharma <span class="tutor-sub-tag">Senior AI Biology Mentor</span></h2>
           <p class="tutor-desc">Instant NCERT explanations • Step-by-step mechanisms • Batch MCQ practice tests</p>
         </div>
       </div>
@@ -1357,11 +1583,11 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
         <div class="chat-msg ai" id="msg-tutor-greeting">
           <div class="chat-av ai">AI</div>
           <div class="bubble" id="tutorGreetBubble">
-            👋 <strong>Namaste! I am Dr. Priya Sharma</strong>, your dedicated AI Biology Mentor for NEET UG.<br><br>
+            👋 <strong>Namaste! I am Dr. Arya Sharma</strong>, your dedicated AI Biology Mentor for NEET UG.<br><br>
             Ask me any doubt across <strong>Class 11 & Class 12 NCERT Biology</strong>! I will explain concepts directly, generate interactive multi-question practice tests with detailed explanations, and warn you about tricky NEET exam traps.<br><br>
             💡 <em>Click any quick topic below or type your question in the bar!</em>
             <div class="tts-bar">
-              <button type="button" class="btn-tts" onclick="speakMessage('msg-tutor-greeting', this)" title="Listen to Dr. Priya">
+              <button type="button" class="btn-tts" onclick="speakMessage('msg-tutor-greeting', this)" title="Listen to Dr. Arya">
                 <span class="tts-icon">🔊</span> <span class="tts-label">Listen</span>
               </button>
             </div>
@@ -1372,7 +1598,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <div class="chat-inp">
         <button type="button" class="btn btn-outline mic-btn" id="voiceBtn" onclick="toggleVoiceInput()" title="Speak your question">🎙️ Mic</button>
         <input type="text" id="chatIn" placeholder="Ask any NEET Biology doubt or request MCQs..." onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat();}">
-        <button type="button" class="btn btn-primary" id="sendBtn" onclick="sendChat()">Ask Priya →</button>
+        <button type="button" class="btn btn-primary" id="sendBtn" onclick="sendChat()">Ask Dr. Arya →</button>
       </div>
     </div>
   </div>
@@ -1487,8 +1713,8 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <span class="badge br">Live</span>
     </div>
     <div class="grid g2" style="margin-bottom:26px">
-      <div class="card" style="background:var(--ylight);border-color:var(--y)"><div style="font-size:1.8rem;margin-bottom:8px">📅</div><h3 style="font-weight:800;font-size:1rem;margin-bottom:5px">NEET UG 2025</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:10px">Exam tentatively scheduled. Registration expected to open soon. Stay updated!</p><span class="badge by">Upcoming</span></div>
-      <div class="card" style="background:#DCFCE7;border-color:var(--green)"><div style="font-size:1.8rem;margin-bottom:8px">📋</div><h3 style="font-weight:800;font-size:1rem;margin-bottom:5px">Syllabus 2025</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:10px">NMC has released the revised NEET syllabus. Some chapters removed from Physics and Chemistry.</p><span class="badge bg-badge">Updated</span></div>
+      <div class="card" style="background:var(--ylight);border-color:var(--y)"><div style="font-size:1.8rem;margin-bottom:8px">📅</div><h3 style="font-weight:800;font-size:1rem;margin-bottom:5px">NEET UG 2027</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:10px">Exam tentatively scheduled. Registration expected to open soon. Stay updated!</p><span class="badge by">Upcoming</span></div>
+      <div class="card" style="background:#DCFCE7;border-color:var(--green)"><div style="font-size:1.8rem;margin-bottom:8px">📋</div><h3 style="font-weight:800;font-size:1rem;margin-bottom:5px">Syllabus 2027-28</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:10px">NMC has released the revised NEET syllabus. Some chapters removed from Physics and Chemistry.</p><span class="badge bg-badge">Updated</span></div>
     </div>
     <div class="card"><h3 style="font-weight:800;font-size:.95rem;margin-bottom:20px">All Updates</h3><div id="updList"></div></div>
   </div>
@@ -1560,7 +1786,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
         <div>
           <h3 style="font-size:1.4rem;font-weight:800;color:#fff;font-family:'Instrument Serif',serif" id="profName">Student</h3>
           <p style="color:#888;font-size:.86rem" id="profEmail">—</p>
-          <div style="display:flex;gap:8px;margin-top:7px"><span class="badge by">Student</span><span class="badge by" id="profTarget" style="background:transparent;border-color:var(--y);color:var(--y)">NEET 2025</span></div>
+          <div style="display:flex;gap:8px;margin-top:7px"><span class="badge by">Student</span><span class="badge by" id="profTarget" style="background:transparent;border-color:var(--y);color:var(--y)">NEET 2027</span></div>
         </div>
       </div>
       <div class="grid g4">
@@ -1574,7 +1800,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
       <h3 style="font-weight:800;font-size:.95rem;margin-bottom:20px">Edit Profile</h3>
       <div class="form-row"><div class="fg"><label class="fl">First Name</label><input class="fi" id="eFirst" placeholder="First Name"></div><div class="fg"><label class="fl">Last Name</label><input class="fi" id="eLast" placeholder="Last Name"></div></div>
       <div class="fg"><label class="fl">Email</label><input class="fi" id="eEmail" type="email"></div>
-      <div class="fg"><label class="fl">Target Year</label><select class="fs" id="eTarget"><option>NEET 2025</option><option>NEET 2026</option><option>NEET 2027</option></select></div>
+      <div class="fg"><label class="fl">Target Year</label><select class="fs" id="eTarget"><option>NEET 2027</option><option>NEET 2028</option><option>NEET 2029</option></select></div>
       <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
     </div>
   </div>
@@ -1746,7 +1972,7 @@ canvas#hero3d { display:block; width:100%; height:100%; border-radius:var(--rl);
 <div class="overlay hidden" id="updModal">
   <div class="modal">
     <div class="mhdr"><h3 class="mtitle">Post NEET Update</h3><div class="mclose" onclick="closeModal('updModal')">✕</div></div>
-    <div class="fg"><label class="fl">Headline</label><input class="fi" id="uTitle" placeholder="e.g. NEET 2025 Registration Date Announced"></div>
+    <div class="fg"><label class="fl">Headline</label><input class="fi" id="uTitle" placeholder="e.g. NEET 2027 Registration Date Announced"></div>
     <div class="fg"><label class="fl">Description</label><textarea class="ft" id="uDesc" placeholder="Detailed update..."></textarea></div>
     <div class="form-row">
       <div class="fg"><label class="fl">Type</label><select class="fs" id="uType"><option>Official Notice</option><option>Exam Date</option><option>Result</option><option>Syllabus</option><option>Admit Card</option><option>General</option></select></div>
@@ -2079,8 +2305,8 @@ var SEED_VIDEOS = [
 ];
 
 var SEED_UPDATES = [
-  {id:1,title:'NEET UG 2025 Exam Date Announced',desc:'National Testing Agency has announced NEET UG 2025 exam date. Candidates must register before the last date.',type:'Exam Date',priority:'High',date:new Date().toISOString()},
-  {id:2,title:'NEET 2025 Revised Syllabus Released',desc:'NMC has released the revised NEET 2025 syllabus. Check the official website for removed topics in Physics and Chemistry.',type:'Syllabus',priority:'High',date:new Date(Date.now()-86400000*2).toISOString()},
+  {id:1,title:'NEET UG 2027 Exam Date Announced',desc:'National Testing Agency has announced NEET UG 2027 exam date. Candidates must register before the last date.',type:'Exam Date',priority:'High',date:new Date().toISOString()},
+  {id:2,title:'NEET 2027-2028 NCERT Rationalized Syllabus Released',desc:'NMC has released the revised NEET 2027-2028 rationalized syllabus. Check the official website for removed topics in Physics and Chemistry.',type:'Syllabus',priority:'High',date:new Date(Date.now()-86400000*2).toISOString()},
   {id:3,title:'New Study Material Added',desc:'BioNEET Pro has added 500+ new MCQs from Biotechnology and Genetics chapters.',type:'General',priority:'Medium',date:new Date(Date.now()-86400000*4).toISOString()}
 ];
 
@@ -2219,7 +2445,7 @@ async function doLogin() {
   }
 }
 function demoLogin() {
-  var demo = { id: 'demo', name: 'Demo Student', email: 'demo@bioneet.com', target: 'NEET 2026', role: 'student' };
+  var demo = { id: 'demo', name: 'Demo Student', email: 'demo@bioneet.com', target: 'NEET 2027', role: 'student' };
   DB.currentUser = demo; DB.isAdmin = false;
   localStorage.setItem('currentUser', JSON.stringify(DB.currentUser));
   localStorage.setItem('isAdmin', 'false');
@@ -2323,7 +2549,7 @@ async function loadUserProfile(firebaseUser) {
     id: firebaseUser.uid,
     name: firebaseUser.displayName || firebaseUser.email.split('@')[0],
     email: firebaseUser.email,
-    target: 'NEET 2026',
+    target: 'NEET 2027',
     role: 'student',
     joined: new Date().toISOString()
   };
@@ -2899,7 +3125,7 @@ async function renderDashboard() {
   if (sideName) sideName.textContent = u.name;
   
   var sideTarget = document.getElementById('sideTarget');
-  if (sideTarget) sideTarget.textContent = u.target || 'NEET 2025';
+  if (sideTarget) sideTarget.textContent = u.target || 'NEET 2027';
 
   try {
     // Get user's results from Firebase
@@ -3982,7 +4208,7 @@ function renderTutorGreeting() {
     bubble.dataset.personalized = '1';
     var span = document.createElement('div');
     span.style.cssText = 'font-weight:800;margin-bottom:6px';
-    span.textContent = 'Hi, ' + name + '! 👋 I\'m Dr. Priya, your Biology mentor. What are we learning today?';
+    span.textContent = 'Hi, ' + name + '! 👋 I\'m Dr. Arya, your Biology mentor. What are we learning today?';
     bubble.insertBefore(span, bubble.firstChild);
   } catch (e) {}
 }
@@ -4332,7 +4558,7 @@ function localTutorFallback(question, error) {
   var safeErr = formatAIReply(String(error == null ? "" : error)).substring(0, 300);
   var mentorHeader = '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid #e2e8f0">' +
     '<span style="font-size:1.6rem;background:#fef08a;padding:4px 8px;border-radius:50%;border:1.5px solid #0a0a0a">👩‍⚕️</span>' +
-    '<div><strong style="font-size:0.95rem;color:#0a0a0a">Dr. Priya (Senior AI Biology Mentor)</strong><br>' +
+    '<div><strong style="font-size:0.95rem;color:#0a0a0a">Dr. Arya (Senior AI Biology Mentor)</strong><br>' +
     '<span style="font-size:0.72rem;background:#0a0a0a;color:#f5c518;padding:1px 6px;border-radius:4px;font-weight:800">CONNECTION NOTICE - NO ANSWER FABRICATED</span></div></div>';
   return mentorHeader +
     '<em>"I could not reach the BioNEETPro tutor backend, so I am not guessing an answer."</em><br><br>' +
@@ -4479,10 +4705,10 @@ function speakMessage(msgId, btn) {
 
   var voices = window.speechSynthesis.getVoices();
   if (voices && voices.length) {
-    var priyaVoice = voices.find(v => (v.lang === 'en-IN' || v.lang.startsWith('en')) && /female|priya|google|natural|samantha|zira|kavya|victoria/i.test(v.name))
+    var aryaVoice = voices.find(v => (v.lang === 'en-IN' || v.lang.startsWith('en')) && /female|arya|google|natural|samantha|zira|kavya|victoria/i.test(v.name))
                   || voices.find(v => v.lang === 'en-IN')
                   || voices.find(v => v.lang.startsWith('en'));
-    if (priyaVoice) utterance.voice = priyaVoice;
+    if (aryaVoice) utterance.voice = aryaVoice;
   }
 
   currentSpeakingBtn = btn;
@@ -4513,7 +4739,7 @@ function appendMsg(text, role) {
 
   var ttsHtml = '';
   if (role === 'ai') {
-    ttsHtml = '<div class="tts-bar"><button type="button" class="btn-tts" onclick="speakMessage(\'' + msgId + '\', this)" title="Listen to Dr. Priya"><span class="tts-icon">🔊</span> <span class="tts-label">Listen</span></button></div>';
+    ttsHtml = '<div class="tts-bar"><button type="button" class="btn-tts" onclick="speakMessage(\'' + msgId + '\', this)" title="Listen to Dr. Arya"><span class="tts-icon">🔊</span> <span class="tts-label">Listen</span></button></div>';
   }
 
   msgs.innerHTML += '<div class="chat-msg ' + role + '" id="' + msgId + '"><div class="chat-av ' + (role === 'ai' ? 'ai' : 'usr') + '">' + av + '</div><div class="bubble">' + text + ttsHtml + '</div></div>';
@@ -4944,11 +5170,11 @@ function renderProfile() {
   document.getElementById('profAv').textContent = (u.name||'S')[0].toUpperCase();
   document.getElementById('profName').textContent = u.name;
   document.getElementById('profEmail').textContent = u.email;
-  document.getElementById('profTarget').textContent = u.target || 'NEET 2025';
+  document.getElementById('profTarget').textContent = u.target || 'NEET 2027';
   document.getElementById('eFirst').value = (u.name||'').split(' ')[0];
   document.getElementById('eLast').value = (u.name||'').split(' ').slice(1).join(' ');
   document.getElementById('eEmail').value = u.email || '';
-  document.getElementById('eTarget').value = u.target || 'NEET 2025';
+  document.getElementById('eTarget').value = u.target || 'NEET 2027';
   var myR = DB.results.filter(r => r.email===u.email||r.userId===u.id);
   var pcc = myR.reduce((a, r) => a + (+r.correct || 0), 0);
   var ptt = myR.reduce((a, r) => a + (+r.total || 0), 0);

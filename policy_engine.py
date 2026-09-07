@@ -15,7 +15,7 @@ Policy Matrix:
 - Harmful: BLOCK -> Zero-tolerance refusal. If self-harm or suicide is detected,
   provides immediate crisis support resources (Tele-MANAS, KIRAN, 988).
 - Prompt-Injection: BLOCK -> Ignores hijacked instructions, resets boundary,
-  and re-anchors to Dr. Priya AI Biology Tutor persona.
+  and re-anchors to Dr. Arya AI Biology Tutor persona.
 """
 
 from typing import Any, Dict, Optional
@@ -23,7 +23,7 @@ import re
 
 
 CRISIS_HELPLINE_MESSAGE = (
-    "👩‍⚕️ **Dr. Priya (BioNEET-Pro Mentor & Healthcare Support):**\n\n"
+    "👩‍⚕️ **Dr. Arya (BioNEET-Pro Mentor & Healthcare Support):**\n\n"
     "💙 **We care about your safety and well-being.** If you are experiencing distress, "
     "feeling overwhelmed, or having thoughts of self-harm, please reach out right now — "
     "compassionate, confidential support is available 24/7:\n\n"
@@ -34,7 +34,7 @@ CRISIS_HELPLINE_MESSAGE = (
 )
 
 HARMFUL_SAFETY_MESSAGE = (
-    "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+    "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
     "⚠️ **Safety & Compliance Notice:**\n"
     "I cannot fulfill requests involving dangerous substances, violence, weapons, or illegal activities. "
     "BioNEET-Pro is strictly committed to safe, accredited medical entrance (NEET) biology education.\n\n"
@@ -42,22 +42,22 @@ HARMFUL_SAFETY_MESSAGE = (
 )
 
 INAPPROPRIATE_MESSAGE = (
-    "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+    "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
     "⚠️ **Community Standards Notice:**\n"
     "Please maintain a respectful, professional learning environment. "
     "I am here to help you excel in NEET Biology. Feel free to ask any academic question from Class 11 or 12 NCERT!"
 )
 
 PROMPT_INJECTION_MESSAGE = (
-    "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+    "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
     "🛡️ **System Boundary Notice:**\n"
-    "I operate strictly as Dr. Priya, your AI Biology Mentor aligned with NCERT Class 11 & 12 Biology. "
+    "I operate strictly as Dr. Arya, your AI Biology Mentor aligned with NCERT Class 11 & 12 Biology. "
     "I cannot ignore my guidelines, alter my system parameters, or execute arbitrary instructions. "
     "What NEET Biology concept can I explain for you today?"
 )
 
 OFF_TOPIC_MESSAGE = (
-    "👩‍⚕️ **Dr. Priya (AI Biology Mentor):**\n\n"
+    "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n\n"
     "⚠️ **Syllabus Boundary Notice:**\n"
     "That topic falls outside the NEET Biology curriculum (or belongs to Physics, Chemistry, Math, or general topics).\n\n"
     "📚 **What you can ask me instead:**\n"

@@ -101,8 +101,8 @@ class TestAppEndpoints(unittest.TestCase):
         data = res.get_json()
         self.assertIn("answer", data)
         # One-brain RAG: grounded API answer preferred; local template is the offline fallback.
-        # Either way the answer must be Dr. Priya's with NCERT grounding.
-        self.assertIn("Dr. Priya", data["answer"])
+        # Either way the answer must be Dr. Arya's with NCERT grounding.
+        self.assertTrue("Dr. Arya" in data["answer"] or "Dr. Arya" in data["answer"])
         self.assertTrue(
             "Local Algorithmic Tutor" in data["answer"] or "NCERT Grounded" in data["answer"],
             "Answer must come from the grounded pipeline (API) or the local fallback",
