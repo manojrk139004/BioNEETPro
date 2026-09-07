@@ -1334,27 +1334,28 @@ canvas#hero3d {
   </div>
 
   <div class="nav-links" id="gNav">
-    <a onclick="go('home')" class="active">Home</a>
-    <a onclick="go('features')">Features</a>
-    <a onclick="go('updates')">Updates</a>
-    <a onclick="go('prediction')">Predictor</a>
-    <a onclick="go('leaderboard')">Leaderboard</a>
+    <a onclick="go('home')" class="active">🏠 Home</a>
+    <a onclick="go('features')">✨ Features</a>
+    <a onclick="go('flashcards')">🎮 Bio Arcade</a>
+    <a onclick="go('prediction')">📊 Predictor</a>
+    <a onclick="go('leaderboard')">🏆 Leaderboard</a>
+    <a onclick="go('updates')">🔔 Updates</a>
   </div>
   <div class="nav-links hidden" id="sNav">
-    <a onclick="go('dashboard')">Dashboard</a>
-    <a onclick="go('mcq')">Mock Test</a>
-    <a onclick="go('ai-tutor')">AI Tutor</a>
+    <a onclick="go('dashboard')">🏠 Dashboard</a>
+    <a onclick="go('mcq')">📝 Mock Test</a>
+    <a onclick="go('ai-tutor')">🤖 AI Tutor</a>
     <a onclick="go('flashcards')">🎮 Bio Arcade</a>
-    <a onclick="go('lessons')">Lessons</a>
-    <a onclick="go('videos')">Videos</a>
-    <a onclick="go('updates')">Updates</a>
+    <a onclick="go('lessons')">📚 Lessons</a>
+    <a onclick="go('videos')">▶️ Videos</a>
+    <a onclick="go('updates')">🔔 Updates</a>
   </div>
   <div class="nav-links hidden" id="aNav">
-    <a onclick="go('admin')">Overview</a>
-    <a onclick="go('admin-students')">Students</a>
-    <a onclick="go('admin-mcq')">MCQs</a>
-    <a onclick="go('admin-videos')">Videos</a>
-    <a onclick="go('admin-updates')">Updates</a>
+    <a onclick="go('admin')">📊 Overview</a>
+    <a onclick="go('admin-students')">👥 Students</a>
+    <a onclick="go('admin-mcq')">📝 MCQs</a>
+    <a onclick="go('admin-videos')">▶️ Videos</a>
+    <a onclick="go('admin-updates')">🔔 Updates</a>
   </div>
 
   <div class="nav-r">
@@ -6561,9 +6562,25 @@ window.doAdminLogin = doAdminLogin;
 
 // Switch between Bio Arcade Tabs
 function switchArcadeTab(tabKey, btn) {
+  // Clear any active timers if navigating away from timed modes
+  if (typeof speedState !== 'undefined' && speedState.timerInterval && tabKey !== 'speed') {
+    clearInterval(speedState.timerInterval);
+  }
+  if (typeof trapState !== 'undefined' && trapState.fuseTimer && tabKey !== 'trap') {
+    clearInterval(trapState.fuseTimer);
+  }
+
+  // Update active pill button
   document.querySelectorAll('.arcade-nav-btn').forEach(b => b.classList.remove('active'));
+  if (!btn || !btn.classList || !btn.classList.contains('arcade-nav-btn')) {
+    if (tabKey === 'match') btn = document.getElementById('tabBioMatch');
+    else if (tabKey === 'speed') btn = document.getElementById('tabSpeedSorter');
+    else if (tabKey === 'trap') btn = document.getElementById('tabTrapBreaker');
+    else if (tabKey === 'cards') btn = document.getElementById('tabFlashcards');
+  }
   if (btn) btn.classList.add('active');
-  
+
+  // Toggle view panels
   document.querySelectorAll('.arcade-view-panel').forEach(p => p.classList.add('hidden'));
   if (tabKey === 'match') {
     var p = document.getElementById('arcadeViewMatch');
@@ -6616,7 +6633,13 @@ var BIOMATCH_DATABASE = [
   { term: 'Anaphase', match: 'Centromeres Split & Chromatids Move', cat: 'Cell Division' },
   { term: 'Juxtaglomerular', match: 'Renin Release (RAAS Pathway)', cat: 'Human Physiology' },
   { term: 'Pneumotaxic Center', match: 'Pons Varolii (Respiratory Rhythm)', cat: 'Human Physiology' },
-  { term: 'Corpus Luteum', match: 'Progesterone Secretion', cat: 'Reproduction' }
+  { term: 'Corpus Luteum', match: 'Progesterone Secretion', cat: 'Reproduction' },
+  { term: 'Flame Cells', match: 'Platyhelminthes Excretion (Protonephridia)', cat: 'Animal Kingdom' },
+  { term: 'Malpighian Tubules', match: 'Cockroach & Insect Excretion', cat: 'Animal Kingdom' },
+  { term: 'Pneumatophores', match: 'Rhizophora Halophyte Respiratory Roots', cat: 'Plant Morphology' },
+  { term: 'Angiosperm Endosperm', match: 'Triploid (3n) Post-Fertilization', cat: 'Plant Reproduction' },
+  { term: 'Gymnosperm Endosperm', match: 'Haploid (n) Pre-Fertilization', cat: 'Plant Reproduction' },
+  { term: 'Hardy-Weinberg', match: 'p² + 2pq + q² = 1 (Gene Pool Equilibrium)', cat: 'Genetics & Evolution' }
 ];
 
 var biomatchState = {
@@ -6907,6 +6930,33 @@ var TRAP_ROUNDS = [
       { text: 'Normal leukocyte count ranges between 6,000 to 8,000 per mm³ of blood.', isTrap: false },
       { text: 'Calcium ions (Ca²⁺) play a crucial role in the cascade mechanism of blood coagulation.', isTrap: false }
     ]
+  },
+  {
+    topic: 'Plant Physiology - Photosynthesis & C4 Pathway',
+    statements: [
+      { text: 'C4 plants have Kranz anatomy where bundle sheath cells are characterized by large number of chloroplasts.', isTrap: false },
+      { text: 'Bundle sheath cells in C4 plants possess grana and release high oxygen during photosynthesis.', isTrap: true, explanation: 'TRAP CAUGHT! Bundle sheath cells in C4 plants are AGRANAL (lack grana) and impervious to gaseous exchange to minimize photorespiration!' },
+      { text: 'Primary CO2 acceptor in C4 plants is Phosphoenolpyruvate (PEP) located in mesophyll cells.', isTrap: false },
+      { text: 'RuBisCO functions as oxygenase under high O2 and low CO2 conditions.', isTrap: false }
+    ]
+  },
+  {
+    topic: 'Genetics & Disorders - Chromosomal Aberrations',
+    statements: [
+      { text: 'Down syndrome is caused by the presence of an additional copy of chromosome number 21 (trisomy 21).', isTrap: false },
+      { text: 'Klinefelter syndrome is caused due to absence of one of the X chromosomes (45 with X0).', isTrap: true, explanation: 'TRAP CAUGHT! 45 with X0 is Turner syndrome! Klinefelter syndrome has an additional X chromosome (47 with XXY).' },
+      { text: 'Haemophilia is a sex-linked recessive disease showing criss-cross inheritance.', isTrap: false },
+      { text: 'Sickle cell anaemia results from substitution of Glutamic acid by Valine at 6th position of beta globin chain.', isTrap: false }
+    ]
+  },
+  {
+    topic: 'Ecology & Environment - Biodiversity Conservation',
+    statements: [
+      { text: 'Robert May estimates global species diversity at approximately 7 million.', isTrap: false },
+      { text: 'The Amazonian rain forest produces more than 90% of total oxygen in the Earth atmosphere.', isTrap: true, explanation: 'TRAP CAUGHT! Amazon produces an estimated 20% of Earth oxygen (often called "Lungs of the Planet"), NOT 90%!' },
+      { text: 'Species-area relationships on logarithmic scale show a rectangular hyperbola turning into a straight line.', isTrap: false },
+      { text: 'Sacred groves in India represent high-value in situ conservation zones.', isTrap: false }
+    ]
   }
 ];
 
@@ -7138,6 +7188,30 @@ function openBadgeModal(selectedBadgeId) {
     `;
   }
 }
+
+// ═══════════════════════════════════════════════════
+//  EXPOSE BIO ARCADE & INTERACTIVE CONTROLS TO WINDOW
+// ═══════════════════════════════════════════════════
+window.switchArcadeTab = switchArcadeTab;
+window.addArcadeXP = addArcadeXP;
+window.initBioMatchGame = initBioMatchGame;
+window.renderBioMatchGrid = renderBioMatchGrid;
+window.onBioMatchCardClick = onBioMatchCardClick;
+window.startSpeedSorter = startSpeedSorter;
+window.loadNextSpeedCard = loadNextSpeedCard;
+window.handleSpeedDecision = handleSpeedDecision;
+window.endSpeedSorter = endSpeedSorter;
+window.startTrapBreaker = startTrapBreaker;
+window.loadNextTrapRound = loadNextTrapRound;
+window.handleTrapSelection = handleTrapSelection;
+window.onTrapTimeout = onTrapTimeout;
+window.coachAskDrAryaWeakest = coachAskDrAryaWeakest;
+window.speakCoachTip = speakCoachTip;
+window.showAllBadges = showAllBadges;
+window.openBadgeModal = openBadgeModal;
+window.flipFlashcard = flipFlashcard;
+window.reviewFlashcard = reviewFlashcard;
+window.resetAllFlashcards = resetAllFlashcards;
 
 </script>
 
