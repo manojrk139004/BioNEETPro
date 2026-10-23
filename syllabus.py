@@ -250,15 +250,33 @@ CANONICAL_CHAPTER_NAMES = {
 # Explicitly disallowed non-biology domains
 OUT_OF_SYLLABUS_DOMAINS = [
     # Physics
-    "kinematics", "projectile", "quantum", "gravity", "newton law", "newtons", "thermodynamics physics", "electromagnetism", "optics ray", "optics", "optical", "prism", "refraction", "reflection light", "diffraction", "semiconductors physics", "relativity", "nuclear physics", "electric flux", "gauss law", "capacitance", "velocity", "acceleration", "friction", "moment of inertia", "magnetic field", "kirchhoff",
+    "newton's laws", "newtons laws", "newton laws", "newton's law", "newton law", "newtons",
+    "kinematics", "projectile motion", "projectile", "quantum mechanics", "quantum", "gravity",
+    "thermodynamics physics", "electromagnetism", "optics ray", "optics", "optical", "prism",
+    "refraction", "reflection light", "diffraction", "semiconductors physics", "relativity",
+    "nuclear physics", "electric flux", "gauss law", "capacitance", "velocity", "acceleration",
+    "friction", "moment of inertia", "magnetic field", "kirchhoff", "electrical circuits",
+    "circuits", "circuit", "ohm's law", "ohms law", "resistors", "resistor", "capacitors", "capacitor",
     # Chemistry
-    "organic chemistry mechanism", "sn1", "sn2", "electrochemistry", "stoichiometry", "thermodynamics enthalpy", "enthalpy", "exothermic", "endothermic", "coordination compounds", "ligand field", "periodic table trends", "haloalkanes", "alcohols phenols ethers", "polymers chemistry", "molarity", "molality", "chemical kinetics", "equilibrium constant", "le chatelier", "redox",
+    "balance redox", "balancing redox", "redox reactions", "redox reaction", "redox",
+    "organic chemistry mechanisms", "organic chemistry mechanism", "reaction mechanisms", "reaction mechanism",
+    "sn1", "sn2", "electrochemistry", "stoichiometry", "thermodynamics enthalpy", "enthalpy",
+    "exothermic", "endothermic", "coordination compounds", "ligand field", "periodic table trends",
+    "haloalkanes", "alcohols phenols ethers", "polymers chemistry", "molarity", "molality",
+    "chemical kinetics", "equilibrium constant", "le chatelier", "oxidation state", "oxidation number",
     # Math
-    "integration", "differentiation math", "calculus", "trigonometry", "algebra", "geometry", "matrices", "determinants", "probability math", "statistics math", "complex numbers", "vectors math",
-    "quadratic", "theorem", "logarithm", "polynomial", "derivation", "integral of", "determinant", "deck of cards", "playing cards", "integrate", "differential equation", "chemical bonding", "einstein", "share market", "napoleon",
+    "quadratic equation", "quadratic equations", "solve quadratic", "quadratic formula", "quadratic",
+    "integration by parts", "integration", "differentiation math", "calculus", "trigonometry",
+    "algebra", "geometry", "matrices", "determinants", "probability math", "statistics math",
+    "complex numbers", "vectors math", "theorem", "logarithm", "polynomial", "derivation",
+    "integral of", "determinant", "deck of cards", "playing cards", "integrate", "differential equation",
+    "chemical bonding", "einstein", "share market", "napoleon",
     # General non-science / Programming
-    "python", "javascript", "react", "programming", "coding", "java", "c++", "html", "css", "sql", "database", "algorithm",
-    "movie", "celebrity", "cricket", "football", "politics", "election", "stock market", "cryptocurrency", "bitcoin", "history", "geography", "economics", "prime minister", "french revolution", "machine learning", "stock options", "operating system", "welded",
+    "python", "javascript", "react", "programming", "coding", "java", "c++", "html", "css",
+    "sql query", "sql", "database", "algorithm", "event loop", "flask web server", "flask",
+    "movie", "celebrity", "cricket world cup", "cricket", "football", "politics", "election",
+    "stock market", "cryptocurrency", "bitcoin", "history", "geography", "economics",
+    "prime minister", "french revolution", "machine learning", "stock options", "operating system", "welded",
 ]
 
 _DOMAIN_REGEX = re.compile(
@@ -275,7 +293,7 @@ OUT_OF_SYLLABUS_MESSAGE = (
     "👩‍⚕️ **Dr. Arya (AI Biology Mentor):**\n"
     "*\"I am strictly specialized in the **BioNEETPro NEET Biology Syllabus** (Class 11 & Class 12 NCERT Botany and Zoology).*\"\n\n"
     "⚠️ **Syllabus Boundary Notice:**\n"
-    "Your question appears to be outside our approved 38-chapter Biology curriculum (or belongs to non-biology domains like Physics, Chemistry, or general topics).\n\n"
+    "Your question appears to be outside our approved NEET Biology curriculum (or belongs to non-biology domains like Physics, Chemistry, or general topics).\n\n"
     "📚 **What you can ask me instead:**\n"
     "• *Human Physiology (Heart, Brain, Bones, Blood, Digestion, Excretion, Endocrine)*\n"
     "• *Plant Physiology (Photosynthesis, Respiration, Plant Hormones)*\n"
@@ -287,7 +305,7 @@ OUT_OF_SYLLABUS_MESSAGE = (
 
 class SyllabusValidator:
     """
-    Validates queries against the 38-chapter NEET Biology syllabus.
+    Validates queries against the active NEET Biology syllabus while recognizing retained classic NCERT topics.
     """
     def __init__(self, syllabus: Dict[str, Any] = OFFICIAL_SYLLABUS):
         self.syllabus = syllabus
@@ -371,22 +389,13 @@ class SyllabusValidator:
         """
         Validates whether a query belongs to the NEET Biology syllabus.
         Returns validation status, matched chapter info, or out-of-syllabus guidance.
+        Handles pure non-biology, interdisciplinary biology, and mixed queries.
         """
         clean = (query or "").lower().strip()
         if not clean:
             return {"is_valid": False, "reason": "empty_query", "message": "Please enter a biology question."}
 
-        # 1. Reject explicitly non-biology queries
-        domain_match = _DOMAIN_REGEX.search(clean)
-        if domain_match:
-            return {
-                "is_valid": False,
-                "reason": "non_biology_domain",
-                "matched_out_domain": domain_match.group(0),
-                "refusal_message": OUT_OF_SYLLABUS_MESSAGE,
-            }
-
-        # 2. Match against biology keywords & concepts
+        # 1. Match against biology keywords & concepts first to identify biological intent
         tokens = set(re.findall(r"[a-z0-9]+", clean))
         matches = []
         for t in tokens:
@@ -408,6 +417,97 @@ class SyllabusValidator:
                     has_generic_bio = True
             except Exception:
                 pass
+
+        # 2. Check for out-of-syllabus domain pattern
+        domain_match = _DOMAIN_REGEX.search(clean)
+        if domain_match:
+            matched_term = domain_match.group(0)
+            GENERIC_BIO_WORDS = {
+                "light", "water", "air", "soil", "temperature", "energy", "force",
+                "pressure", "heat", "mass", "motion", "work", "growth", "cycle",
+                "system", "body", "food", "living", "environment", "time", "decay",
+                "space", "field"
+            }
+            distinctive_matches = [
+                m for m in matches if m["keyword"].lower() not in GENERIC_BIO_WORDS
+            ]
+            has_bio = bool(distinctive_matches or (has_generic_bio and not all(m["keyword"].lower() in GENERIC_BIO_WORDS for m in matches)))
+
+            # Check if this is a legitimate interdisciplinary biology concept:
+            # e.g., "redox potential in photosynthesis", "redox carriers in ETS", "activation energy of enzymes",
+            # "Hardy-Weinberg equilibrium equation", "osmotic pressure", "partial pressure of oxygen", "action potential"
+            is_interdisciplinary = any(
+                inter_term in clean for inter_term in (
+                    "redox potential", "redox state", "redox scale", "redox reaction in",
+                    "hardy weinberg", "activation energy", "gibbs free energy", "osmotic pressure",
+                    "fluid mechanics", "partial pressure", "action potential"
+                )
+            )
+
+            # Explicit non-biology tasks that must NEVER be admitted even if a generic word is present:
+            # e.g. "How do I balance redox reactions", "solve quadratic", "Newton's laws", "SN1 and SN2"
+            is_pure_non_bio_task = bool(re.search(
+                r"\b(balance\s+(?:the\s+)?(?:redox|reactions?|equations?)|balancing\s+redox|"
+                r"solve\s+(?:this\s+)?quadratic|newton('s|\s+)?laws?|"
+                r"organic\s+chemistry\s+mechanisms?|sn1\s+and\s+sn2|"
+                r"calculate\s+(?:the\s+)?(?:molarity|molality|velocity|acceleration|probability)|"
+                r"event\s+loop|flask\s+web\s+server|derivative\s+of|integral\s+of)\b",
+                clean
+            ))
+
+            # If it's a pure non-biology task, or has zero biology entities, reject immediately
+            if not has_bio or (is_pure_non_bio_task and not is_interdisciplinary and not any(
+                m["keyword"] in ("photosynthesis", "mitosis", "meiosis", "respiration", "heart", "nephron", "dna", "chloroplast", "mitochondria")
+                for m in matches
+            )):
+                return {
+                    "is_valid": False,
+                    "reason": "non_biology_domain",
+                    "matched_out_domain": matched_term,
+                    "refusal_message": OUT_OF_SYLLABUS_MESSAGE,
+                }
+
+            # If it has a distinct biology concept AND a distinct non-biology subject (e.g. "Explain photosynthesis and Newton's laws")
+            # We flag it as a mixed query:
+            is_mixed = bool(distinctive_matches and not is_interdisciplinary and any(
+                non_bio in clean for non_bio in (
+                    "newton", "quadratic", "sn1", "sn2", "organic chemistry", "python", "javascript", "cricket", "bitcoin", "french revolution"
+                )
+            ))
+
+            if is_mixed:
+                top_match = (distinctive_matches or matches)[0]
+                return {
+                    "is_valid": True,
+                    "is_mixed": True,
+                    "confidence": "high" if len(matches) > 1 else "medium",
+                    "chapter_id": top_match["chapter_id"],
+                    "chapter_name": top_match["chapter_name"],
+                    "unit_name": top_match["unit_name"],
+                    "matched_keywords": [m["keyword"] for m in matches[:5]],
+                    "matched_out_domain": matched_term,
+                }
+
+            # If interdisciplinary or legitimate biology context with non-biology lexical overlap, proceed as valid biology
+            if matches:
+                top_match = matches[0]
+                return {
+                    "is_valid": True,
+                    "confidence": "high" if len(matches) > 1 else "medium",
+                    "chapter_id": top_match["chapter_id"],
+                    "chapter_name": top_match["chapter_name"],
+                    "unit_name": top_match["unit_name"],
+                    "matched_keywords": [m["keyword"] for m in matches[:5]],
+                }
+            if has_generic_bio:
+                return {
+                    "is_valid": True,
+                    "confidence": "medium",
+                    "chapter_id": "general_biology",
+                    "chapter_name": "NEET Biology Curriculum",
+                    "unit_name": "Core NCERT Concepts",
+                    "matched_keywords": ["general_biology"],
+                }
 
         # Textbook rarity fallback: a specific term (len>=5) appearing in only a
         # handful of NCERT chunks (1-15) is near-certainly a real NCERT term the

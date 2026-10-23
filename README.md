@@ -53,9 +53,11 @@ python app.py
 python evaluate_tutor_beast.py   # golden tutor set, must be all PASS
 ```
 
-## Notes
+## Curriculum & Data Index Taxonomy
 
-- `Textbook/` holds the 32 rationalized NCERT Biology PDFs (19 Class XI + 13 Class XII);
-  `data/ncert_textbook_index.json` is the parsed chunk index (774 chunks).
+- **Syllabus Representations:**
+  - **38 Chapters (Classic NCERT):** Full pre-rationalization NEET Biology curriculum (22 Class XI + 16 Class XII) supported by `syllabus.py` for broad question validation and legacy ID resolution.
+  - **33 Chapters (`data/syllabus_registry.json`):** Active study syllabus (20 Class XI + 13 Class XII), including Chapter 16 (*Digestion and Absorption*) retained for student revision.
+  - **32 Chapters (`Textbook/` & `data/ncert_textbook_index.json`):** Rationalized NCERT textbook PDFs (19 Class XI + 13 Class XII) containing exactly **770 verified chunks** (SHA-256 verified against `ncert_textbook_checksums.json`).
 - `css/` and `js/` are unused leftovers from an older version (safe to archive).
 - Never commit `.env.local` or real API keys.

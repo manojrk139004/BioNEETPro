@@ -720,7 +720,7 @@
   "source_section": "Overview of Photosynthesis: Light & Dark Reactions"
  },
  {
-  "id": "kb-BIO-C03-01",
+  "id": "kb-BIO-C03-01-dup49",
   "question": "Which pigment is responsible for the red colour of Rhodophyceae?",
   "options": [
    "Phycocyanin",
@@ -855,7 +855,7 @@
   "source_section": "Root Modifications"
  },
  {
-  "id": "kb-BIO-C05-02",
+  "id": "kb-BIO-C05-02-dup58",
   "question": "Which of the following is a modified stem for protection?",
   "options": [
    "Tendril",
@@ -870,7 +870,7 @@
   "source_section": "Stem Modifications"
  },
  {
-  "id": "kb-BIO-C05-03",
+  "id": "kb-BIO-C05-03-dup59",
   "question": "In which plant is whorled phyllotaxy found?",
   "options": [
    "Mustard",
@@ -1020,7 +1020,7 @@
   "source_section": "Cockroach Anatomy"
  },
  {
-  "id": "kb-BIO-C21-01",
+  "id": "kb-BIO-C21-01-dup69",
   "question": "Which layer of the anther wall is responsible for nourishing the developing pollen grains?",
   "options": [
    "Endothecium",
@@ -1200,7 +1200,7 @@
   "source_section": "Human Evolution"
  },
  {
-  "id": "kb-BIO-C28-01",
+  "id": "kb-BIO-C28-01-dup81",
   "question": "The large holes in 'Swiss cheese' are due to the production of a large amount of CO2 by:",
   "options": [
    "Saccharomyces cerevisiae",
@@ -1215,7 +1215,7 @@
   "source_section": "Household Products"
  },
  {
-  "id": "kb-BIO-C28-02",
+  "id": "kb-BIO-C28-02-dup82",
   "question": "Which of the following is correctly matched?",
   "options": [
    "Monascus purpureus - Immunosuppressive agent",
@@ -1260,7 +1260,7 @@
   "source_section": "Biocontrol Agents"
  },
  {
-  "id": "kb-BIO-C33-01",
+  "id": "kb-BIO-C33-01-dup85",
   "question": "In the species-area relationship equation log S = log C + Z log A, what does 'Z' stand for?",
   "options": [
    "Species richness",
@@ -1395,7 +1395,7 @@
   "source_section": "Viruses & Viroids"
  },
  {
-  "id": "kb-BIO-C08-03",
+  "id": "kb-BIO-C08-03-dup94",
   "question": "Which of the following is NOT a part of the endomembrane system?",
   "options": [
    "Golgi complex",
@@ -1410,7 +1410,7 @@
   "source_section": "Endomembrane System"
  },
  {
-  "id": "kb-BIO-C08-04",
+  "id": "kb-BIO-C08-04-dup95",
   "question": "The site of active ribosomal RNA (rRNA) synthesis is:",
   "options": [
    "Nucleoplasm",
@@ -5610,19 +5610,21 @@
   "source_section": "griffith experiment"
  },
  {
-  "id": "gen-c27-415",
+  "id": "mbi-translation-definition",
   "question": "In the context of Molecular Basis of Inheritance, 'translation' is best described as:",
   "options": [
-   "seed",
-   "oxidative phosphorylation",
-   "ligase",
-   "Translation"
+   "Synthesis of RNA from a DNA template",
+   "Synthesis of protein from an mRNA template",
+   "Replication of DNA during cell division",
+   "Modification of proteins after synthesis"
   ],
-  "correct": 3,
-  "explanation": "NCERT Molecular Basis of Inheritance \u2014 'translation' appears among the chapter's core concepts.",
+  "correct": 1,
+  "explanation": "Translation is the process where the genetic code carried by mRNA is decoded to synthesize a specific polypeptide chain (protein) at the ribosome. This is a fundamental concept in the Molecular Basis of Inheritance.",
   "chapter": "Molecular Basis of Inheritance",
   "difficulty": "Medium",
-  "source_section": "translation"
+  "cognitive_level": "BT2 - Understanding",
+  "source_section": "6.6 - Genetic Code and Translation",
+  "createdAt": "2026-09-23T12:00:00Z"
  },
  {
   "id": "gen-c27-417",
@@ -98835,7 +98837,7 @@
   "source_section": "odd-one-out: perspiration"
  },
  {
-  "id": "fam-c31-6590",
+  "id": "fam-c31-6590-dup6590",
   "question": "Consider these four terms: Downstream Processing, Palindromic Sequence, Restriction Enzymes, Appendicular Skeleton. Three of them belong to Biotechnology: Principles and Processes \u2014 identify the odd one out.",
   "options": [
    "Downstream Processing",
@@ -98880,7 +98882,7 @@
   "source_section": "odd-one-out: slime moulds"
  },
  {
-  "id": "fam-c32-6593",
+  "id": "fam-c32-6593-dup6593",
   "question": "Assertion (A): 'proinsulin' is a key concept of Anatomy of Flowering Plants. Reason (R): 'casparian strip' is a key concept of Anatomy of Flowering Plants.",
   "options": [
    "Both A and R are true and R is the correct explanation of A",
@@ -98895,7 +98897,7 @@
   "source_section": "assertion-reason: proinsulin"
  },
  {
-  "id": "fam-c32-6595",
+  "id": "fam-c32-6595-dup6594",
   "question": "Consider these four terms: Ethical Issues, Elisa, Partial Pressure, Gene Therapy. Three of them belong to Biotechnology and Its Applications \u2014 identify the odd one out.",
   "options": [
    "Ethical Issues",

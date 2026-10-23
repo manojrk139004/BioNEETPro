@@ -194,6 +194,15 @@ def _policy_redirect_admits(query, history=None):
     (scope) decisions — "block" decisions (harm, injection, abuse) are never
     overridden. True out-of-scope queries have no such evidence and still refuse.
     """
+    # Never admit queries from non-biology domains (physics, chemistry, math, coding)
+    try:
+        from syllabus import syllabus_validator
+        syl_check = syllabus_validator.check_query_syllabus(str(query or ""))
+        if not syl_check.get("is_valid") and syl_check.get("reason") == "non_biology_domain":
+            return False
+    except Exception:
+        pass
+
     try:
         probe = retrieval_engine.search(query=query, expanded_query=query,
                                         top_k=4)
@@ -1134,7 +1143,7 @@ def api_mcqs_seed():
             ci = 0
         if not isinstance(opts, list) or len(opts) != 4 or not (0 <= ci < 4):
             continue
-        out.append({"q": d.get("question", ""), "opts": opts, "correct": ci,
+        out.append({"seed_id": d.get("id", ""), "q": d.get("question", ""), "opts": opts, "correct": ci,
                     "chapter": d.get("chapter", "General Biology"),
                     "diff": str(d.get("difficulty", "Medium")).title(),
                     "expl": d.get("explanation", ""),
@@ -1514,7 +1523,7 @@ def _maybe_chapter_pdf_reply(query, student_id):
             "student_id": student_id}
 
 
-def build_unified_answer(query, student_id, history=None, context=None, include_steps=True):
+def build_unified_answer(query, student_id="student_local", history=None, context=None, include_steps=True):
     """Single-brain: adaptive RAG reply + optional step-session for stepper UI."""
     t0 = time.time()
     history = history if isinstance(history, list) else []

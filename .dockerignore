@@ -1,0 +1,26 @@
+# Never include local credentials, developer state, or generated artifacts in Docker images.
+.git
+.venv
+node_modules
+.env
+.env.*
+!.env.example
+serviceAccount.json
+*service-account*.json
+FIREBASE_SERVICE_ACCOUNT_JSON.txt
+__pycache__
+*.py[cod]
+.pytest_cache
+.gitignore
+data/chat_threads/
+data/dialogue_states/
+data/flashcard_state/
+data/score_predictions/
+data/student_profiles/
+data/tutor_states/
+data/users/
+data/student_learning_tracker.csv
+data/tutor_query_log.jsonl
+data/mcq_generation_log.json
+data/emergency_fallback_audit.log
+data/indexed_mcqs_cache.json

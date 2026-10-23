@@ -1417,10 +1417,10 @@ canvas#hero3d {
             </button>
           </div>
           <div class="hero-stats">
-            <div class="hero-stat"><h4>38 / 38</h4><p>NCERT Chapters</p></div>
-            <div class="hero-stat"><h4>1,480+</h4><p>Active MCQs</p></div>
-            <div class="hero-stat"><h4 class="stat-highlight">&lt; 100ms</h4><p>AI Speed</p></div>
-            <div class="hero-stat"><h4 id="heroStudents">14,240+</h4><p>Aspirants Enrolled</p></div>
+            <div class="hero-stat"><h4>33 / 38</h4><p>ACTIVE / CLASSIC CHAPTERS</p></div>
+            <div class="hero-stat"><h4 id="heroMCQs">—</h4><p>Active MCQs</p></div>
+            <div class="hero-stat"><h4 class="stat-highlight">AI</h4><p>ON-DEMAND TUTOR</p></div>
+            <div class="hero-stat"><h4 id="heroStudents">—</h4><p>Students Enrolled</p></div>
           </div>
         </div>
         <!-- RIGHT: 3D CANVAS & FLOATING BADGES -->
@@ -1429,14 +1429,14 @@ canvas#hero3d {
             <span class="f-icon">🧬</span>
             <div>
               <strong>NCERT Biology 360</strong>
-              <p>38 Chapters Rationalized</p>
+              <p>33 Active • 38 Classic</p>
             </div>
           </div>
           <div class="floating-hero-card float-card-2">
             <span class="f-icon">👨‍⚕️</span>
             <div>
               <strong>Dr. Arya AI</strong>
-              <p style="color:var(--green);font-weight:700">🟢 Online • Sub-100ms</p>
+              <p id="heroTutorStatus" style="color:var(--green);font-weight:700">Checking tutor status…</p>
             </div>
           </div>
           <div class="floating-hero-card float-card-3">
@@ -1502,7 +1502,7 @@ canvas#hero3d {
         <div class="feat-card">
           <div class="feat-icon">📚</div>
           <h3 style="font-weight:800;margin-bottom:8px;font-size:1.05rem;">Structured Lessons</h3>
-          <p style="color:var(--muted);font-size:.84rem;line-height:1.7;">All 38 NCERT chapters with topic breakdowns, study schedules, difficulty ratings, and NEET importance scores.</p>
+          <p style="color:var(--muted);font-size:.84rem;line-height:1.7;">All 33 active syllabus chapters, with 5 classic chapters retained for revision, plus topic breakdowns, study schedules, and NEET importance scores.</p>
           <button class="btn btn-sm btn-primary" style="margin-top:16px" onclick="go('lessons')">View Lessons →</button>
         </div>
         <div class="feat-card">
@@ -1560,7 +1560,7 @@ canvas#hero3d {
     <div class="grid g2" style="gap:26px">
       <div class="card" style="border-left:4px solid var(--y)"><h3 style="font-weight:800;font-size:1.05rem;margin-bottom:10px">📝 Smart Mock Tests</h3><p style="color:var(--muted);font-size:.85rem;line-height:1.75">Chapter-wise and full-length tests. Timed mode, practice mode. Instant detailed AI solutions. Track accuracy and time per question. Previous year NEET MCQs included.</p><button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="go('mcq')">Try Now →</button></div>
       <div class="card" style="border-left:4px solid var(--blue)"><h3 style="font-weight:800;font-size:1.05rem;margin-bottom:10px">🤖 Chat-Gpt AI Doubt Clearing</h3><p style="color:var(--muted);font-size:.85rem;line-height:1.75">Ask any biology question — powered by Chat-Gpt. Get detailed, NCERT-based answers with explanations. Available 24/7, completely free.</p><button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="go('ai-tutor')">Ask AI →</button></div>
-      <div class="card" style="border-left:4px solid var(--purple)"><h3 style="font-weight:800;font-size:1.05rem;margin-bottom:10px">📚 Structured Lesson Plans</h3><p style="color:var(--muted);font-size:.85rem;line-height:1.75">NCERT Class 11 & 12 Biology — all 38 chapters with topic breakdowns, estimated study time, difficulty ratings, and important NEET points.</p><button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="go('lessons')">View Lessons →</button></div>
+      <div class="card" style="border-left:4px solid var(--purple)"><h3 style="font-weight:800;font-size:1.05rem;margin-bottom:10px">📚 Structured Lesson Plans</h3><p style="color:var(--muted);font-size:.85rem;line-height:1.75">NCERT Class 11 & 12 Biology — 33 active syllabus chapters, plus 5 classic chapters retained for revision, with study time, difficulty ratings, and important NEET points.</p><button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="go('lessons')">View Lessons →</button></div>
       <div class="card" style="border-left:4px solid var(--orange)"><h3 style="font-weight:800;font-size:1.05rem;margin-bottom:10px">▶️ Video Library</h3><p style="color:var(--muted);font-size:.85rem;line-height:1.75">Curated YouTube lectures for every chapter by top NEET educators — Vedantu, Unacademy, PW, and more. Search by chapter, topic, or educator.</p><button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="go('videos')">Watch →</button></div>
     </div>
   </div>
@@ -1756,7 +1756,7 @@ canvas#hero3d {
           <div style="font-size:0.83rem; color:var(--ink); line-height:1.6;">
             <p style="margin-bottom:8px">🎯 <strong>Target:</strong> Complete 1 High-Yield Chapter Test + 1 Bio Arcade Session Daily.</p>
             <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--muted); margin-bottom:4px;">
-              <span>38 Rationalized NCERT Chapters</span>
+              <span>33 Active Syllabus Chapters</span>
               <span style="font-weight:700; color:var(--green);">Mastery Tracking Active</span>
             </div>
             <div class="pbar"><div class="pfill g" style="width: 35%"></div></div>
@@ -2499,6 +2499,24 @@ canvas#hero3d {
   </div>
 </div>
 
+<!-- ═══════════════════ TEST MCQS & ANSWERS INSPECT MODAL ═════════ -->
+<div class="overlay hidden" id="testInspectModal" style="z-index:9999">
+  <div class="modal" style="max-width:860px;width:95%">
+    <div class="mhdr">
+      <div>
+        <h3 class="mtitle" id="testInspectTitle">MCQ Test Inspection</h3>
+        <p id="testInspectSubtitle" style="font-size:.76rem;color:var(--muted);margin-top:2px"></p>
+      </div>
+      <div class="mclose" onclick="closeModal('testInspectModal')">✕</div>
+    </div>
+    <div id="testInspectBody" style="max-height:72vh;overflow-y:auto;padding:12px 4px"></div>
+    <div style="display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
+      <div id="testInspectScoreSummary" style="font-size:.82rem;font-weight:700"></div>
+      <button class="btn btn-outline" onclick="closeModal('testInspectModal')">Back to Report</button>
+    </div>
+  </div>
+</div>
+
 <script type="module">
   
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
@@ -2787,9 +2805,27 @@ function buildExtraSeedMCQs() {
 function mergeSeedMCQs(existing, seeds) {
   var merged = Array.isArray(existing) ? existing.slice() : [];
   var seenIds = new Set(merged.map(m => String(m.id)));
-  var seenQuestions = new Set(merged.map(m => (m.q || '').toLowerCase().trim()));
+  var questionText = function(m) { return String((m && (m.q || m.question)) || '').toLowerCase().replace(/\s+/g, ' ').trim(); };
+  var seenQuestions = new Set(merged.map(questionText));
   seeds.forEach(m => {
-    var key = (m.q || '').toLowerCase().trim();
+    var key = questionText(m);
+    if (m.canonicalCorrection) {
+      var correctedIndex = merged.findIndex(function(current) {
+        return String(current.id) === String(m.id) || (key && questionText(current) === key);
+      });
+      if (correctedIndex >= 0) {
+        var stableId = merged[correctedIndex].id;
+        merged[correctedIndex] = Object.assign({}, merged[correctedIndex], m, { id: stableId });
+        delete merged[correctedIndex].canonicalCorrection;
+      } else {
+        var correction = Object.assign({}, m);
+        delete correction.canonicalCorrection;
+        merged.push(correction);
+        seenIds.add(String(correction.id));
+        seenQuestions.add(key);
+      }
+      return;
+    }
     if (!seenIds.has(String(m.id)) && !seenQuestions.has(key)) {
       merged.push(m);
       seenIds.add(String(m.id));
@@ -2801,6 +2837,21 @@ function mergeSeedMCQs(existing, seeds) {
 
 var BASE_SEED_MCQS = SEED_MCQS.slice();
 var EXTRA_SEED_MCQS = buildExtraSeedMCQs();
+EXTRA_SEED_MCQS.push({
+  id: 'mbi-translation-definition',
+  q: "In the context of Molecular Basis of Inheritance, 'translation' is best described as:",
+  opts: [
+    'Synthesis of RNA from a DNA template',
+    'Synthesis of protein from an mRNA template',
+    'Replication of DNA during cell division',
+    'Modification of proteins after synthesis'
+  ],
+  correct: 1,
+  chapter: 'Molecular Basis of Inheritance',
+  diff: 'Medium',
+  expl: 'Translation is the process in which the genetic code carried by mRNA is decoded to synthesize a polypeptide at a ribosome.',
+  canonicalCorrection: true
+});
 SEED_MCQS = BASE_SEED_MCQS.concat(EXTRA_SEED_MCQS);
 
 var SEED_VIDEOS = [
@@ -2813,16 +2864,41 @@ var SEED_VIDEOS = [
 ];
 
 var SEED_UPDATES = [
-  {id:1,title:'NEET UG 2027 Exam Date Announced',desc:'National Testing Agency has announced NEET UG 2027 exam date. Candidates must register before the last date.',type:'Exam Date',priority:'High',date:new Date().toISOString()},
-  {id:2,title:'NEET 2027-2028 NCERT Rationalized Syllabus Released',desc:'NMC has released the revised NEET 2027-2028 rationalized syllabus. Check the official website for removed topics in Physics and Chemistry.',type:'Syllabus',priority:'High',date:new Date(Date.now()-86400000*2).toISOString()},
-  {id:3,title:'New Study Material Added',desc:'BioNEET Pro has added 500+ new MCQs from Biotechnology and Genetics chapters.',type:'General',priority:'Medium',date:new Date(Date.now()-86400000*4).toISOString()}
+  {id:1,title:'NEET UG 2027 Exam Date — Await Official Notice',desc:'The NTA website currently lists NEET (UG)-2026 notices. Check the official NTA NEET website for the 2027 exam date when it is announced.',type:'Official Notice',priority:'Medium',date:'2026-10-23T00:00:00Z'},
+  {id:2,title:'Check the Latest NEET Biology Syllabus',desc:'Use the current NTA/NMC syllabus for your exam year and verify any 2027 updates on the official NTA NEET website before planning your study schedule.',type:'Syllabus',priority:'High',date:'2026-10-23T00:00:00Z'},
+  {id:3,title:'Chapter-wise Biology Practice',desc:'Use mock tests, structured lessons, and flashcards in BioNEET Pro to revise NEET Biology topics.',type:'Study Material',priority:'Medium',date:'2026-10-23T00:00:00Z'}
 ];
+
+function migrateOutdatedSeedAnnouncements(updates) {
+  var replacements = {
+    'NEET UG 2027 Exam Date Announced': 0,
+    'NEET 2027-2028 NCERT Rationalized Syllabus Released': 1,
+    'New Study Material Added': 2
+  };
+  return (Array.isArray(updates) ? updates : []).map(function(item) {
+    var replacementIndex = replacements[item && item.title];
+    if (replacementIndex === undefined) return item;
+    return Object.assign({}, SEED_UPDATES[replacementIndex], { id: item.id });
+  });
+}
+
+if (!DB.updates.length) {
+  DB.updates = SEED_UPDATES;
+  save('updates');
+} else {
+  var previousUpdateTitles = new Set(DB.updates.map(function(item) { return item && item.title; }));
+  if (previousUpdateTitles.has('NEET UG 2027 Exam Date Announced') ||
+      previousUpdateTitles.has('NEET 2027-2028 NCERT Rationalized Syllabus Released') ||
+      previousUpdateTitles.has('New Study Material Added')) {
+    DB.updates = migrateOutdatedSeedAnnouncements(DB.updates);
+    save('updates');
+  }
+}
 
 // Seed and upgrade default data without removing the user's existing MCQs.
 var upgradedMCQs = mergeSeedMCQs(DB.mcqs, DB.mcqs.length ? EXTRA_SEED_MCQS : SEED_MCQS);
 if (upgradedMCQs.length !== DB.mcqs.length) { DB.mcqs = upgradedMCQs; save('mcqs'); }
 if (!DB.videos.length) { DB.videos = SEED_VIDEOS; save('videos'); }
-if (!DB.updates.length) { DB.updates = SEED_UPDATES; save('updates'); }
 
 // ═══════════════════════════════════════════════════
 //  NAVIGATION
@@ -3094,7 +3170,7 @@ function setupRealtimeListeners(force) {
     try {
       unsubUpdates = onSnapshot(collection(db, "updates"), (snap) => {
         if (!snap.empty) {
-          DB.updates = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          DB.updates = migrateOutdatedSeedAnnouncements(snap.docs.map(d => ({ id: d.id, ...d.data() })));
           save('updates');
           if (currentPage === 'updates') renderUpdates();
           if (currentPage === 'admin-updates') renderAdminUpdates();
@@ -3136,6 +3212,7 @@ function setupRealtimeListeners(force) {
         if (currentPage === 'admin-students') renderStudentTable();
         if (currentPage === 'leaderboard') renderLeaderboard();
         if (currentPage === 'dashboard') renderDashboard();
+        if (currentPage === 'home') renderHome();
       }, (err) => {
         console.warn("Realtime results listener notice:", err && err.code);
         unsubResults = null;
@@ -3153,6 +3230,7 @@ function setupRealtimeListeners(force) {
         console.log(`⚡ Real-time users update: ${DB.users.length} registered students`);
         if (currentPage === 'admin-students') renderStudentTable();
         if (currentPage === 'admin') renderAdmin();
+        if (currentPage === 'home') renderHome();
       }, (err) => {
         console.warn("Realtime users listener notice:", err && err.code);
         unsubUsers = null;
@@ -3168,9 +3246,9 @@ function teardownRealtimeListeners() {
   if (unsubVideos) { try { unsubVideos(); } catch(e) {} unsubVideos = null; }
 }
 
-async function refreshStudentData() {
+async function refreshStudentData(silent = false) {
   const btn = document.getElementById('btnRefreshStudents');
-  if (btn) btn.textContent = '🔄 Syncing...';
+  if (btn && !silent) btn.textContent = '🔄 Syncing...';
   try {
     const userPromise = (DB.isAdmin || auth.currentUser) ? getDocs(collection(db, "users")) : Promise.resolve({ docs: [] });
     const [userSnap, resSnap] = await Promise.all([
@@ -3188,7 +3266,12 @@ async function refreshStudentData() {
     if (currentPage === 'admin-students') renderStudentTable();
     if (currentPage === 'admin') renderAdmin();
     if (currentPage === 'leaderboard') renderLeaderboard();
-    toast(`Synced ${DB.users.length} students & ${DB.results.length} test scores! ☁️`, 's');
+    if (currentPage === 'home') renderHome();
+    // Show toast only on manual button clicks or once on initial login
+    if (!silent && !window.__bioneet_has_shown_login_sync) {
+      toast(`Synced ${DB.users.length} students & ${DB.results.length} test scores! ☁️`, 's');
+      window.__bioneet_has_shown_login_sync = true;
+    }
   } catch (err) {
     console.warn("Manual refresh notice:", err);
   } finally {
@@ -3291,16 +3374,107 @@ function getSaturdayCohort() {
   return cohort;
 }
 
+function getRealStudentCount() {
+  var studentIds = new Set();
+  if (typeof DB !== 'undefined') {
+    if (Array.isArray(DB.users)) {
+      DB.users.forEach(function(u) {
+        if (u && u.role !== 'admin') {
+          var id = u.id || u.uid || u.email;
+          if (id) studentIds.add(String(id).toLowerCase().trim());
+        }
+      });
+    }
+    if (Array.isArray(DB.results)) {
+      DB.results.forEach(function(r) {
+        if (r) {
+          var email = (r.email || '').toLowerCase().trim();
+          var uid = (r.uid || '').toLowerCase().trim();
+          if (email && !email.includes('admin@')) {
+            studentIds.add(email);
+          } else if (uid && !uid.includes('admin')) {
+            studentIds.add(uid);
+          }
+        }
+      });
+    }
+  }
+  return studentIds.size;
+}
+
 // ═══════════════════════════════════════════════════
 //  HOME
 // ═══════════════════════════════════════════════════
 function renderHome() {
   var el = document.getElementById('heroStudents');
   if (el) {
-    var registered = (typeof DB !== 'undefined' && DB.users) ? DB.users.filter(function(u) { return u.role !== 'admin'; }).length : 1;
-    var count = 14240 + registered;
-    el.textContent = count.toLocaleString() + '+';
+    var realCount = getRealStudentCount();
+    // Real student count based on actual database - strictly no fabricated numbers
+    if (realCount > 0) {
+      if (!window.__bioneet_hero_animated) {
+        animateHeroCounter(el, 0, realCount, Math.min(1000, Math.max(300, realCount * 25)));
+        window.__bioneet_hero_animated = true;
+      } else {
+        el.textContent = realCount.toLocaleString();
+      }
+    } else {
+      el.textContent = '—';
+    }
   }
+  var mcqEl = document.getElementById('heroMCQs');
+  if (mcqEl) {
+    var mcqCount = (typeof DB !== 'undefined' && Array.isArray(DB.mcqs)) ? DB.mcqs.length : 0;
+    mcqEl.textContent = mcqCount ? mcqCount.toLocaleString() : '—';
+  }
+  refreshTutorStatus();
+}
+
+function refreshTutorStatus() {
+  var statusEl = document.getElementById('heroTutorStatus');
+  if (!statusEl || window.__bioneet_tutor_status_requested) return;
+  window.__bioneet_tutor_status_requested = true;
+  var controller = new AbortController();
+  var timeout = window.setTimeout(function() { controller.abort(); }, 7000);
+  fetch(AI_BACKEND_URL + '/api/health', { cache: 'no-store', signal: controller.signal })
+    .then(function(response) {
+      if (!response.ok) throw new Error('Tutor backend is unavailable');
+      return response.json();
+    })
+    .then(function(health) {
+      if (health.ai_configured) {
+        statusEl.textContent = '🟢 AI Tutor Ready';
+        statusEl.style.color = 'var(--green)';
+      } else {
+        statusEl.textContent = '🟡 Biology Tutor Ready';
+        statusEl.style.color = 'var(--orange)';
+      }
+    })
+    .catch(function() {
+      statusEl.textContent = '⚪ Tutor status unavailable';
+      statusEl.style.color = 'var(--muted)';
+    })
+    .finally(function() { window.clearTimeout(timeout); });
+}
+
+function animateHeroCounter(el, start, end, duration) {
+  if (start === end) {
+    el.textContent = end.toLocaleString();
+    return;
+  }
+  var startTime = null;
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = Math.min((timestamp - startTime) / duration, 1);
+    var easeOut = 1 - Math.pow(1 - progress, 3);
+    var current = Math.floor(start + (end - start) * easeOut);
+    el.textContent = current.toLocaleString();
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      el.textContent = end.toLocaleString();
+    }
+  }
+  window.requestAnimationFrame(step);
 }
 
 
@@ -4203,8 +4377,33 @@ function normalizeChapterName(name) {
   return name.toLowerCase().replace(/[\u2013\u2014-]/g, '-').replace(/\s+/g, ' ').trim();
 }
 
+function normalizeTestMCQ(source) {
+  if (!source || typeof source !== 'object') return null;
+  var question = String(source.q || source.question || '').trim();
+  var options = Array.isArray(source.opts) ? source.opts : source.options;
+  if (question.length <= 10 || !Array.isArray(options) || options.length !== 4) return null;
+  options = options.map(function(option) { return String(option == null ? '' : option).trim(); });
+  if (options.some(function(option) { return !option; }) || new Set(options).size !== 4) return null;
+
+  var answer = source.correct;
+  if (answer === undefined || answer === null) answer = source.correct_index;
+  var correct = Number(answer);
+  if (!Number.isInteger(correct) || correct < 0 || correct > 3) {
+    var answerText = String(source.correct_answer || answer || '').trim().toLowerCase();
+    correct = options.findIndex(function(option) { return option.toLowerCase() === answerText; });
+  }
+  if (correct < 0 || correct > 3) return null;
+
+  return Object.assign({}, source, {
+    q: question,
+    opts: options,
+    correct: correct,
+    expl: String(source.expl || source.explanation || '')
+  });
+}
+
 function getTestQuestions(n) {
-  var pool = DB.mcqs;  
+  var pool = Array.isArray(DB.mcqs) ? DB.mcqs.slice() : [];
   
   if (currentMode === 'chapter' && selectedChapter) {
     var selNorm = normalizeChapterName(selectedChapter.name);
@@ -4214,11 +4413,14 @@ function getTestQuestions(n) {
     pool = pool.filter(q => q.year);
   }
   
-  // Filter out duplicates based on question content
+  // Normalize backend, Firestore, and legacy local-storage MCQ schemas.
+  pool = pool.map(normalizeTestMCQ).filter(Boolean);
+
+  // Filter out duplicate questions independent of whitespace and casing.
   var uniquePool = [];
   var seen = new Set();
   for (var i = 0; i < pool.length; i++) {
-    var key = pool[i].q.toLowerCase().trim();
+    var key = pool[i].q.toLowerCase().replace(/\s+/g, ' ').trim();
     if (!seen.has(key)) {
       seen.add(key);
       uniquePool.push(pool[i]);
@@ -4226,7 +4428,13 @@ function getTestQuestions(n) {
   }
   pool = uniquePool;
   
-  pool = [...pool].sort(() => Math.random() - 0.5);
+  pool = [...pool];
+  for (var shuffleIndex = pool.length - 1; shuffleIndex > 0; shuffleIndex--) {
+    var swapIndex = Math.floor(Math.random() * (shuffleIndex + 1));
+    var item = pool[shuffleIndex];
+    pool[shuffleIndex] = pool[swapIndex];
+    pool[swapIndex] = item;
+  }
   return pool.slice(0, Math.min(n, pool.length));
 }
 
@@ -4329,12 +4537,12 @@ function renderQ() {
   var opts = document.getElementById('qOpts');
   
   if (ts.isReviewMode) {
-    opts.innerHTML = q.opts.map((o, i) => '<div class="mcq-opt" id="opt' + i + '" style="pointer-events:none;"><div class="mcq-badge">' + String.fromCharCode(65+i) + '</div><span>' + o + '</span></div>').join('');
+    opts.innerHTML = q.opts.map((o, i) => '<div class="mcq-opt" id="opt' + i + '" style="pointer-events:none;"><div class="mcq-badge">' + String.fromCharCode(65+i) + '</div><span>' + escHtml(o) + '</span></div>').join('');
     showAnswer(ts.answers[ts.current]);
   } else {
     opts.innerHTML = q.opts.map((o, i) => {
       var isSel = ts.answers[ts.current] === i ? ' sel' : '';
-      return '<div class="mcq-opt' + isSel + '" onclick="selectOpt(' + i + ',this)" id="opt' + i + '"><div class="mcq-badge">' + String.fromCharCode(65+i) + '</div><span>' + o + '</span></div>';
+      return '<div class="mcq-opt' + isSel + '" onclick="selectOpt(' + i + ',this)" id="opt' + i + '"><div class="mcq-badge">' + String.fromCharCode(65+i) + '</div><span>' + escHtml(o) + '</span></div>';
     }).join('');
     document.getElementById('qExpl').classList.add('hidden');
   }
@@ -4514,32 +4722,89 @@ async function endTest() {
   document.getElementById('resA').textContent = acc + '%';
   document.getElementById('resT').textContent = elapsed + 'm';
 
-  // 3. CLOUD SAVE: Save result to Firebase with ALL fields
+  // 3. CLOUD & LOCAL SAVE: Save result with full MCQ telemetry & dual sync
   if (DB.currentUser) {
+    var studentUid = (auth.currentUser ? auth.currentUser.uid : (DB.currentUser.id || 'anon'));
+    var resultId = 'res_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+    var chapName = selectedChapter ? selectedChapter.name : 'Mixed';
+
+    // Package complete MCQ telemetry (question text, options A-D, student choice, correct key, explanation)
+    var testQuestions = ts.qs.map((q, i) => ({
+      id: q.id || ('q_' + (i + 1)),
+      question: q.q || q.question || '',
+      options: q.options || [],
+      correct: q.correct,
+      selected: (ts.answers && ts.answers[i] !== undefined) ? ts.answers[i] : null,
+      isCorrect: (ts.answers && ts.answers[i] === q.correct),
+      explanation: q.explanation || q.exp || '',
+      chapter: q.chapter || chapName,
+      topic: q.topic || ''
+    }));
+
     var result = {
-      uid: DB.currentUser.id,
-      email: DB.currentUser.email,
-      chapter: selectedChapter ? selectedChapter.name : 'Mixed',
+      id: resultId,
+      uid: studentUid,
+      email: DB.currentUser.email || '',
+      name: DB.currentUser.name || 'Student',
+      chapter: chapName,
       correct: correct,
       total: total,
-      timestamp: new Date().toISOString(),  
-      date: new Date().toDateString(),      
-      time: elapsed,
+      wrong: wrong,
       accuracy: acc,
       neetScore: neetScore,
+      maxNeetScore: maxNeetScore,
+      time: elapsed,
+      timestamp: new Date().toISOString(),
+      date: new Date().toDateString(),
       integrity: ts.integrity || 'clean',
-      violations: ts.violations || 0
+      violations: ts.violations || 0,
+      questions: testQuestions,
+      answers: ts.answers || {}
     };
 
+    // Immediate local save
+    DB.results.unshift(result);
+    save('results');
+
+    // Dual Cloud Sync:
+    // A) Update student profile in users/{uid} (triggers admin unsubUsers in real time!)
+    if (auth.currentUser) {
+      try {
+        var studentTests = DB.results.filter(r => r.uid === studentUid || r.email === DB.currentUser.email);
+        var totalC = studentTests.reduce((a, r) => a + (+r.correct || 0), 0);
+        var totalQ = studentTests.reduce((a, r) => a + (+r.total || 0), 0);
+        var overallAvg = totalQ ? Math.round((totalC / totalQ) * 100) : acc;
+
+        var summaryUpdate = {
+          testsCount: studentTests.length,
+          totalQuestions: totalQ,
+          totalCorrect: totalC,
+          avgAccuracy: overallAvg,
+          lastTestScore: neetScore,
+          lastTestAccuracy: acc,
+          lastTestChapter: chapName,
+          lastActiveAt: new Date().toISOString()
+        };
+        setDoc(doc(db, "users", studentUid), summaryUpdate, { merge: true }).catch(err => {
+          console.warn("User stats sync notice:", err);
+        });
+      } catch (err) {
+        console.warn("User doc update skipped:", err);
+      }
+    }
+
+    // B) Save to results collection
     try {
       await addDoc(collection(db, "results"), result);
-      DB.results.push(result);
-      save('results');
-      toast('Score saved! 🎯', 's');
+      toast('Score & MCQ answers saved to cloud! 🎯', 's');
     } catch (e) {
-      console.error("Error saving score: ", e);
-      toast('Cloud save failed', 'e');
+      console.warn("Results collection save notice: ", e);
+      toast('Score saved locally! 🎯', 's');
     }
+
+    // Refresh live leaderboard immediately so user sees new rank
+    try { renderLeaderboard(); } catch(e) {}
+    if (currentPage === 'dashboard') try { renderDashboard(); } catch(e) {}
 
     // 3b. MASTERY SYNC: record every answered question so the learner model
     // (coach tips, score predictor) actually moves. Without this the predictor
@@ -5613,57 +5878,111 @@ function saveData(key, val) {
 // ═══════════════════════════════════════════════════
 async function renderLeaderboard() {
   const list = document.getElementById('lbList');
-  
+  if (!list) return;
+
   try {
-    // 1. Fetch ALL results from the Cloud
-    const querySnapshot = await getDocs(collection(db, "results"));
     let allResults = [];
-    querySnapshot.forEach((doc) => {
-      allResults.push(doc.data());
+
+    // 1. Fetch from Firestore if authenticated
+    if (auth && auth.currentUser) {
+      try {
+        const querySnapshot = await getDocs(collection(db, "results"));
+        querySnapshot.forEach((doc) => {
+          allResults.push({ id: doc.id, ...doc.data() });
+        });
+      } catch (err) {
+        console.warn("Firestore leaderboard fetch notice:", err && err.code);
+      }
+    }
+
+    // 2. Merge with local DB.results (deduplicate)
+    const localResults = (typeof DB !== 'undefined' && DB.results) ? DB.results : [];
+    const seen = new Set(allResults.map(r => r.id || (r.uid + '_' + (r.timestamp || r.date))));
+    localResults.forEach(lr => {
+      const key = lr.id || (lr.uid + '_' + (lr.timestamp || lr.date));
+      if (!seen.has(key)) {
+        allResults.push(lr);
+        seen.add(key);
+      }
     });
 
-    // REAL-DATA ONLY (Phase 1 fix): all real tested students, all-time,
-    // no synthetic padding. Honest empty state when data is thin.
+    // 3. Filter valid results with questions attempted
     let targetResults = allResults.filter(function(r) {
-      return r && (+r.total || 0) > 0 && r.email;
+      return r && (+r.total || 0) > 0 && (r.email || r.uid);
     });
 
     let studentStats = {};
     targetResults.forEach(r => {
-      if (!r.email) return;
-      if(!studentStats[r.email]) {
-        let u = DB.users.find(user => user.email === r.email);
-        let name = u ? u.name : r.email.split('@')[0];
-        studentStats[r.email] = { name: name, avg: 0, tests: 0, totalC: 0, totalQ: 0, email: r.email };
+      const key = r.email || r.uid;
+      if (!key) return;
+      if (!studentStats[key]) {
+        let u = DB.users.find(user => user.email === r.email || user.id === r.uid);
+        let name = u ? u.name : (r.email ? r.email.split('@')[0] : (r.name || 'NEET Aspirant'));
+        studentStats[key] = { name: name, avg: 0, tests: 0, totalC: 0, totalQ: 0, email: r.email || '', bestScore: 0 };
       }
-      studentStats[r.email].tests += 1;
-      studentStats[r.email].totalC += (+r.correct || 0);
-      studentStats[r.email].totalQ += (+r.total || 0);
+      studentStats[key].tests += 1;
+      studentStats[key].totalC += (+r.correct || 0);
+      studentStats[key].totalQ += (+r.total || 0);
+      const score = (r.neetScore !== undefined) ? (+r.neetScore) : (+r.correct * 4);
+      if (score > studentStats[key].bestScore) studentStats[key].bestScore = score;
     });
 
+    // Also include students who have test stats stored directly on their user document
+    if (typeof DB !== 'undefined' && DB.users) {
+      DB.users.forEach(u => {
+        if (u.role === 'admin') return;
+        const key = u.email || u.id;
+        if (!studentStats[key] && ((u.testsCount && u.testsCount > 0) || u.avgAccuracy !== undefined)) {
+          studentStats[key] = {
+            name: u.name || (u.email ? u.email.split('@')[0] : 'NEET Aspirant'),
+            avg: u.avgAccuracy || 0,
+            tests: u.testsCount || 1,
+            totalC: u.totalCorrect || 0,
+            totalQ: u.totalQuestions || 0,
+            email: u.email || '',
+            bestScore: u.lastTestScore || 0
+          };
+        }
+      });
+    }
+
     let ranked = Object.values(studentStats).map(s => {
-      s.avg = s.totalQ ? Math.round(s.totalC / s.totalQ * 100) : 0;
+      s.avg = s.totalQ ? Math.round(s.totalC / s.totalQ * 100) : (s.avg || 0);
       return s;
     });
 
-    // Sort highest average first
-    ranked.sort((a, b) => b.avg - a.avg);
+    // Sort by average accuracy, then total tests completed, then highest score
+    ranked.sort((a, b) => (b.avg - a.avg) || (b.tests - a.tests) || (b.bestScore - a.bestScore));
 
     if (!ranked.length) {
-      list.innerHTML = '<div class="empty-state"><div class="empty-icon">🏆</div><p>Not enough students yet for a ranking — take a test to kick it off!</p></div>';
+      list.innerHTML = `
+        <div class="empty-state" style="padding:40px 16px;text-align:center">
+          <div class="empty-icon" style="font-size:2.6rem;margin-bottom:12px">🏆</div>
+          <h4 style="font-weight:800;margin-bottom:6px">Global Leaderboard Ready</h4>
+          <p style="color:var(--muted);font-size:.85rem;margin-bottom:16px">Complete your first mock test to claim Rank #1!</p>
+          <button class="btn btn-primary btn-sm" onclick="go('mcq')">Take Mock Test Now →</button>
+        </div>
+      `;
       return;
     }
-    // 3. Render to HTML (top 10 only)
+
+    const podium = ['🥇', '🥈', '🥉'];
+    // 4. Render to HTML (top 10)
     list.innerHTML = ranked.slice(0, 10).map((u, i) => `
-      <div class="rank-row">
-        <div class="rn ${i === 0 ? 'r1' : i === 1 ? 'r2' : i === 2 ? 'r3' : 'ro'}">${i + 1}</div>
-        <div class="avatar">${u.name[0].toUpperCase()}</div>
+      <div class="rank-row ${i === 0 ? 'r1-card' : ''}" style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--card);border-radius:12px;margin-bottom:8px;border:1px solid ${i < 3 ? 'var(--y)' : 'var(--border)'}">
+        <div class="rn ${i === 0 ? 'r1' : i === 1 ? 'r2' : i === 2 ? 'r3' : 'ro'}" style="font-weight:800;font-size:1.05rem;min-width:32px;text-align:center">
+          ${i < 3 ? podium[i] : (i + 1)}
+        </div>
+        <div class="avatar" style="width:36px;height:36px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;border:1px solid var(--border)">
+          ${escHtml((u.name || 'S')[0].toUpperCase())}
+        </div>
         <div style="flex:1">
-          <p style="font-weight:700;font-size:.84rem">${u.name}</p>
+          <p style="font-weight:700;font-size:.86rem;margin:0">${escHtml(u.name || 'Student')}</p>
+          <p style="font-size:.72rem;color:var(--muted);margin:2px 0 0 0">${u.tests} test${u.tests > 1 ? 's' : ''} completed</p>
         </div>
         <div style="text-align:right">
-          <p style="font-weight:800;font-size:.9rem">${u.avg}%</p>
-          <p style="font-size:.7rem;color:var(--muted)">${u.tests} tests</p>
+          <p style="font-weight:800;font-size:.95rem;color:var(--text);margin:0">${u.avg}%</p>
+          <p style="font-size:.7rem;color:var(--green);font-weight:600;margin:2px 0 0 0">Best: ${u.bestScore} pts</p>
         </div>
       </div>
     `).join('');
@@ -5676,10 +5995,11 @@ async function renderLeaderboard() {
 //  UPDATES
 // ═══════════════════════════════════════════════════
 function renderUpdates() {
+  DB.updates = migrateOutdatedSeedAnnouncements(DB.updates);
   var list = document.getElementById('updList');
   if (!DB.updates.length) { list.innerHTML = '<div class="empty-state"><div class="empty-icon">📢</div><p>No updates posted yet</p></div>'; return; }
   var colors = {High:'var(--red)',Medium:'var(--orange)',Low:'var(--green)'};
-  list.innerHTML = DB.updates.map(u => '<div class="upd-item"><div class="upd-dot" style="background:' + (colors[u.priority]||'var(--y)') + '"></div><div><div style="display:flex;align-items:center;gap:8px;margin-bottom:3px"><p style="font-weight:800;font-size:.86rem">' + u.title + '</p><span class="badge ' + (u.priority==='High'?'br':u.priority==='Medium'?'by':'bg-badge') + '">' + u.priority + '</span></div><p style="font-size:.78rem;color:var(--muted);line-height:1.6">' + u.desc + '</p><p style="font-size:.7rem;color:var(--light);margin-top:4px;font-weight:600">📅 ' + new Date(u.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) + ' • ' + u.type + '</p></div></div>').join('');
+  list.innerHTML = DB.updates.map(u => '<div class="upd-item"><div class="upd-dot" style="background:' + (colors[u.priority]||'var(--y)') + '"></div><div><div style="display:flex;align-items:center;gap:8px;margin-bottom:3px"><p style="font-weight:800;font-size:.86rem">' + escHtml(u.title) + '</p><span class="badge ' + (u.priority==='High'?'br':u.priority==='Medium'?'by':'bg-badge') + '">' + escHtml(u.priority || 'General') + '</span></div><p style="font-size:.78rem;color:var(--muted);line-height:1.6">' + escHtml(u.desc) + '</p><p style="font-size:.7rem;color:var(--light);margin-top:4px;font-weight:600">📅 ' + escHtml(new Date(u.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})) + ' • ' + escHtml(u.type || '') + '</p></div></div>').join('');
 }
 
 // ═══════════════════════════════════════════════════
@@ -5753,14 +6073,22 @@ function renderAdmin() {
     return { u: u, st: st, issue: issue, rank: !st.results.length ? 0 : (st.avg < 40 ? 1 : 2) };
   }).filter(x => x.issue).sort((a, b) => a.rank - b.rank || a.st.avg - b.st.avg).slice(0, 5);
   if (!attention.length) tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:16px;font-weight:600">All students on track! 🎉</td></tr>';
-  else tbody.innerHTML = attention.map(x => '<tr><td><strong><a style="cursor:pointer;border-bottom:2px solid var(--y)" onclick="openStudentDetail(\'' + x.u.id + '\')">' + x.u.name + '</a></strong></td><td>' + x.u.email + '</td><td><span class="badge br">' + x.issue + '</span></td><td><button class="btn btn-primary btn-sm" onclick="openStudentDetail(\'' + x.u.id + '\')">View</button></td></tr>').join('');
+  else {
+    tbody.innerHTML = attention.map(x => '<tr><td><strong><a href="#" data-open-student="' + escHtml(x.u.id) + '" style="cursor:pointer;border-bottom:2px solid var(--y)">' + escHtml(x.u.name || 'Student') + '</a></strong></td><td>' + escHtml(x.u.email || '') + '</td><td><span class="badge br">' + escHtml(x.issue) + '</span></td><td><button class="btn btn-primary btn-sm" data-open-student="' + escHtml(x.u.id) + '">View</button></td></tr>').join('');
+    tbody.querySelectorAll('[data-open-student]').forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        openStudentDetail(button.dataset.openStudent);
+      });
+    });
+  }
 
   var logins = document.getElementById('aRecentLogins');
   if (logins) {
     // Students only — admin logins never touch lastLoginAt.
     var logged = DB.users.filter(u => u.role !== 'admin' && u.lastLoginAt).sort((a, b) => new Date(b.lastLoginAt) - new Date(a.lastLoginAt)).slice(0, 5);
     if (!logged.length) logins.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--muted);padding:16px">No student logins tracked yet</td></tr>';
-    else logins.innerHTML = logged.map(u => '<tr><td><strong>' + u.name + '</strong></td><td>' + u.email + '</td><td>' + timeAgo(u.lastLoginAt) + (u.loginCount ? ' • #' + u.loginCount : '') + '</td></tr>').join('');
+    else logins.innerHTML = logged.map(u => '<tr><td><strong>' + escHtml(u.name || 'Student') + '</strong></td><td>' + escHtml(u.email || '') + '</td><td>' + escHtml(timeAgo(u.lastLoginAt)) + (u.loginCount ? ' • #' + Number(u.loginCount) : '') + '</td></tr>').join('');
   }
 
  
@@ -5830,17 +6158,18 @@ function timeAgo(iso) {
 
 function studentStats(u) {
   var myR = DB.results.filter(r => r.email === u.email || String(r.userId) === String(u.id) || String(r.uid) === String(u.id));
-  // Pooled accuracy (total correct / total attempted) — mean-of-ratios lies.
   var cc = myR.reduce((a, r) => a + (+r.correct || 0), 0);
   var tt = myR.reduce((a, r) => a + (+r.total || 0), 0);
-  var avg = tt ? Math.round(cc / tt * 100) : 0;
-  var best = myR.length ? Math.max.apply(null, myR.map(r => Math.round(r.correct / r.total * 100))) : 0;
-  var lastActive = u.lastLoginAt || null;
+  // Fall back to user summary fields if individual results docs are still syncing
+  var avg = tt ? Math.round(cc / tt * 100) : (u.avgAccuracy !== undefined ? u.avgAccuracy : 0);
+  var testCount = myR.length || (u.testsCount || 0);
+  var best = myR.length ? Math.max.apply(null, myR.map(r => Math.round((+r.correct / +r.total) * 100))) : (u.lastTestAccuracy || 0);
+  var lastActive = u.lastActiveAt || u.lastLoginAt || null;
   myR.forEach(r => {
     var t = r.timestamp || r.date;
     if (t && (!lastActive || new Date(t) > new Date(lastActive))) lastActive = t;
   });
-  return { results: myR, avg: avg, best: best, lastActive: lastActive };
+  return { results: myR, avg: avg, testCount: testCount, best: best, lastActive: lastActive };
 }
 
 function renderStudentList(search) {
@@ -5860,8 +6189,10 @@ function renderStudentList(search) {
   if (!withStats.length) { tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px;font-weight:600">No students registered yet</td></tr>'; return; }
   tbody.innerHTML = withStats.map((row, i) => {
     var u = row.u, avg = row.st.avg, myR = row.st.results;
-    return '<tr><td>' + (i+1) + '</td><td><div style="display:flex;align-items:center;gap:7px"><div class="avatar" style="width:28px;height:28px;font-size:.7rem">' + (u.name||'S')[0] + '</div><strong><a style="cursor:pointer;border-bottom:2px solid var(--y)" onclick="openStudentDetail(\'' + u.id + '\')">' + u.name + '</a></strong></div></td><td>' + u.email + '</td><td><span class="badge by">' + (u.target||'NEET') + '</span></td><td>' + myR.length + '</td><td><span class="badge ' + (avg>=70?'bg-badge':avg>=50?'by':'br') + '">' + avg + '%</span></td><td>' + new Date(u.joined||Date.now()).toLocaleDateString('en-IN') + '</td><td>' + timeAgo(row.st.lastActive) + '</td><td><button class="btn btn-danger btn-sm" onclick="deleteStudent(\'' + u.id + '\')">Delete</button></td></tr>';
+    return '<tr><td>' + (i+1) + '</td><td><div style="display:flex;align-items:center;gap:7px"><div class="avatar" style="width:28px;height:28px;font-size:.7rem">' + escHtml((u.name||'S')[0]) + '</div><strong><a style="cursor:pointer;border-bottom:2px solid var(--y)" data-open-student="' + escHtml(u.id) + '">' + escHtml(u.name || 'Student') + '</a></strong></div></td><td>' + escHtml(u.email || '') + '</td><td><span class="badge by">' + escHtml(u.target||'NEET') + '</span></td><td>' + myR.length + '</td><td><span class="badge ' + (avg>=70?'bg-badge':avg>=50?'by':'br') + '">' + Number(avg || 0) + '%</span></td><td>' + escHtml(new Date(u.joined||Date.now()).toLocaleDateString('en-IN')) + '</td><td>' + escHtml(timeAgo(row.st.lastActive)) + '</td><td><button class="btn btn-danger btn-sm" data-delete-student="' + escHtml(u.id) + '">Delete</button></td></tr>';
   }).join('');
+  tbody.querySelectorAll('[data-open-student]').forEach(function (el) { el.addEventListener('click', function (event) { event.preventDefault(); openStudentDetail(el.dataset.openStudent); }); });
+  tbody.querySelectorAll('[data-delete-student]').forEach(function (el) { el.addEventListener('click', function () { deleteStudent(el.dataset.deleteStudent); }); });
   renderRecentRegistrations();
 }
 
@@ -5895,24 +6226,33 @@ async function openStudentDetail(id) {
   });
   var chapRows = Object.keys(chaps).sort((a, b) => (chaps[a].c / chaps[a].t) - (chaps[b].c / chaps[b].t)).slice(0, 8).map(c => {
     var pct = Math.round(chaps[c].c / chaps[c].t * 100);
-    return '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:.76rem;font-weight:700;margin-bottom:3px"><span>' + c.substring(0, 30) + '</span><span>' + pct + '%</span></div><div class="pbar"><div class="pfill y" style="width:' + pct + '%"></div></div></div>';
+    return '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:.76rem;font-weight:700;margin-bottom:3px"><span>' + escHtml(c.substring(0, 30)) + '</span><span>' + pct + '%</span></div><div class="pbar"><div class="pfill y" style="width:' + pct + '%"></div></div></div>';
   }).join('') || '<p style="color:var(--muted);font-size:.8rem">No chapter data yet.</p>';
-  var testRows = myR.map(r => {
-    var acc = Math.round(r.correct / r.total * 100);
+  var testRows = myR.map((r, idx) => {
+    var correct = Number(r.correct) || 0;
+    var total = Number(r.total) || 0;
+    var acc = total ? Math.round(correct / total * 100) : 0;
     var d = r.timestamp ? new Date(r.timestamp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '—';
-    return '<tr><td>' + d + '</td><td>' + (r.chapter || 'Mixed') + '</td><td>' + r.correct + '/' + r.total + '</td><td><span class="badge ' + (acc >= 70 ? 'bg-badge' : acc >= 50 ? 'by' : 'br') + '">' + acc + '%</span></td><td>' + (r.neetScore !== undefined ? r.neetScore : (r.correct * 4)) + '</td></tr>';
-  }).join('') || '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">No tests taken yet.</td></tr>';
+    var qLen = (r.questions && r.questions.length) ? r.questions.length : total;
+    var neetScore = Number.isFinite(Number(r.neetScore)) ? Number(r.neetScore) : correct * 4;
+    return '<tr><td>' + escHtml(d) + '</td><td>' + escHtml(r.chapter || 'Mixed') + '</td><td>' + correct + '/' + total + '</td><td><span class="badge ' + (acc >= 70 ? 'bg-badge' : acc >= 50 ? 'by' : 'br') + '">' + acc + '%</span></td><td><strong>' + neetScore + '</strong></td><td><button class="btn btn-outline btn-sm" style="font-size:.74rem;padding:4px 8px;display:inline-flex;align-items:center;gap:4px" data-inspect-result="' + escHtml(r.id || '') + '" data-inspect-student="' + escHtml(u.id || '') + '" data-inspect-index="' + idx + '">🔍 View MCQs (' + qLen + ')</button></td></tr>';
+  }).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:16px">No tests taken yet.</td></tr>';
   document.getElementById('stuMTitle').textContent = (u.name || 'Student') + ' — Full Report';
   document.getElementById('stuMBody').innerHTML =
-    '<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px"><div class="avatar" style="width:48px;height:48px;font-size:1rem">' + (u.name || 'S')[0] + '</div><div><p style="font-weight:800">' + u.name + '</p><p style="font-size:.76rem;color:var(--muted)">' + u.email + ' • ' + (u.target || 'NEET') + ' • Joined ' + new Date(u.joined || Date.now()).toLocaleDateString('en-IN') + ' • Last active ' + timeAgo(st.lastActive) + '</p></div></div>' +
+    '<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px"><div class="avatar" style="width:48px;height:48px;font-size:1rem">' + escHtml((u.name || 'S')[0]) + '</div><div><p style="font-weight:800">' + escHtml(u.name || 'Student') + '</p><p style="font-size:.76rem;color:var(--muted)">' + escHtml(u.email || '') + ' • ' + escHtml(u.target || 'NEET') + ' • Joined ' + escHtml(new Date(u.joined || Date.now()).toLocaleDateString('en-IN')) + ' • Last active ' + escHtml(timeAgo(st.lastActive)) + '</p></div></div>' +
     '<div class="grid g4" style="margin-bottom:16px">' +
-    '<div class="stat-card"><div class="stat-info"><h3>' + myR.length + '</h3><p>Tests</p></div></div>' +
+    '<div class="stat-card"><div class="stat-info"><h3>' + st.testCount + '</h3><p>Tests</p></div></div>' +
     '<div class="stat-card"><div class="stat-info"><h3>' + st.avg + '%</h3><p>Avg Accuracy</p></div></div>' +
     '<div class="stat-card"><div class="stat-info"><h3>' + st.best + '%</h3><p>Best Score</p></div></div>' +
     '<div class="stat-card"><div class="stat-info"><h3 id="stuMPred">…</h3><p>Predicted /720</p></div></div></div>' +
     '<h4 style="font-weight:800;font-size:.86rem;margin-bottom:10px">Weakest Chapters First</h4><div style="margin-bottom:16px">' + chapRows + '</div>' +
     '<h4 style="font-weight:800;font-size:.86rem;margin-bottom:10px">All Test Reports (' + myR.length + ')</h4>' +
-    '<div class="tbl-wrap"><table><thead><tr><th>Date</th><th>Chapter</th><th>Score</th><th>Accuracy</th><th>NEET</th></tr></thead><tbody>' + testRows + '</tbody></table></div>';
+    '<div class="tbl-wrap"><table><thead><tr><th>Date</th><th>Chapter</th><th>Score</th><th>Accuracy</th><th>NEET</th><th>MCQ Answers</th></tr></thead><tbody>' + testRows + '</tbody></table></div>';
+  document.querySelectorAll('#stuMBody [data-inspect-index]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      inspectStudentTest(button.dataset.inspectResult, button.dataset.inspectStudent, button.dataset.inspectIndex);
+    });
+  });
   openModal('studentModal');
   try {
     const r = await fetch(`${AI_BACKEND_URL}/api/score/predict?student_id=${encodeURIComponent(u.email || 'student_local')}`);
@@ -5930,8 +6270,110 @@ function renderRecentRegistrations() {
   if (!el) return;
   var recent = [...DB.users].filter(u => u.role !== 'admin').sort((a, b) => new Date(b.joined || 0) - new Date(a.joined || 0)).slice(0, 5);
   if (!recent.length) { el.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:16px">No students yet</td></tr>'; return; }
-  el.innerHTML = recent.map(u => '<tr><td><strong>' + u.name + '</strong></td><td>' + u.email + '</td><td><span class="badge by">' + (u.target || 'NEET') + '</span></td><td>' + new Date(u.joined || Date.now()).toLocaleDateString('en-IN') + '</td></tr>').join('');
+  el.innerHTML = recent.map(u => '<tr><td><strong>' + escHtml(u.name || 'Student') + '</strong></td><td>' + escHtml(u.email || '') + '</td><td><span class="badge by">' + escHtml(u.target || 'NEET') + '</span></td><td>' + escHtml(new Date(u.joined || Date.now()).toLocaleDateString('en-IN')) + '</td></tr>').join('');
 }
+
+
+function inspectStudentTest(resultId, studentId, fallbackIndex) {
+  var u = DB.users.find(x => String(x.id) === String(studentId));
+  var results = Array.isArray(DB.results) ? DB.results : [];
+  var r = resultId ? results.find(x => String(x.id) === String(resultId)) : null;
+  if (!r && u && Number.isInteger(Number(fallbackIndex))) {
+    var studentResults = results.filter(x => x.email === u.email || String(x.uid || x.userId) === String(u.id));
+    studentResults.sort((a, b) => new Date(b.timestamp || b.date || 0) - new Date(a.timestamp || a.date || 0));
+    r = studentResults[Number(fallbackIndex)];
+  }
+  if (!r) {
+    toast('Test report not found', 'e');
+    return;
+  }
+
+  var titleEl = document.getElementById('testInspectTitle');
+  var subEl = document.getElementById('testInspectSubtitle');
+  var bodyEl = document.getElementById('testInspectBody');
+  var scoreEl = document.getElementById('testInspectScoreSummary');
+
+  var studentName = (u ? u.name : (r.name || r.email || 'Student'));
+  titleEl.textContent = '📝 Test Review — ' + (r.chapter || 'Biology Mock Test');
+  subEl.textContent = studentName + ' (' + (r.email || '') + ') • ' + (r.date || new Date(r.timestamp || Date.now()).toDateString());
+
+  var qs = r.questions || [];
+  if (!qs.length) {
+    bodyEl.innerHTML = `
+      <div style="padding:24px;background:var(--surface);border-radius:12px;text-align:center">
+        <p style="font-weight:700;margin-bottom:6px">Summary Only Available for this Test</p>
+        <p style="font-size:.82rem;color:var(--muted)">Score: ${escHtml(r.correct)}/${escHtml(r.total)} (${escHtml(r.accuracy)}%) • NEET Marks: ${escHtml(r.neetScore !== undefined ? r.neetScore : (Number(r.correct) * 4))}</p>
+        <p style="font-size:.74rem;color:var(--muted);margin-top:8px">Full question-by-question telemetry is actively recorded for all tests submitted on this version.</p>
+      </div>
+    `;
+    scoreEl.textContent = `Score: ${r.correct}/${r.total} (${r.accuracy}%)`;
+    openModal('testInspectModal');
+    return;
+  }
+
+  var optLabels = ['A', 'B', 'C', 'D'];
+  bodyEl.innerHTML = qs.map((q, idx) => {
+    var isSkipped = q.selected === null || q.selected === undefined;
+    var isCorrect = (q.isCorrect !== undefined) ? Boolean(q.isCorrect) : (!isSkipped && Number(q.selected) === Number(q.correct));
+    var badgeHtml = isSkipped
+      ? '<span class="badge" style="background:#f1f5f9;color:#64748b">⚪ Skipped (0 pts)</span>'
+      : (isCorrect
+        ? '<span class="badge bg-badge" style="color:#059669">✅ Correct (+4 marks)</span>'
+        : '<span class="badge br" style="color:#dc2626">❌ Incorrect (-1 mark)</span>');
+
+    var optsHtml = (q.options || []).map((opt, optIdx) => {
+      var isSkipped = q.selected === null || q.selected === undefined;
+      var isStudentSelected = !isSkipped && Number(q.selected) === optIdx;
+      var isCorrectKey = Number(q.correct) === optIdx;
+
+      var optStyle = 'display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;margin-bottom:6px;font-size:.84rem;border:1px solid var(--border);';
+      var tagHtml = '';
+
+      if (isStudentSelected && isCorrectKey) {
+        optStyle += 'background:#ecfdf5;border-color:#10b981;font-weight:700;color:#065f46;';
+        tagHtml = '<span style="margin-left:auto;font-size:.7rem;padding:2px 8px;border-radius:6px;background:#10b981;color:#fff;font-weight:800">Student Choice ✓</span>';
+      } else if (isStudentSelected && !isCorrectKey) {
+        optStyle += 'background:#fef2f2;border-color:#ef4444;font-weight:700;color:#991b1b;';
+        tagHtml = '<span style="margin-left:auto;font-size:.7rem;padding:2px 8px;border-radius:6px;background:#ef4444;color:#fff;font-weight:800">Student Choice ✗</span>';
+      } else if (isCorrectKey) {
+        optStyle += 'background:#f0fdf4;border-color:#22c55e;font-weight:600;color:#166534;';
+        tagHtml = '<span style="margin-left:auto;font-size:.7rem;padding:2px 8px;border-radius:6px;background:#22c55e;color:#fff;font-weight:700">Correct Key ✓</span>';
+      } else {
+        optStyle += 'background:var(--surface);color:var(--text);';
+      }
+
+      return `
+        <div style="${optStyle}">
+          <span style="font-weight:800;min-width:22px">${optLabels[optIdx] || optIdx + 1}.</span>
+          <span>${escHtml(opt)}</span>
+          ${tagHtml}
+        </div>
+      `;
+    }).join('');
+
+    var expHtml = q.explanation ? `
+      <div style="margin-top:8px;padding:10px 12px;background:rgba(255,193,7,0.08);border-left:3px solid var(--y);border-radius:4px;font-size:.78rem;line-height:1.5">
+        <strong>💡 NCERT Explanation:</strong> ${escHtml(q.explanation)}
+      </div>
+    ` : '';
+
+    return `
+      <div style="margin-bottom:18px;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:.8rem;font-weight:800;color:var(--muted)">Q${idx + 1} of ${qs.length} ${q.topic ? '• ' + escHtml(q.topic) : ''}</span>
+          ${badgeHtml}
+        </div>
+        <p style="font-size:.9rem;font-weight:700;margin-bottom:12px;line-height:1.5">${escHtml(q.question)}</p>
+        <div>${optsHtml}</div>
+        ${expHtml}
+      </div>
+    `;
+  }).join('');
+
+  scoreEl.innerHTML = `Overall Result: <span style="color:var(--green)">${escHtml(r.correct)} Correct</span>, <span style="color:var(--red)">${escHtml(r.wrong || (Number(r.total) - Number(r.correct)))} Wrong</span> • Accuracy: <strong>${escHtml(r.accuracy)}%</strong> • NEET Score: <strong>${escHtml(r.neetScore !== undefined ? r.neetScore : (Number(r.correct) * 4))} marks</strong>`;
+  openModal('testInspectModal');
+}
+window.inspectStudentTest = inspectStudentTest;
 
 function filterStudents(q) { renderStudentList(q); }
 
@@ -6094,7 +6536,7 @@ async function deleteMCQ(id) {
   }
 }
 
-// Bulk-sync the backend no-cost bank (1347) into Firestore `mcqs`.
+// Bulk-sync the backend no-cost bank into Firestore `mcqs`.
 // Dedupe by question text (resumable: re-click continues), paced writes with
 // one retry each (rapid-fire addDoc batches get throttled otherwise), honest
 // failed-count in the final toast instead of silent console warnings.
@@ -6115,8 +6557,12 @@ async function syncFullBank() {
   }
   try {
     setBtn('⏳ Reading cloud…');
-    const existing = new Set((DB.mcqs || []).map(m => (m.q || '').toLowerCase().trim()));
-    let offset = 0, total = 0, uploaded = 0, skipped = 0, failed = 0;
+    const existing = new Map();
+    (DB.mcqs || []).forEach(function(m) {
+      const key = String(m.q || m.question || '').toLowerCase().replace(/\s+/g, ' ').trim();
+      if (key && !existing.has(key)) existing.set(key, String(m.id || ''));
+    });
+    let offset = 0, total = 0, uploaded = 0, corrected = 0, skipped = 0, failed = 0;
     const LIMIT = 100;
     for (;;) {
       const r = await fetch(`${AI_BACKEND_URL}/api/mcqs/seed?offset=${offset}&limit=${LIMIT}`);
@@ -6126,24 +6572,44 @@ async function syncFullBank() {
       const batch = j.mcqs || [];
       if (!batch.length) break;
       for (const m of batch) {
-        const key = (m.q || '').toLowerCase().trim();
-        if (!key || existing.has(key)) { skipped++; continue; }
+        const key = String(m.q || '').toLowerCase().replace(/\s+/g, ' ').trim();
+        if (!key) { skipped++; continue; }
+        const existingId = existing.get(key);
+        if (existingId) {
+          if (m.seed_id === 'mbi-translation-definition') {
+            const canonicalData = {
+              q: m.q, opts: m.opts, correct: m.correct,
+              chapter: m.chapter, diff: m.diff, expl: m.expl,
+              source_section: m.source_section
+            };
+            try {
+              await setDoc(doc(db, 'mcqs', existingId), canonicalData, { merge: true });
+              const localIndex = DB.mcqs.findIndex(item => String(item.id) === existingId);
+              if (localIndex >= 0) DB.mcqs[localIndex] = Object.assign({}, DB.mcqs[localIndex], canonicalData);
+              corrected++;
+            } catch (e) { failed++; console.warn('[sync] canonical MCQ update failed:', e && e.message); }
+          } else {
+            skipped++;
+          }
+          continue;
+        }
         try {
-          const docRef = await uploadOne(m);
-          DB.mcqs.push({ id: docRef.id, ...m });
-          existing.add(key);
+          const { seed_id, ...mcqData } = m;
+          const docRef = await uploadOne(mcqData);
+          DB.mcqs.push({ id: docRef.id, ...mcqData });
+          existing.set(key, docRef.id);
           uploaded++;
         } catch (e) { failed++; console.warn('[sync] upload failed:', e && e.message); }
         await sleep(30);
       }
-      offset += batch.length;
+      offset += Number(j.limit) || batch.length;
       setBtn(`⏳ ${offset}/${total}… +${uploaded}`);
       save('mcqs'); renderMCQTable();
       if (offset >= total) break;
     }
     setBtn('⬆ Sync Full Bank to Cloud');
     save('mcqs'); renderMCQTable();
-    toast(`Bank sync done: +${uploaded} uploaded, ${skipped} already present, ${failed} failed (${DB.mcqs.length} total)` + (failed ? ' — retry by clicking Sync again (it resumes).' : ''), failed ? 'e' : 's');
+    toast(`Bank sync done: +${uploaded} uploaded, ${corrected} corrected, ${skipped} unchanged, ${failed} failed (${DB.mcqs.length} total)` + (failed ? ' — retry by clicking Sync again (it resumes).' : ''), failed ? 'e' : 's');
   } catch (error) {
     console.error('Bank sync failed:', error);
     setBtn('⬆ Sync Full Bank to Cloud');
@@ -6221,7 +6687,8 @@ async function deleteVideo(id) {
 function renderAdminUpdates() {
   var list = document.getElementById('adminUpdList');
   if (!DB.updates.length) { list.innerHTML = '<div class="empty-state"><div class="empty-icon">📢</div><p>No updates posted</p></div>'; return; }
-  list.innerHTML = DB.updates.map(u => '<div class="upd-item"><div class="upd-dot" style="background:' + (u.priority==='High'?'#EF4444':u.priority==='Medium'?'#F59E0B':'#22C55E') + '"></div><div style="flex:1"><p style="font-weight:800;font-size:.85rem">' + u.title + '</p><p style="font-size:.78rem;color:var(--muted);margin-top:2px">' + u.desc.substring(0,80) + '...</p><p style="font-size:.7rem;color:var(--light);margin-top:3px">' + new Date(u.date).toLocaleDateString('en-IN') + '</p></div><button class="btn btn-danger btn-sm" onclick="deleteUpdate(\'' + u.id + '\')">Delete</button></div>').join('');
+  list.innerHTML = DB.updates.map(u => '<div class="upd-item"><div class="upd-dot" style="background:' + (u.priority==='High'?'#EF4444':u.priority==='Medium'?'#F59E0B':'#22C55E') + '"></div><div style="flex:1"><p style="font-weight:800;font-size:.85rem">' + escHtml(u.title || '') + '</p><p style="font-size:.78rem;color:var(--muted);margin-top:2px">' + escHtml(String(u.desc || '').substring(0,80)) + '...</p><p style="font-size:.7rem;color:var(--light);margin-top:3px">' + escHtml(new Date(u.date).toLocaleDateString('en-IN')) + '</p></div><button class="btn btn-danger btn-sm" data-delete-update="' + escHtml(u.id) + '">Delete</button></div>').join('');
+  list.querySelectorAll('[data-delete-update]').forEach(function (el) { el.addEventListener('click', function () { deleteUpdate(el.dataset.deleteUpdate); }); });
 }
 
 async function saveUpdate() {
@@ -6422,7 +6889,7 @@ async function syncData() {
       getDocs(collection(db, "updates"))
         .then(updateSnap => {
           if (!updateSnap.empty) {
-            DB.updates = updateSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            DB.updates = migrateOutdatedSeedAnnouncements(updateSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
             save('updates');
             console.log(`✅ Synced ${DB.updates.length} updates from Firebase`);
             if (currentPage === 'updates') renderUpdates();
@@ -6487,13 +6954,13 @@ async function syncData() {
 // Auto-refresh admin dashboard when active/visible (catches multi-laptop logins in real-time)
 setInterval(function() {
   if (document.visibilityState === 'visible' && (currentPage === 'admin' || currentPage === 'admin-students') && (DB.isAdmin || (DB.currentUser && DB.currentUser.role === 'admin'))) {
-    refreshStudentData();
+    refreshStudentData(true);
   }
 }, 7000);
 
 document.addEventListener('visibilitychange', function() {
   if (document.visibilityState === 'visible' && (currentPage === 'admin' || currentPage === 'admin-students') && (DB.isAdmin || (DB.currentUser && DB.currentUser.role === 'admin'))) {
-    refreshStudentData();
+    refreshStudentData(true);
   }
 });
 

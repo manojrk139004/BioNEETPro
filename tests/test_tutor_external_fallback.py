@@ -55,7 +55,7 @@ class TestTutorExternalFallback(unittest.TestCase):
         self.assertEqual(res.get("status"), "success")
         self.assertIn(res.get("source_mode"), ("local_ncert", "local_plus_llm"))
         self.assertIn("chlorophyll", res.get("reply", "").lower())
-        self.assertIn("Dr. Priya", res.get("reply", ""))
+        self.assertIn("Dr. Arya", res.get("reply", ""))
 
     # --- Scenario B: Partial local evidence -> Tier 2 (local_plus_llm) ---
     def test_scenario_b_partial_local_evidence(self):
@@ -123,7 +123,7 @@ class TestTutorExternalFallback(unittest.TestCase):
             self.assertEqual(res.get("status"), "success")
             self.assertEqual(res.get("source_mode"), "external_llm_fallback")
             self.assertEqual(res.get("fallback_tier"), "tier_3")
-            self.assertIn("Dr. Priya", res.get("reply", ""))
+            self.assertIn("Dr. Arya", res.get("reply", ""))
             self.assertIn("NCERT Source Reference", res.get("reply", ""))
 
     # --- Scenario D: Stale context vs explicit query dominance ---
@@ -346,7 +346,7 @@ class TestTutorExternalFallback(unittest.TestCase):
             )
             self.assertEqual(res.get("status"), "success")
             self.assertEqual(res.get("source_mode"), "external_llm_fallback")
-            self.assertIn("Dr. Priya", res.get("reply", ""))
+            self.assertIn("Dr. Arya", res.get("reply", ""))
 
     # --- Scenario Q: Sensitive topic medical educational tone flag ---
     def test_scenario_q_sensitive_topic_handling(self):
@@ -355,7 +355,7 @@ class TestTutorExternalFallback(unittest.TestCase):
             student_id=self.student_id
         )
         self.assertEqual(out.get("status"), "success")
-        self.assertIn("Dr. Priya", out.get("reply", ""))
+        self.assertIn("Dr. Arya", out.get("reply", ""))
 
     # --- Scenario R: Local offline mode works without network/API key ---
     def test_scenario_r_local_offline_mode(self):

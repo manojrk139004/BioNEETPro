@@ -121,7 +121,7 @@ same-origin (`window.location.origin`) for http(s) pages — localhost is only t
 ## 7. Backend / API Requirements
 
 * **Python Runtime:** Python 3.10 or higher.
-* **Memory Allocation:** Minimum 1 GB RAM (2 GB recommended). The hybrid retrieval engine loads TF-IDF matrices over 774 NCERT chunks into memory on startup.
+* **Memory Allocation:** Minimum 1 GB RAM (2 GB recommended). The hybrid retrieval engine loads TF-IDF matrices over 770 NCERT chunks into memory on startup.
 * **CPU:** 1-2 vCPU cores sufficient for TF-IDF cosine similarity calculations.
 * **Disk Storage:** At least 200 MB for data indexes (`data/ncert_textbook_index.json`, `data/neet_knowledge_base.csv`) and local fallback files.
 
@@ -179,6 +179,6 @@ Deploying the Flask backend to Vercel Serverless Functions presents critical blo
 
 **YES.**  
 A dedicated Python backend is necessary because:
-1. The AI RAG engine uses Python scientific libraries (`scikit-learn` and `pandas`) for TF-IDF vector retrieval across 774 NCERT chunks.
+1. The AI RAG engine uses Python scientific libraries (`scikit-learn` and `pandas`) for TF-IDF vector retrieval across 770 NCERT chunks.
 2. The server protects secret credentials (`OPENROUTER_API_KEY`, Firebase service account private key) from client-side exposure.
 3. The content safety guardrail, syllabus validator, and Bayesian Knowledge Tracing algorithms are fully implemented in Python.

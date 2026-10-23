@@ -1,6 +1,6 @@
-﻿# BioNEETPro V1 — External LLM Fallback Architecture & Audit Report
+# BioNEETPro V1 — External LLM Fallback Architecture & Audit Report
 **Date:** 2026-09-05  
-**System:** BioNEETPro AI Biology Tutor (`Dr. Priya`)  
+**System:** BioNEETPro AI Biology Tutor (`Dr. Arya`)
 **Status:** VERIFIED & PRODUCTION READY  
 
 ---
@@ -33,7 +33,7 @@ The tutor architecture has been redesigned with a strict, principled 4-tier hier
 |---|---|---|---|---|
 | **Tier 1** | Strong local NCERT evidence (`score >= 0.55`) | Dual-corpus RAG grounded strictly in textbook evidence chunks | `local_ncert` | `tier_1` |
 | **Tier 2** | Partial local evidence (`0.35 <= score < 0.55`) | LLM prompt combines retrieved evidence chunks with verified NCERT Class 11/12 facts | `local_plus_llm` | `tier_2` |
-| **Tier 3** | Valid NCERT Biology query, 0 or insufficient local evidence | Model failover chain calls external LLM with Dr. Priya NCERT persona | `external_llm_fallback` | `tier_3` |
+| **Tier 3** | Valid NCERT Biology query, 0 or insufficient local evidence | Model failover chain calls external LLM with Dr. Arya NCERT persona | `external_llm_fallback` | `tier_3` |
 | **Tier 4** | Out-of-syllabus, policy violation, or all external models fail | Safe educational refusal / boundary notice | `safe_fallback` | `tier_4` |
 
 ---
@@ -71,7 +71,7 @@ All external fallback paths strictly preserve safety and pedagogical guardrails:
 1. **Pre-flight Injection Gate:** Regex filters block jailbreak phrases (`"ignore previous instructions"`, `"reveal system prompt"`, etc.) before any network request is issued.
 2. **Syllabus Boundary Gate:** Non-biology queries (e.g. `"Explain Newton's laws of motion"`, `"Who won the cricket world cup"`, Python code, math formulas) are rejected at the syllabus boundary with `status: "out_of_syllabus"`, `confidence: "REJECTED"`, and `source_mode: "safe_fallback"`. They **NEVER** reach Tier 3 external LLMs.
 3. **Sensitive Topic Medical Tone:** Topics involving human reproduction or anatomy trigger clinical/medical educational phrasing without euphemisms or moralizing.
-4. **Dr. Priya Persona:** All Tier 3 outputs format under the Dr. Priya persona:
+4. **Dr. Arya Persona:** All Tier 3 outputs format under the Dr. Arya persona:
    - Core Definition & Overview
    - Key Mechanisms / Structural Details
    - ⚠️ NEET Traps & High-Yield Exam Points (3 points)
@@ -127,8 +127,8 @@ To verify in the live application:
 2. Open `BioNeet-Pro.html` in a web browser.
 3. Submit the reported queries:
    - Input: `"explain parts of flower"`
-     - *Expected:* Comprehensive breakdown of Calyx, Corolla, Androecium, and Gynoecium with Dr. Priya persona and NEET traps.
+     - *Expected:* Comprehensive breakdown of Calyx, Corolla, Androecium, and Gynoecium with Dr. Arya persona and NEET traps.
    - Input: `"explain biofertilizers"`
-     - *Expected:* Detailed explanation of Rhizobium, Azotobacter, mycorrhizae, and cyanobacteria with Dr. Priya persona.
+     - *Expected:* Detailed explanation of Rhizobium, Azotobacter, mycorrhizae, and cyanobacteria with Dr. Arya persona.
    - Input: `"Explain Newton's laws of motion"`
      - *Expected:* Immediate polite syllabus refusal notice directing student to NEET Biology topics.

@@ -615,6 +615,16 @@ class AdaptiveBiologyTutor:
                 flagged.append(w)
         flagged = sorted(set(flagged))[:3]
         if not flagged:
+            # Check if query had a mixed out-of-domain component
+            try:
+                from syllabus import _DOMAIN_REGEX
+                m_dom = _DOMAIN_REGEX.search((raw_query or "").lower() + " " + (resolved_query or "").lower())
+                if m_dom:
+                    dom_term = m_dom.group(0)
+                    return (f"\n\n⚠️ **Syllabus Scope Note:** Note that topics related to '{dom_term}' "
+                            f"fall outside the NEET Biology curriculum; the above explanation focuses exclusively on the approved NCERT Biology concept.")
+            except Exception:
+                pass
             return ""
         quoted = ", ".join(f"'{f}'" for f in flagged)
         return (f"\n\n🔎 *Scope note: {quoted} go{'es' if len(flagged) == 1 else ''} beyond the NCERT syllabus; "
@@ -1093,12 +1103,14 @@ class AdaptiveBiologyTutor:
         greeting_tokens = {
             "hi", "hello", "hey", "hola", "namaste", "vanakkam", "pranam",
             "good morning", "good afternoon", "good evening", "howdy", "greetings",
-            "hi arya", "hello arya", "hey arya", "hi dr arya", "hello dr arya", "dr arya", "hi priya", "hello priya", "dr priya",
+            "hi arya", "hello arya", "hey arya", "hi dr arya", "hello dr arya", "dr arya",
+            "hello dr", "hi dr", "hey dr", "dr", "doc",
+            "hi priya", "hello priya", "dr priya",
             "who are you", "what can you do", "help", "start", "menu"
         }
         if clean in greeting_tokens:
             return True
-        if re.match(r"^(hi|hello|hey|greetings|namaste)\s+(arya|dr arya|priya|dr priya|doctor|mentor|there|sir|maam|mam)?$", clean):
+        if re.match(r"^(hi|hello|hey|greetings|namaste)\s+(arya|dr arya|dr|doc|priya|dr priya|doctor|mentor|there|sir|maam|mam)?$", clean):
             return True
         return False
 
@@ -1334,6 +1346,23 @@ class AdaptiveBiologyTutor:
                 effective_focus = None
 
         if not nlp_res["syllabus_valid"]:
+            syl_data = nlp_res.get("syllabus_data") or {}
+            syl_reason = syl_data.get("reason")
+            # If the query was classified as a non-biology domain (pure physics, chemistry, math, coding, etc.),
+            # it MUST NOT be admitted by accidental lexical overlap in biology textbook chunks.
+            if syl_reason == "non_biology_domain":
+                refusal = syl_data.get("refusal_message") or OUT_OF_SYLLABUS_MESSAGE
+                return {
+                    "reply": refusal,
+                    "mode": "syllabus_restricted",
+                    "source_mode": "safe_fallback",
+                    "fallback_tier": "tier_4",
+                    "status": "out_of_syllabus",
+                    "resolved_query": resolved_query,
+                    "confidence": "REJECTED",
+                    "title": "Outside NEET Biology Syllabus",
+                }
+
             probe = self.retrieval.search(
                 query=resolved_query,
                 expanded_query=nlp_res["expanded_query"],
@@ -1363,7 +1392,8 @@ class AdaptiveBiologyTutor:
                     "fallback_tier": "tier_4",
                     "status": "out_of_syllabus",
                     "resolved_query": resolved_query,
-                    "confidence": "REJECTED"
+                    "confidence": "REJECTED",
+                    "title": "Outside NEET Biology Syllabus",
                 }
 
         # 3. Hybrid Concept Retrieval (Dual-Corpus: KB + Textbook Chunks)

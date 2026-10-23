@@ -1,0 +1,27 @@
+{
+  "name": "bioneet-pro",
+  "version": "1.0.0",
+  "description": "India's Context-Sensitive AI Biology Command Center for NEET Aspirants",
+  "main": "index.html",
+  "scripts": {
+    "start": "python app.py",
+    "serve": "npx serve . -l 5500",
+    "test": "python -m unittest discover -s tests",
+    "test:master": "python test_master_suite.py",
+    "test:endpoints": "python test_app_endpoints.py",
+    "check:syntax": "python scripts/check_frontend_syntax.py"
+  },
+  "keywords": [
+    "neet",
+    "biology",
+    "ai-tutor",
+    "ncert",
+    "mcq-engine",
+    "bkt-mastery"
+  ],
+  "author": "BioNEET Pro Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

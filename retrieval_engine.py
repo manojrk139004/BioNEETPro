@@ -1145,6 +1145,11 @@ class ContextAwareHybridRetrievalEngine:
         ('haversian', 'photoperiodism', 'periderm') with no support mean any
         answer would be fabricated."""
         terms = self._content_terms(clean_query)
+        # If the query contains at least one strong supported biology concept,
+        # do not block the entire query due to an extraneous or mixed out-of-domain term.
+        if any(len(t) >= 7 and self._has_support(t) for t in terms):
+            return None
+
         for t in sorted(set(terms), key=lambda x: (len(x), x)):
             if len(t) >= 7 and not self._has_support(t):
                 return t

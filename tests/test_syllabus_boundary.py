@@ -99,6 +99,35 @@ class TestSyllabusBoundary(unittest.TestCase):
             res = self.validator.check_query_syllabus(q)
             self.assertFalse(res["is_valid"], f"Non-academic query falsely accepted: '{q}'")
 
+    def test_06_edge_cases_and_interdisciplinary(self):
+        """Tests that interdisciplinary biology queries are accepted while non-bio are rejected."""
+        # Non-bio chemistry / physics queries must be rejected
+        strict_reject = [
+            "How do I balance redox reactions?",
+            "How to balance redox reactions in chemistry?",
+            "Explain Newton's laws.",
+            "Solve this quadratic equation.",
+            "Explain organic chemistry mechanisms.",
+        ]
+        for q in strict_reject:
+            res = self.validator.check_query_syllabus(q)
+            self.assertFalse(res["is_valid"], f"Should reject out-of-syllabus query: '{q}'")
+
+        # Interdisciplinary queries with biology context must be accepted
+        interdisciplinary = [
+            "Explain redox potential in photosynthesis.",
+            "What is osmotic pressure in plant cells?",
+            "Describe action potential in neurons.",
+        ]
+        for q in interdisciplinary:
+            res = self.validator.check_query_syllabus(q)
+            self.assertTrue(res["is_valid"], f"Should accept interdisciplinary query: '{q}'")
+
+        # Mixed queries should be accepted with is_mixed=True
+        mixed_res = self.validator.check_query_syllabus("Explain photosynthesis and Newton's laws.")
+        self.assertTrue(mixed_res["is_valid"], "Mixed query should be accepted for biology part")
+        self.assertTrue(mixed_res.get("is_mixed", False), "Mixed query should have is_mixed=True")
+
 
 if __name__ == "__main__":
     unittest.main()

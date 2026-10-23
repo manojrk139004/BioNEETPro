@@ -10,6 +10,8 @@ Validates:
 """
 
 import unittest
+import json
+from pathlib import Path
 from mcq_engine import mcq_engine, LocalMCQEngine
 
 
@@ -70,17 +72,30 @@ class TestMCQValidation(unittest.TestCase):
         print(f"[PASS] Topic Filtering: Verified across {topics}.")
 
     def test_05_chat_formatting_structure(self):
-        """Tests that Markdown formatting includes Dr. Priya header and collapsible answers."""
+        """Tests that Markdown formatting includes Dr. Arya header and collapsible answers."""
         result = self.engine.generate_mcqs("Give me 2 MCQs on Genetics")
         formatted = self.engine.format_mcqs_for_chat(result)
 
-        self.assertIn("Dr. Priya", formatted)
+        self.assertIn("Dr. Arya", formatted)
         self.assertIn("<details>", formatted)
         self.assertIn("</details>", formatted)
         self.assertIn("Correct Answer:", formatted)
         self.assertIn("NCERT Explanation:", formatted)
 
         print(f"[PASS] Socratic Chat Formatting: Proper Markdown generated with interactive tags.")
+
+    def test_06_shipped_seed_has_unique_ids_and_correct_translation(self):
+        """The deployable Firestore seed keeps identifiers unique and the known bad item corrected."""
+        seed_path = Path(__file__).resolve().parents[1] / "data" / "mcq_firestore_seed.json"
+        seed = json.loads(seed_path.read_text(encoding="utf-8"))
+        ids = [str(item.get("id", "")) for item in seed]
+        self.assertEqual(len(ids), len(set(ids)), "MCQ IDs must be unique for cloud sync")
+
+        matches = [item for item in seed if item.get("id") == "mbi-translation-definition"]
+        self.assertEqual(len(matches), 1, "The corrected translation MCQ must appear exactly once")
+        item = matches[0]
+        self.assertEqual(item["options"][item["correct"]], "Synthesis of protein from an mRNA template")
+        self.assertEqual(len(item["options"]), 4)
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ This document provides a complete inventory of source files, categorized counts,
 
 * **Total Active Project Files (excluding .venv, caches, archives):** 1,288 files
 * **Primary Source Code Files:** 91 files
-* **Core Data & Index Assets:** 1,170 files (including 1,094 sample student profiles and 774 textbook chunks)
+* **Core Data & Index Assets:** 1,170 files (including 1,094 sample student profiles and 770 textbook chunks across 32 rationalized chapters)
 * **Active Languages:** Python (90 files), HTML/JavaScript (1 primary file, 4,922 lines), JSON (1,161 files), Markdown (8 files), CSV (5 files)
 
 ---

@@ -1,4 +1,4 @@
-﻿"""
+"""
 BioNEET-Pro — Multi-Class Content Classifier & Guardrail Engine
 ==============================================================
 Implements a 6-class hierarchical content classifier designed specifically
@@ -153,14 +153,18 @@ class ContentClassifier:
         # 5. Off-Topic domain indicators (Physics, Chemistry non-bio, Math, CS, general trivia)
         self.off_topic_regex = re.compile(
             r"\b("
-            r"newton('s|s)? (law|second law|first law|third law)|kinematics|projectile motion|"
+            r"newton('s|s)? (laws?|second law|first law|third law)|kinematics|projectile motion|"
             r"rotational dynamics|moment of inertia|gravitational constant|schrodinger|"
             r"quantum mechanics|electromagnetism|maxwell('s)? equations|electric flux|coulomb|"
             r"thermodynamics enthalpy|carnot engine|entropy change in physics|semiconductor diode|"
             r"kirchhoff('s)? (law|rule)|logic gates|lorentz force|lens formula|snell('s)? law|"
-            r"quadratic formula|integration by parts|differentiation|derivative of|pythagoras|"
+            r"(electrical )?circuits?|ohm('s)? law|resistors? and capacitors?|"
+            r"balance (the )?redox|balancing redox|redox reactions? in chemistry|"
+            r"organic chemistry mechanisms?|reaction mechanisms? in (organic|chemistry)|sn1\s+and\s+sn2|"
+            r"quadratic (formula|equations?)|solve (this )?quadratic|integration by parts|differentiation|derivative of|pythagoras|"
             r"trigonometry|sin\s*\(\s*x\s*\)|cos\s*\(\s*x\s*\)|matrix multiplication|eigenvalue|"
             r"python (code|script|program)|java code|c\+\+|javascript|sql query|html css|"
+            r"(javascript|js) event loop|flask (web server|api)|react (usestate|useeffect)|"
             r"sorting algorithm|binary search|leetcode|github|docker|linux command|"
             r"who won (the )?(cricket|football|fifa|world cup|match|election)|"
             r"prime minister of|capital of (france|germany|usa|india|japan)|weather in|"

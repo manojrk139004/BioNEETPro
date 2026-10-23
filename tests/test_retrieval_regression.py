@@ -71,9 +71,13 @@ class TestRetrievalRegression(unittest.TestCase):
         """CRITICAL: Verifies zero random answers on non-biology queries."""
         banned_queries = [
             "What is Newton's third law of motion?",
+            "Explain Newton's laws.",
             "Explain quantum mechanics and wave function",
             "How to balance redox reactions in chemistry?",
+            "How do I balance redox reactions?",
             "What is the SN1 and SN2 reaction mechanism?",
+            "Explain organic chemistry mechanisms.",
+            "Solve this quadratic equation.",
             "Solve the integral of sin(x) cos(x) dx",
             "How to write a Python Flask web server?",
             "Who won the 2024 cricket world cup?",
@@ -99,7 +103,38 @@ class TestRetrievalRegression(unittest.TestCase):
         self.assertEqual(irrelevant_retrievals, 0, f"Irrelevant retrieval rate must be 0%, got {irrelevant_retrievals}")
         print(f"[PASS] Zero Random Answers: 0/{len(banned_queries)} irrelevant retrievals. 100% rejection rate.")
 
-    def test_04_controlled_refusal_on_empty_or_gibberish(self):
+    def test_04_biology_core_and_interdisciplinary_acceptance(self):
+        """Tests that pure biology and interdisciplinary biology queries are properly accepted."""
+        allowed_queries = [
+            ("Explain photosynthesis.", ["photosynthesis"]),
+            ("Explain mitosis.", ["mitosis", "cell division"]),
+            ("Explain redox potential in photosynthesis.", ["photosynthesis", "redox", "electron"]),
+        ]
+
+        for query, expected_keywords in allowed_queries:
+            res = self.tutor.generate_tutoring_response(query)
+            self.assertIn(res["status"], ["success", "local_fallback"],
+                          f"Valid query rejected: '{query}' with status '{res.get('status')}'")
+            matched_text = (res.get("title", "") + " " + res.get("reply", "")).lower()
+            self.assertTrue(
+                any(kw in matched_text for kw in expected_keywords),
+                f"Expected keywords {expected_keywords} not found in response for '{query}'"
+            )
+        print(f"[PASS] Biology Core & Interdisciplinary: {len(allowed_queries)}/{len(allowed_queries)} accepted.")
+
+    def test_05_mixed_query_boundary_handling(self):
+        """Tests that mixed queries (biology + non-biology) answer the biological portion with scope note."""
+        mixed_query = "Explain photosynthesis and Newton's laws."
+        res = self.tutor.generate_tutoring_response(mixed_query)
+        self.assertIn(res["status"], ["success", "local_fallback"])
+        reply_lower = str(res.get("reply", "")).lower()
+        self.assertIn("photosynthesis", reply_lower)
+        # Verify scope note addresses the out-of-domain part without hallucinating
+        has_scope_note = any(term in reply_lower for term in ["neet biology scope", "newton", "physics", "focusing on"])
+        self.assertTrue(has_scope_note, "Scope note missing from mixed query response")
+        print("[PASS] Mixed Query Boundary: Correctly answered biology component with scope note.")
+
+    def test_06_controlled_refusal_on_empty_or_gibberish(self):
         """Tests that gibberish or empty queries trigger controlled refusal, never a default dataset row."""
         gibberish_queries = [
             "asdfghjkl qwertyuiop",
