@@ -4390,6 +4390,32 @@ function normalizeChapterName(name) {
   return name.toLowerCase().replace(/[\u2013\u2014-]/g, '-').replace(/\s+/g, ' ').trim();
 }
 
+function isTautologicalTemplateMCQ(question, correctOption) {
+  var stem = String(question || '').trim();
+  var patterns = [
+    /which option correctly relates to\s+['"](.+?)['"]\s*\?$/i,
+    /most closely associated with\s+(.+?)\s+in\s+.+\?$/i,
+    /in the context of\s+.+?,\s*['"](.+?)['"]\s+is best described as:$/i
+  ];
+  var term = null;
+  for (var i = 0; i < patterns.length; i++) {
+    var match = stem.match(patterns[i]);
+    if (match) { term = match[1].trim(); break; }
+  }
+  if (!term) return false;
+
+  // Some generated rows accidentally insert a whole, truncated MCQ inside
+  // the term slot. These have unrelated distractors and are not usable items.
+  if (/^(which|what|how|why)\b/i.test(term) && term.length >= 45) return true;
+
+  var canonical = function (value) {
+    return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+  };
+  var normalizedTerm = canonical(term);
+  var normalizedAnswer = canonical(correctOption);
+  return Boolean(normalizedTerm && normalizedTerm === normalizedAnswer);
+}
+
 function normalizeTestMCQ(source) {
   if (!source || typeof source !== 'object') return null;
   var question = String(source.q || source.question || '').trim();
@@ -4406,6 +4432,7 @@ function normalizeTestMCQ(source) {
     correct = options.findIndex(function(option) { return option.toLowerCase() === answerText; });
   }
   if (correct < 0 || correct > 3) return null;
+  if (isTautologicalTemplateMCQ(question, options[correct])) return null;
 
   return Object.assign({}, source, {
     q: question,
