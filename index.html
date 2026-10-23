@@ -1825,7 +1825,7 @@ canvas#hero3d {
               </div>
             </div>
             <div style="display:flex;gap:12px;margin-top:16px">
-              <button class="btn btn-outline" onclick="prevQ()">← Prev</button>
+              <button class="btn btn-outline" id="prevBtn" onclick="prevQ()">← Prev</button>
               <button class="btn btn-primary" onclick="nextQ()" id="nextBtn">Next →</button>
               <button class="btn btn-ghost btn-sm" style="margin-left:auto" id="reviewToggleBtn" onclick="toggleMarkReview()">🔖 Review</button>
             </div>
@@ -3785,20 +3785,28 @@ async function renderDashboard() {
   if (sideTarget) sideTarget.textContent = u.target || 'NEET 2027';
 
   try {
-    // Get user's results from Firebase
-    const q = query(collection(db, "results"), where("email", "==", u.email));
-    const querySnapshot = await getDocs(q);
-    
     let myR = [];
-    querySnapshot.forEach((doc) => { 
-      myR.push(doc.data()); 
-    });
-    
-    
+    // Firestore results require a signed-in account; local demo/offline results
+    // should still populate dashboard statistics without one.
+    if (auth.currentUser) {
+      try {
+        const q = query(collection(db, "results"), where("email", "==", u.email));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => { myR.push(doc.data()); });
+      } catch (cloudError) {
+        console.warn("Cloud results sync notice:", cloudError);
+      }
+    }
+
     if (DB.results && DB.results.length) {
-      const localResults = DB.results.filter(r => r.email === u.email);
+      const localResults = DB.results.filter(r =>
+        r.email === u.email || r.userId === u.id || r.uid === u.id
+      );
       for (let local of localResults) {
-        const exists = myR.some(r => r.timestamp === local.timestamp);
+        const exists = myR.some(r =>
+          (local.timestamp && r.timestamp === local.timestamp) ||
+          (local.id && r.id === local.id)
+        );
         if (!exists) {
           myR.push(local);
         }
@@ -4359,7 +4367,12 @@ function selectChap(id, el) {
 
 function setMode(mode, el) {
   document.querySelectorAll('.sl[id^="mode-"]').forEach(s => s.classList.remove('active'));
-  el.classList.add('active'); 
+  if (el) {
+    el.classList.add('active');
+  } else {
+    var target = document.getElementById('mode-' + mode);
+    if (target) target.classList.add('active');
+  }
   currentMode = mode;
   
   // Sync perfectly: Clear selected chapter if not in chapter mode
