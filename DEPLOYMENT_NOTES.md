@@ -141,21 +141,16 @@ same-origin (`window.location.origin`) for http(s) pages — localhost is only t
 
 ---
 
-## 9. Potential Deployment Blockers
+## 9. Deployment Checks
 
-1. **Incomplete Dockerfile:**
-   * `Dockerfile` line 15 currently reads: `COPY app.py app.py`.
-   * **Blocker:** It fails to copy supporting modules (`adaptive_tutor.py`, `retrieval_engine.py`, `syllabus.py`, etc.) and the `data/` directory. A container built with this Dockerfile will crash on startup with `ModuleNotFoundError: No module named 'adaptive_tutor'`.
-   * *Resolution:* Update Dockerfile to `COPY . /app` or explicitly copy all `.py` files and `data/`.
-2. **CORS Restrictions in Production:**
-   * `ALLOWED_ORIGINS` defaults to localhost ports (`5000, 5173, 5500, 8000`).
-   * **Blocker:** If the frontend is deployed to a production domain (e.g. `https://bioneetpro.com`), the browser will reject API calls due to CORS unless `ALLOWED_ORIGINS` is configured with the production domain.
-3. **Hardcoded Localhost in Frontend:**
-   * `BioNeet-Pro.html` lines 1500 and 3455 fall back to `http://127.0.0.1:5000`.
-   * **Blocker:** In production, students visiting the site remotely will fail to reach the backend unless `window.BIONEET_AI_BACKEND_URL` is set to the public backend endpoint.
-4. **Stateless Multi-Instance In-Memory Limitations:**
-   * In-memory rate limiting (`_rate_buckets` in `app.py`) is stored in Python memory.
-   * **Blocker:** If multiple container instances or Gunicorn workers are spawned, rate limits and chat session buffers will not be shared across processes without an external Redis store.
+The release configuration was reviewed against the deployed split-hosting setup:
+
+1. **Container contents:** `Dockerfile` copies the Flask modules, scripts, runtime data, and textbook assets needed by the API. `.dockerignore` excludes local credentials and student activity/log files from the image.
+2. **CORS:** The backend includes the production Vercel and Render origins by default and permits Vercel preview origins. Set `ALLOWED_ORIGINS` explicitly when using another frontend domain.
+3. **Backend URL:** The frontend points to `https://bioneetpro.onrender.com` in production and uses port 5000 for local development.
+4. **Scaling:** Rate-limit buckets and chat buffers remain process-local. Keep a single backend instance or move this state to shared storage before scaling across workers/instances.
+
+Release QA exercises the container build and health endpoint. Live deployment status should be confirmed from the provider after each Git push; a successful push alone does not prove that a provider deployment completed.
 
 ---
 
